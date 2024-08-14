@@ -1,0 +1,38 @@
+TO-DO LIST(ALPHA):
+-- These 'todos' are pre-testing after testing they will be 'pruned' and some of --
+-- them will be reset based on what works and what doesn't --
+[] Player
+[] Combat
+[] HUD
+[] Interactions
+[] NPC Template
+[] UI
+[] City Locations
+[] Castle Levels
+    [] Level 1
+    [] Level 2
+    [] Level 3
+    [] Level 4
+    [] Level 5
+[] System
+
+
+
+ALPHA BUG-FIX LIST:
+
+
+
+TO-DO LIST(BETA):
+TO-DO LIST(RELEASE):
+
+FINAL EXPORT:
+[ ]  Remove Debug/Shortcut Keys
+[ ]  Hide System Icons (NPC Spawner, Ect)
+[ ]  Remove Debug PRINT messages (ie. 'quitting')
+[ ]  Test Across Platforms (Controllers Also)
+[ ]  Icons (MacOS, Win, Linux)
+[ ]  Set Version Info
+[ ]  Set Release Date
+[ ]  Windows
+[ ]  MacOS
+[ ]  Linux
