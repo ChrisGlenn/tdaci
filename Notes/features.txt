@@ -4,4 +4,6 @@ There is no real organization to this list it's just as I think of them
 
 Weather:
 Windy days where the wind will blow. This will use the same kind of process that was created for Taelus.
-Implemented:
+
+SFX Audio Effects:
+Add a reverb effect when the character is inside of interiors.

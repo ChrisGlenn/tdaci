@@ -17,6 +17,7 @@ var can_move : bool = true # if the player can move the character
 var timer_ctrl : int = 100 # timer control
 var frame : int = 0 # switches between 0 and 1 global frame set
 var frame_timer : int = 42 # time between frame switch
+var inside_interior : bool = false # tracks if player is inside an interior setting (used for sfx effects)
 
 
 # global process
