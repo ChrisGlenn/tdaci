@@ -2,8 +2,28 @@ TO-DO LIST(ALPHA):
 -- These 'todos' are pre-testing after testing they will be 'pruned' and some of --
 -- them will be reset based on what works and what doesn't --
 [] Player
+    [x] Animation
+    [x] Grid Movement (w/ collisions)
+    [] Interaction
 [] Combat
+    [] Player Dodge
+    [] Player (Fighter) Block
+    [] Player (Fighter) Attack
+    [] Player (Ranger) Fire Arrow
+    [] Arrow
+    [] Player (Mage) Cast Spell
+    [] Player (Mage) Cast Block
+    [] Rat Enemy (attack, dodge, die)
+    [] Player Death
 [] HUD
+    [] Border
+    [] Health 'Bar'
+    [] Stamina Bar
+    [] Mana 'Bar'
+    [] Gold
+    [] Item Slot
+    [] Arrow Slot
+    [] Location Label
 [] Interactions
 [] NPC Template
 [] UI

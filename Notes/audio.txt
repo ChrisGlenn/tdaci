@@ -1,0 +1,9 @@
+*** AUDIO ***
+A list of the audio needed for the game.
+
+OST:
+
+SFX:
+[] Player Steps
+[] Player 'Bump'
+[] Fire

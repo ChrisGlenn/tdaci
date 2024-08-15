@@ -1,0 +1,7 @@
+*** FEATURES ***
+This is just a rough list of possible features I would like to add
+There is no real organization to this list it's just as I think of them
+
+Weather:
+Windy days where the wind will blow. This will use the same kind of process that was created for Taelus.
+Implemented:

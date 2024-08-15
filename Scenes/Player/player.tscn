@@ -1,0 +1,73 @@
+[gd_scene load_steps=7 format=3 uid="uid://78jj3cn4sjxu"]
+
+[ext_resource type="Texture2D" uid="uid://bwk5efqfyok0" path="res://Sprites/Player.png" id="1_0ynfs"]
+[ext_resource type="Script" path="res://Scenes/Player/player.gd" id="1_uef0d"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sx1e3"]
+atlas = ExtResource("1_0ynfs")
+region = Rect2(0, 0, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vfkmq"]
+atlas = ExtResource("1_0ynfs")
+region = Rect2(16, 0, 16, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wusta"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sx1e3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vfkmq")
+}],
+"loop": true,
+"name": &"fighter",
+"speed": 3.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ng0s2"]
+size = Vector2(12, 20)
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_uef0d")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_wusta")
+animation = &"fighter"
+frame = 1
+frame_progress = 0.982613
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(8, 12)
+shape = SubResource("RectangleShape2D_ng0s2")
+
+[node name="Ray_UP" type="RayCast2D" parent="."]
+position = Vector2(8, 12)
+target_position = Vector2(0, -24)
+collide_with_areas = true
+
+[node name="Ray_RIGHT" type="RayCast2D" parent="."]
+position = Vector2(8, 12)
+target_position = Vector2(16, 0)
+collide_with_areas = true
+
+[node name="Ray_DOWN" type="RayCast2D" parent="."]
+position = Vector2(8, 12)
+target_position = Vector2(0, 24)
+collide_with_areas = true
+
+[node name="Ray_LEFT" type="RayCast2D" parent="."]
+position = Vector2(8, 12)
+target_position = Vector2(-16, 0)
+collide_with_areas = true
+
+[node name="AudioListener2D" type="AudioListener2D" parent="."]
+current = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(8, 24)
