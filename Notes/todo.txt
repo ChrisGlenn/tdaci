@@ -16,6 +16,7 @@ TO-DO LIST(ALPHA):
     [] Rat Enemy (attack, dodge, die)
     [] Player Death
 [] HUD
+    [] HUD Resolution Independence
     [] Border
     [] Health 'Bar'
     [] Stamina Bar
@@ -24,10 +25,23 @@ TO-DO LIST(ALPHA):
     [] Item Slot
     [] Arrow Slot
     [] Location Label
+[] Enemies
+    [] Enemy Spawner
+    [] Set Paths
+    [] Pathfinding Movement
+    [] Rat
+    [] Player Spotting
 [] Interactions
 [] NPC Template
 [] UI
-[] City Locations
+    [] Fade Out
+    [] Fade In
+    [] Scene Transition
+    [] Dialogue
+    [] Stats
+    [] Inventory
+    [] Save/Load Menu
+[] City Interiors
 [] Castle Levels
     [] Level 1
     [] Level 2
@@ -35,10 +49,13 @@ TO-DO LIST(ALPHA):
     [] Level 4
     [] Level 5
 [] System
+    [] Reset Variables On Main Menu
+    [] Save/Load System
 
 
 
-ALPHA BUG-FIX LIST:
+ALPHA BUG-FIX/FEATURE ADD LIST:
+    [] Hold down directional movement
 
 
 

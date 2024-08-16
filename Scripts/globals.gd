@@ -11,7 +11,7 @@ var player_xp : int = 0 # player's current xp
 
 # npc variables
 
-# system variables
+# game/system variables
 var stage : int = 0 # game stage
 var can_move : bool = true # if the player can move the character
 var timer_ctrl : int = 100 # timer control
