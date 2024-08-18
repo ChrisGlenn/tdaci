@@ -32,6 +32,8 @@ TO-DO LIST(ALPHA):
     [] Rat
     [] Player Spotting
 [] Interactions
+    [] Door (unlocked)
+    [] Door (locked)
 [] NPC Template
 [] UI
     [] Fade Out
@@ -41,6 +43,7 @@ TO-DO LIST(ALPHA):
     [] Stats
     [] Inventory
     [] Save/Load Menu
+    [] CRT Shader(?)
 [] City Interiors
 [] Castle Levels
     [] Level 1

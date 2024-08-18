@@ -1,0 +1,84 @@
+[gd_scene load_steps=13 format=3 uid="uid://cqi17gr4yv8bh"]
+
+[ext_resource type="Script" path="res://Scenes/Interaction/Door/door.gd" id="1_fjfis"]
+[ext_resource type="Texture2D" uid="uid://cpmtm4hyhw1yh" path="res://Sprites/Enviornment_Props.png" id="2_5drht"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4lhsk"]
+atlas = ExtResource("2_5drht")
+region = Rect2(0, 120, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4pip5"]
+atlas = ExtResource("2_5drht")
+region = Rect2(16, 120, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dbgeo"]
+atlas = ExtResource("2_5drht")
+region = Rect2(32, 120, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vubnk"]
+atlas = ExtResource("2_5drht")
+region = Rect2(48, 120, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ec20"]
+atlas = ExtResource("2_5drht")
+region = Rect2(64, 120, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fk0dy"]
+atlas = ExtResource("2_5drht")
+region = Rect2(80, 120, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y5le4"]
+atlas = ExtResource("2_5drht")
+region = Rect2(160, 120, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fahow"]
+atlas = ExtResource("2_5drht")
+region = Rect2(176, 120, 16, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3cchl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4lhsk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4pip5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dbgeo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vubnk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ec20")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fk0dy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y5le4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fahow")
+}],
+"loop": true,
+"name": &"default",
+"speed": 0.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xc6l5"]
+radius = 14.4222
+
+[node name="Door" type="Area2D"]
+script = ExtResource("1_fjfis")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_3cchl")
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(8, 12)
+shape = SubResource("CircleShape2D_xc6l5")
