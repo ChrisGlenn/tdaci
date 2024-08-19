@@ -1,0 +1,32 @@
+            if !RAY_UP.is_colliding():
+                global_position.y -= 24 # move up
+                # PLAY STEP AUDIO HERE
+            else:
+                # PLAY BLOCK AUDIO HERE
+                pass
+        if Input.is_action_just_pressed("ci_RIGHT"):
+            # move right
+            if !RAY_RIGHT.is_colliding():
+                global_position.x += 16 # move right
+                PLAYER_SPRITE.flip_h = true # flip the sprite
+                # PLAY STEP AUDIO HERE
+            else:
+                # PLAY BLOCK AUDIO HERE
+                PLAYER_SPRITE.flip_h = true # flip the sprite
+        if Input.is_action_just_pressed("ci_DOWN"):
+            # move down
+            if !RAY_DOWN.is_colliding():
+                global_position.y += 24 # move down
+                # PLAY STEP AUDIO HERE
+            else:
+                # PLAY BLOCK AUDIO HERE
+                pass
+        if Input.is_action_just_pressed("ci_LEFT"):
+            # move left
+            if !RAY_LEFT.is_colliding():
+                global_position.x -= 16 # move left
+                PLAYER_SPRITE.flip_h = false # un-flip the sprite
+                # PLAY STEP AUDIO HERE
+            else:
+                # PLAY BLOCK AUDIO HERE
+                PLAYER_SPRITE.flip_h = false # un-flip the sprite

@@ -58,7 +58,7 @@ TO-DO LIST(ALPHA):
 
 
 ALPHA BUG-FIX/FEATURE ADD LIST:
-    [] Hold down directional movement
+    [x] Hold down directional movement
 
 
 
