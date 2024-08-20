@@ -8,7 +8,13 @@ script = ExtResource("1_qe802")
 
 [node name="Background" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(0, 240)
-scale = Vector2(2, 2)
+position = Vector2(48, 264)
+scale = Vector2(1.7, 1.6)
 texture = ExtResource("1_l8o5y")
 centered = false
+
+[node name="Fighter" type="Node2D" parent="."]
+
+[node name="Mage" type="Node2D" parent="."]
+
+[node name="Ranger" type="Node2D" parent="."]

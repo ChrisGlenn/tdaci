@@ -30,7 +30,7 @@ size = Vector2(12, 20)
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_uef0d")
-move_timer_set = 40
+move_timer_set = 26
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -67,4 +67,4 @@ current = true
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(8, 84)
+position = Vector2(8, 48)
