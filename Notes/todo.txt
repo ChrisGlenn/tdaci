@@ -5,6 +5,9 @@ TO-DO LIST(ALPHA):
     [x] Animation
     [x] Grid Movement (w/ collisions)
     [] Interaction
+    [] Spells (see spells.txt)
+    [] Scrolls (see spells.txt)
+    [] Tools (see items.txt)
 [] Combat
     [] Player Dodge
     [] Player (Fighter) Block
@@ -16,8 +19,8 @@ TO-DO LIST(ALPHA):
     [] Rat Enemy (attack, dodge, die)
     [] Player Death
 [] HUD
-    [] HUD Resolution Independence
-    [] Border
+    [x] HUD Resolution Independence
+    [x] Border
     [] Health 'Bar'
     [] Stamina Bar
     [] Mana 'Bar'
@@ -52,6 +55,7 @@ TO-DO LIST(ALPHA):
     [] Level 4
     [] Level 5
 [] System
+    [] Custom Bitmap Font/Small Pixel Font
     [] Reset Variables On Main Menu
     [] Save/Load System
 

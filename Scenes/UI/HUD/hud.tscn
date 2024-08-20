@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://mya5ck4t3umk"]
+[gd_scene load_steps=3 format=3 uid="uid://mya5ck4t3umk"]
 
 [ext_resource type="Texture2D" uid="uid://df2adtve0o8kt" path="res://Sprites/UI/HUD.png" id="1_l8o5y"]
+[ext_resource type="Script" path="res://Scenes/UI/HUD/hud.gd" id="1_qe802"]
 
 [node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_qe802")
 
 [node name="Background" type="Sprite2D" parent="."]
 texture_filter = 1

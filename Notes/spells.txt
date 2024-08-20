@@ -1,0 +1,34 @@
+*** SPELLS ***
+A list of spells for the game broken up into three categories
+
+Offensive Spells:
+[] Magic 'Missle' (default spell)
+	Fires a missle at the enemy (can be dodged or blocked). The mage's default attack.
+[] Engulf
+	Engulfs the enemy in fire that cannot be dodged or blocked.
+[] Stun
+	Stuns the enemy for a second and resets it's attack counter back to idle (or however I choose to make it work.
+
+
+Defensive Spells:
+[] Shield
+	The mage's version of the fighter's shield (default spell)
+[] Heal
+	Will heal the player
+[] Defense
+	Will increase the player's defense by a random number set in a range (range TBD)
+[] Fog
+	The mage turns into a fog which will nullify attacks for a short amount of time.
+
+
+Utility Spells:
+[] Spot Traps
+	This spell will allow the player to spot traps as soon as they are on the screen.
+[] Unlock
+	This spell will unlock locked doors, if it rolls high against the door's set DEX
+
+
+Scrolls:
+[] Spot Traps
+[] Unlock
+[] Heal
