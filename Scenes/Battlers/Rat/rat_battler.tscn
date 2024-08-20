@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://cyskcohjw8w28"]
+
+[node name="Rat_Battler" type="Node2D"]
+
+[node name="Rat_Body" type="AnimatedSprite2D" parent="."]
+
+[node name="Left_Claw" type="AnimatedSprite2D" parent="."]

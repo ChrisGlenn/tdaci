@@ -30,7 +30,7 @@ size = Vector2(12, 20)
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_uef0d")
-move_timer_set = 26
+move_timer_set = 18
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

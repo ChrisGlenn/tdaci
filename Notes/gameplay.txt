@@ -1,2 +1,17 @@
 *** GAMEPLAY ***
 An overview of the gameplay for TDACI.
+
+
+COMBAT:
+Various aspects of the combat.
+
+Player States:
+Fighter
+- Idle
+- Attack
+- Block
+- Super Attack
+- Stunned/Exhausted
+- Hit
+- Death
+- Use Spell Scroll

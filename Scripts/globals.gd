@@ -4,12 +4,20 @@ extends Node
 var player_x # stores the player's X coords
 var player_y # stores the player's Y coords
 var player_name : String = "Adan" # player's name
+var player_class : String = "Fighter" # Fighter, Mage, Ranger (defaults to fighter)
 var player_hp : int = 0 # player's hit points
 var player_mp : int = 0 # player's mana points
 var player_gold : int = 0 # player's gold
 var player_xp : int = 0 # player's current xp
+var player_strength : int = 5 # player strength (fighter, ranger)
+var player_wisdom : int = 5 # player wisdom (mage only)
+var player_health : int = 5 # player's health (all classes)
+var player_stamina : int = 5 # player's stamina (fighter, ranger)
+var player_mana : int = 5 # player's mana (mage only)
+
 
 # npc variables
+
 
 # game/system variables
 var stage : int = 0 # game stage
