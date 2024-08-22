@@ -1,0 +1,9 @@
+*** ANIMATION ***
+A list of states for the player/enemies. Used for animation references.
+
+RAT:
+Idle
+Hit
+Attack
+Stunned
+Dead

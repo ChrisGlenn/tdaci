@@ -320,7 +320,7 @@ frame = 46
 
 [node name="Gold_Icon" type="Sprite2D" parent="Fighter"]
 texture_filter = 1
-position = Vector2(541, 303)
+position = Vector2(540, 303)
 scale = Vector2(3, 3)
 texture = ExtResource("3_ful8i")
 hframes = 8

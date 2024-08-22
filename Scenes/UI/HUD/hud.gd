@@ -10,6 +10,10 @@ extends CanvasLayer
 @onready var SWORD_SPRITE = $Fighter/Sword_Icon
 @onready var SWORD_LABEL = $Fighter/Sword_Label
 @onready var F_GOLD_LABEL = $Fighter/Gold_Label
+# variables
+var health_fractions : float = 0 # holds the health fractions
+var stamina_fractions : float = 0 # holds the stamina fractions
+var mana_fractions : float = 0 # holds the mana fractions
 
 
 func _ready():
@@ -21,4 +25,13 @@ func _ready():
         SHIELD_LABEL.text = str(Globals.shield_hp, "/", Globals.shield_max_hp) # set the shield HP label
         SWORD_LABEL.text = str(Globals.sword_hp, "/", Globals.sword_max_hp)
         F_GOLD_LABEL.text = str(Globals.player_gold)
-    # RUN A FUNCTION TO UPDATE THE HUD ICONS HERE
+    # run the icon update function
+    icon_update()
+
+
+func icon_update():
+    # a function to update the hud icons based on their relative stat
+    # the stat will be divided based on the number of frames and then each frame will
+    # correspond to the current stat amount based on that division
+    # none of that probably made sense but no one will read this so who cares
+    pass
