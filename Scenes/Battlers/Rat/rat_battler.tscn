@@ -1,6 +1,254 @@
-[gd_scene load_steps=2 format=3 uid="uid://cyskcohjw8w28"]
+[gd_scene load_steps=13 format=3 uid="uid://cyskcohjw8w28"]
 
 [ext_resource type="Script" path="res://Scenes/Battlers/Rat/rat_battler.gd" id="1_vrbo1"]
+[ext_resource type="Texture2D" uid="uid://d27ihpj7bajxv" path="res://Sprites/Battlers/Rat_Battler_Head.png" id="2_g5t8h"]
+[ext_resource type="Texture2D" uid="uid://ce82djlpgoc18" path="res://Sprites/Battlers/Rat_Claw.png" id="3_x3jnf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2pgh1"]
+size = Vector2(64, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8njob"]
+size = Vector2(32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rgcdv"]
+size = Vector2(32, 32)
+
+[sub_resource type="Animation" id="Animation_5ubux"]
+resource_name = "idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Rat_Head/RH_Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Rat_Claw_Left:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2(-54, 40), Vector2(-54, 48)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Rat_Claw_Right:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2(54, 48), Vector2(54, 40)]
+}
+
+[sub_resource type="Animation" id="Animation_ydtmn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Rat_Head/RH_Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Rat_Claw_Left:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-54, 40)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Rat_Claw_Right:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(54, 48)]
+}
+
+[sub_resource type="Animation" id="Animation_wnqip"]
+resource_name = "hit"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Rat_Head/RH_Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [1, 2]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Rat_Claw_Left:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(-30, 40)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Rat_Claw_Right:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(30, 40)]
+}
+
+[sub_resource type="Animation" id="Animation_d52w8"]
+resource_name = "block"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Rat_Head/RH_Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Rat_Claw_Right:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0333333),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(22, 40)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Rat_Claw_Left:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.0333333),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(-22, 40)]
+}
+
+[sub_resource type="Animation" id="Animation_uwiy6"]
+resource_name = "attack_left"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Rat_Head/RH_Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Rat_Claw_Left:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-54, 24)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dyk4v"]
+_data = {
+"RESET": SubResource("Animation_ydtmn"),
+"attack_left": SubResource("Animation_uwiy6"),
+"block": SubResource("Animation_d52w8"),
+"hit": SubResource("Animation_wnqip"),
+"idle": SubResource("Animation_5ubux")
+}
 
 [node name="Rat_Battler" type="Node2D"]
 script = ExtResource("1_vrbo1")
+metadata/_edit_group_ = true
+
+[node name="Rat_Head" type="Area2D" parent="."]
+
+[node name="RH_Sprite" type="Sprite2D" parent="Rat_Head"]
+texture_filter = 1
+scale = Vector2(4, 4)
+texture = ExtResource("2_g5t8h")
+hframes = 5
+
+[node name="RH_Coll_Shape" type="CollisionShape2D" parent="Rat_Head"]
+shape = SubResource("RectangleShape2D_2pgh1")
+
+[node name="Rat_Claw_Left" type="Area2D" parent="."]
+position = Vector2(-54, 40)
+
+[node name="Rat_Claw_L_Sprite" type="Sprite2D" parent="Rat_Claw_Left"]
+texture_filter = 1
+position = Vector2(0, -2)
+scale = Vector2(4, 4)
+texture = ExtResource("3_x3jnf")
+flip_h = true
+
+[node name="Rat_Claw_L_Coll_Shape" type="CollisionShape2D" parent="Rat_Claw_Left"]
+shape = SubResource("RectangleShape2D_8njob")
+
+[node name="Rat_Claw_Right" type="Area2D" parent="."]
+position = Vector2(54, 48)
+
+[node name="Rat_Claw_R_Sprite" type="Sprite2D" parent="Rat_Claw_Right"]
+texture_filter = 1
+position = Vector2(0, -2)
+scale = Vector2(4, 4)
+texture = ExtResource("3_x3jnf")
+flip_h = true
+
+[node name="Rat_Claw_R_Coll_Shape" type="CollisionShape2D" parent="Rat_Claw_Right"]
+shape = SubResource("RectangleShape2D_rgcdv")
+
+[node name="Animation_Rat" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_dyk4v")
+}
