@@ -14,6 +14,7 @@ var rat_temperment : int = 0 # when it reaches 100 the rat will attack
 var rat_defense : int = 0 # when it reaches a set point the rat will defend against a hit
 var rat_attack_dir : int = 0 # 0 is left 1 is right
 var is_hit : bool = false # if the rat is hit
+var hit_timer : int = 10 # 
 
 
 func _ready():
@@ -39,7 +40,6 @@ func rat_ai(clock):
 				if rat_temperment < 100:
 					var random_increment = RNG.randi_range(1,10)
 					if random_increment <= attack_chance:
-						print(random_increment)
 						rat_temperment += rat_incrementer
 						rat_state_timer = 60 # reset the timer
 					else:
@@ -52,6 +52,9 @@ func rat_ai(clock):
 		rat_state_timer = 60 # reset the timer
 		if rat_attack_dir == 0: RAT_ANIM.play("attack_left")
 		elif rat_attack_dir == 1: RAT_ANIM.play("attack_right")
+	elif RAT_STATE == "DEAD":
+		# the rat has died
+		RAT_ANIM.play("die") # play the death animation and wait until it ends
 	# CHECK IF THE RAT IS HIT AND MODULATE THE COLOR TO RED
 	if is_hit:
 		pass

@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=4 uid="uid://u2lsj7j73cdb"]
+[gd_scene load_steps=5 format=4 uid="uid://u2lsj7j73cdb"]
 
 [ext_resource type="PackedScene" uid="uid://bfvuhs3v0x7bk" path="res://Scenes/Enviornment_Tiles/enviornment_tiles.tscn" id="1_dldd7"]
 [ext_resource type="PackedScene" uid="uid://mya5ck4t3umk" path="res://Scenes/UI/HUD/hud.tscn" id="2_rcxjj"]
 [ext_resource type="PackedScene" uid="uid://cyskcohjw8w28" path="res://Scenes/Battlers/Rat/rat_battler.tscn" id="3_8ybm5"]
+[ext_resource type="PackedScene" uid="uid://bfhvknemueecs" path="res://Scenes/Battlers/Fighter_Battler/fighter_battler.tscn" id="4_owwes"]
 
 [node name="Battleground" type="Node2D"]
 
@@ -14,3 +15,6 @@ tile_map_data = PackedByteArray("AAAAAAAAAAANAA4AAAABAAAAAAANAA4AAAACAAAAAAANAA4
 
 [node name="Rat_Battler" parent="." instance=ExtResource("3_8ybm5")]
 position = Vector2(320, 94)
+
+[node name="fighter_battler" parent="." instance=ExtResource("4_owwes")]
+position = Vector2(322, 205)

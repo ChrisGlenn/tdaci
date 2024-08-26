@@ -32,6 +32,7 @@ var timer_ctrl : int = 100 # timer control
 var frame : int = 0 # switches between 0 and 1 global frame set
 var frame_timer : int = 42 # time between frame switch
 var inside_interior : bool = false # tracks if player is inside an interior setting (used for sfx effects)
+var player_attack : bool = false # this will be true when the player is attacking (used for enemy blocking/dodging)
 
 
 # global process
