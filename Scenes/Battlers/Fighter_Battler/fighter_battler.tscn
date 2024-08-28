@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bfhvknemueecs"]
+[gd_scene load_steps=13 format=3 uid="uid://bfhvknemueecs"]
 
 [ext_resource type="Texture2D" uid="uid://d2rm2oh4bd4bh" path="res://Sprites/Battlers/Fighter.png" id="1_ei85s"]
 [ext_resource type="Script" path="res://Scenes/Battlers/Fighter_Battler/fighter_battler.gd" id="1_whh1v"]
@@ -9,7 +9,78 @@ size = Vector2(64, 80)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vhwye"]
 size = Vector2(8, 64)
 
-[sub_resource type="Animation" id="Animation_hfioq"]
+[sub_resource type="Animation" id="Animation_lma4v"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("fighter_body/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("fighter_body:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("weapon_collider:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(50, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_wjgqs"]
+resource_name = "dodge_left"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("fighter_body:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2(-90, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_yu18y"]
+resource_name = "dodge_right"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("fighter_body:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(90, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_i4hx5"]
 resource_name = "idle"
 loop_mode = 1
 tracks/0/type = "value"
@@ -24,9 +95,34 @@ tracks/0/keys = {
 "update": 1,
 "values": [0, 1]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("fighter_body:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("weapon_collider:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(50, 0)]
+}
 
-[sub_resource type="Animation" id="Animation_53wcy"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_gu7jx"]
+resource_name = "block"
+length = 0.7
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -37,19 +133,93 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [0]
+"values": [2]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("fighter_body:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0333333),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(0, 0)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_34ybk"]
+[sub_resource type="Animation" id="Animation_wc6ga"]
+resource_name = "dodge_back"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("fighter_body/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("fighter_body:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(0, 60)]
+}
+
+[sub_resource type="Animation" id="Animation_q7n2s"]
+resource_name = "attack"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("fighter_body/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [2, 5]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("weapon_collider:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(14, -48)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_578nr"]
 _data = {
-"RESET": SubResource("Animation_53wcy"),
-"idle": SubResource("Animation_hfioq")
+"RESET": SubResource("Animation_lma4v"),
+"attack": SubResource("Animation_q7n2s"),
+"block": SubResource("Animation_gu7jx"),
+"dodge_back": SubResource("Animation_wc6ga"),
+"dodge_left": SubResource("Animation_wjgqs"),
+"dodge_right": SubResource("Animation_yu18y"),
+"idle": SubResource("Animation_i4hx5")
 }
 
 [node name="fighter_battler" type="Node2D"]
 script = ExtResource("1_whh1v")
+cool_down = 30
 
-[node name="fighter_body" type="Area2D" parent="."]
+[node name="fighter_body" type="Area2D" parent="." groups=["PLAYER"]]
 
 [node name="Sprite2D" type="Sprite2D" parent="fighter_body"]
 texture_filter = 1
@@ -62,7 +232,7 @@ vframes = 2
 position = Vector2(6, 24)
 shape = SubResource("RectangleShape2D_mu0x7")
 
-[node name="weapon_collider" type="Area2D" parent="."]
+[node name="weapon_collider" type="Area2D" parent="." groups=["PLAYER_WEAPON"]]
 position = Vector2(50, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="weapon_collider"]
@@ -71,5 +241,8 @@ shape = SubResource("RectangleShape2D_vhwye")
 
 [node name="Animation_Fighter" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_34ybk")
+"": SubResource("AnimationLibrary_578nr")
 }
+
+[connection signal="area_entered" from="fighter_body" to="." method="_on_fighter_body_area_entered"]
+[connection signal="animation_finished" from="Animation_Fighter" to="." method="_on_animation_fighter_animation_finished"]

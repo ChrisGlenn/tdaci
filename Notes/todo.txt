@@ -22,12 +22,12 @@ TO-DO LIST(ALPHA):
     [x] HUD Resolution Independence
     [x] Border
     [] Health 'Bar'
+    [] Equipment 'Bar'
     [] Stamina Bar
     [] Mana 'Bar'
-    [] Gold
+    [x] Gold
     [] Item Slot
     [] Arrow Slot
-    [] Location Label
 [] Enemies
     [] Enemy Spawner
     [] Set Paths
@@ -47,7 +47,10 @@ TO-DO LIST(ALPHA):
     [] Inventory
     [] Save/Load Menu
     [] CRT Shader(?)
-[] City Interiors
+[] Courtyard
+    [] Courtyard Exterior
+    [] Tavern Interior
+    [] Chapel Interior
 [] Castle Levels
     [] Level 1
     [] Level 2
@@ -55,7 +58,7 @@ TO-DO LIST(ALPHA):
     [] Level 4
     [] Level 5
 [] System
-    [] Custom Bitmap Font/Small Pixel Font
+    [x] Custom Bitmap Font/Small Pixel Font
     [] Reset Variables On Main Menu
     [] Save/Load System
 

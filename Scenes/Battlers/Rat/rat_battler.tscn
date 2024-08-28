@@ -265,6 +265,46 @@ tracks/4/keys = {
 "values": [Vector2(1, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_8d1m3"]
+resource_name = "die"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Rat_Head/RH_Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Rat_Claw_Left:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(-54, 48)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Rat_Claw_Right:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(54, 48)]
+}
+
 [sub_resource type="Animation" id="Animation_5ubux"]
 resource_name = "idle"
 loop_mode = 1
@@ -329,46 +369,6 @@ tracks/4/keys = {
 "values": [Vector2(1, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_8d1m3"]
-resource_name = "die"
-length = 5.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Rat_Head/RH_Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [4]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Rat_Claw_Left:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [Vector2(-54, 48)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Rat_Claw_Right:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [Vector2(54, 48)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_dyk4v"]
 _data = {
 "RESET": SubResource("Animation_ydtmn"),
@@ -379,12 +379,12 @@ _data = {
 "idle": SubResource("Animation_5ubux")
 }
 
-[node name="Rat_Battler" type="Node2D"]
+[node name="Rat_Battler" type="Node2D" groups=["ENEMY"]]
 script = ExtResource("1_vrbo1")
 rat_incrementer = 50
 metadata/_edit_group_ = true
 
-[node name="Rat_Head" type="Area2D" parent="."]
+[node name="Rat_Head" type="Area2D" parent="." groups=["ENEMY"]]
 
 [node name="RH_Sprite" type="Sprite2D" parent="Rat_Head"]
 texture_filter = 1
@@ -395,7 +395,7 @@ hframes = 5
 [node name="RH_Coll_Shape" type="CollisionShape2D" parent="Rat_Head"]
 shape = SubResource("RectangleShape2D_2pgh1")
 
-[node name="Rat_Claw_Left" type="Area2D" parent="."]
+[node name="Rat_Claw_Left" type="Area2D" parent="." groups=["ENEMY"]]
 position = Vector2(-54, 40)
 
 [node name="Rat_Claw_L_Sprite" type="Sprite2D" parent="Rat_Claw_Left"]
@@ -408,7 +408,7 @@ flip_h = true
 [node name="Rat_Claw_L_Coll_Shape" type="CollisionShape2D" parent="Rat_Claw_Left"]
 shape = SubResource("RectangleShape2D_8njob")
 
-[node name="Rat_Claw_Right" type="Area2D" parent="."]
+[node name="Rat_Claw_Right" type="Area2D" parent="." groups=["ENEMY"]]
 position = Vector2(54, 48)
 
 [node name="Rat_Claw_R_Sprite" type="Sprite2D" parent="Rat_Claw_Right"]

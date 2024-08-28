@@ -28,6 +28,9 @@ func _ready():
     # run the icon update function
     icon_update()
 
+func _process(_delta):
+    pass
+
 
 func icon_update():
     # a function to update the hud icons based on their relative stat

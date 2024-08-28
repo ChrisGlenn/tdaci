@@ -69,6 +69,6 @@ func _on_animation_rat_animation_finished(anim_name):
 
 
 func _on_rat_head_area_entered(area):
-	if area.is_in_group("PLAYER"):
+	if area.is_in_group("PLAYER_WEAPON"):
 		# the rat is HIT
-		pass
+		print("RAT HIT!!!") # DEBUG
