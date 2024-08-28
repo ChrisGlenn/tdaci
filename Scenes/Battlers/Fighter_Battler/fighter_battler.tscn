@@ -217,7 +217,7 @@ _data = {
 
 [node name="fighter_battler" type="Node2D"]
 script = ExtResource("1_whh1v")
-cool_down = 30
+cool_down = 20
 
 [node name="fighter_body" type="Area2D" parent="." groups=["PLAYER"]]
 
@@ -232,7 +232,7 @@ vframes = 2
 position = Vector2(6, 24)
 shape = SubResource("RectangleShape2D_mu0x7")
 
-[node name="weapon_collider" type="Area2D" parent="." groups=["PLAYER_WEAPON"]]
+[node name="weapon_collider" type="Area2D" parent="." groups=["PLAYER_SWORD"]]
 position = Vector2(50, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="weapon_collider"]

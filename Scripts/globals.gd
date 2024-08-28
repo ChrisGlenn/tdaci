@@ -20,6 +20,7 @@ var shield_hp : int = 10 # fighter's current shield hit points
 var shield_max_hp : int = 10 # fighter's shield hit points
 var sword_hp : int = 10 # fighter's current sword hit points
 var sword_max_hp : int = 10 # fighter's sword hit points
+var sword_attack : int = 4 # the attack power of the player's sword (can get upgraded by blacksmith)
 
 
 # npc variables

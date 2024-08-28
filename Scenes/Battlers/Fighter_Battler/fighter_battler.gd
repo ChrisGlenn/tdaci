@@ -2,6 +2,7 @@ extends Node2D
 # FIGHTER BATTLER SCRIPT
 # if the player is the fighter class then this is the battler for them!
 @onready var FIGHTER_ANIM = $Animation_Fighter
+@onready var RNG = RandomNumberGenerator.new()
 @export var cool_down : int = 60 # cool down period between movements
 @export var stamina_regen : int = 4 # period in between stamina regen
 var FIGHTER_STATE : String = "IDLE" # IDLE, HIT, ATTACK, BLOCK, DEAD, DODGE_LEFT, DODGE_RIGHT, DODGE_BACK, FATIGUED, CASTING, ITEM
@@ -12,6 +13,7 @@ var is_blocking : bool = false # true if the player is blocking
 
 
 func _ready():
+	RNG.randomize() # seed random
 	cool_down_rec = cool_down # record the cool_down setting
 	stamina_regen_rec = stamina_regen # record the stamina_regen setting
 	FIGHTER_ANIM.play("idle")
@@ -48,6 +50,7 @@ func fighter_control(clock):
 					detect_input = false # stop input detection
 				# ATTACK
 				if Input.is_action_just_pressed("ci_A"):
+					Globals.player_attack = true # the player is attacking
 					FIGHTER_ANIM.play("attack") # play the animation
 					# decrement stamina check
 					detect_input = false # stop input detection
@@ -63,7 +66,9 @@ func fighter_control(clock):
 					stamina_regen = stamina_regen_rec # reset the stamina regen
 			else:
 				Globals.player_stamina = 100 # stop it from going OVER 100
-
+	else:
+		# PLAYER IS DEAD
+		pass
 
 func _on_animation_fighter_animation_finished(anim_name):
 	# this function plays when the animation player is done playing
@@ -72,6 +77,7 @@ func _on_animation_fighter_animation_finished(anim_name):
 		detect_input = true # hand back control to the player
 		FIGHTER_ANIM.play("idle") # play the idle animation
 	elif anim_name == "attack":
+		Globals.player_attack = false # player is no longer attacking...
 		cool_down = cool_down_rec # reset the cool_down period
 		detect_input = true # hand back control to the player
 		FIGHTER_ANIM.play("idle") # play the idle animation

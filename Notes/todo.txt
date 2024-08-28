@@ -8,15 +8,14 @@ TO-DO LIST(ALPHA):
     [] Spells (see spells.txt)
     [] Scrolls (see spells.txt)
     [] Tools (see items.txt)
-[] Combat
-    [] Player Dodge
+[] Combat (GEN ONE)
+    [x] Player Dodge
     [] Player (Fighter) Block
-    [] Player (Fighter) Attack
+    [x] Player (Fighter) Attack
     [] Player (Ranger) Fire Arrow
     [] Arrow
     [] Player (Mage) Cast Spell
     [] Player (Mage) Cast Block
-    [] Rat Enemy (attack, dodge, die)
     [] Player Death
 [] HUD
     [x] HUD Resolution Independence
