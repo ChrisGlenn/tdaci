@@ -1,6 +1,10 @@
 TO-DO LIST(ALPHA):
 -- These 'todos' are pre-testing after testing they will be 'pruned' and some of --
 -- them will be reset based on what works and what doesn't --
+
+-- CURRENTLY WORKING ON --
+- Player Stamina System (battler for fighter)
+
 [] Player
     [x] Animation
     [x] Grid Movement (w/ collisions)

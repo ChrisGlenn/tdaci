@@ -10,6 +10,7 @@ extends Node2D
 @export var attack_chance : int = 4 # 1 to 10 if it's lower than this number incrementer goes up
 @export var rat_incrementer : int = 10 # how much the temperment rises
 @export var rat_block_incrementer : int = 50 # defaults to 50
+@export var block_cooldown : int = 100 # this cool down period has the rat ALWAYS blocking
 @export var rat_state_timer : int = 60 # every time this hits zero the rat will check and see it's next move
 var RAT_STATE : String = "IDLE" # IDLE, ATTACK, DEAD, BLOCK
 var rat_temperment : int = 0 # when it reaches 100 the rat will attack
@@ -18,10 +19,12 @@ var rat_attack_dir : int = 0 # 0 is left 1 is right
 var is_hit : bool = false # if the rat is hit
 var will_block : bool = false # if the rat will block the next hit
 var hit_timer : int = 50 # how long the rat is in a 'hit' state
+var block_cooldown_rec # records the block_cooldown setting
 
 
 func _ready():
 	RNG.randomize() # seed random
+	block_cooldown_rec = block_cooldown # record the block_cooldown setting
 
 func _process(delta):
 	rat_ai(delta)
@@ -84,9 +87,15 @@ func rat_ai(clock):
 				if rat_block >= 100:
 					will_block = true # the rat WILL block the next attack
 				is_hit = false # hit is done
+		# BLOCK COOLDOWN CONTROL
+		if will_block:
+			if block_cooldown > 0:
+				block_cooldown -= clock * Globals.timer_ctrl # decrement the timer
+			else:
+				will_block = false # the rat will no longer block all attacks
 	else:
 		# THE RAT IS DEAD
-		print("RAT IS DEAD") # DEBUG
+		RAT_ANIM.play("die") # play the dead animation
 
 
 func _on_animation_rat_animation_finished(anim_name):
@@ -98,7 +107,8 @@ func _on_animation_rat_animation_finished(anim_name):
 		RAT_STATE = "IDLE" # return to IDLE after HIT
 	elif anim_name == "block":
 		rat_block = 0 # reset the rat_defense (used for blocking)
-		will_block = false # rat will NOT block next round
+		# will_block = false # rat will NOT block next round
+		block_cooldown = block_cooldown_rec # reset the block cooldown
 		rat_state_timer = 60 # reset the timer
 		RAT_STATE = "IDLE"
 
