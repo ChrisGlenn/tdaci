@@ -3,7 +3,9 @@ TO-DO LIST(ALPHA):
 -- them will be reset based on what works and what doesn't --
 
 -- CURRENTLY WORKING ON --
+- Change rat hit color to only be when the areas are colliding
 - Player Stamina System (battler for fighter)
+
 
 [] Player
     [x] Animation
@@ -13,14 +15,26 @@ TO-DO LIST(ALPHA):
     [] Scrolls (see spells.txt)
     [] Tools (see items.txt)
 [] Combat (GEN ONE)
-    [x] Player Dodge
-    [] Player (Fighter) Block
-    [x] Player (Fighter) Attack
-    [] Player (Ranger) Fire Arrow
-    [] Arrow
-    [] Player (Mage) Cast Spell
-    [] Player (Mage) Cast Block
-    [] Player Death
+    [] FIGHTER
+        [x] Player Idle
+        [x] Player Dodge
+        [] Player (Fighter) Block
+        [x] Player (Fighter) Attack
+        [] Player Fatigued
+        [] Player Hit
+        [] Player Death
+    [] RANGER
+        [] Player Idle
+        [] Player Dodge
+        [] Player (Ranger) Fire Arrow
+        [] Arrow
+        [] Player Fatigued
+        [] Player Hit
+        [] Player Death
+    [] MAGE
+        [] Player (Mage) Cast Spell
+        [] Player (Mage) Cast Block
+        [] Player Death
 [] HUD
     [x] HUD Resolution Independence
     [x] Border

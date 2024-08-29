@@ -12,13 +12,13 @@ extends Node2D
 @export var rat_block_incrementer : int = 50 # defaults to 50
 @export var block_cooldown : int = 100 # this cool down period has the rat ALWAYS blocking
 @export var rat_state_timer : int = 60 # every time this hits zero the rat will check and see it's next move
+@export var death_timer : int = 200 # the amount of countdown time after the rat dies to end the battle
 var RAT_STATE : String = "IDLE" # IDLE, ATTACK, DEAD, BLOCK
 var rat_temperment : int = 0 # when it reaches 100 the rat will attack
 var rat_block : int = 0 # when it reaches a set point the rat will defend against a hit
 var rat_attack_dir : int = 0 # 0 is left 1 is right
 var is_hit : bool = false # if the rat is hit
 var will_block : bool = false # if the rat will block the next hit
-var hit_timer : int = 50 # how long the rat is in a 'hit' state
 var block_cooldown_rec # records the block_cooldown setting
 
 
@@ -75,18 +75,12 @@ func rat_ai(clock):
 			# make the rat flash with the set red color
 			# decrement the rat's health and reset the rat_defense to 0
 			RAT_STATE = "IDLE" # return the RAT_STATE back to idle
-			$Rat_Head/RH_Sprite.modulate = Color(0.424,0.161,0.251) # module hit color
-			if hit_timer > 0:
-				hit_timer -= clock * Globals.timer_ctrl
-			else:
-				hit_timer = 50 # reset hit timer
-				$Rat_Head/RH_Sprite.modulate = Color(1,1,1) # change color back
-				# block defense settings
-				rat_temperment += 50 # half of 100 increase
-				rat_block += rat_block_incrementer # increse the rat_defense
-				if rat_block >= 100:
-					will_block = true # the rat WILL block the next attack
-				is_hit = false # hit is done
+			# block defense settings
+			rat_temperment += 50 # half of 100 increase
+			rat_block += rat_block_incrementer # increse the rat_defense
+			if rat_block >= 100:
+				will_block = true # the rat WILL block the next attack
+			is_hit = false # hit is done
 		# BLOCK COOLDOWN CONTROL
 		if will_block:
 			if block_cooldown > 0:
@@ -96,6 +90,7 @@ func rat_ai(clock):
 	else:
 		# THE RAT IS DEAD
 		RAT_ANIM.play("die") # play the dead animation
+		self.visible = !self.visible # flash the rat!
 
 
 func _on_animation_rat_animation_finished(anim_name):
@@ -103,7 +98,6 @@ func _on_animation_rat_animation_finished(anim_name):
 		rat_temperment = 0 # reset the temperment
 		RAT_STATE = "IDLE" # return to IDLE after ATTACKING
 	elif anim_name == "hit":
-		$Rat_Head/RH_Sprite.modulate = Color(1,1,1) # make sure the color is reset
 		RAT_STATE = "IDLE" # return to IDLE after HIT
 	elif anim_name == "block":
 		rat_block = 0 # reset the rat_defense (used for blocking)
@@ -112,12 +106,18 @@ func _on_animation_rat_animation_finished(anim_name):
 		rat_state_timer = 60 # reset the timer
 		RAT_STATE = "IDLE"
 
-
 func _on_rat_head_area_entered(area):
 	if area.is_in_group("PLAYER_SWORD"):
 		# the rat is HIT
 		if RAT_STATE != "BLOCK":
 			is_hit = true
+			$Rat_Head/RH_Sprite.modulate = Color(0.424,0.161,0.251) # module hit color
 			var damage = Functions.melee_hit(Globals.player_strength, Globals.sword_attack) # calculate damage
 			hit_points -= damage # apply damage to RAT
-		print("RAT HIT!!!", hit_points) # DEBUG
+			print("RAT BLOCKED!!!")
+		else:
+			print("RAT HIT!!!", hit_points) # DEBUG
+
+func _on_rat_head_area_exited(area):
+	if area.is_in_group("PLAYER_SWORD"):
+		$Rat_Head/RH_Sprite.modulate = Color(1,1,1) # make sure the color is reset on area exit

@@ -52,12 +52,24 @@ func fighter_control(clock):
 				if Input.is_action_just_pressed("ci_A"):
 					Globals.player_attack = true # the player is attacking
 					FIGHTER_ANIM.play("attack") # play the animation
-					# decrement stamina check
+					# decrement stamina
 					detect_input = false # stop input detection
 		# STAMINA REGENERATION
 		if Globals.player_stamina > 0:
 			# if the player's stamina is above 0 (not fatigued)
 			# then the stamina will slowly regenerate
+			if Globals.player_stamina < 100:
+				if stamina_regen > 0:
+					stamina_regen -= clock * Globals.timer_ctrl # decrement
+				else:
+					Globals.player_stamina += 1 # increment player stamina
+					stamina_regen = stamina_regen_rec # reset the stamina regen
+			else:
+				Globals.player_stamina = 100 # stop it from going OVER 100
+		else:
+			# the player is fatigued
+			# the player will stay fatigued until stamina is regenerated back to 100
+			FIGHTER_ANIM.play("fatigued") # play the fatigued animation
 			if Globals.player_stamina < 100:
 				if stamina_regen > 0:
 					stamina_regen -= clock * Globals.timer_ctrl # decrement

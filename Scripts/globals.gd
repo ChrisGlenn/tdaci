@@ -21,6 +21,8 @@ var shield_max_hp : int = 10 # fighter's shield hit points
 var sword_hp : int = 10 # fighter's current sword hit points
 var sword_max_hp : int = 10 # fighter's sword hit points
 var sword_attack : int = 4 # the attack power of the player's sword (can get upgraded by blacksmith)
+var player_attack : bool = false # this will be true when the player is attacking (used for enemy blocking/dodging)
+var player_is_dead : bool = false # if the player is dead then this is true
 
 
 # npc variables
@@ -33,7 +35,6 @@ var timer_ctrl : int = 100 # timer control
 var frame : int = 0 # switches between 0 and 1 global frame set
 var frame_timer : int = 42 # time between frame switch
 var inside_interior : bool = false # tracks if player is inside an interior setting (used for sfx effects)
-var player_attack : bool = false # this will be true when the player is attacking (used for enemy blocking/dodging)
 
 
 # global process
