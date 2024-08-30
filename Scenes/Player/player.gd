@@ -7,6 +7,7 @@ extends CharacterBody2D
 @onready var RAY_RIGHT = $Ray_RIGHT
 @onready var RAY_DOWN = $Ray_DOWN
 @onready var RAY_LEFT = $Ray_LEFT
+@onready var RAY_VIS = $Ray_VIS
 @export_group("Player Movement") # player movement group
 @export var move_timer_set : int = 20 # pause length between movement
 var move_timer : int = 0 # paused time before player moves again
@@ -22,7 +23,7 @@ func _process(delta):
 	# updates
 	Globals.player_x = global_position.x # update player_x
 	Globals.player_y = global_position.y # update player_y
-
+	
 
 func player_input(clock):
 	# check for player input and update the game accordingly
@@ -79,3 +80,10 @@ func player_input(clock):
 	# DEBUG
 	if Input.is_action_just_pressed("ci_END"):
 		get_tree().quit() # exit the game
+	# debug visibility
+	RAY_VIS.rotation += clock * Globals.timer_ctrl
+	if RAY_VIS.is_colliding():
+		# get the collision point for layer 1 and stop the ray there
+		# get the collision tile for 3 and delete that tile
+		#print("COLLIDING")
+		pass

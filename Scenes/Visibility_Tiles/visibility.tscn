@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://c0w6wlqxj7j8f"]
+
+[ext_resource type="Texture2D" uid="uid://bkoa66c0l7kf2" path="res://Sprites/Colors.png" id="1_thw3o"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ka807"]
+texture = ExtResource("1_thw3o")
+texture_region_size = Vector2i(16, 24)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -12, 8, -12, 8, 12, -8, 12)
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+7:1/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_apuc1"]
+tile_size = Vector2i(16, 24)
+physics_layer_0/collision_layer = 4
+physics_layer_0/collision_mask = 4
+sources/0 = SubResource("TileSetAtlasSource_ka807")
+
+[node name="Visibility" type="TileMapLayer"]
+tile_set = SubResource("TileSet_apuc1")

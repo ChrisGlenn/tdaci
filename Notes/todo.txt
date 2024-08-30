@@ -3,6 +3,7 @@ TO-DO LIST(ALPHA):
 -- them will be reset based on what works and what doesn't --
 
 -- CURRENTLY WORKING ON --
+- VISIBILITY taking a break from battle 
 - Change rat hit color to only be when the areas are colliding
 - Player Stamina System (battler for fighter)
 
