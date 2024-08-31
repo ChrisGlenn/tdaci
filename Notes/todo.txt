@@ -4,6 +4,8 @@ TO-DO LIST(ALPHA):
 
 -- CURRENTLY WORKING ON --
 - VISIBILITY taking a break from battle 
+    - Stop Ray from going past collision point (mask 1)
+    - Delete tiles from visibility tileset (mask 3)
 - Change rat hit color to only be when the areas are colliding
 - Player Stamina System (battler for fighter)
 

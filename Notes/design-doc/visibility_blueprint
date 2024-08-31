@@ -1,0 +1,62 @@
+Summary in 4 steps:
+Cast rays from all closest tiles within a range to the player's position and check if there is a direct connection.
+
+If another tile blocks the ray it means that the tile cannot be seen by the player therefore it is placed in the dark. You change these to black or "isVisible = false". Generally, all tiles are set to false at the start.
+
+If a tile is visible to the player you calculate the distance and adjust the alpha value. Only the closest tiles are fully lit. All visible
+
+Disable unseen/far tiles.
+
+Here it is in GDScript. Please don't use it in production! xD
+** It is not optimized at all. Cater this to your game.**
+
+# The maximum distance that the player can see
+var fov_distance = 10
+
+var player_pos = Vector2(0, 0)
+
+# Example Tilemap. 0 is a blocking tile and 1 is a non-blocking tile
+var tiles = [[1, 1, 1, 1, 1],
+             [1, 1, 1, 0, 1],
+             [1, 1, 1, 1, 1]]
+
+var grid_width = 5
+var grid_height = 3
+
+# 2D Array which holds the "isVisible" property for each tile.
+var fov_map = [[false, false, false, false, false],
+               [false, false, false, false, false],
+               [false, false, false, false, false]]
+
+# Iterate over all tiles within the FOV distance
+for y in range(-fov_distance, fov_distance + 1):
+    for x in range(-fov_distance, fov_distance + 1):
+        # Calculate the position of the tile
+        tile_pos = Vector2(player_pos.x + x, player_pos.y + y)
+
+        # Skip tiles that are out of bounds
+        if tile_pos.x < 0 or tile_pos.x >= grid_width or tile_pos.y < 0 or tile_pos.y >= grid_height:
+            continue
+
+        # Cast a ray from the player to the tile
+        ray_pos = player_pos
+        ray_dir = (tile_pos - player_pos).normalized()
+
+        # Check each tile along the ray for obstructions
+        while ray_pos != tile_pos:
+            # Update the ray position
+            ray_pos += ray_dir
+
+            # Convert the ray position to tile coordinates
+            tile_x = int(ray_pos.x)
+            tile_y = int(ray_pos.y)
+
+            # Check if the ray is obstructed by a blocking tile
+            if tiles[tile_y][tile_x] == 0:
+                # The tile is not visible
+                break
+
+        else:
+            # The tile is visible
+            fov_map[tile_y][tile_x] = true
+Again don't use this code, it is only an example!!
