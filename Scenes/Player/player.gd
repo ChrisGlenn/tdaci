@@ -1,19 +1,27 @@
 extends CharacterBody2D
 # PLAYER SCRIPT
 # handles player input, movement, interaction, ect.
+signal player_moved # custom player script signal
 @onready var PLAYER_SPRITE = $AnimatedSprite2D
 @onready var PLAYER_AUDIO = $AudioStreamPlayer
 @onready var RAY_UP = $Ray_UP
 @onready var RAY_RIGHT = $Ray_RIGHT
 @onready var RAY_DOWN = $Ray_DOWN
 @onready var RAY_LEFT = $Ray_LEFT
+@onready var tilemap : TileMapLayer = get_parent().get_node("Enviornment_Tiles") # for field of view algorithm
 @export var move_timer_set : int = 20 # pause length between movement
 @export var field_of_view : int = 30 # how many tiles the player can see ahead
 var move_timer : int = 0 # paused time before player moves again
-
+var map_position # holds the current player position on the map
 
 func _ready():
 	PLAYER_SPRITE.frame = Globals.frame # sync the animation frame to the global frame
+	# field of view additions
+	if tilemap:
+		map_position = tilemap.local_to_map(position)
+		print(map_position)
+	else:
+		print("No tilemap set") # DEBUG???
 
 func _process(delta):
 	PLAYER_SPRITE.frame = Globals.frame # sync the animation frame to the global frame
@@ -36,6 +44,7 @@ func player_input(clock):
 					# PLAY STEP AUDIO
 					global_position.y -= 24 # move the player
 					move_timer = move_timer_set # set the timer
+					emit_signal("player_moved") # emit the signal that the player has moved
 			else:
 				# PLAY BLOCK AUDIO
 				pass
@@ -47,6 +56,7 @@ func player_input(clock):
 					PLAYER_SPRITE.flip_h = true # flip the player sprite
 					global_position.x += 16 # move the player
 					move_timer = move_timer_set # set the timer
+					emit_signal("player_moved") # emit the signal that the player has moved
 			else:
 				# PLAY BLOCK AUDIO
 				PLAYER_SPRITE.flip_h = true # flip the player sprite
@@ -57,6 +67,7 @@ func player_input(clock):
 					# PLAY STEP AUDIO
 					global_position.y += 24 # move the player
 					move_timer = move_timer_set # set the timer
+					emit_signal("player_moved") # emit the signal that the player has moved
 			else:
 				# PLAY BLOCK AUDIO
 				pass
@@ -68,6 +79,7 @@ func player_input(clock):
 					PLAYER_SPRITE.flip_h = false # return sprite H to default
 					global_position.x -= 16 # move the player
 					move_timer = move_timer_set # set the timer
+					emit_signal("player_moved") # emit the signal that the player has moved
 			else:
 				# PLAY BLOCK AUDIO
 				PLAYER_SPRITE.flip_h = false # return sprite H to default
