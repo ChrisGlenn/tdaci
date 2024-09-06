@@ -18,11 +18,10 @@ func update_fov():
     # this is taken from 'Godot FOV algorithms-roguelike' from aikoncwd
     # get the player's position in tile map coords
     var player_position = environment_map.local_to_map(player.global_position)
-    print(player_position)
 
     # set previously discovered tiles back to soft-fog
     for tile in discovered_tiles.keys():
-        visibility_map.set_cell(tile, -1)
+        visibility_map.set_cell(tile, 1, Vector2i(17,24))
     
     # perform raycasting from the player's position
     raycast_fov(player_position)
