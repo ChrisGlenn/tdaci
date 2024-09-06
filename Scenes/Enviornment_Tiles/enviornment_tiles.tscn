@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://bfvuhs3v0x7bk"]
+[gd_scene load_steps=6 format=3 uid="uid://bfvuhs3v0x7bk"]
 
 [ext_resource type="Texture2D" uid="uid://cpmtm4hyhw1yh" path="res://Sprites/Enviornment_Props.png" id="1_pi626"]
+[ext_resource type="Script" path="res://Scenes/Enviornment_Tiles/enviornment_tiles.gd" id="2_g5yeq"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xomwh"]
 resource_name = "Enviornment"
@@ -1029,3 +1030,4 @@ sources/1 = SubResource("TileSetAtlasSource_r41s2")
 texture_filter = 1
 use_parent_material = true
 tile_set = SubResource("TileSet_d5hyb")
+script = ExtResource("2_g5yeq")

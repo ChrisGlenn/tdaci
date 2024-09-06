@@ -3,7 +3,7 @@ extends Node2D
 @onready var environment_map : TileMapLayer = get_node("Enviornment_Tiles") # the tilemaps
 @onready var visibility_map : TileMapLayer = get_node("Visibility") # the 'fog'
 @onready var player = get_node("Player") # the player
-const view_distance : int = 8 # defaults to 12
+const view_distance : int = 12 # defaults to 12
 var discovered_tiles = {} # holds the 'discovered' tiles that have been revealed...I believe
 
 

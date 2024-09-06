@@ -4,6 +4,7 @@ extends Node2D
 # this is the first enemy of the game and does minimal damage
 @onready var RAT_ANIM = $Animation_Rat
 @onready var RNG = RandomNumberGenerator.new()
+@export_group("Rat-ributes")
 @export var enemy_name : String = "RAT" # name of the enemy
 @export var xp_gained : int = 100 # the experience points given to the player after defeat
 @export var hit_points : int = 30 # rat's hit points

@@ -19,7 +19,6 @@ func _ready():
 	# field of view additions
 	if tilemap:
 		map_position = tilemap.local_to_map(position)
-		print(map_position)
 	else:
 		print("No tilemap set") # DEBUG???
 

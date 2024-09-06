@@ -3,8 +3,12 @@ TO-DO LIST(ALPHA):
 -- them will be reset based on what works and what doesn't --
 
 -- CURRENTLY WORKING ON --
+- SFX for player steps
 - Map Enemies (Rat) w/ Pathfinding
+- UI UPDATE!!! Figure out the sprite updates
 - Combat Math (battle system)
+THEN
+- Rat Battler
 
 
 [] Player
@@ -51,6 +55,7 @@ TO-DO LIST(ALPHA):
     [] Pathfinding Movement
     [] Rat
     [] Player Spotting
+    [] Combat Init
 [] Interactions
     [] Door (unlocked)
     [] Door (locked)
@@ -84,6 +89,7 @@ TO-DO LIST(ALPHA):
 
 
 ALPHA BUG-FIX/FEATURE ADD LIST:
+    [] Make all functions uniform (with the -> int or whatever)
     [x] Hold down directional movement
 
 

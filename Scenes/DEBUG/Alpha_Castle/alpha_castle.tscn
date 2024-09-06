@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://dxfxfugjgtesb"]
+
+[ext_resource type="PackedScene" uid="uid://bfvuhs3v0x7bk" path="res://Scenes/Enviornment_Tiles/enviornment_tiles.tscn" id="1_eqbb5"]
+[ext_resource type="PackedScene" uid="uid://c0w6wlqxj7j8f" path="res://Scenes/Visibility_Tiles/visibility.tscn" id="2_nccg7"]
+
+[node name="AlphaCastle" type="Node2D"]
+
+[node name="Enviornment_Tiles" parent="." instance=ExtResource("1_eqbb5")]
+
+[node name="Visibility" parent="." instance=ExtResource("2_nccg7")]
