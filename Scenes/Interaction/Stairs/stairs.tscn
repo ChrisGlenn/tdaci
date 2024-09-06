@@ -1,0 +1,64 @@
+[gd_scene load_steps=9 format=3 uid="uid://djs0vx32sdov5"]
+
+[ext_resource type="Texture2D" uid="uid://cpmtm4hyhw1yh" path="res://Sprites/Enviornment_Props.png" id="1_mwtwo"]
+[ext_resource type="Script" path="res://Scenes/Interaction/Stairs/stairs.gd" id="1_uw54c"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aa0pi"]
+atlas = ExtResource("1_mwtwo")
+region = Rect2(128, 360, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c38kw"]
+atlas = ExtResource("1_mwtwo")
+region = Rect2(144, 360, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k0edi"]
+atlas = ExtResource("1_mwtwo")
+region = Rect2(160, 360, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_on3b2"]
+atlas = ExtResource("1_mwtwo")
+region = Rect2(176, 360, 16, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ci6v6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aa0pi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c38kw")
+}],
+"loop": true,
+"name": &"stairs_down",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k0edi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_on3b2")
+}],
+"loop": true,
+"name": &"stairs_up",
+"speed": 0.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7u7lh"]
+size = Vector2(12, 20)
+
+[node name="Stairs" type="Area2D"]
+script = ExtResource("1_uw54c")
+metadata/_edit_group_ = true
+
+[node name="Stairs_Sprite" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_ci6v6")
+animation = &"stairs_up"
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(8, 12)
+shape = SubResource("RectangleShape2D_7u7lh")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
