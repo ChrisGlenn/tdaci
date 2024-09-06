@@ -1,265 +1,27 @@
-[gd_scene load_steps=41 format=3 uid="uid://mya5ck4t3umk"]
+[gd_scene load_steps=11 format=3 uid="uid://mya5ck4t3umk"]
 
 [ext_resource type="Texture2D" uid="uid://df2adtve0o8kt" path="res://Sprites/UI/HUD.png" id="1_l8o5y"]
 [ext_resource type="Script" path="res://Scenes/UI/HUD/hud.gd" id="1_qe802"]
-[ext_resource type="Texture2D" uid="uid://bpma7vnjatpg3" path="res://Sprites/UI/HUD_Icons.png" id="3_ful8i"]
+[ext_resource type="Texture2D" uid="uid://dnfui6i23nh1v" path="res://Sprites/UI/HUD_Icons_Clear.png" id="3_ntm6g"]
 [ext_resource type="FontFile" uid="uid://dcbyalkyecj3i" path="res://Fonts/pixelmix.ttf" id="4_x7ddr"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jvklu"]
-atlas = ExtResource("3_ful8i")
-region = Rect2(0, 48, 16, 24)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kt43k"]
+bg_color = Color(0, 0, 0, 1)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_3oj1w"]
-atlas = ExtResource("3_ful8i")
-region = Rect2(16, 48, 16, 24)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u2ctu"]
+bg_color = Color(0.501961, 0.501961, 0.501961, 1)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_l24hc"]
-atlas = ExtResource("3_ful8i")
-region = Rect2(32, 48, 16, 24)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lgcpe"]
+bg_color = Color(0, 0, 0, 1)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_blp3m"]
-atlas = ExtResource("3_ful8i")
-region = Rect2(48, 48, 16, 24)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p638a"]
+bg_color = Color(0.74902, 0.792157, 0.529412, 1)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_01gxu"]
-atlas = ExtResource("3_ful8i")
-region = Rect2(64, 48, 16, 24)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4inu4"]
+bg_color = Color(0, 0, 0, 1)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_dfb6i"]
-atlas = ExtResource("3_ful8i")
-region = Rect2(80, 48, 16, 24)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fjqyj"]
-atlas = ExtResource("3_ful8i")
-region = Rect2(96, 48, 16, 24)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4qvf0"]
-atlas = ExtResource("3_ful8i")
-region = Rect2(112, 48, 16, 24)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_7cgmv"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jvklu")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_3oj1w")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_l24hc")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_blp3m")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_01gxu")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_dfb6i")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_fjqyj")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4qvf0")
-}],
-"loop": true,
-"name": &"default",
-"speed": 0.0
-}]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qeqb2"]
-atlas = ExtResource("3_ful8i")
-region = Rect2(0, 72, 16, 24)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_e1co8"]
-atlas = ExtResource("3_ful8i")
-region = Rect2(16, 72, 16, 24)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_42fqo"]
-atlas = ExtResource("3_ful8i")
-region = Rect2(32, 72, 16, 24)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_djs4u"]
-atlas = ExtResource("3_ful8i")
-region = Rect2(48, 72, 16, 24)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2iqfq"]
-atlas = ExtResource("3_ful8i")
-region = Rect2(64, 72, 16, 24)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_l477t"]
-atlas = ExtResource("3_ful8i")
-region = Rect2(80, 72, 16, 24)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_siifl"]
-atlas = ExtResource("3_ful8i")
-region = Rect2(96, 72, 16, 24)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_uleqd"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_qeqb2")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_e1co8")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_42fqo")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_djs4u")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2iqfq")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_l477t")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_siifl")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8kpca"]
-atlas = ExtResource("3_ful8i")
-region = Rect2(0, 96, 16, 24)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_q6loy"]
-atlas = ExtResource("3_ful8i")
-region = Rect2(16, 96, 16, 24)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_cvsqa"]
-atlas = ExtResource("3_ful8i")
-region = Rect2(32, 96, 16, 24)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_om0iu"]
-atlas = ExtResource("3_ful8i")
-region = Rect2(48, 96, 16, 24)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_o3mk2"]
-atlas = ExtResource("3_ful8i")
-region = Rect2(64, 96, 16, 24)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_oxmt0"]
-atlas = ExtResource("3_ful8i")
-region = Rect2(80, 96, 16, 24)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8h1c5"]
-atlas = ExtResource("3_ful8i")
-region = Rect2(96, 96, 16, 24)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5oqai"]
-atlas = ExtResource("3_ful8i")
-region = Rect2(112, 96, 16, 24)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_d5qjg"]
-atlas = ExtResource("3_ful8i")
-region = Rect2(0, 120, 16, 24)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_n2i02"]
-atlas = ExtResource("3_ful8i")
-region = Rect2(16, 120, 16, 24)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_81ru8"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8kpca")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_q6loy")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_cvsqa")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_om0iu")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_o3mk2")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_oxmt0")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8h1c5")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5oqai")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_d5qjg")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_n2i02")
-}],
-"loop": true,
-"name": &"default",
-"speed": 0.0
-}]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8onpv"]
-atlas = ExtResource("3_ful8i")
-region = Rect2(0, 0, 16, 24)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rd1cy"]
-atlas = ExtResource("3_ful8i")
-region = Rect2(16, 0, 16, 24)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_wsal8"]
-atlas = ExtResource("3_ful8i")
-region = Rect2(32, 0, 16, 24)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_lound"]
-atlas = ExtResource("3_ful8i")
-region = Rect2(48, 0, 16, 24)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ib6jj"]
-atlas = ExtResource("3_ful8i")
-region = Rect2(64, 0, 16, 24)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_x1no2"]
-atlas = ExtResource("3_ful8i")
-region = Rect2(80, 0, 16, 24)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_tcv2x"]
-atlas = ExtResource("3_ful8i")
-region = Rect2(96, 0, 16, 24)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_qja7w"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8onpv")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rd1cy")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_wsal8")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_lound")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ib6jj")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_x1no2")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_tcv2x")
-}],
-"loop": true,
-"name": &"default",
-"speed": 0.0
-}]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ej3s8"]
+bg_color = Color(0.423529, 0.160784, 0.25098, 1)
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_qe802")
@@ -273,11 +35,25 @@ centered = false
 
 [node name="Fighter" type="Node2D" parent="."]
 
-[node name="Shield_Icon" type="AnimatedSprite2D" parent="Fighter"]
+[node name="Shield_Bar" type="ProgressBar" parent="Fighter"]
+offset_left = 161.0
+offset_top = 276.0
+offset_right = 199.0
+offset_bottom = 326.0
+theme_override_styles/background = SubResource("StyleBoxFlat_kt43k")
+theme_override_styles/fill = SubResource("StyleBoxFlat_u2ctu")
+value = 100.0
+fill_mode = 3
+show_percentage = false
+
+[node name="Shield_Icon_C" type="Sprite2D" parent="Fighter"]
 texture_filter = 1
 position = Vector2(180, 304)
 scale = Vector2(3, 3)
-sprite_frames = SubResource("SpriteFrames_7cgmv")
+texture = ExtResource("3_ntm6g")
+hframes = 4
+vframes = 2
+frame = 2
 
 [node name="Shield_Label" type="Label" parent="Fighter"]
 texture_filter = 1
@@ -291,11 +67,25 @@ theme_override_font_sizes/font_size = 16
 text = "100/100"
 horizontal_alignment = 1
 
-[node name="Sword_Icon" type="AnimatedSprite2D" parent="Fighter"]
+[node name="Sword_Bar" type="ProgressBar" parent="Fighter"]
+offset_left = 247.0
+offset_top = 276.0
+offset_right = 271.0
+offset_bottom = 325.0
+theme_override_styles/background = SubResource("StyleBoxFlat_kt43k")
+theme_override_styles/fill = SubResource("StyleBoxFlat_u2ctu")
+value = 100.0
+fill_mode = 3
+show_percentage = false
+
+[node name="Sword_Icon_C" type="Sprite2D" parent="Fighter"]
 texture_filter = 1
 position = Vector2(260, 301)
 scale = Vector2(2.1, 2.1)
-sprite_frames = SubResource("SpriteFrames_uleqd")
+texture = ExtResource("3_ntm6g")
+hframes = 4
+vframes = 2
+frame = 3
 
 [node name="Sword_Label" type="Label" parent="Fighter"]
 texture_filter = 1
@@ -313,19 +103,19 @@ horizontal_alignment = 1
 texture_filter = 1
 position = Vector2(388, 312)
 scale = Vector2(3, 3)
-texture = ExtResource("3_ful8i")
-hframes = 8
-vframes = 6
-frame = 46
+texture = ExtResource("3_ntm6g")
+hframes = 4
+vframes = 2
+frame = 5
 
 [node name="Gold_Icon" type="Sprite2D" parent="Fighter"]
 texture_filter = 1
 position = Vector2(540, 303)
 scale = Vector2(3, 3)
-texture = ExtResource("3_ful8i")
-hframes = 8
-vframes = 6
-frame = 47
+texture = ExtResource("3_ntm6g")
+hframes = 4
+vframes = 2
+frame = 6
 
 [node name="Gold_Label" type="Label" parent="Fighter"]
 texture_filter = 1
@@ -339,21 +129,48 @@ theme_override_font_sizes/font_size = 16
 text = "100"
 horizontal_alignment = 1
 
-[node name="Stamina_Icon" type="AnimatedSprite2D" parent="Fighter"]
+[node name="Stamina_Bar" type="ProgressBar" parent="Fighter"]
+offset_left = 319.0
+offset_top = 281.0
+offset_right = 334.0
+offset_bottom = 341.0
+theme_override_styles/background = SubResource("StyleBoxFlat_lgcpe")
+theme_override_styles/fill = SubResource("StyleBoxFlat_p638a")
+value = 100.0
+fill_mode = 3
+show_percentage = false
+
+[node name="Stamina_Gauge" type="Sprite2D" parent="Fighter"]
 texture_filter = 1
-position = Vector2(328, 312)
+position = Vector2(328, 311)
 scale = Vector2(3, 3)
-sprite_frames = SubResource("SpriteFrames_81ru8")
+texture = ExtResource("3_ntm6g")
+hframes = 4
+vframes = 2
+frame = 4
 
 [node name="Mage" type="Node2D" parent="."]
 
 [node name="Ranger" type="Node2D" parent="."]
 
-[node name="Health_Icon" type="AnimatedSprite2D" parent="."]
+[node name="Health_Bar" type="ProgressBar" parent="."]
+offset_left = 77.0
+offset_top = 279.0
+offset_right = 121.0
+offset_bottom = 320.0
+theme_override_styles/background = SubResource("StyleBoxFlat_4inu4")
+theme_override_styles/fill = SubResource("StyleBoxFlat_ej3s8")
+value = 100.0
+fill_mode = 3
+show_percentage = false
+
+[node name="Health_Icon_C" type="Sprite2D" parent="."]
 texture_filter = 1
 position = Vector2(99, 304)
 scale = Vector2(3, 3)
-sprite_frames = SubResource("SpriteFrames_qja7w")
+texture = ExtResource("3_ntm6g")
+hframes = 4
+vframes = 2
 
 [node name="Health_Label" type="Label" parent="."]
 texture_filter = 1

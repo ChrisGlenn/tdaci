@@ -5,7 +5,6 @@ TO-DO LIST(ALPHA):
 -- CURRENTLY WORKING ON --
 - SFX for player steps
 - Map Enemies (Rat) w/ Pathfinding
-- UI UPDATE!!! Figure out the sprite updates
 - Combat Math (battle system)
 THEN
 - Rat Battler
@@ -42,9 +41,9 @@ THEN
 [] HUD
     [x] HUD Resolution Independence
     [x] Border
-    [] Health 'Bar'
-    [] Equipment 'Bar'
-    [] Stamina Bar
+    [x] Health 'Bar'
+    [x] Equipment 'Bar'
+    [x] Stamina Bar
     [] Mana 'Bar'
     [x] Gold
     [] Item Slot
@@ -84,7 +83,6 @@ THEN
     [x] Visiblity FOV!!!
     [] Save FOV for each level of the castle
     [] Reset Variables On Main Menu
-    [] Save/Load System
 
 
 
