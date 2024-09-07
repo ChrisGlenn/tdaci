@@ -16,6 +16,7 @@ var map_position # holds the current player position on the map
 
 func _ready():
 	PLAYER_SPRITE.frame = Globals.frame # sync the animation frame to the global frame
+	Globals.player_position = Vector2(global_position.x, global_position.y)
 	# field of view additions
 	if tilemap:
 		map_position = tilemap.local_to_map(position)
@@ -27,8 +28,7 @@ func _process(delta):
 	# functions
 	player_input(delta)
 	# updates
-	Globals.player_x = global_position.x # update player_x
-	Globals.player_y = global_position.y # update player_y
+	Globals.player_position = Vector2(global_position.x, global_position.y)
 
 
 func player_input(clock):

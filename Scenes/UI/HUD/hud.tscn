@@ -108,27 +108,6 @@ hframes = 4
 vframes = 2
 frame = 5
 
-[node name="Gold_Icon" type="Sprite2D" parent="Fighter"]
-texture_filter = 1
-position = Vector2(540, 303)
-scale = Vector2(3, 3)
-texture = ExtResource("3_ntm6g")
-hframes = 4
-vframes = 2
-frame = 6
-
-[node name="Gold_Label" type="Label" parent="Fighter"]
-texture_filter = 1
-offset_left = 501.0
-offset_top = 332.0
-offset_right = 581.0
-offset_bottom = 356.0
-theme_override_colors/font_color = Color(0.74902, 0.792157, 0.529412, 1)
-theme_override_fonts/font = ExtResource("4_x7ddr")
-theme_override_font_sizes/font_size = 16
-text = "100"
-horizontal_alignment = 1
-
 [node name="Stamina_Bar" type="ProgressBar" parent="Fighter"]
 offset_left = 319.0
 offset_top = 281.0
@@ -182,4 +161,25 @@ theme_override_colors/font_color = Color(0.74902, 0.792157, 0.529412, 1)
 theme_override_fonts/font = ExtResource("4_x7ddr")
 theme_override_font_sizes/font_size = 16
 text = "100/100"
+horizontal_alignment = 1
+
+[node name="Gold_Icon" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(540, 303)
+scale = Vector2(3, 3)
+texture = ExtResource("3_ntm6g")
+hframes = 4
+vframes = 2
+frame = 6
+
+[node name="Gold_Label" type="Label" parent="."]
+texture_filter = 1
+offset_left = 501.0
+offset_top = 332.0
+offset_right = 581.0
+offset_bottom = 356.0
+theme_override_colors/font_color = Color(0.74902, 0.792157, 0.529412, 1)
+theme_override_fonts/font = ExtResource("4_x7ddr")
+theme_override_font_sizes/font_size = 16
+text = "100"
 horizontal_alignment = 1

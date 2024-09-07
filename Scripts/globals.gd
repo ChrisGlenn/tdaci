@@ -1,8 +1,7 @@
 extends Node
 # GLOBAL VARIABLES (SINGLETONS)
 # player variables
-var player_x # stores the player's X coords
-var player_y # stores the player's Y coords
+var player_position : Vector2
 var player_name : String = "Adan" # player's name
 var player_class : String = "Fighter" # Fighter, Mage, Ranger (defaults to fighter)
 var player_hp : int = 39 # player's current hit points

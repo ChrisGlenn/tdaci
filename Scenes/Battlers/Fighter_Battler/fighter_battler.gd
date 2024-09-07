@@ -4,7 +4,7 @@ extends Node2D
 @onready var FIGHTER_ANIM = $Animation_Fighter
 @onready var RNG = RandomNumberGenerator.new()
 @export var cool_down : int = 60 # cool down period between movements
-@export var stamina_regen : int = 4 # period in between stamina regen
+@export var stamina_regen : int = 16 # period in between stamina regen
 var FIGHTER_STATE : String = "IDLE" # IDLE, HIT, ATTACK, BLOCK, DEAD, DODGE_LEFT, DODGE_RIGHT, DODGE_BACK, FATIGUED, CASTING, ITEM
 var detect_input : bool = true # used to control input detection
 var cool_down_rec # keeps track of cool_down
@@ -53,31 +53,32 @@ func fighter_control(clock):
 					Globals.player_attack = true # the player is attacking
 					FIGHTER_ANIM.play("attack") # play the animation
 					# decrement stamina
+					Globals.stamina_points -= 40 # DEBUG
 					detect_input = false # stop input detection
 		# STAMINA REGENERATION
-		if Globals.player_stamina > 0:
+		if Globals.stamina_points > 0:
 			# if the player's stamina is above 0 (not fatigued)
 			# then the stamina will slowly regenerate
-			if Globals.player_stamina < 100:
+			if Globals.stamina_points < Globals.stamina_max_points:
 				if stamina_regen > 0:
 					stamina_regen -= clock * Globals.timer_ctrl # decrement
 				else:
-					Globals.player_stamina += 1 # increment player stamina
+					Globals.stamina_points += 1 # increment player stamina
 					stamina_regen = stamina_regen_rec # reset the stamina regen
 			else:
-				Globals.player_stamina = 100 # stop it from going OVER 100
+				Globals.stamina_points = Globals.stamina_max_points # stop it from going OVER 100
 		else:
 			# the player is fatigued
 			# the player will stay fatigued until stamina is regenerated back to 100
 			FIGHTER_ANIM.play("fatigued") # play the fatigued animation
-			if Globals.player_stamina < 100:
+			if Globals.stamina_points < Globals.stamina_max_points:
 				if stamina_regen > 0:
 					stamina_regen -= clock * Globals.timer_ctrl # decrement
 				else:
-					Globals.player_stamina += 1 # increment player stamina
+					Globals.stamina_points += 1 # increment player stamina
 					stamina_regen = stamina_regen_rec # reset the stamina regen
 			else:
-				Globals.player_stamina = 100 # stop it from going OVER 100
+				Globals.stamina_points = Globals.stamina_max_points # stop it from going OVER 100
 	else:
 		# PLAYER IS DEAD
 		pass

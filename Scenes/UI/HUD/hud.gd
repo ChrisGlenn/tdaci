@@ -2,7 +2,7 @@ extends CanvasLayer
 # GAME HUD
 # the heads up display for the game
 # will differ in the information that it displays depending on the character class
-@onready var HEART_SPRITE = $Health_Icon
+@onready var HEART_SPRITE = $Health_Bar
 @onready var HEART_LABEL = $Health_Label
 # FIGHTER
 @onready var SHIELD_LABEL = $Fighter/Shield_Label
@@ -12,7 +12,7 @@ extends CanvasLayer
 @onready var STAMINA_BAR = $Fighter/Stamina_Bar
 @onready var HEALTH_LABEL = $Health_Label
 @onready var HEALTH_BAR = $Health_Bar
-@onready var F_GOLD_LABEL = $Fighter/Gold_Label
+@onready var F_GOLD_LABEL = $Gold_Label
 # variables
 var health_fractions : float = 0 # holds the health fractions
 var stamina_fractions : float = 0 # holds the stamina fractions

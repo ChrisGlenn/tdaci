@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=4 uid="uid://eofvmt0fh4en"]
+[gd_scene load_steps=8 format=4 uid="uid://eofvmt0fh4en"]
 
 [ext_resource type="Script" path="res://Scenes/LevelOne/level_one.gd" id="1_cewib"]
 [ext_resource type="PackedScene" uid="uid://bfvuhs3v0x7bk" path="res://Scenes/Enviornment_Tiles/enviornment_tiles.tscn" id="1_i7mo0"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://78jj3cn4sjxu" path="res://Scenes/Player/player.tscn" id="2_kmm3q"]
 [ext_resource type="PackedScene" uid="uid://mya5ck4t3umk" path="res://Scenes/UI/HUD/hud.tscn" id="3_w2r3f"]
 [ext_resource type="PackedScene" uid="uid://djs0vx32sdov5" path="res://Scenes/Interaction/Stairs/stairs.tscn" id="6_uvg8x"]
+[ext_resource type="PackedScene" uid="uid://d3sftodihtbdx" path="res://Scenes/Enemies/Rat/rat.tscn" id="7_gjxnv"]
 
 [node name="LevelOne" type="Node2D"]
 script = ExtResource("1_cewib")
@@ -29,5 +30,10 @@ stair_type = "Down"
 
 [node name="Stairs2" parent="Stairs" instance=ExtResource("6_uvg8x")]
 position = Vector2(128, 528)
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="Rat" parent="Enemies" instance=ExtResource("7_gjxnv")]
+position = Vector2(96, -264)
 
 [connection signal="player_moved" from="Player" to="." method="_on_player_player_moved"]
