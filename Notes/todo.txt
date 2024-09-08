@@ -4,7 +4,7 @@ TO-DO LIST(ALPHA):
 
 -- CURRENTLY WORKING ON --
 - SFX for player steps
-- Map Enemies (Rat) w/ Pathfinding
+- Map Enemy (Rat) w/ Pathfinding
 - Combat Math (battle system)
 THEN
 - Rat Battler
@@ -87,6 +87,7 @@ THEN
 
 
 ALPHA BUG-FIX/FEATURE ADD LIST:
+    [] Make enemies invisible when under a shade tile
     [] Make all functions uniform (with the -> int or whatever)
     [x] Hold down directional movement
 

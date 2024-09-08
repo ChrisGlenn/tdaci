@@ -968,4 +968,5 @@ sources/0 = SubResource("TileSetAtlasSource_yiktf")
 sources/1 = SubResource("TileSetAtlasSource_sjcf2")
 
 [node name="Visibility" type="TileMapLayer"]
+z_index = 99
 tile_set = SubResource("TileSet_2x7sb")
