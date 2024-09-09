@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://d3sftodihtbdx"]
+[gd_scene load_steps=8 format=3 uid="uid://d3sftodihtbdx"]
 
 [ext_resource type="Texture2D" uid="uid://c4r1bbuhmqdd4" path="res://Sprites/Enemies.png" id="1_06hh1"]
 [ext_resource type="Script" path="res://Scripts/Templates/enemy_map.gd" id="1_w6c3k"]
@@ -28,6 +28,8 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7ds5f"]
 size = Vector2(16, 24)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_85dxt"]
+
 [node name="Rat" type="Area2D"]
 script = ExtResource("1_w6c3k")
 
@@ -39,3 +41,17 @@ centered = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(8, 12)
 shape = SubResource("RectangleShape2D_7ds5f")
+
+[node name="Visibility" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Visibility"]
+position = Vector2(8, 12)
+scale = Vector2(12, 12)
+shape = SubResource("CircleShape2D_85dxt")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2(8, 12)
+target_position = Vector2(0, 116)
+
+[connection signal="body_entered" from="Visibility" to="." method="_on_visibility_body_entered"]
+[connection signal="body_exited" from="Visibility" to="." method="_on_visibility_body_exited"]

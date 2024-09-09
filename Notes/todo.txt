@@ -4,7 +4,8 @@ TO-DO LIST(ALPHA):
 
 -- CURRENTLY WORKING ON --
 - SFX for player steps
-- Map Enemy (Rat) w/ Pathfinding
+- Update enemy path when player moves
+- Map Enemy (Rat)
 - Combat Math (battle system)
 THEN
 - Rat Battler
@@ -50,11 +51,12 @@ THEN
     [] Arrow Slot
 [] Enemies
     [] Enemy Spawner
-    [] Set Paths
-    [] Pathfinding Movement
+    [x] Set Paths
+    [x] Pathfinding Movement
     [] Rat
     [] Player Spotting
     [] Combat Init
+    [] Combat Skip (Instadeth for Enemy)
 [] Interactions
     [] Door (unlocked)
     [] Door (locked)

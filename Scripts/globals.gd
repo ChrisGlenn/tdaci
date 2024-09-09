@@ -3,6 +3,7 @@ extends Node
 # player variables
 var player_position : Vector2
 var player_name : String = "Adan" # player's name
+var player_level : int = 1 # the level of the player
 var player_class : String = "Fighter" # Fighter, Mage, Ranger (defaults to fighter)
 var player_hp : int = 39 # player's current hit points
 var player_max_hp : int = 39 # player's hit points

@@ -28,7 +28,7 @@ func _process(delta):
 	# functions
 	player_input(delta)
 	# updates
-	Globals.player_position = Vector2(global_position.x, global_position.y)
+	Globals.player_position = Vector2(position.x, position.y)
 
 
 func player_input(clock):
@@ -44,6 +44,8 @@ func player_input(clock):
 					global_position.y -= 24 # move the player
 					move_timer = move_timer_set # set the timer
 					emit_signal("player_moved") # emit the signal that the player has moved
+					print(Globals.player_position)
+					print(global_position)
 			else:
 				# PLAY BLOCK AUDIO
 				pass
