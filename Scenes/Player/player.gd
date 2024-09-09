@@ -44,8 +44,6 @@ func player_input(clock):
 					global_position.y -= 24 # move the player
 					move_timer = move_timer_set # set the timer
 					emit_signal("player_moved") # emit the signal that the player has moved
-					print(Globals.player_position)
-					print(global_position)
 			else:
 				# PLAY BLOCK AUDIO
 				pass
@@ -90,5 +88,7 @@ func player_input(clock):
 		if move_timer > 0:
 			move_timer -= clock * Globals.timer_ctrl # decrement the timer
 	# DEBUG
+	if Input.is_action_just_pressed("ci_DEBUG"):
+		print(global_position) # get current player position
 	if Input.is_action_just_pressed("ci_END"):
 		get_tree().quit() # exit the game

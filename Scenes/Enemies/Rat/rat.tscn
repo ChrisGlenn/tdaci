@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://d3sftodihtbdx"]
 
 [ext_resource type="Texture2D" uid="uid://c4r1bbuhmqdd4" path="res://Sprites/Enemies.png" id="1_06hh1"]
-[ext_resource type="Script" path="res://Scripts/Templates/enemy_map.gd" id="1_w6c3k"]
+[ext_resource type="Script" path="res://Scenes/Enemies/Rat/rat.gd" id="1_ojjw5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_32vvn"]
 atlas = ExtResource("1_06hh1")
@@ -31,7 +31,7 @@ size = Vector2(16, 24)
 [sub_resource type="CircleShape2D" id="CircleShape2D_85dxt"]
 
 [node name="Rat" type="Area2D"]
-script = ExtResource("1_w6c3k")
+script = ExtResource("1_ojjw5")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
@@ -53,5 +53,6 @@ shape = SubResource("CircleShape2D_85dxt")
 position = Vector2(8, 12)
 target_position = Vector2(0, 116)
 
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_entered" from="Visibility" to="." method="_on_visibility_body_entered"]
 [connection signal="body_exited" from="Visibility" to="." method="_on_visibility_body_exited"]
