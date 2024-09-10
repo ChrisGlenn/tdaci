@@ -26,9 +26,7 @@ var sword_attack : int = 4 # the attack power of the player's sword (can get upg
 var player_attack : bool = false # this will be true when the player is attacking (used for enemy blocking/dodging)
 var player_is_dead : bool = false # if the player is dead then this is true
 
-
 # npc variables
-
 
 # game/system variables
 var stage : int = 0 # game stage
@@ -42,6 +40,9 @@ var inside_interior : bool = false # tracks if player is inside an interior sett
 # level variables
 var level_one_discovered_tiles : Dictionary = {} # stores the discovered tiles
 
+# battleground variables
+var battler_id : int = 0 # used to reference which enemy to load (0 is null)
+# battler strength and others go here 
 
 # global process
 func _process(delta):

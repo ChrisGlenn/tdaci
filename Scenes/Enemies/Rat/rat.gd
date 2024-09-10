@@ -1,13 +1,15 @@
 extends Area2D
 # THE RAT!!!
 # a template script for the overworld enemies that will just move to the player (or away)
-# and initialize combat BUT if the player is too strong the rat just dies and yields very low XP and no gold
+# and initialize combat BUT if the player is too strong the enemy just dies and yields very low XP and no gold
 @onready var tilemap : TileMapLayer = get_parent().get_parent().get_node("Enviornment_Tiles")
+@onready var TRANSITION = preload("res://Scenes/UI/Scene_Transition/scene_transition.tscn")
 @onready var ANIM = $AnimatedSprite2D
 @onready var RAY = $RayCast2D
 @export_group("RAT-tributes")
 @export var enemy_name : String = "MAP ENEMY" # name of the enemy
-@export var seek_player : bool = false # if the enemy will seek after the player (higher level enemies)
+@export var enemy_id : int = 0 # gets passed to the battleground to spawn the battler
+# @export var seek_player : bool = false # if the enemy will seek after the player (higher level enemies)
 @export var chase_steps : int = 10 # how many steps before checking if the player is still in field of view
 @export var movement_inc : float = 50.0 # increment time between space movement
 @export var enemy_level_range : int = 2 # around the level the player should be when facing this enemy
@@ -16,21 +18,19 @@ var STATE = "IDLE" # IDLE ALERTED ENGAGED PANICKED FOILED
 # pathfinding
 var astar_grid : AStarGrid2D
 var current_path : Array = [] # the current path to the player
+var paths : Array = [0,0,0] # check if a path has been generated [ENGAGED, PANICKED, FOILED]
 # misc
 var starting_pos : Vector2
 var run_level : int = 99 # the level at which the enemy will run from the player
 var player_out_of_range : bool = false # if the player has fled the enemy
-var out_of_range_timer : float = 300.0 # how long before the player returns
 var current_chase_steps : int = 0 # counts the current steps
-var oor_timer_rec # records out of range timer
 var movement_rec # records the movement_inc timer
 
 
 func _ready() -> void:
-	starting_pos = Vector2(global_position.x, global_position.y) # in case the rat needs to return
+	starting_pos = Vector2(global_position.x, global_position.y) # in case the enemy needs to return
 	movement_rec = movement_inc # record the movement_inc timer
 	movement_inc = 0 # set the movement increment to 0 to remove pause before chasing player
-	oor_timer_rec = out_of_range_timer # record the out of range timer
 	run_level = enemy_level_range + 6 # this will determine at what player_level this enemy will flee in terror
 	# pathfinding setup
 	astar_grid = AStarGrid2D.new() # instance new astargrid2d
@@ -59,9 +59,9 @@ func _process(delta: float) -> void:
 func enemy_ai(clock: float) -> void:
 	# check the states
 	if STATE == "IDLE":
+		paths = [0,0,0] # reset the paths
 		# just stay still basically...
 		if movement_inc != 0: movement_inc = 0 # set the movement increment to 0 to remove pause before chasing player
-		if out_of_range_timer != oor_timer_rec: out_of_range_timer = oor_timer_rec # reset the out of range timer
 	elif STATE == "ALERTED":
 		# move the raycast target to the player and search for a hit
 		# if there is a direct LOS to the player then move to engage
@@ -75,17 +75,20 @@ func enemy_ai(clock: float) -> void:
 					current_path.clear() # remove current path
 					STATE = "PANICKED" # change the state to panicked
 				else:
-					STATE = "ENGAGED"
+					STATE = "ENGAGED" # change the state to engaged
 	elif STATE == "ENGAGED":
 		# chase the player
 		# get the path to the player
-		if current_path.is_empty():
+		paths[1] = 0 # reset path
+		paths[2] = 0 # reset path
+		if paths[0] == 0:
 			# get the astar path
 			var id_path = astar_grid.get_id_path(
 			tilemap.local_to_map(self.global_position),
 			tilemap.local_to_map(Globals.player_position)
 			).slice(1) # remove the enemies current position
 			current_path = id_path # set the current_path and start moving
+			paths[0] = 1 # the path has been set
 		else:
 			# update the current_path if the player has moved
 			if Globals.player_moved:
@@ -104,7 +107,6 @@ func enemy_ai(clock: float) -> void:
 				self.global_position = Vector2(target_position.x - 8, target_position.y - 12) # move the enemy to the position
 				current_path.pop_front() # remove the current target position
 				current_chase_steps += 1 # increment current chase steps
-				print(current_chase_steps)
 				movement_inc = movement_rec # reset the timer
 			# count the enemy steps and if they are maxed check if the player is still inside of the
 			# engagement area and if so then reset and continue, otherwise move on
@@ -116,7 +118,9 @@ func enemy_ai(clock: float) -> void:
 					current_chase_steps = 0 # reset the current chase steps
 	elif STATE == "PANICKED":
 		# run off towards a set flee to point
-		if current_path.is_empty():
+		paths[0] = 0 # reset path
+		paths[2] = 0 # reset path
+		if paths[1] == 0:
 			# get the astar path to the flee position
 			var id_path = astar_grid.get_id_path(
 			tilemap.local_to_map(self.global_position),
@@ -135,21 +139,40 @@ func enemy_ai(clock: float) -> void:
 				self.global_position = Vector2(target_position.x - 8, target_position.y - 12) # move the enemy to the position
 				current_path.pop_front() # remove the current target position
 				movement_inc = movement_rec # reset the timer
-		if player_out_of_range:
-			# if the player is out of range then return to the start point
-			if out_of_range_timer > 0:
-				print(out_of_range_timer)
-				out_of_range_timer -= Globals.timer_ctrl * clock # decrement timer 
+		# if the player is out of range then return to the start point
+		if current_chase_steps == chase_steps:
+			if player_out_of_range:
+				current_chase_steps = 0
+				STATE = "FOILED" # the player has evaded the enemy
 			else:
-				STATE = "FOILED" # the player has successfully foiled the enemy
+				current_chase_steps = 0 # reset the current chase steps
 	elif STATE == "FOILED":
 		# the player has fled the enemy who will now wait until the timer runs out then return
 		# to the starting area
-		var id_path = astar_grid.get_id_path(
-			tilemap.local_to_map(self.global_position),
-			tilemap.local_to_map(starting_pos)
-		).slice(1) # remove the enemies current position
-		current_path = id_path # set the current_path
+		paths[0] = 0 # reset path
+		paths[1] = 0 # reset path
+		if paths[2] == 0:
+			var id_path = astar_grid.get_id_path(
+				tilemap.local_to_map(self.global_position),
+				tilemap.local_to_map(starting_pos)
+			).slice(1) # remove the enemies current position
+			current_path = id_path # set the current_path
+			paths[2] = 1
+		else:
+			# check to see if the player is back in the enemies area of alertness
+			# and if so then resume the persuit IF NOT PANICKED
+			if !player_out_of_range:
+				RAY.target_position = to_local(Globals.player_position) # set the ray to the player
+				if RAY.is_colliding():
+					# check the collider and if it's the player then engage!!! 
+					# or panic and run away
+					var collider = RAY.get_collider()
+					if collider.is_in_group("PLAYER"):
+						if Globals.player_level >= run_level:
+							current_path.clear() # remove current path
+							STATE = "PANICKED" # change the state to panicked
+						else:
+							STATE = "ENGAGED" # change the state to engaged
 		# move back towards the starting position
 		if movement_inc > 0:
 			movement_inc -= Globals.timer_ctrl * clock # decrement timer
@@ -170,15 +193,18 @@ func _on_visibility_body_entered(body:Node2D) -> void:
 	if body.is_in_group("PLAYER"):
 		if STATE == "IDLE": STATE = "ALERTED" # change the enemy state to alerted upon first entering
 		player_out_of_range = false # the player is NOT out of range
-		print("Player has entered") # DEBUG
 
 func _on_visibility_body_exited(body:Node2D) -> void:
 	if body.is_in_group("PLAYER"):
 		player_out_of_range = true # the player has fled
-		out_of_range_timer = oor_timer_rec # reset the out of range timer
-		print("Player has exited") # DEBUG
 
 func _on_body_entered(body:Node2D) -> void:
 	if body.is_in_group("PLAYER"):
 		# check if the player is too powerful and just die or start the battle!
-		pass
+		Globals.can_move = false # stop player movement
+		STATE = "IDLE" # return the enemy to an IDLE state
+		# set the enemy globals so the battleground knows what to laod
+		Globals.battler_id = enemy_id
+		# start a scene transition and move to the battle screen
+		var scene_transition = TRANSITION.instantiate()
+		get_tree().root.add_child(scene_transition)

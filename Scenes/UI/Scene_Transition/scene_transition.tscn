@@ -1,3 +1,57 @@
-[gd_scene format=3 uid="uid://du5ifmrb4avf8"]
+[gd_scene load_steps=5 format=3 uid="uid://du5ifmrb4avf8"]
+
+[ext_resource type="Script" path="res://Scenes/UI/Scene_Transition/scene_transition.gd" id="1_hsh5v"]
+
+[sub_resource type="Animation" id="Animation_dq82e"]
+resource_name = "battle_start"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Color(0.423529, 0.160784, 0.25098, 1), Color(0.424, 0.161, 0.251, 0), Color(0.424, 0.161, 0.251, 1), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_t6l7i"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.423529, 0.160784, 0.25098, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_o3qov"]
+_data = {
+"RESET": SubResource("Animation_t6l7i"),
+"battle_start": SubResource("Animation_dq82e")
+}
 
 [node name="Scene_Transition" type="CanvasLayer"]
+script = ExtResource("1_hsh5v")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 640.0
+offset_bottom = 360.0
+color = Color(0.423529, 0.160784, 0.25098, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_o3qov")
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

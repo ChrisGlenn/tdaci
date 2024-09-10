@@ -4,8 +4,6 @@ TO-DO LIST(ALPHA):
 
 -- CURRENTLY WORKING ON --
 - SFX for player steps
-- Update enemy path when player moves
-- Map Enemy (Rat)
 - Combat Math (battle system)
 THEN
 - Rat Battler
@@ -39,6 +37,9 @@ THEN
         [] Player (Mage) Cast Spell
         [] Player (Mage) Cast Block
         [] Player Death
+    [] Enemy Spawning (JSON file)
+    [] 'Fade' In Transition
+    [] Battle End
 [] HUD
     [x] HUD Resolution Independence
     [x] Border
@@ -54,7 +55,7 @@ THEN
     [x] Set Paths
     [x] Pathfinding Movement
     [] Rat
-    [] Player Spotting
+    [x] Player Spotting
     [] Combat Init
     [] Combat Skip (Instadeth for Enemy)
 [] Interactions
@@ -83,6 +84,8 @@ THEN
 [] System
     [x] Custom Bitmap Font/Small Pixel Font
     [x] Visiblity FOV!!!
+    [] Return from Battle
+    [] Remove Enemy from Map until Return to Level
     [] Save FOV for each level of the castle
     [] Reset Variables On Main Menu
 
