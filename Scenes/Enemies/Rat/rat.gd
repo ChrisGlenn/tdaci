@@ -8,6 +8,7 @@ extends Area2D
 @export_group("RAT-tributes")
 @export var enemy_name : String = "MAP ENEMY" # name of the enemy
 @export var seek_player : bool = false # if the enemy will seek after the player (higher level enemies)
+@export var chase_steps : int = 10 # how many steps before checking if the player is still in field of view
 @export var movement_inc : float = 50.0 # increment time between space movement
 @export var enemy_level_range : int = 2 # around the level the player should be when facing this enemy
 @export var flee_to : Vector2 # the position the enemy will flee too if the player is too strong
@@ -20,6 +21,7 @@ var starting_pos : Vector2
 var run_level : int = 99 # the level at which the enemy will run from the player
 var player_out_of_range : bool = false # if the player has fled the enemy
 var out_of_range_timer : float = 300.0 # how long before the player returns
+var current_chase_steps : int = 0 # counts the current steps
 var oor_timer_rec # records out of range timer
 var movement_rec # records the movement_inc timer
 
@@ -61,7 +63,6 @@ func enemy_ai(clock: float) -> void:
 		if movement_inc != 0: movement_inc = 0 # set the movement increment to 0 to remove pause before chasing player
 		if out_of_range_timer != oor_timer_rec: out_of_range_timer = oor_timer_rec # reset the out of range timer
 	elif STATE == "ALERTED":
-		print("ALERTED")
 		# move the raycast target to the player and search for a hit
 		# if there is a direct LOS to the player then move to engage
 		RAY.target_position = to_local(Globals.player_position) # set the ray to the player
@@ -86,20 +87,33 @@ func enemy_ai(clock: float) -> void:
 			).slice(1) # remove the enemies current position
 			current_path = id_path # set the current_path and start moving
 		else:
-			# chase the player
+			# update the current_path if the player has moved
+			if Globals.player_moved:
+				var id_path = astar_grid.get_id_path(
+				tilemap.local_to_map(self.global_position),
+				tilemap.local_to_map(Globals.player_position)
+				).slice(1) # remove the enemies current position
+				current_path = id_path # set the current_path and start moving
 			# move towards the player!!!
 			if movement_inc > 0:
 				movement_inc -= Globals.timer_ctrl * clock # decrement timer
 			else:
 				var target_position = tilemap.map_to_local(current_path.front()) # get the target position
+				if target_position.x > global_position.x: ANIM.flip_h = true # flip if moving right
+				elif target_position.x < global_position.x: ANIM.flip_h = false # unflip if moving left
 				self.global_position = Vector2(target_position.x - 8, target_position.y - 12) # move the enemy to the position
 				current_path.pop_front() # remove the current target position
+				current_chase_steps += 1 # increment current chase steps
+				print(current_chase_steps)
 				movement_inc = movement_rec # reset the timer
-		if player_out_of_range:
-			if out_of_range_timer > 0:
-				out_of_range_timer -= Globals.timer_ctrl * clock # decrement timer 
-			else:
-				STATE = "FOILED" # the player has successfully foiled the enemy
+			# count the enemy steps and if they are maxed check if the player is still inside of the
+			# engagement area and if so then reset and continue, otherwise move on
+			if current_chase_steps == chase_steps:
+				if player_out_of_range:
+					current_chase_steps = 0
+					STATE = "FOILED" # the player has evaded the enemy
+				else:
+					current_chase_steps = 0 # reset the current chase steps
 	elif STATE == "PANICKED":
 		# run off towards a set flee to point
 		if current_path.is_empty():
@@ -116,6 +130,8 @@ func enemy_ai(clock: float) -> void:
 				movement_inc -= Globals.timer_ctrl * clock # decrement timer
 			else:
 				var target_position = tilemap.map_to_local(current_path.front()) # get the target position
+				if target_position.x > global_position.x: ANIM.flip_h = true # flip if moving right
+				elif target_position.x < global_position.x: ANIM.flip_h = false # unflip if moving left
 				self.global_position = Vector2(target_position.x - 8, target_position.y - 12) # move the enemy to the position
 				current_path.pop_front() # remove the current target position
 				movement_inc = movement_rec # reset the timer
@@ -129,7 +145,6 @@ func enemy_ai(clock: float) -> void:
 	elif STATE == "FOILED":
 		# the player has fled the enemy who will now wait until the timer runs out then return
 		# to the starting area
-		print("FUNGAH, foiled again")
 		var id_path = astar_grid.get_id_path(
 			tilemap.local_to_map(self.global_position),
 			tilemap.local_to_map(starting_pos)
@@ -141,6 +156,8 @@ func enemy_ai(clock: float) -> void:
 		else:
 			var target_position = tilemap.map_to_local(current_path.front()) # get the target position
 			self.global_position = Vector2(target_position.x - 8, target_position.y - 12) # move the enemy to the position
+			if target_position.x > global_position.x: ANIM.flip_h = true # flip if moving right
+			elif target_position.x < global_position.x: ANIM.flip_h = false # unflip if moving left
 			current_path.pop_front() # remove the current target position
 			movement_inc = movement_rec # reset the timer
 		if global_position == starting_pos:
@@ -151,7 +168,7 @@ func enemy_ai(clock: float) -> void:
 
 func _on_visibility_body_entered(body:Node2D) -> void:
 	if body.is_in_group("PLAYER"):
-		STATE = "ALERTED" # change the enemy state to alerted upon first entering
+		if STATE == "IDLE": STATE = "ALERTED" # change the enemy state to alerted upon first entering
 		player_out_of_range = false # the player is NOT out of range
 		print("Player has entered") # DEBUG
 

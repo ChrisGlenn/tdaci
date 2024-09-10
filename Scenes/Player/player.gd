@@ -44,6 +44,7 @@ func player_input(clock):
 					global_position.y -= 24 # move the player
 					move_timer = move_timer_set # set the timer
 					emit_signal("player_moved") # emit the signal that the player has moved
+					Globals.player_moved = true # player has moved
 			else:
 				# PLAY BLOCK AUDIO
 				pass
@@ -56,6 +57,7 @@ func player_input(clock):
 					global_position.x += 16 # move the player
 					move_timer = move_timer_set # set the timer
 					emit_signal("player_moved") # emit the signal that the player has moved
+					Globals.player_moved = true # player has moved
 			else:
 				# PLAY BLOCK AUDIO
 				PLAYER_SPRITE.flip_h = true # flip the player sprite
@@ -67,6 +69,7 @@ func player_input(clock):
 					global_position.y += 24 # move the player
 					move_timer = move_timer_set # set the timer
 					emit_signal("player_moved") # emit the signal that the player has moved
+					Globals.player_moved = true # player has moved
 			else:
 				# PLAY BLOCK AUDIO
 				pass
@@ -79,6 +82,7 @@ func player_input(clock):
 					global_position.x -= 16 # move the player
 					move_timer = move_timer_set # set the timer
 					emit_signal("player_moved") # emit the signal that the player has moved
+					Globals.player_moved = true # player has moved
 			else:
 				# PLAY BLOCK AUDIO
 				PLAYER_SPRITE.flip_h = false # return sprite H to default

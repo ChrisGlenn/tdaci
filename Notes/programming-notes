@@ -1,35 +1,88 @@
-	# engage the player
-	if player_spotted:
-		# set the target position for the ray
-		# check if it's hitting anything that isn't the player and if not then create a path and chase the player
-		# needs to check if player is in the enemies line of sight...
-		RAY.target_position = to_local(Globals.player_position)
+	if STATE == "IDLE":
+		# just stay still basically...
+		if movement_inc != 0: movement_inc = 0 # set the movement increment to 0 to remove pause before chasing player
+		if out_of_range_timer != oor_timer_rec: out_of_range_timer = oor_timer_rec # reset the out of range timer
+	elif STATE == "ALERTED":
+		# move the raycast target to the player and search for a hit
+		# if there is a direct LOS to the player then move to engage
+		RAY.target_position = to_local(Globals.player_position) # set the ray to the player
 		if RAY.is_colliding():
+			# check the collider and if it's the player then engage!!! 
+			# or panic and run away
 			var collider = RAY.get_collider()
 			if collider.is_in_group("PLAYER"):
-				if current_path.is_empty():
-					var id_path = astar_grid.get_id_path(
-						tilemap.local_to_map(self.global_position),
-						tilemap.local_to_map(Globals.player_position)
-					).slice(1) # remove the enemies current position
-					current_path = id_path
-					engaged = true # the player has been ENGAGED
-					player_spotted = false
+				if Globals.player_level >= run_level:
+					current_path.clear() # remove current path
+					STATE = "PANICKED" # change the state to panicked
 				else:
-					# if the player moves then update the path
-					pass
-	else:
-		if !current_path.is_empty():
+					STATE = "ENGAGED"
+	elif STATE == "ENGAGED":
+		# chase the player
+		# get the path to the player
+		if current_path.is_empty():
+			# get the astar path
+			var id_path = astar_grid.get_id_path(
+			tilemap.local_to_map(self.global_position),
+			tilemap.local_to_map(Globals.player_position)
+			).slice(1) # remove the enemies current position
+			current_path = id_path # set the current_path and start moving
+		else:
+			# chase the player
 			# move towards the player!!!
 			if movement_inc > 0:
-				movement_inc -= Globals.timer_ctrl * delta # decrement timer
+				movement_inc -= Globals.timer_ctrl * clock # decrement timer
 			else:
 				var target_position = tilemap.map_to_local(current_path.front()) # get the target position
 				self.global_position = Vector2(target_position.x - 8, target_position.y - 12) # move the enemy to the position
 				current_path.pop_front() # remove the current target position
-				print(current_path)
 				movement_inc = movement_rec # reset the timer
 		if player_out_of_range:
-			# count down the timer and if the player hasn't been found then return to the
-			# original spot of the enemy IF they are not there to chase the player
-			pass
+			if out_of_range_timer > 0:
+				out_of_range_timer -= Globals.timer_ctrl * clock # decrement timer 
+			else:
+				STATE = "FOILED" # the player has successfully foiled the enemy
+	elif STATE == "PANICKED":
+		# run off towards a set flee to point
+		if current_path.is_empty():
+			# get the astar path to the flee position
+			var id_path = astar_grid.get_id_path(
+			tilemap.local_to_map(self.global_position),
+			tilemap.local_to_map(flee_to)
+			).slice(1) # remove the enemies current position
+			current_path = id_path # set the current_path and start moving
+		else:
+			# chase the player
+			# move towards the player!!!
+			if movement_inc > 0:
+				movement_inc -= Globals.timer_ctrl * clock # decrement timer
+			else:
+				var target_position = tilemap.map_to_local(current_path.front()) # get the target position
+				self.global_position = Vector2(target_position.x - 8, target_position.y - 12) # move the enemy to the position
+				current_path.pop_front() # remove the current target position
+				movement_inc = movement_rec # reset the timer
+		if player_out_of_range:
+			# if the player is out of range then return to the start point
+			if out_of_range_timer > 0:
+				print(out_of_range_timer)
+				out_of_range_timer -= Globals.timer_ctrl * clock # decrement timer 
+			else:
+				STATE = "FOILED" # the player has successfully foiled the enemy
+	elif STATE == "FOILED":
+		# the player has fled the enemy who will now wait until the timer runs out then return
+		# to the starting area
+		print("FUNGAH, foiled again")
+		var id_path = astar_grid.get_id_path(
+			tilemap.local_to_map(self.global_position),
+			tilemap.local_to_map(starting_pos)
+		).slice(1) # remove the enemies current position
+		current_path = id_path # set the current_path
+		# move back towards the starting position
+		if movement_inc > 0:
+			movement_inc -= Globals.timer_ctrl * clock # decrement timer
+		else:
+			var target_position = tilemap.map_to_local(current_path.front()) # get the target position
+			self.global_position = Vector2(target_position.x - 8, target_position.y - 12) # move the enemy to the position
+			current_path.pop_front() # remove the current target position
+			movement_inc = movement_rec # reset the timer
+		if global_position == starting_pos:
+			STATE = "IDLE" # return to idle state

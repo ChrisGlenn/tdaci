@@ -33,6 +33,7 @@ var player_is_dead : bool = false # if the player is dead then this is true
 # game/system variables
 var stage : int = 0 # game stage
 var can_move : bool = true # if the player can move the character
+var player_moved : bool = false # true if the player has moved
 var timer_ctrl : float = 100.0 # timer control
 var frame : int = 0 # switches between 0 and 1 global frame set
 var frame_timer : int = 42 # time between frame switch
@@ -56,3 +57,5 @@ func _process(delta):
         else:
             frame = 0 # change the frame
             frame_timer = 42 # reset the frame timer
+    # player movement check
+    if player_moved: player_moved = false # reset
