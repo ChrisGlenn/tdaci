@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://d3sftodihtbdx"]
+[gd_scene load_steps=9 format=3 uid="uid://d3sftodihtbdx"]
 
 [ext_resource type="Texture2D" uid="uid://c4r1bbuhmqdd4" path="res://Sprites/Enemies.png" id="1_06hh1"]
 [ext_resource type="Script" path="res://Scenes/Enemies/Rat/rat.gd" id="1_ojjw5"]
@@ -11,6 +11,10 @@ region = Rect2(0, 0, 16, 24)
 atlas = ExtResource("1_06hh1")
 region = Rect2(16, 0, 16, 24)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_spsx6"]
+atlas = ExtResource("1_06hh1")
+region = Rect2(32, 0, 16, 24)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_7iqyj"]
 animations = [{
 "frames": [{
@@ -19,6 +23,9 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_2apsb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_spsx6")
 }],
 "loop": true,
 "name": &"default",
@@ -31,6 +38,7 @@ size = Vector2(16, 24)
 [sub_resource type="CircleShape2D" id="CircleShape2D_85dxt"]
 
 [node name="Rat" type="Area2D"]
+z_index = 4
 script = ExtResource("1_ojjw5")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

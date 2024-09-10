@@ -56,8 +56,8 @@ THEN
     [x] Pathfinding Movement
     [] Rat
     [x] Player Spotting
-    [] Combat Init
-    [] Combat Skip (Instadeth for Enemy)
+    [x] Combat Init
+    [x] Combat Skip (Instadeth for Enemy)
 [] Interactions
     [] Door (unlocked)
     [] Door (locked)

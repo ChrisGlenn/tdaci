@@ -1,5 +1,6 @@
 extends Area2D
 # THE RAT!!!
+# THIS IS NOT A SEEKING ENEMY
 # a template script for the overworld enemies that will just move to the player (or away)
 # and initialize combat BUT if the player is too strong the enemy just dies and yields very low XP and no gold
 @onready var tilemap : TileMapLayer = get_parent().get_parent().get_node("Enviornment_Tiles")
@@ -7,14 +8,12 @@ extends Area2D
 @onready var ANIM = $AnimatedSprite2D
 @onready var RAY = $RayCast2D
 @export_group("RAT-tributes")
-@export var enemy_name : String = "MAP ENEMY" # name of the enemy
 @export var enemy_id : int = 0 # gets passed to the battleground to spawn the battler
-# @export var seek_player : bool = false # if the enemy will seek after the player (higher level enemies)
 @export var chase_steps : int = 10 # how many steps before checking if the player is still in field of view
 @export var movement_inc : float = 50.0 # increment time between space movement
 @export var enemy_level_range : int = 2 # around the level the player should be when facing this enemy
 @export var flee_to : Vector2 # the position the enemy will flee too if the player is too strong
-var STATE = "IDLE" # IDLE ALERTED ENGAGED PANICKED FOILED
+var STATE = "IDLE" # IDLE ALERTED ENGAGED PANICKED FOILED and DEAD!
 # pathfinding
 var astar_grid : AStarGrid2D
 var current_path : Array = [] # the current path to the player
@@ -52,7 +51,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	# animation
-	ANIM.frame = Globals.frame # set the animation frame
+	if STATE != "DEAD": ANIM.frame = Globals.frame # set the animation frame
 	# Enemy AI 2.0
 	enemy_ai(delta)
 
@@ -127,9 +126,9 @@ func enemy_ai(clock: float) -> void:
 			tilemap.local_to_map(flee_to)
 			).slice(1) # remove the enemies current position
 			current_path = id_path # set the current_path and start moving
+			paths[1] = 1 # path is set
 		else:
-			# chase the player
-			# move towards the player!!!
+			# escape!!!
 			if movement_inc > 0:
 				movement_inc -= Globals.timer_ctrl * clock # decrement timer
 			else:
@@ -138,6 +137,7 @@ func enemy_ai(clock: float) -> void:
 				elif target_position.x < global_position.x: ANIM.flip_h = false # unflip if moving left
 				self.global_position = Vector2(target_position.x - 8, target_position.y - 12) # move the enemy to the position
 				current_path.pop_front() # remove the current target position
+				current_chase_steps += 1 # increment current chase steps
 				movement_inc = movement_rec # reset the timer
 		# if the player is out of range then return to the start point
 		if current_chase_steps == chase_steps:
@@ -185,26 +185,32 @@ func enemy_ai(clock: float) -> void:
 			movement_inc = movement_rec # reset the timer
 		if global_position == starting_pos:
 			STATE = "IDLE" # return to idle state
+	elif STATE == "DEAD":
+		ANIM.frame = 2 # show the dead rat
+		# PLAY THE SFX
 
 
 
 
 func _on_visibility_body_entered(body:Node2D) -> void:
-	if body.is_in_group("PLAYER"):
+	if body.is_in_group("PLAYER") and STATE != "DEAD":
 		if STATE == "IDLE": STATE = "ALERTED" # change the enemy state to alerted upon first entering
 		player_out_of_range = false # the player is NOT out of range
 
 func _on_visibility_body_exited(body:Node2D) -> void:
-	if body.is_in_group("PLAYER"):
+	if body.is_in_group("PLAYER") and STATE != "DEAD":
 		player_out_of_range = true # the player has fled
 
 func _on_body_entered(body:Node2D) -> void:
 	if body.is_in_group("PLAYER"):
 		# check if the player is too powerful and just die or start the battle!
-		Globals.can_move = false # stop player movement
-		STATE = "IDLE" # return the enemy to an IDLE state
-		# set the enemy globals so the battleground knows what to laod
-		Globals.battler_id = enemy_id
-		# start a scene transition and move to the battle screen
-		var scene_transition = TRANSITION.instantiate()
-		get_tree().root.add_child(scene_transition)
+		if Globals.player_level < run_level:
+			Globals.can_move = false # stop player movement
+			STATE = "IDLE" # return the enemy to an IDLE state
+			# set the enemy globals so the battleground knows what to laod
+			Globals.battler_id = enemy_id
+			# start a scene transition and move to the battle screen
+			var scene_transition = TRANSITION.instantiate()
+			get_tree().root.add_child(scene_transition)
+		else:
+			STATE = "DEAD" # the rat just dies when touched
