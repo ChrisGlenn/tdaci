@@ -1,4 +1,4 @@
 {
-    "001" : {"id": 0,"name": "NULL"},
-    "002" : {"id": 1,"name": "Rat"}
+    "001" : {"id": 0,"name": "NULL","path": ""},
+    "002" : {"id": 1,"name": "Rat","path": "res://Scenes/Battlers/Rat/rat_battler.tscn"}
 }

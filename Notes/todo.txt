@@ -17,6 +17,7 @@ THEN
     [] Spells (see spells.txt)
     [] Scrolls (see spells.txt)
     [] Tools (see items.txt)
+    [] Player Starting Position
 [] Combat (GEN ONE)
     [] FIGHTER
         [x] Player Idle
@@ -94,8 +95,8 @@ THEN
     [x] Custom Bitmap Font/Small Pixel Font
     [x] Visiblity FOV!!!
     [] Return from Battle
-    [] Remove Enemy from Map until Return to Level
-    [] Save FOV for each level of the castle
+    [x] Remove Enemy from Map until Return to Level
+    [] Save FOV for each level of the castle (save the discovered tiles and load them)
     [] Reset Variables On Main Menu
 
 

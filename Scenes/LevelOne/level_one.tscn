@@ -39,6 +39,7 @@ position = Vector2(128, 528)
 
 [node name="Rat" parent="Enemies" instance=ExtResource("7_gjxnv")]
 position = Vector2(48, -360)
+enemy_name = "RAT_A"
 flee_to = Vector2(608, 552)
 
 [connection signal="player_moved" from="Player" to="." method="_on_player_player_moved"]

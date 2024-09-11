@@ -8,6 +8,7 @@ extends Area2D
 @onready var ANIM = $AnimatedSprite2D
 @onready var RAY = $RayCast2D
 @export_group("RAT-tributes")
+@export var enemy_name : String = "ENEMY REF" # used to check against the unspawn checklist
 @export var enemy_id : int = 0 # gets passed to the battleground to spawn the battler
 @export var chase_steps : int = 10 # how many steps before checking if the player is still in field of view
 @export var movement_inc : float = 50.0 # increment time between space movement
@@ -27,6 +28,12 @@ var movement_rec # records the movement_inc timer
 
 
 func _ready() -> void:
+	# check if this enemy should be here or not
+	if Globals.level_one_despawn.size() > 0:
+		for n in Globals.level_one_despawn.size():
+			# if the enemy is listed then delete self
+			if Globals.level_one_despawn[n] == enemy_name: queue_free()
+	# start enemy ready
 	starting_pos = Vector2(global_position.x, global_position.y) # in case the enemy needs to return
 	movement_rec = movement_inc # record the movement_inc timer
 	movement_inc = 0 # set the movement increment to 0 to remove pause before chasing player
@@ -109,7 +116,8 @@ func enemy_ai(clock: float) -> void:
 				movement_inc = movement_rec # reset the timer
 			# count the enemy steps and if they are maxed check if the player is still inside of the
 			# engagement area and if so then reset and continue, otherwise move on
-			if current_chase_steps == chase_steps:
+			if current_chase_steps >= chase_steps:
+				RAY.target_position = to_local(Globals.player_position) # set the ray to the player
 				if RAY.is_colliding():
 					# check the collider and if it's the player then engage!!! 
 					# or panic and run away
@@ -192,6 +200,8 @@ func enemy_ai(clock: float) -> void:
 	elif STATE == "DEAD":
 		ANIM.frame = 2 # show the dead rat
 		# PLAY THE SFX
+		# add the enemy to the despawn list
+		Globals.level_one_despawn.append(enemy_name)
 
 
 
