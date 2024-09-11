@@ -110,11 +110,15 @@ func enemy_ai(clock: float) -> void:
 			# count the enemy steps and if they are maxed check if the player is still inside of the
 			# engagement area and if so then reset and continue, otherwise move on
 			if current_chase_steps == chase_steps:
-				if player_out_of_range:
-					current_chase_steps = 0
-					STATE = "FOILED" # the player has evaded the enemy
-				else:
-					current_chase_steps = 0 # reset the current chase steps
+				if RAY.is_colliding():
+					# check the collider and if it's the player then engage!!! 
+					# or panic and run away
+					var collider = RAY.get_collider()
+					if collider.is_in_group("PLAYER"):
+						current_chase_steps = 0 # reset the chase steps
+					else:
+						current_chase_steps = 0 # reset the chase steps
+						STATE = "FOILED" # the player has evaded the enemy
 	elif STATE == "PANICKED":
 		# run off towards a set flee to point
 		paths[0] = 0 # reset path

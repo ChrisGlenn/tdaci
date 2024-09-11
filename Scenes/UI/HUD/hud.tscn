@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://mya5ck4t3umk"]
+[gd_scene load_steps=12 format=3 uid="uid://mya5ck4t3umk"]
 
 [ext_resource type="Texture2D" uid="uid://df2adtve0o8kt" path="res://Sprites/UI/HUD.png" id="1_l8o5y"]
 [ext_resource type="Script" path="res://Scenes/UI/HUD/hud.gd" id="1_qe802"]
 [ext_resource type="Texture2D" uid="uid://dnfui6i23nh1v" path="res://Sprites/UI/HUD_Icons_Clear.png" id="3_ntm6g"]
 [ext_resource type="FontFile" uid="uid://dcbyalkyecj3i" path="res://Fonts/pixelmix.ttf" id="4_x7ddr"]
+[ext_resource type="FontFile" uid="uid://c3jg7lm3yxi7q" path="res://Fonts/5x5 MT Pixel.ttf" id="5_xwf8j"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kt43k"]
 bg_color = Color(0, 0, 0, 1)
@@ -99,9 +100,21 @@ theme_override_font_sizes/font_size = 16
 text = "100/100"
 horizontal_alignment = 1
 
+[node name="Sword_Label2" type="Label" parent="Fighter"]
+texture_filter = 1
+offset_left = 411.0
+offset_top = 332.0
+offset_right = 510.0
+offset_bottom = 356.0
+theme_override_colors/font_color = Color(0.74902, 0.792157, 0.529412, 1)
+theme_override_fonts/font = ExtResource("5_xwf8j")
+theme_override_font_sizes/font_size = 10
+text = "(S)EARCH"
+horizontal_alignment = 1
+
 [node name="Item_Slot" type="Sprite2D" parent="Fighter"]
 texture_filter = 1
-position = Vector2(388, 312)
+position = Vector2(380, 312)
 scale = Vector2(3, 3)
 texture = ExtResource("3_ntm6g")
 hframes = 4

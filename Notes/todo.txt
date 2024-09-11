@@ -5,6 +5,7 @@ TO-DO LIST(ALPHA):
 -- CURRENTLY WORKING ON --
 - SFX for player steps
 - Combat Math (battle system)
+- Interaction
 THEN
 - Rat Battler
 
@@ -50,6 +51,11 @@ THEN
     [x] Gold
     [] Item Slot
     [] Arrow Slot
+    [] Inventory System
+        [] Item Slots
+        [] Item Descriptions
+        [] Inventory Add/Delete
+        [] Player Interactions
 [] Enemies
     [] Enemy Spawner
     [x] Set Paths
@@ -61,12 +67,15 @@ THEN
 [] Interactions
     [] Door (unlocked)
     [] Door (locked)
+    [] Statue Puzzle
+    [] Switch
+    [] Fireplace
 [] NPC Template
 [] UI
     [] Fade Out
     [] Fade In
     [] Scene Transition
-    [] Dialogue
+    [] Dialogue/Text
     [] Stats
     [] Inventory
     [] Save/Load Menu

@@ -13,6 +13,7 @@ signal player_moved # custom player script signal
 @export var field_of_view : int = 30 # how many tiles the player can see ahead
 var move_timer : int = 0 # paused time before player moves again
 var map_position # holds the current player position on the map
+var interactable # holds the interactable object once it comes into the area
 
 func _ready():
 	PLAYER_SPRITE.frame = Globals.frame # sync the animation frame to the global frame
