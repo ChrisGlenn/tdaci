@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://dg5e6igkb6d20"]
+
+[ext_resource type="Texture2D" uid="uid://cpmtm4hyhw1yh" path="res://Sprites/Enviornment_Props.png" id="1_a5ubb"]
+[ext_resource type="Script" path="res://Scenes/Enviornment/River_Water/river_water.gd" id="2_k3p5f"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gyufu"]
+atlas = ExtResource("1_a5ubb")
+region = Rect2(0, 96, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tps46"]
+atlas = ExtResource("1_a5ubb")
+region = Rect2(16, 96, 16, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4etf5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gyufu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tps46")
+}],
+"loop": true,
+"name": &"default",
+"speed": 0.0
+}]
+
+[node name="River_Water" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_4etf5")
+centered = false
+script = ExtResource("2_k3p5f")

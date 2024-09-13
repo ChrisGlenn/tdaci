@@ -1,0 +1,70 @@
+[gd_scene load_steps=10 format=3 uid="uid://cbcee31q8t0kq"]
+
+[ext_resource type="Texture2D" uid="uid://bwk5efqfyok0" path="res://Sprites/Player.png" id="1_1m58t"]
+[ext_resource type="Script" path="res://Scenes/Courtyard_Player/player_courtyard.gd" id="2_gd1pm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4dgo6"]
+atlas = ExtResource("1_1m58t")
+region = Rect2(0, 0, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qbbaw"]
+atlas = ExtResource("1_1m58t")
+region = Rect2(16, 0, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jq5yn"]
+atlas = ExtResource("1_1m58t")
+region = Rect2(32, 0, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6kiv1"]
+atlas = ExtResource("1_1m58t")
+region = Rect2(48, 0, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oexdi"]
+atlas = ExtResource("1_1m58t")
+region = Rect2(64, 0, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ii5e7"]
+atlas = ExtResource("1_1m58t")
+region = Rect2(80, 0, 16, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rycjf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4dgo6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qbbaw")
+}],
+"loop": true,
+"name": &"fighter",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jq5yn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6kiv1")
+}],
+"loop": true,
+"name": &"mage",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oexdi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ii5e7")
+}],
+"loop": true,
+"name": &"ranger",
+"speed": 0.0
+}]
+
+[node name="Player_Courtyard" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_rycjf")
+animation = &"fighter"
+centered = false
+script = ExtResource("2_gd1pm")

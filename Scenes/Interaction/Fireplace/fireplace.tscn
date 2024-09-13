@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bwmbat7lumhei"]
+[gd_scene load_steps=7 format=3 uid="uid://bwmbat7lumhei"]
 
 [ext_resource type="Script" path="res://Scenes/Interaction/Fireplace/fireplace.gd" id="1_qn6b0"]
 [ext_resource type="Texture2D" uid="uid://cpmtm4hyhw1yh" path="res://Sprites/Enviornment_Props.png" id="2_ggvr5"]
@@ -11,14 +11,6 @@ region = Rect2(256, 384, 16, 24)
 atlas = ExtResource("2_ggvr5")
 region = Rect2(272, 384, 16, 24)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_2me3c"]
-atlas = ExtResource("2_ggvr5")
-region = Rect2(256, 408, 16, 24)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_punev"]
-atlas = ExtResource("2_ggvr5")
-region = Rect2(272, 408, 16, 24)
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_6afjh"]
 animations = [{
 "frames": [{
@@ -30,17 +22,6 @@ animations = [{
 }],
 "loop": true,
 "name": &"fire",
-"speed": 0.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2me3c")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_punev")
-}],
-"loop": true,
-"name": &"smoke",
 "speed": 0.0
 }]
 
@@ -60,3 +41,6 @@ centered = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(8, 24)
 shape = SubResource("RectangleShape2D_yarw3")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

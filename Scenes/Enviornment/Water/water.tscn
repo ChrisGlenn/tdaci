@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=3 uid="uid://dplg4cgv3pvff"]
+
+[ext_resource type="Script" path="res://Scenes/Enviornment/Water/water.gd" id="1_3vs1m"]
+[ext_resource type="Texture2D" uid="uid://cpmtm4hyhw1yh" path="res://Sprites/Enviornment_Props.png" id="1_yc7x3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_smmix"]
+atlas = ExtResource("1_yc7x3")
+region = Rect2(0, 360, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wcjlf"]
+atlas = ExtResource("1_yc7x3")
+region = Rect2(16, 360, 16, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_06p7j"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_smmix")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wcjlf")
+}],
+"loop": true,
+"name": &"default",
+"speed": 0.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_15ijp"]
+size = Vector2(16, 24)
+
+[node name="Water" type="StaticBody2D"]
+script = ExtResource("1_3vs1m")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_06p7j")
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(8, 12)
+shape = SubResource("RectangleShape2D_15ijp")
