@@ -75,12 +75,15 @@ THEN
 [] UI
     [] Fade Out
     [] Fade In
-    [] Scene Transition
+    [x] Scene Transition (Fight)
     [] Dialogue/Text
     [] Stats
     [] Inventory
     [] Save/Load Menu
     [] CRT Shader(?)
+    [] Main Menu
+        [] Background Image
+        [] Main Menu HUD
 [] Courtyard
     [] Courtyard Exterior
     [] Tavern Interior
