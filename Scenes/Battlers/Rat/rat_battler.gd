@@ -43,10 +43,6 @@ func rat_ai(clock):
 			RAT_ANIM.play("idle") # play the idle animation
 			if rat_state_timer > 0: 
 				rat_state_timer -= clock * Globals.timer_ctrl # decrement timer
-				if will_block:
-					# the rat has been set to block the next attack
-					if Globals.player_attack:
-						RAT_STATE = "BLOCK" # set the rat to block
 			else:
 				# run through some checks to get next action
 				if !hit_points < 5:
@@ -61,6 +57,12 @@ func rat_ai(clock):
 						var attack_direction = RNG.randi_range(0,1)
 						rat_attack_dir = attack_direction # set the attack direction based off random
 						RAT_STATE = "ATTACK"
+				else:
+					RAT_STATE = "ATTACK" # last out!
+			if will_block:
+				# the rat has been set to block the next attack
+				if Globals.player_attack:
+					RAT_STATE = "BLOCK" # set the rat to block
 		elif RAT_STATE == "ATTACK":
 			rat_state_timer = 60 # reset the timer
 			if rat_attack_dir == 0: RAT_ANIM.play("attack_left")
@@ -110,14 +112,14 @@ func _on_animation_rat_animation_finished(anim_name):
 func _on_rat_head_area_entered(area):
 	if area.is_in_group("PLAYER_SWORD"):
 		# the rat is HIT
-		if RAT_STATE != "BLOCK":
+		if RAT_STATE != "BLOCK" and RAT_STATE != "ATTACK":
 			is_hit = true
 			$Rat_Head/RH_Sprite.modulate = Color(0.424,0.161,0.251) # module hit color
 			var damage = Functions.melee_hit(Globals.player_strength, Globals.sword_attack) # calculate damage
 			hit_points -= damage # apply damage to RAT
-			print("RAT BLOCKED!!!")
-		else:
 			print("RAT HIT!!!", hit_points) # DEBUG
+		else:
+			print("RAT BLOCKED!!!") # DEBUG
 
 func _on_rat_head_area_exited(area):
 	if area.is_in_group("PLAYER_SWORD"):

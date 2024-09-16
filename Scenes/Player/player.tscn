@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://78jj3cn4sjxu"]
+[gd_scene load_steps=8 format=3 uid="uid://78jj3cn4sjxu"]
 
 [ext_resource type="Texture2D" uid="uid://bwk5efqfyok0" path="res://Sprites/Player.png" id="1_0ynfs"]
 [ext_resource type="Script" path="res://Scenes/Player/player.gd" id="1_uef0d"]
+[ext_resource type="AudioStream" uid="uid://mpl3tw0xjd2i" path="res://Audio/SFX/player_steps.wav" id="3_js3cc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sx1e3"]
 atlas = ExtResource("1_0ynfs")
@@ -65,7 +66,10 @@ target_position = Vector2(-16, 0)
 [node name="AudioListener2D" type="AudioListener2D" parent="."]
 current = true
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="Steps" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_js3cc")
+volume_db = -18.0
+bus = &"SFX"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(8, 48)

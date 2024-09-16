@@ -3,11 +3,11 @@ TO-DO LIST(ALPHA):
 -- them will be reset based on what works and what doesn't --
 
 -- CURRENTLY WORKING ON --
-- SFX for player steps
 - Combat Math (battle system)
 - Interaction
+- Random Battleground Background
 THEN
-- Rat Battler
+- Rat Battler (pos 320,94)
 
 
 [] Player
@@ -40,6 +40,9 @@ THEN
         [] Player (Mage) Cast Block
         [] Player Death
     [] Enemy Spawning (JSON file)
+    [] Battlefield Tilelayer
+        [] Random Battlefields
+        [] Static Battlefield
     [] 'Fade' In Transition
     [] Battle End
 [] HUD

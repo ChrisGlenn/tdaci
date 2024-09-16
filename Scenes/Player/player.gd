@@ -3,7 +3,7 @@ extends CharacterBody2D
 # handles player input, movement, interaction, ect.
 signal player_moved # custom player script signal
 @onready var PLAYER_SPRITE = $AnimatedSprite2D
-@onready var PLAYER_AUDIO = $AudioStreamPlayer
+@onready var STEP_AUDIO = $Steps
 @onready var RAY_UP = $Ray_UP
 @onready var RAY_RIGHT = $Ray_RIGHT
 @onready var RAY_DOWN = $Ray_DOWN
@@ -41,7 +41,7 @@ func player_input(clock):
 			# move up
 			if !RAY_UP.is_colliding():
 				if move_timer < 1:
-					# PLAY STEP AUDIO
+					STEP_AUDIO.play() # play the step sfx
 					global_position.y -= 24 # move the player
 					move_timer = move_timer_set # set the timer
 					emit_signal("player_moved") # emit the signal that the player has moved
@@ -53,7 +53,7 @@ func player_input(clock):
 			# move right
 			if !RAY_RIGHT.is_colliding():
 				if move_timer < 1:
-					# PLAY STEP AUDIO
+					STEP_AUDIO.play() # play the step sfx
 					PLAYER_SPRITE.flip_h = true # flip the player sprite
 					global_position.x += 16 # move the player
 					move_timer = move_timer_set # set the timer
@@ -66,7 +66,7 @@ func player_input(clock):
 			# move down
 			if !RAY_DOWN.is_colliding():
 				if move_timer < 1:
-					# PLAY STEP AUDIO
+					STEP_AUDIO.play() # play the step sfx
 					global_position.y += 24 # move the player
 					move_timer = move_timer_set # set the timer
 					emit_signal("player_moved") # emit the signal that the player has moved
@@ -78,7 +78,7 @@ func player_input(clock):
 			# move left
 			if !RAY_LEFT.is_colliding():
 				if move_timer < 1:
-					# PLAY STEP AUDIO
+					STEP_AUDIO.play() # play the step sfx
 					PLAYER_SPRITE.flip_h = false # return sprite H to default
 					global_position.x -= 16 # move the player
 					move_timer = move_timer_set # set the timer
