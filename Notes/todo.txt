@@ -108,8 +108,8 @@ THEN
 
 
 ALPHA BUG-FIX/FEATURE ADD LIST:
-    [] Make enemies invisible when under a shade tile
-    [] Fix FOV to include doors/objects
+    [] Make enemies invisible when under a shade tile (check tile collision then visible = false??)
+    [x] Fix FOV to include doors/objects (have to change tiles)
     [x] Hold down directional movement
 
 

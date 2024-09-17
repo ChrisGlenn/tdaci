@@ -45,8 +45,9 @@ flee_to = Vector2(608, 552)
 
 [node name="Doors" type="Node2D" parent="."]
 
-[node name="Door" parent="Doors" instance=ExtResource("9_1e71d")]
-position = Vector2(0, -144)
+[node name="Door" parent="Doors" node_paths=PackedStringArray("current_tilemap") instance=ExtResource("9_1e71d")]
+position = Vector2(-16, -72)
+current_tilemap = NodePath("../../Enviornment_Tiles")
 door_type = "wood_b"
 
 [connection signal="player_moved" from="Player" to="." method="_on_player_player_moved"]
