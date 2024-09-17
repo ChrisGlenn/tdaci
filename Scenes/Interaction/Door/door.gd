@@ -1,6 +1,7 @@
 extends Area2D
 # DOOR SCRIPT
 # unlocked/locked, even portcullis, this script covers doors!
+# door tile reference (0,5x1 2,5x3 4,5x5 10,5x11)
 @export_group("Door Attributes")
 @export var door_id : String = "" # sets the door ID to search in the globals on loading
 @export var current_tilemap : TileMapLayer # set the current tilemap to manipulate
@@ -10,14 +11,55 @@ extends Area2D
 @export var breakable : bool = true # if this door is breakable or not
 @export var switch_controlled : bool = false # if this door requires a switch to open it (also other unlock methods outside of the door)
 @export var hit_points : int = 5 # defaults to 5 IF breakable
+var door_ref : int = 0 # based on the x coord for the tiles
+var tilemap_ref : int = 1 # defaults to 1 (solid/can't see thru)
+var frame_ref : int = 474 # the reference UI frame (defaults to black)
 
 
 func _ready():
 	if current_tilemap:
 		# get the current position
 		var door_position = current_tilemap.local_to_map(global_position)
+		# check against the set door_type then assign the texture accordingly
+		# set the door_ref and tilemap_ref to fix door sprite and field of view
+		match door_type:
+			"wood_a":
+				if !opened:		
+					door_ref = 0 # closed
+					frame_ref = 95
+				else:
+					door_ref = 1 # opened
+					frame_ref = 96
+					tilemap_ref = 0 # swap tilemap layer
+			"wood_b":
+				if !opened:
+					door_ref = 2 # closed
+					frame_ref = 97
+				else:
+					door_ref = 3 # opened
+					frame_ref = 98
+					tilemap_ref = 0 # swap tilemap layer
+			"portcullis":
+				if !opened:
+					door_ref = 4 # closed
+					frame_ref = 99
+				else:
+					door_ref = 5 # opened
+					frame_ref = 100
+					tilemap_ref = 0 # swap tilemap layer
+			"steel":
+				if !opened:
+					door_ref = 10 # closed
+					frame_ref = 105
+				else:
+					door_ref = 11 # opened
+					frame_ref = 106
+					tilemap_ref = 0 # swap tilemap layer
 		# update the tilemap based on the door_type
-		current_tilemap.set_cell(door_position,1,Vector2i(2,5))
+		current_tilemap.set_cell(door_position,tilemap_ref,Vector2i(door_ref,5))
+
+func _process(_delta: float) -> void:
+	pass
 
 
 func _on_body_exited(body:Node2D) -> void:

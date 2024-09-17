@@ -2,21 +2,19 @@ extends CanvasLayer
 # GAME HUD
 # the heads up display for the game
 # will differ in the information that it displays depending on the character class
-@onready var HEART_SPRITE = $Health_Bar
-@onready var HEART_LABEL = $Health_Label
 # FIGHTER
-@onready var SHIELD_LABEL = $Fighter/Shield_Label
-@onready var SHIELD_BAR = $Fighter/Shield_Bar
-@onready var SWORD_LABEL = $Fighter/Sword_Label
-@onready var SWORD_BAR = $Fighter/Sword_Bar
-@onready var STAMINA_BAR = $Fighter/Stamina_Bar
-@onready var HEALTH_LABEL = $Health_Label
-@onready var HEALTH_BAR = $Health_Bar
-@onready var F_GOLD_LABEL = $Gold_Label
+@onready var HEART_SPRITE = $HUD/Fighter/Health_Bar
+@onready var HEART_LABEL = $HUD/Fighter/Health_Label
+@onready var SHIELD_LABEL = $HUD/Fighter/Shield_Label
+@onready var SHIELD_BAR = $HUD/Fighter/Shield_Bar
+@onready var SWORD_LABEL = $HUD/Fighter/Sword_Label
+@onready var SWORD_BAR = $HUD/Fighter/Sword_Bar
+@onready var STAMINA_BAR = $HUD/Fighter/Stamina_Bar
+@onready var HEALTH_LABEL = $HUD/Fighter/Health_Label
+@onready var HEALTH_BAR = $HUD/Fighter/Health_Bar
+@onready var F_GOLD_LABEL = $HUD/Fighter/Gold_Label
 # variables
-var health_fractions : float = 0 # holds the health fractions
-var stamina_fractions : float = 0 # holds the stamina fractions
-var mana_fractions : float = 0 # holds the mana fractions
+
 
 
 func _ready():
@@ -44,7 +42,7 @@ func _ready():
 	icon_update()
 
 func _process(_delta):
-	icon_update() # update the hud
+	if Globals.HUD_STATE == "HUD": icon_update() # update the hud
 
 
 func icon_update():

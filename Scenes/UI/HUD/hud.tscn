@@ -34,9 +34,11 @@ position = Vector2(41, 258)
 texture = ExtResource("1_l8o5y")
 centered = false
 
-[node name="Fighter" type="Node2D" parent="."]
+[node name="HUD" type="Node2D" parent="."]
 
-[node name="Shield_Bar" type="ProgressBar" parent="Fighter"]
+[node name="Fighter" type="Node2D" parent="HUD"]
+
+[node name="Shield_Bar" type="ProgressBar" parent="HUD/Fighter"]
 offset_left = 161.0
 offset_top = 276.0
 offset_right = 199.0
@@ -47,7 +49,7 @@ value = 100.0
 fill_mode = 3
 show_percentage = false
 
-[node name="Shield_Icon_C" type="Sprite2D" parent="Fighter"]
+[node name="Shield_Icon_C" type="Sprite2D" parent="HUD/Fighter"]
 texture_filter = 1
 position = Vector2(180, 304)
 scale = Vector2(3, 3)
@@ -56,7 +58,7 @@ hframes = 4
 vframes = 2
 frame = 2
 
-[node name="Shield_Label" type="Label" parent="Fighter"]
+[node name="Shield_Label" type="Label" parent="HUD/Fighter"]
 texture_filter = 1
 offset_left = 139.0
 offset_top = 332.0
@@ -68,7 +70,7 @@ theme_override_font_sizes/font_size = 16
 text = "100/100"
 horizontal_alignment = 1
 
-[node name="Sword_Bar" type="ProgressBar" parent="Fighter"]
+[node name="Sword_Bar" type="ProgressBar" parent="HUD/Fighter"]
 offset_left = 247.0
 offset_top = 276.0
 offset_right = 271.0
@@ -79,7 +81,7 @@ value = 100.0
 fill_mode = 3
 show_percentage = false
 
-[node name="Sword_Icon_C" type="Sprite2D" parent="Fighter"]
+[node name="Sword_Icon_C" type="Sprite2D" parent="HUD/Fighter"]
 texture_filter = 1
 position = Vector2(260, 301)
 scale = Vector2(2.1, 2.1)
@@ -88,7 +90,7 @@ hframes = 4
 vframes = 2
 frame = 3
 
-[node name="Sword_Label" type="Label" parent="Fighter"]
+[node name="Sword_Label" type="Label" parent="HUD/Fighter"]
 texture_filter = 1
 offset_left = 219.0
 offset_top = 332.0
@@ -100,7 +102,7 @@ theme_override_font_sizes/font_size = 16
 text = "100/100"
 horizontal_alignment = 1
 
-[node name="Item_Slot" type="Sprite2D" parent="Fighter"]
+[node name="Item_Slot" type="Sprite2D" parent="HUD/Fighter"]
 texture_filter = 1
 position = Vector2(380, 312)
 scale = Vector2(3, 3)
@@ -109,7 +111,7 @@ hframes = 4
 vframes = 2
 frame = 5
 
-[node name="Stamina_Bar" type="ProgressBar" parent="Fighter"]
+[node name="Stamina_Bar" type="ProgressBar" parent="HUD/Fighter"]
 offset_left = 319.0
 offset_top = 281.0
 offset_right = 334.0
@@ -120,7 +122,7 @@ value = 100.0
 fill_mode = 3
 show_percentage = false
 
-[node name="Stamina_Gauge" type="Sprite2D" parent="Fighter"]
+[node name="Stamina_Gauge" type="Sprite2D" parent="HUD/Fighter"]
 texture_filter = 1
 position = Vector2(328, 311)
 scale = Vector2(3, 3)
@@ -129,32 +131,7 @@ hframes = 4
 vframes = 2
 frame = 4
 
-[node name="Interaction_Icon" type="Sprite2D" parent="Fighter"]
-position = Vector2(443, 281)
-scale = Vector2(2, 2)
-texture = ExtResource("5_kp07b")
-centered = false
-hframes = 19
-vframes = 25
-frame = 474
-
-[node name="Interaction_Label" type="Label" parent="Fighter"]
-texture_filter = 1
-offset_left = 411.0
-offset_top = 339.0
-offset_right = 510.0
-offset_bottom = 349.0
-theme_override_colors/font_color = Color(0.74902, 0.792157, 0.529412, 1)
-theme_override_fonts/font = ExtResource("5_xwf8j")
-theme_override_font_sizes/font_size = 10
-text = "(A)"
-horizontal_alignment = 1
-
-[node name="Mage" type="Node2D" parent="."]
-
-[node name="Ranger" type="Node2D" parent="."]
-
-[node name="Health_Bar" type="ProgressBar" parent="."]
+[node name="Health_Bar" type="ProgressBar" parent="HUD/Fighter"]
 offset_left = 77.0
 offset_top = 279.0
 offset_right = 121.0
@@ -165,7 +142,7 @@ value = 100.0
 fill_mode = 3
 show_percentage = false
 
-[node name="Health_Icon_C" type="Sprite2D" parent="."]
+[node name="Health_Icon_C" type="Sprite2D" parent="HUD/Fighter"]
 texture_filter = 1
 position = Vector2(99, 304)
 scale = Vector2(3, 3)
@@ -173,7 +150,7 @@ texture = ExtResource("3_ntm6g")
 hframes = 4
 vframes = 2
 
-[node name="Health_Label" type="Label" parent="."]
+[node name="Health_Label" type="Label" parent="HUD/Fighter"]
 texture_filter = 1
 offset_left = 59.0
 offset_top = 332.0
@@ -185,7 +162,7 @@ theme_override_font_sizes/font_size = 16
 text = "100/100"
 horizontal_alignment = 1
 
-[node name="Gold_Icon" type="Sprite2D" parent="."]
+[node name="Gold_Icon" type="Sprite2D" parent="HUD/Fighter"]
 texture_filter = 1
 position = Vector2(540, 303)
 scale = Vector2(3, 3)
@@ -194,7 +171,7 @@ hframes = 4
 vframes = 2
 frame = 6
 
-[node name="Gold_Label" type="Label" parent="."]
+[node name="Gold_Label" type="Label" parent="HUD/Fighter"]
 texture_filter = 1
 offset_left = 501.0
 offset_top = 332.0
@@ -205,3 +182,32 @@ theme_override_fonts/font = ExtResource("4_x7ddr")
 theme_override_font_sizes/font_size = 16
 text = "100"
 horizontal_alignment = 1
+
+[node name="Mage" type="Node2D" parent="HUD"]
+
+[node name="Ranger" type="Node2D" parent="HUD"]
+
+[node name="Interaction_Icon" type="Sprite2D" parent="HUD"]
+position = Vector2(443, 281)
+scale = Vector2(2, 2)
+texture = ExtResource("5_kp07b")
+centered = false
+hframes = 19
+vframes = 25
+frame = 474
+
+[node name="Interaction_Label" type="Label" parent="HUD"]
+texture_filter = 1
+offset_left = 411.0
+offset_top = 339.0
+offset_right = 510.0
+offset_bottom = 349.0
+theme_override_colors/font_color = Color(0.74902, 0.792157, 0.529412, 1)
+theme_override_fonts/font = ExtResource("5_xwf8j")
+theme_override_font_sizes/font_size = 10
+text = "(A)"
+horizontal_alignment = 1
+
+[node name="DIALOGUE" type="Node2D" parent="."]
+
+[node name="INTERACTION" type="Node2D" parent="."]
