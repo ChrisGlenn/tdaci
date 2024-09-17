@@ -68,7 +68,7 @@ current = true
 
 [node name="Steps" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_js3cc")
-volume_db = -18.0
+volume_db = -14.0
 bus = &"SFX"
 
 [node name="Camera2D" type="Camera2D" parent="."]

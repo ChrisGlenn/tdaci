@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://eofvmt0fh4en"]
+[gd_scene load_steps=10 format=4 uid="uid://eofvmt0fh4en"]
 
 [ext_resource type="Script" path="res://Scenes/LevelOne/level_one.gd" id="1_cewib"]
 [ext_resource type="PackedScene" uid="uid://bfvuhs3v0x7bk" path="res://Scenes/Enviornment_Tiles/enviornment_tiles.tscn" id="1_i7mo0"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://mya5ck4t3umk" path="res://Scenes/UI/HUD/hud.tscn" id="3_w2r3f"]
 [ext_resource type="PackedScene" uid="uid://djs0vx32sdov5" path="res://Scenes/Interaction/Stairs/stairs.tscn" id="6_uvg8x"]
 [ext_resource type="PackedScene" uid="uid://d3sftodihtbdx" path="res://Scenes/Enemies/Rat/rat.tscn" id="7_gjxnv"]
+[ext_resource type="PackedScene" uid="uid://cqi17gr4yv8bh" path="res://Scenes/Interaction/Door/door.tscn" id="9_1e71d"]
 
 [node name="LevelOne" type="Node2D"]
 script = ExtResource("1_cewib")
@@ -41,5 +42,11 @@ position = Vector2(128, 528)
 position = Vector2(48, -360)
 enemy_name = "RAT_A"
 flee_to = Vector2(608, 552)
+
+[node name="Doors" type="Node2D" parent="."]
+
+[node name="Door" parent="Doors" instance=ExtResource("9_1e71d")]
+position = Vector2(0, -144)
+door_type = "wood_b"
 
 [connection signal="player_moved" from="Player" to="." method="_on_player_player_moved"]

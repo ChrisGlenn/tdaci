@@ -3,9 +3,9 @@ TO-DO LIST(ALPHA):
 -- them will be reset based on what works and what doesn't --
 
 -- CURRENTLY WORKING ON --
+- Doors
 - Combat Math (battle system)
 - Interaction
-- Random Battleground Background
 THEN
 - Rat Battler (pos 320,94)
 
@@ -40,9 +40,9 @@ THEN
         [] Player (Mage) Cast Block
         [] Player Death
     [] Enemy Spawning (JSON file)
-    [] Battlefield Tilelayer
-        [] Random Battlefields
-        [] Static Battlefield
+    [x] Battlefield Tilelayer
+        [x] Random Battlefields
+        [x] Static Battlefield
     [] 'Fade' In Transition
     [] Battle End
 [] HUD
@@ -109,7 +109,7 @@ THEN
 
 ALPHA BUG-FIX/FEATURE ADD LIST:
     [] Make enemies invisible when under a shade tile
-    [] Make all functions uniform (with the -> int or whatever)
+    [] Fix FOV to include doors/objects
     [x] Hold down directional movement
 
 

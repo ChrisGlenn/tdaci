@@ -5,8 +5,9 @@ extends Node2D
 @onready var RNG = RandomNumberGenerator.new()
 @export var cool_down : int = 60 # cool down period between movements
 @export var stamina_regen : int = 4 # period in between stamina regen
-var FIGHTER_STATE : String = "IDLE" # IDLE, HIT, ATTACK, BLOCK, DEAD, DODGE_LEFT, DODGE_RIGHT, DODGE_BACK, FATIGUED, CASTING, ITEM
+var FIGHTER_STATE : String = "IDLE" # IDLE, HIT, ATTACK, BLOCK, DEAD, DODGE_LEFT, DODGE_RIGHT, DODGE_BACK, FATIGUED, CASTING, ITEM, CHARGED, CHARGING
 var detect_input : bool = true # used to control input detection
+var attack_build : int = 0 # when it gets to 100 the player can attack
 var cool_down_rec # keeps track of cool_down
 var stamina_regen_rec # holds the stamina_regen setting
 var is_blocking : bool = false # true if the player is blocking
@@ -18,7 +19,7 @@ func _ready():
 	stamina_regen_rec = stamina_regen # record the stamina_regen setting
 	FIGHTER_ANIM.play("idle")
 
-func _process(delta):
+func _physics_process(delta):
 	fighter_control(delta) # fighter control function
 
 
@@ -58,6 +59,10 @@ func fighter_control(clock):
 					Globals.stamina_points -= 60 # DEBUG
 					detect_input = false # stop input detection
 				# BLOCK
+				if Input.is_action_just_pressed("ci_B"):
+					FIGHTER_ANIM.play("block") # play the animation
+					# decrement stamina if hit
+
 		# STAMINA REGENERATION
 		if Globals.stamina_points > 0:
 			# if the player's stamina is above 0 (not fatigued)
@@ -88,6 +93,7 @@ func fighter_control(clock):
 		# PLAYER IS DEAD
 		pass
 
+
 func _on_animation_fighter_animation_finished(anim_name):
 	# this function plays when the animation player is done playing
 	if anim_name == "dodge_left" or anim_name == "dodge_right" or anim_name == "dodge_back":
@@ -103,4 +109,6 @@ func _on_animation_fighter_animation_finished(anim_name):
 func _on_fighter_body_area_entered(area):
 	# this detects when another area has entered the 'fighter_body' area
 	if area.is_in_group("ENEMY"):
+		# if the player state is block then decrement stamina otherwise
+		# do damage to the player based on the
 		print("HIT!!") # DEBUG

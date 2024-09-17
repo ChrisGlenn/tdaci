@@ -41,9 +41,12 @@ var inside_interior : bool = false # tracks if player is inside an interior sett
 
 # level variables
 var level_one_discovered_tiles : Dictionary = {} # stores the discovered tiles
+var level_doors : Dictionary = {} # stores the door status for each door on each level
 var level_one_despawn : Array = [] # holds enemies/npcs that should despawn
 
 # battleground variables
+var battle_background_dynamic : bool = true # if the background for the battleground is random or not
+var battle_static_background : int = 0 # what static background to load
 var battler_id : int = 0 # used to reference which enemy to load (0 is null)
 # battler strength and others go here 
 

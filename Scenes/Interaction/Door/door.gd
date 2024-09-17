@@ -2,6 +2,8 @@ extends Area2D
 # DOOR SCRIPT
 # unlocked/locked, even portcullis, this script covers doors!
 @onready var SPRITE = $AnimatedSprite2D
+@export_group("Door Attributes")
+@export var door_id : String = "" # sets the door ID to search in the globals on loading
 @export_enum("wood_a", "wood_b", "portcullis", "steel") var door_type : String = "wood_a" # defaults to wood_a
 @export var opened : bool = false # if the door is opened or not
 @export var locked : bool = false # if the door is 'locked'
@@ -12,13 +14,26 @@ extends Area2D
 
 
 func _ready():
-    # set the starting frame based on the door_type
-    match door_type:
-        "wood_a": 
-            SPRITE.frame = 0 # first wood door
-        "wood_b":
-            SPRITE.frame = 2 # second wood door
-        "portcullis":
-            SPRITE.frame = 4 # portcullis
-        "steel":
-            SPRITE.frame = 6 # steel door
+	# set the starting frame based on the door_type
+	match door_type:
+		"wood_a": 
+			SPRITE.frame = 0 # first wood door
+		"wood_b":
+			SPRITE.frame = 2 # second wood door
+		"portcullis":
+			SPRITE.frame = 4 # portcullis
+		"steel":
+			SPRITE.frame = 6 # steel door
+	# check if the door is opened or not and set the sprite
+	if opened: SPRITE.frame += 1 # increment to the next frame (the open frame)
+
+
+func _on_body_exited(body:Node2D) -> void:
+	if body.is_in_group("PLAYER"):
+		# update the HUD to let the player know they can interact with the door
+		pass
+
+func _on_body_entered(body:Node2D) -> void:
+	if body.is_in_group("PLAYER"):
+		# update the HUD the player is now out of range of the door
+		pass
