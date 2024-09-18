@@ -47,7 +47,35 @@ flee_to = Vector2(608, 552)
 
 [node name="Door" parent="Doors" node_paths=PackedStringArray("current_tilemap") instance=ExtResource("9_1e71d")]
 position = Vector2(-16, -72)
+door_id = "l1_d001 "
 current_tilemap = NodePath("../../Enviornment_Tiles")
 opened = true
+
+[node name="Door2" parent="Doors" node_paths=PackedStringArray("current_tilemap") instance=ExtResource("9_1e71d")]
+position = Vector2(-96, -48)
+door_id = "l1_d002"
+current_tilemap = NodePath("../../Enviornment_Tiles")
+door_type = "steel"
+locked = true
+breakable = false
+switch_controlled = true
+
+[node name="Door3" parent="Doors" node_paths=PackedStringArray("current_tilemap") instance=ExtResource("9_1e71d")]
+position = Vector2(576, -336)
+door_id = "l1_d003"
+current_tilemap = NodePath("../../Enviornment_Tiles")
+door_type = "steel"
+locked = true
+breakable = false
+switch_controlled = true
+
+[node name="Door4" parent="Doors" node_paths=PackedStringArray("current_tilemap") instance=ExtResource("9_1e71d")]
+position = Vector2(0, 432)
+door_id = "l1_d004"
+current_tilemap = NodePath("../../Enviornment_Tiles")
+door_type = "steel"
+locked = true
+breakable = false
+switch_controlled = true
 
 [connection signal="player_moved" from="Player" to="." method="_on_player_player_moved"]

@@ -73,6 +73,7 @@ THEN
     [] Door (locked)
     [] Statue Puzzle
     [] Switch
+        [] Door Unlocking
     [] Fireplace
 [] NPC Template
 [] UI
@@ -108,7 +109,7 @@ THEN
 
 
 ALPHA BUG-FIX/FEATURE ADD LIST:
-    [] Make enemies invisible when under a shade tile (check tile collision then visible = false??)
+    [x] Make enemies invisible when under a shade tile (check tile then visible = false)
     [x] Fix FOV to include doors/objects (have to change tiles)
     [x] Hold down directional movement
 

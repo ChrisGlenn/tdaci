@@ -4,6 +4,7 @@ extends Area2D
 # a template script for the overworld enemies that will just move to the player (or away)
 # and initialize combat BUT if the player is too strong the enemy just dies and yields very low XP and no gold
 @onready var tilemap : TileMapLayer = get_parent().get_parent().get_node("Enviornment_Tiles")
+@onready var visibility_map : TileMapLayer = get_parent().get_parent().get_node("Visibility")
 @onready var TRANSITION = preload("res://Scenes/UI/Scene_Transition/scene_transition.tscn")
 @onready var ANIM = $AnimatedSprite2D
 @onready var RAY = $RayCast2D
@@ -202,6 +203,12 @@ func enemy_ai(clock: float) -> void:
 		# PLAY THE SFX
 		# add the enemy to the despawn list
 		Globals.level_one_despawn.append(enemy_name)
+	# CHECK IF THE ENEMY IS IN A SHADED/BLACKED OUT TILE AND THEN HIDE
+	var current_tile = visibility_map.local_to_map(global_position)
+	if visibility_map.get_cell_source_id(current_tile) == 1:
+		visible = false # hide enemy
+	else:
+		visible = true # show the enemy
 
 
 

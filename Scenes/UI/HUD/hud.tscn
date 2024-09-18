@@ -1,11 +1,12 @@
-[gd_scene load_steps=13 format=3 uid="uid://mya5ck4t3umk"]
+[gd_scene load_steps=17 format=3 uid="uid://mya5ck4t3umk"]
 
-[ext_resource type="Texture2D" uid="uid://df2adtve0o8kt" path="res://Sprites/UI/HUD.png" id="1_l8o5y"]
 [ext_resource type="Script" path="res://Scenes/UI/HUD/hud.gd" id="1_qe802"]
 [ext_resource type="Texture2D" uid="uid://dnfui6i23nh1v" path="res://Sprites/UI/HUD_Icons_Clear.png" id="3_ntm6g"]
 [ext_resource type="FontFile" uid="uid://dcbyalkyecj3i" path="res://Fonts/pixelmix.ttf" id="4_x7ddr"]
 [ext_resource type="Texture2D" uid="uid://cpmtm4hyhw1yh" path="res://Sprites/Enviornment_Props.png" id="5_kp07b"]
 [ext_resource type="FontFile" uid="uid://c3jg7lm3yxi7q" path="res://Fonts/5x5 MT Pixel.ttf" id="5_xwf8j"]
+[ext_resource type="Texture2D" uid="uid://bm5wcn8t8p4kr" path="res://Sprites/UI/Selectors.png" id="7_4q8ji"]
+[ext_resource type="PackedScene" uid="uid://cax0kv3jxjlwc" path="res://Scenes/UI/UI_NinePatch/ui_nine_patch.tscn" id="7_agajc"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kt43k"]
 bg_color = Color(0, 0, 0, 1)
@@ -25,14 +26,36 @@ bg_color = Color(0, 0, 0, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ej3s8"]
 bg_color = Color(0.423529, 0.160784, 0.25098, 1)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_u2hf0"]
+atlas = ExtResource("7_4q8ji")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_06lhk"]
+atlas = ExtResource("7_4q8ji")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_87tde"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u2hf0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_06lhk")
+}],
+"loop": true,
+"name": &"default",
+"speed": 0.0
+}]
+
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_qe802")
 
-[node name="Background" type="Sprite2D" parent="."]
-texture_filter = 1
-position = Vector2(41, 258)
-texture = ExtResource("1_l8o5y")
-centered = false
+[node name="Background" parent="." instance=ExtResource("7_agajc")]
+offset_left = 48.0
+offset_top = 258.0
+offset_right = 592.0
+offset_bottom = 360.0
 
 [node name="HUD" type="Node2D" parent="."]
 
@@ -104,7 +127,7 @@ horizontal_alignment = 1
 
 [node name="Item_Slot" type="Sprite2D" parent="HUD/Fighter"]
 texture_filter = 1
-position = Vector2(380, 312)
+position = Vector2(383, 312)
 scale = Vector2(3, 3)
 texture = ExtResource("3_ntm6g")
 hframes = 4
@@ -164,7 +187,7 @@ horizontal_alignment = 1
 
 [node name="Gold_Icon" type="Sprite2D" parent="HUD/Fighter"]
 texture_filter = 1
-position = Vector2(540, 303)
+position = Vector2(556, 303)
 scale = Vector2(3, 3)
 texture = ExtResource("3_ntm6g")
 hframes = 4
@@ -173,9 +196,9 @@ frame = 6
 
 [node name="Gold_Label" type="Label" parent="HUD/Fighter"]
 texture_filter = 1
-offset_left = 501.0
+offset_left = 517.0
 offset_top = 332.0
-offset_right = 581.0
+offset_right = 597.0
 offset_bottom = 356.0
 theme_override_colors/font_color = Color(0.74902, 0.792157, 0.529412, 1)
 theme_override_fonts/font = ExtResource("4_x7ddr")
@@ -188,7 +211,7 @@ horizontal_alignment = 1
 [node name="Ranger" type="Node2D" parent="HUD"]
 
 [node name="Interaction_Icon" type="Sprite2D" parent="HUD"]
-position = Vector2(443, 281)
+position = Vector2(454, 281)
 scale = Vector2(2, 2)
 texture = ExtResource("5_kp07b")
 centered = false
@@ -198,9 +221,9 @@ frame = 474
 
 [node name="Interaction_Label" type="Label" parent="HUD"]
 texture_filter = 1
-offset_left = 411.0
+offset_left = 422.0
 offset_top = 339.0
-offset_right = 510.0
+offset_right = 521.0
 offset_bottom = 349.0
 theme_override_colors/font_color = Color(0.74902, 0.792157, 0.529412, 1)
 theme_override_fonts/font = ExtResource("5_xwf8j")
@@ -211,3 +234,34 @@ horizontal_alignment = 1
 [node name="DIALOGUE" type="Node2D" parent="."]
 
 [node name="INTERACTION" type="Node2D" parent="."]
+visible = false
+
+[node name="UI_NinePatch" parent="INTERACTION" instance=ExtResource("7_agajc")]
+offset_left = 464.0
+offset_top = 176.0
+offset_right = 592.0
+offset_bottom = 360.0
+
+[node name="Object_Icon" type="Sprite2D" parent="INTERACTION"]
+position = Vector2(63, 273)
+scale = Vector2(3, 3)
+texture = ExtResource("5_kp07b")
+centered = false
+hframes = 19
+vframes = 25
+frame = 19
+
+[node name="Object_Desc" type="Label" parent="INTERACTION"]
+offset_left = 121.0
+offset_top = 273.0
+offset_right = 464.0
+offset_bottom = 349.0
+theme_override_colors/font_color = Color(0.74902, 0.792157, 0.529412, 1)
+theme_override_fonts/font = ExtResource("4_x7ddr")
+theme_override_font_sizes/font_size = 16
+text = "You see an object description in front of you...what do you do, funboy?"
+autowrap_mode = 3
+
+[node name="Object_Selector_One" type="AnimatedSprite2D" parent="INTERACTION"]
+position = Vector2(480, 192)
+sprite_frames = SubResource("SpriteFrames_87tde")
