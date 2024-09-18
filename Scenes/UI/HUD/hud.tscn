@@ -217,7 +217,7 @@ texture = ExtResource("5_kp07b")
 centered = false
 hframes = 19
 vframes = 25
-frame = 474
+frame = 399
 
 [node name="Interaction_Label" type="Label" parent="HUD"]
 texture_filter = 1
@@ -234,28 +234,24 @@ horizontal_alignment = 1
 [node name="DIALOGUE" type="Node2D" parent="."]
 
 [node name="INTERACTION" type="Node2D" parent="."]
-visible = false
 
-[node name="UI_NinePatch" parent="INTERACTION" instance=ExtResource("7_agajc")]
+[node name="Interaction_Bkgrnd" parent="INTERACTION" instance=ExtResource("7_agajc")]
+offset_left = 48.0
+offset_top = 24.0
+offset_right = 464.0
+offset_bottom = 216.0
+
+[node name="Choice_Bkgrnd" parent="INTERACTION" instance=ExtResource("7_agajc")]
 offset_left = 464.0
-offset_top = 176.0
+offset_top = 24.0
 offset_right = 592.0
-offset_bottom = 360.0
-
-[node name="Object_Icon" type="Sprite2D" parent="INTERACTION"]
-position = Vector2(63, 273)
-scale = Vector2(3, 3)
-texture = ExtResource("5_kp07b")
-centered = false
-hframes = 19
-vframes = 25
-frame = 19
+offset_bottom = 216.0
 
 [node name="Object_Desc" type="Label" parent="INTERACTION"]
-offset_left = 121.0
-offset_top = 273.0
-offset_right = 464.0
-offset_bottom = 349.0
+offset_left = 64.0
+offset_top = 96.0
+offset_right = 448.0
+offset_bottom = 192.0
 theme_override_colors/font_color = Color(0.74902, 0.792157, 0.529412, 1)
 theme_override_fonts/font = ExtResource("4_x7ddr")
 theme_override_font_sizes/font_size = 16
@@ -263,5 +259,5 @@ text = "You see an object description in front of you...what do you do, funboy?"
 autowrap_mode = 3
 
 [node name="Object_Selector_One" type="AnimatedSprite2D" parent="INTERACTION"]
-position = Vector2(480, 192)
+position = Vector2(486, 48)
 sprite_frames = SubResource("SpriteFrames_87tde")

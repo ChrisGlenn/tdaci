@@ -44,8 +44,7 @@ func _ready():
 func _process(_delta):
 	# CHECK THE HUD_STATE AND DISPLAY THE ACTIVE HUD
 	if Globals.HUD_STATE == "HUD":
-		# display the hud and hide the non-active elements
-		#if !HUD.visible: HUD.visible = true
+		# hide the non-active elements
 		# update the icons for the player's avatar
 		icon_update() # update the hud
 	elif Globals.HUD_STATE == "DIALOGUE":

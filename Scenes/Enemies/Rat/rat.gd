@@ -211,8 +211,6 @@ func enemy_ai(clock: float) -> void:
 		visible = true # show the enemy
 
 
-
-
 func _on_visibility_body_entered(body:Node2D) -> void:
 	if body.is_in_group("PLAYER") and STATE != "DEAD":
 		if STATE == "IDLE": STATE = "ALERTED" # change the enemy state to alerted upon first entering

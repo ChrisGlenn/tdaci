@@ -4,6 +4,7 @@ TO-DO LIST(ALPHA):
 
 -- CURRENTLY WORKING ON --
 - Doors
+- Interactions
 - Combat Math (battle system)
 - Interaction
 THEN
@@ -109,8 +110,8 @@ THEN
 
 
 ALPHA BUG-FIX/FEATURE ADD LIST:
-    [x] Make enemies invisible when under a shade tile (check tile then visible = false)
-    [x] Fix FOV to include doors/objects (have to change tiles)
+    [x] Make enemies invisible when under a shade tile (check if visibility tile exists then visible = false)
+    [x] Fix FOV to include doors/objects (have to use/change tiles)
     [x] Hold down directional movement
 
 

@@ -33,7 +33,9 @@ var player_is_dead : bool = false # if the player is dead then this is true
 # HUD variables
 var HUD_STATE : String = "HUD"
 var hud_interaction_frame : int = 474 # default is black (the final tile frame)
-var interaction_data : Dictionary = {} # holds the interaction data
+var interaction_data : Dictionary = {} # holds the interaction 'dialogue' data
+var search_data : Dictionary = {} # holds the search 'dialogue' data
+var dialogue_data : Dictionary = {} # holds the dialogue data
 
 # game/system variables
 var stage : int = 0 # game stage
