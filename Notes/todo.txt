@@ -99,12 +99,15 @@ THEN
     [] Level 3
     [] Level 4
     [] Level 5
+[] DATA Management
+    [] Door Status Saving/Loading
+    [] Explored Tiles Data Saving for Each Level
+    [] Cleared Floors
 [] System
     [x] Custom Bitmap Font/Small Pixel Font
     [x] Visiblity FOV!!!
     [] Return from Battle
     [x] Remove Enemy from Map until Return to Level
-    [] Save FOV for each level of the castle (save the discovered tiles and load them)
     [] Reset Variables On Main Menu
 
 

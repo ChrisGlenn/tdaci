@@ -1,0 +1,187 @@
+[gd_scene load_steps=12 format=3 uid="uid://rslpfmamperk"]
+
+[ext_resource type="PackedScene" uid="uid://cax0kv3jxjlwc" path="res://Scenes/UI/UI_NinePatch/ui_nine_patch.tscn" id="1_1ilud"]
+[ext_resource type="Script" path="res://Scenes/UI/Interaction/interaction.gd" id="1_x460k"]
+[ext_resource type="Texture2D" uid="uid://bmkuke6wi2ate" path="res://Sprites/UI/Interaction_HUD.png" id="2_pc14b"]
+[ext_resource type="FontFile" uid="uid://dcbyalkyecj3i" path="res://Fonts/pixelmix.ttf" id="3_khlba"]
+[ext_resource type="Texture2D" uid="uid://bm5wcn8t8p4kr" path="res://Sprites/UI/Selectors.png" id="4_l1856"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_07djp"]
+atlas = ExtResource("2_pc14b")
+region = Rect2(0, 0, 176, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7no3g"]
+atlas = ExtResource("2_pc14b")
+region = Rect2(0, 24, 176, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3mhqi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_07djp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7no3g")
+}],
+"loop": true,
+"name": &"default",
+"speed": 0.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u2hf0"]
+atlas = ExtResource("4_l1856")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_06lhk"]
+atlas = ExtResource("4_l1856")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_i8qn2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u2hf0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_06lhk")
+}],
+"loop": true,
+"name": &"default",
+"speed": 0.0
+}]
+
+[node name="Interaction" type="Node2D"]
+z_index = 10
+script = ExtResource("1_x460k")
+
+[node name="Interaction_Bkgrnd" parent="." instance=ExtResource("1_1ilud")]
+offset_left = 48.0
+offset_top = 24.0
+offset_right = 464.0
+offset_bottom = 216.0
+
+[node name="Choice_Bkgrnd" parent="." instance=ExtResource("1_1ilud")]
+offset_left = 464.0
+offset_top = 24.0
+offset_right = 592.0
+offset_bottom = 216.0
+
+[node name="Object_Sprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(80, 37)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_3mhqi")
+centered = false
+
+[node name="Object_Desc" type="Label" parent="."]
+offset_left = 64.0
+offset_top = 102.0
+offset_right = 448.0
+offset_bottom = 198.0
+theme_override_colors/font_color = Color(0.74902, 0.792157, 0.529412, 1)
+theme_override_fonts/font = ExtResource("3_khlba")
+theme_override_font_sizes/font_size = 16
+text = "You see an object description in front of you...what do you do, funboy?"
+autowrap_mode = 3
+
+[node name="Selector_Nodes" type="Node2D" parent="."]
+
+[node name="Object_Selector_One" type="AnimatedSprite2D" parent="Selector_Nodes"]
+position = Vector2(478, 45)
+sprite_frames = SubResource("SpriteFrames_i8qn2")
+
+[node name="Object_Selector_Two" type="AnimatedSprite2D" parent="Selector_Nodes"]
+position = Vector2(478, 69)
+sprite_frames = SubResource("SpriteFrames_i8qn2")
+
+[node name="Object_Selector_Three" type="AnimatedSprite2D" parent="Selector_Nodes"]
+position = Vector2(478, 93)
+sprite_frames = SubResource("SpriteFrames_i8qn2")
+
+[node name="Object_Selector_Four" type="AnimatedSprite2D" parent="Selector_Nodes"]
+position = Vector2(478, 117)
+sprite_frames = SubResource("SpriteFrames_i8qn2")
+
+[node name="Object_Selector_Five" type="AnimatedSprite2D" parent="Selector_Nodes"]
+position = Vector2(478, 141)
+sprite_frames = SubResource("SpriteFrames_i8qn2")
+
+[node name="Object_Selector_Six" type="AnimatedSprite2D" parent="Selector_Nodes"]
+position = Vector2(478, 165)
+sprite_frames = SubResource("SpriteFrames_i8qn2")
+
+[node name="Object_Selector_Seven" type="AnimatedSprite2D" parent="Selector_Nodes"]
+position = Vector2(478, 189)
+sprite_frames = SubResource("SpriteFrames_i8qn2")
+
+[node name="Choices" type="Node2D" parent="."]
+
+[node name="Choice_A" type="Label" parent="Choices"]
+offset_left = 487.0
+offset_top = 38.0
+offset_right = 586.0
+offset_bottom = 61.0
+theme_override_colors/font_color = Color(0.74902, 0.792157, 0.529412, 1)
+theme_override_fonts/font = ExtResource("3_khlba")
+theme_override_font_sizes/font_size = 16
+text = "Choice A"
+
+[node name="Choice_B" type="Label" parent="Choices"]
+offset_left = 487.0
+offset_top = 62.0
+offset_right = 586.0
+offset_bottom = 85.0
+theme_override_colors/font_color = Color(0.74902, 0.792157, 0.529412, 1)
+theme_override_fonts/font = ExtResource("3_khlba")
+theme_override_font_sizes/font_size = 16
+text = "Choice B"
+
+[node name="Choice_C" type="Label" parent="Choices"]
+offset_left = 487.0
+offset_top = 86.0
+offset_right = 586.0
+offset_bottom = 109.0
+theme_override_colors/font_color = Color(0.74902, 0.792157, 0.529412, 1)
+theme_override_fonts/font = ExtResource("3_khlba")
+theme_override_font_sizes/font_size = 16
+text = "Choice C
+"
+
+[node name="Choice_D" type="Label" parent="Choices"]
+offset_left = 487.0
+offset_top = 110.0
+offset_right = 586.0
+offset_bottom = 133.0
+theme_override_colors/font_color = Color(0.74902, 0.792157, 0.529412, 1)
+theme_override_fonts/font = ExtResource("3_khlba")
+theme_override_font_sizes/font_size = 16
+text = "Choice D"
+
+[node name="Choice_E" type="Label" parent="Choices"]
+offset_left = 487.0
+offset_top = 134.0
+offset_right = 586.0
+offset_bottom = 157.0
+theme_override_colors/font_color = Color(0.74902, 0.792157, 0.529412, 1)
+theme_override_fonts/font = ExtResource("3_khlba")
+theme_override_font_sizes/font_size = 16
+text = "Choice E"
+
+[node name="Choice_F" type="Label" parent="Choices"]
+offset_left = 487.0
+offset_top = 158.0
+offset_right = 586.0
+offset_bottom = 181.0
+theme_override_colors/font_color = Color(0.74902, 0.792157, 0.529412, 1)
+theme_override_fonts/font = ExtResource("3_khlba")
+theme_override_font_sizes/font_size = 16
+text = "Choice F"
+
+[node name="Choice_G" type="Label" parent="Choices"]
+offset_left = 487.0
+offset_top = 182.0
+offset_right = 586.0
+offset_bottom = 205.0
+theme_override_colors/font_color = Color(0.74902, 0.792157, 0.529412, 1)
+theme_override_fonts/font = ExtResource("3_khlba")
+theme_override_font_sizes/font_size = 16
+text = "Choice G"

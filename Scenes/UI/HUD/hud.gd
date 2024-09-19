@@ -3,6 +3,7 @@ extends CanvasLayer
 # the heads up display for the game
 # will differ in the information that it displays depending on the character class
 # HUD state scenes
+# fighter
 @onready var HUD = $HUD
 @onready var HEART_SPRITE = $HUD/Fighter/Health_Bar
 @onready var HEART_LABEL = $HUD/Fighter/Health_Label
@@ -14,6 +15,7 @@ extends CanvasLayer
 @onready var HEALTH_LABEL = $HUD/Fighter/Health_Label
 @onready var HEALTH_BAR = $HUD/Fighter/Health_Bar
 @onready var F_GOLD_LABEL = $HUD/Fighter/Gold_Label
+# hud
 # variables
 
 
@@ -42,15 +44,8 @@ func _ready():
 	icon_update()
 
 func _process(_delta):
-	# CHECK THE HUD_STATE AND DISPLAY THE ACTIVE HUD
-	if Globals.HUD_STATE == "HUD":
-		# hide the non-active elements
-		# update the icons for the player's avatar
-		icon_update() # update the hud
-	elif Globals.HUD_STATE == "DIALOGUE":
-		pass
-	elif Globals.HUD_STATE == "INTERACTION":
-		pass
+	# update the icons for the player's avatar
+	icon_update() # update the hud
 
 
 func icon_update():

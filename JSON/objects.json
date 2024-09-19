@@ -1,0 +1,6 @@
+{
+    "001" : {"id": 0,"name": "NULL","desc": "NULL NULL NULL NULL"},
+    "002" : {"id": 1,"name": "Wood Door_A Closed","desc": "A closed wooden door stands before you..."},
+    "003" : {"id": 2,"name": "Wood Door_A Open","desc": "The wooden door in front of you is open."},
+    "004" : {"id": 3,"name": "Wood Door_A Broken","desc": "The broken remains of a wooden door are before you."}
+}

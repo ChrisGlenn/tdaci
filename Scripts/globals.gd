@@ -47,6 +47,7 @@ var frame_timer : int = 42 # time between frame switch
 var inside_interior : bool = false # tracks if player is inside an interior setting (used for sfx effects)
 
 # level variables
+var cleared_levels : Array = [0,0,0,0] # if 1 then the cooresponding floor has been cleared
 var level_one_discovered_tiles : Dictionary = {} # stores the discovered tiles
 var level_doors : Dictionary = {} # stores the door status for each door on each level
 var level_one_despawn : Array = [] # holds enemies/npcs that should despawn

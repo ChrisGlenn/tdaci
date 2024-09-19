@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://df2adtve0o8kt"
-path="res://.godot/imported/HUD.png-6a2e3b06dac2c4bd33c469ad7aec3a6a.ctex"
+uid="uid://bmkuke6wi2ate"
+path="res://.godot/imported/Interaction_HUD.png-9cfc0785832406a1a59c93e037375815.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/UI/HUD.png"
-dest_files=["res://.godot/imported/HUD.png-6a2e3b06dac2c4bd33c469ad7aec3a6a.ctex"]
+source_file="res://Sprites/UI/Interaction_HUD.png"
+dest_files=["res://.godot/imported/Interaction_HUD.png-9cfc0785832406a1a59c93e037375815.ctex"]
 
 [params]
 

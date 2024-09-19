@@ -17,6 +17,11 @@ var frame_ref : int = 474 # the reference UI frame (defaults to black)
 
 
 func _ready():
+	# load the door configuration from the Globals data IF it exists and if not then save the configuration
+	if Globals.level_doors.size() > 0:
+		for n in Globals.level_doors.size():
+			if Globals.level_doors[n].values()["id"] == door_id:
+				pass
 	if current_tilemap:
 		# get the current position
 		var door_position = current_tilemap.local_to_map(global_position)
