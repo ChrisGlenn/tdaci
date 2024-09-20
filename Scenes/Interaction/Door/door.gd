@@ -11,17 +11,33 @@ extends Area2D
 @export var breakable : bool = true # if this door is breakable or not
 @export var switch_controlled : bool = false # if this door requires a switch to open it (also other unlock methods outside of the door)
 @export var hit_points : int = 5 # defaults to 5 IF breakable
+var broken : bool = false # if the door has been broken
+var door_reference_exists : bool = false # if the door is in the level_doors Global
 var door_ref : int = 0 # based on the x coord for the tiles
 var tilemap_ref : int = 1 # defaults to 1 (solid/can't see thru)
 var frame_ref : int = 474 # the reference UI frame (defaults to black)
+var interaction_data : Dictionary = {} # this gets sent to the Interaction HUD
 
 
 func _ready():
 	# load the door configuration from the Globals data IF it exists and if not then save the configuration
 	if Globals.level_doors.size() > 0:
 		for n in Globals.level_doors.size():
-			if Globals.level_doors[n].values()["id"] == door_id:
-				pass
+			if Globals.level_doors[n]["id"] == door_id:
+				opened = Globals.level_doors[n]["opened"]
+				locked = Globals.level_doors[n]["locked"]
+				hit_points = Globals.level_doors[n]["hit_points"]
+				broken = Globals.level_doors[n]["hit_points"]
+				door_reference_exists = true
+			if n == Globals.level_doors.size()-1:
+				if !door_reference_exists:
+					# record this door
+					var this_door = {"id": door_id,"opened": opened,"locked": locked,"hit_points": hit_points,"broken": broken}
+					Globals.level_doors.append(this_door) # add to the array
+	else:
+		# record this door
+		var this_door = {"id": door_id,"opened": opened,"locked": locked,"hit_points": hit_points,"broken": broken}
+		Globals.level_doors.append(this_door) # add to the array
 	if current_tilemap:
 		# get the current position
 		var door_position = current_tilemap.local_to_map(global_position)
@@ -29,10 +45,19 @@ func _ready():
 		# set the door_ref and tilemap_ref to fix door sprite and field of view
 		match door_type:
 			"wood_a":
-				if !opened:		
-					door_ref = 0 # closed
-					frame_ref = 95
+				if !broken:
+					if !opened:		
+						door_ref = 0 # closed
+						frame_ref = 95
+						if locked: pass # locked data
+						else: pass # unlocked data
+					else:
+						door_ref = 1 # opened
+						frame_ref = 96
+						tilemap_ref = 0 # swap tilemap layer
+						# open data here
 				else:
+					# show as open if broken
 					door_ref = 1 # opened
 					frame_ref = 96
 					tilemap_ref = 0 # swap tilemap layer
@@ -64,6 +89,10 @@ func _ready():
 		current_tilemap.set_cell(door_position,tilemap_ref,Vector2i(door_ref,5))
 
 func _process(_delta: float) -> void:
+	pass
+
+
+func door_update():
 	pass
 
 

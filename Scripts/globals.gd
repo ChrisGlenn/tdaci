@@ -47,10 +47,10 @@ var frame_timer : int = 42 # time between frame switch
 var inside_interior : bool = false # tracks if player is inside an interior setting (used for sfx effects)
 
 # level variables
+var current_level : int = 0 # 0 = 1 used for iterating thru array
 var cleared_levels : Array = [0,0,0,0] # if 1 then the cooresponding floor has been cleared
 var level_one_discovered_tiles : Dictionary = {} # stores the discovered tiles
-var level_doors : Dictionary = {} # stores the door status for each door on each level
-var level_one_despawn : Array = [] # holds enemies/npcs that should despawn
+var level_doors : Array = [] # stores the door status for each door on each level
 
 # battleground variables
 var battle_background_dynamic : bool = true # if the background for the battleground is random or not
@@ -74,3 +74,7 @@ func _process(delta):
             frame_timer = 42 # reset the frame timer
     # player movement check
     if player_moved: player_moved = false # reset
+    # DEBUG
+    if Input.is_action_just_pressed("ci_F1"):
+        # used for testing but a good template for player options settings
+        DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)

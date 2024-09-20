@@ -4,6 +4,7 @@ TO-DO LIST(ALPHA):
 
 -- CURRENTLY WORKING ON --
 - Doors
+- Door KOMBAT
 - Interactions
 - Combat Math (battle system)
 - Interaction

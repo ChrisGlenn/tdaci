@@ -30,10 +30,8 @@ var movement_rec # records the movement_inc timer
 
 func _ready() -> void:
 	# check if this enemy should be here or not
-	if Globals.level_one_despawn.size() > 0:
-		for n in Globals.level_one_despawn.size():
-			# if the enemy is listed then delete self
-			if Globals.level_one_despawn[n] == enemy_name: queue_free()
+	if Globals.cleared_levels[Globals.current_level] == 1:
+		queue_free() # the current level is clear so move out!
 	# start enemy ready
 	starting_pos = Vector2(global_position.x, global_position.y) # in case the enemy needs to return
 	movement_rec = movement_inc # record the movement_inc timer
