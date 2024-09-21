@@ -50,8 +50,7 @@ animations = [{
 "speed": 0.0
 }]
 
-[node name="Interaction" type="Node2D"]
-z_index = 10
+[node name="Interaction" type="CanvasLayer"]
 script = ExtResource("1_x460k")
 
 [node name="Interaction_Bkgrnd" parent="." instance=ExtResource("1_1ilud")]
