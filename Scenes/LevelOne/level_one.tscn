@@ -49,6 +49,7 @@ flee_to = Vector2(608, 552)
 position = Vector2(-16, -72)
 door_id = "l1_d001 "
 current_tilemap = NodePath("../../Enviornment_Tiles")
+breakable = false
 
 [node name="Door2" parent="Doors" node_paths=PackedStringArray("current_tilemap") instance=ExtResource("9_1e71d")]
 position = Vector2(-96, -48)

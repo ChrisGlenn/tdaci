@@ -105,7 +105,7 @@ THEN
     [] Explored Tiles Data Saving for Each Level
     [] Cleared Floors
 [] System
-    [x] Custom Bitmap Font/Small Pixel Font
+    [] Custom Bitmap Font/Small Pixel Font FROM Oryx pack
     [x] Visiblity FOV!!!
     [] Return from Battle
     [x] Remove Enemy from Map until Return to Level

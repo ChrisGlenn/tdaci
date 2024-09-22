@@ -18,7 +18,8 @@ var door_ref : int = 0 # based on the x coord for the tiles
 var tilemap_ref : int = 1 # defaults to 1 (solid/can't see thru)
 var frame_ref : int = 474 # the reference UI frame (defaults to black)
 var is_active : bool = false # true if the player is colliding
-var interaction_data : Dictionary = {} # this gets sent to the Interaction HUD
+var door_desc : String = "A closed door stands before you..."
+var door_choices : Array = ["Open", "Return"]
 var interaction_ui # holds the interaction UI
 
 
@@ -52,8 +53,7 @@ func _ready():
 					if !opened:		
 						door_ref = 0 # closed
 						frame_ref = 95
-						if locked: pass # locked data
-						else: pass # unlocked data
+
 					else:
 						door_ref = 1 # opened
 						frame_ref = 96
@@ -101,20 +101,28 @@ func door_control():
 		if Input.is_action_just_pressed("ci_A"):
 			if !interaction_ui:
 				var i_ui = INTERACT_UI.instantiate()
+				i_ui.parent = self # set the parent
+				i_ui.description_text = door_desc # set the description
+				i_ui.choices = door_choices # set the choices
 				get_tree().root.add_child(i_ui)
-				interaction_ui = i_ui
-				print(interaction_ui)
+				interaction_ui = i_ui # set a reference for this object
 
 func door_update():
 	pass
 
+func interaction(choice : String):
+	if choice == "Return":
+		interaction_ui.queue_free() # delete the UI
+		interaction_ui = null # set the interaction_ui to null
+		print(interaction_ui)
 
-func _on_body_exited(body:Node2D) -> void:
+
+func _on_body_entered(body:Node2D) -> void:
 	if body.is_in_group("PLAYER"):
 		# update the HUD to let the player know they can interact with the door
 		is_active = true # set to true
 
-func _on_body_entered(body:Node2D) -> void:
+func _on_body_exited(body:Node2D) -> void:
 	if body.is_in_group("PLAYER"):
 		# update the HUD the player is now out of range of the door
 		is_active = false # set to false
