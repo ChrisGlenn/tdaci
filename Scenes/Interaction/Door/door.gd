@@ -50,13 +50,7 @@ func _ready():
 		var this_door = {"id": door_id,"opened": opened,"locked": locked,"hit_points": hit_points,"broken": broken}
 		Globals.level_doors.append(this_door) # add to the array
 	if current_tilemap:
-		# get the current position
-		var door_position = current_tilemap.local_to_map(global_position)
-		# check against the set door_type then assign the texture accordingly
-		# set the door_ref and tilemap_ref to fix door sprite and field of view
 		door_update() # run the door_update function
-		# update the tilemap based on the door_type
-		current_tilemap.set_cell(door_position,tilemap_ref,Vector2i(door_ref,5))
 
 func _process(_delta: float) -> void:
 	door_control() # door control (input)
@@ -84,6 +78,7 @@ func door_update():
 				if !opened:		
 					door_ref = 0 # closed
 					frame_ref = 95
+					tilemap_ref = 1 # set to obscure visibility if closed again
 					door_frame = 0 # HUD frame closed
 					if !discovered: 
 						door_desc = closed_desc # update HUD description
@@ -97,7 +92,7 @@ func door_update():
 							door_choices = ["Open", "Return"] # update choices
 				else:
 					door_ref = 1 # opened
-					frame_ref = 96
+					frame_ref = 96 # change the actual door frame
 					tilemap_ref = 0 # swap tilemap layer
 					door_frame = 1 # HUD frame closed
 					door_choices = ["Close", "Return"] # update choices
@@ -132,6 +127,17 @@ func door_update():
 				door_ref = 11 # opened
 				frame_ref = 106
 				tilemap_ref = 0 # swap tilemap layer
+	# update the tilemap based on the door_type
+	var door_position = current_tilemap.local_to_map(global_position) # get the current position
+	current_tilemap.set_cell(door_position,tilemap_ref,Vector2i(door_ref,5)) # update the door tile based on frame
+	if interaction_ui: 
+		# if the interaction_ui exists then run this section to update
+		interaction_ui.description_frame = door_frame # set the image
+		interaction_ui.description_text = door_desc # set the description
+		interaction_ui.choices = door_choices # set the choices
+		interaction_ui.int_update() # run the int_update function for the HUD
+		# update the field of view
+		
 
 func interaction(choice : String):
 	if choice == "Open":
@@ -139,12 +145,25 @@ func interaction(choice : String):
 		# the player will have no idea if it's locked or not
 		if !locked:
 			# open the door and change the sprite
-			opened = true
+			opened = true # door is now opened
 			door_update()
+			# close the interaction UI
+			interaction_ui.queue_free() # delete the UI
+			interaction_ui = null # set the interaction_ui to null
+			Globals.can_move = true # return control to the player
 		else:
 			# inform the player that the door is locked and update the description
 			# and choices to now reflect that the door is locked
 			discovered = true # set this door to discovered
+			door_update()
+	elif choice == "Close":
+		# close the door
+		opened = false
+		door_update()
+		# close the interaction UI
+		interaction_ui.queue_free() # delete the UI
+		interaction_ui = null # set the interaction_ui to null
+		Globals.can_move = true # return control to the player
 	elif choice == "Return":
 		interaction_ui.queue_free() # delete the UI
 		interaction_ui = null # set the interaction_ui to null

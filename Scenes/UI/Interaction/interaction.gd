@@ -62,8 +62,18 @@ func int_controls():
             parent.interaction(choice)
 
 func int_update():
-    # clear out the choices
-    # change the dialogue
+    DESC_IMAGE.frame = description_frame # set the image frame
+    DESC_TEXT.text = description_text # set the text
+    choices_max = choices.size()-1 # set the choices max
+    choices_pos = 0 # reset the choices position
     # set the new choices and reset the choices_pos/choices_max
     for n in CHOICES.get_child_count():
         CHOICES.get_child(n).visible = false # hide each child
+        if n < choices.size():
+            CHOICES.get_child(n).text = choices[n] # change the texts
+            CHOICES.get_child(n).visible = true # show the choice option
+            SEL_NODES.get_child(n).visible = true # show the selection node
+            if n == choices_pos: SEL_NODES.get_child(n).frame = 1 # set the current selector pos
+    choice = CHOICES.get_child(choices_pos).text # set the current selected choice reference
+    # update the field of view
+    Globals.fov_update = true

@@ -51,6 +51,7 @@ var current_level : int = 0 # 0 = 1 used for iterating thru array
 var cleared_levels : Array = [0,0,0,0] # if 1 then the cooresponding floor has been cleared
 var level_one_discovered_tiles : Dictionary = {} # stores the discovered tiles
 var level_doors : Array = [] # stores the door status for each door on each level
+var fov_update : bool = false # if true then the game will update the field of view
 
 # battleground variables
 var battle_background_dynamic : bool = true # if the background for the battleground is random or not

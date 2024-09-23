@@ -8,6 +8,7 @@ TO-DO LIST(ALPHA):
 - Interactions
 - Combat Math (battle system)
 - Interaction
+- Inventory System
 THEN
 - Rat Battler (pos 320,94)
 
