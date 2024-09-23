@@ -164,6 +164,9 @@ func interaction(choice : String):
 		interaction_ui.queue_free() # delete the UI
 		interaction_ui = null # set the interaction_ui to null
 		Globals.can_move = true # return control to the player
+	elif choice == "Pick Lock":
+		# pick the lock
+		pass
 	elif choice == "Return":
 		interaction_ui.queue_free() # delete the UI
 		interaction_ui = null # set the interaction_ui to null
