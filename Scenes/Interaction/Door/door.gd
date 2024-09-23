@@ -12,6 +12,11 @@ extends Area2D
 @export var breakable : bool = true # if this door is breakable or not
 @export var switch_controlled : bool = false # if this door requires a switch to open it (also other unlock methods outside of the door)
 @export var hit_points : int = 5 # defaults to 5 IF breakable
+@export_group("Door Interaction")
+@export_multiline var closed_desc : String = "" # the closed description (pre-discovery)
+@export_multiline var closed_locked_desc : String = "" # the closed description for locked (post-discovery)
+@export_multiline var open_desc : String = "" # the open description
+@export_multiline var broken_desc : String = "" # the broken description
 var broken : bool = false # if the door has been broken
 var discovered : int = false # if true then the door's locked status is known
 var door_reference_exists : bool = false # if the door is in the level_doors Global
@@ -49,49 +54,7 @@ func _ready():
 		var door_position = current_tilemap.local_to_map(global_position)
 		# check against the set door_type then assign the texture accordingly
 		# set the door_ref and tilemap_ref to fix door sprite and field of view
-		match door_type:
-			"wood_a":
-				if !broken:
-					if !opened:		
-						door_ref = 0 # closed
-						frame_ref = 95
-						door_frame = 0 # HUD frame closed
-					else:
-						door_ref = 1 # opened
-						frame_ref = 96
-						tilemap_ref = 0 # swap tilemap layer
-						door_frame = 0 # HUD frame closed
-						# open data here
-				else:
-					# show as open if broken
-					door_ref = 1 # opened
-					frame_ref = 96
-					tilemap_ref = 0 # swap tilemap layer
-					door_frame = 1 # open UI door
-			"wood_b":
-				if !opened:
-					door_ref = 2 # closed
-					frame_ref = 97
-				else:
-					door_ref = 3 # opened
-					frame_ref = 98
-					tilemap_ref = 0 # swap tilemap layer
-			"portcullis":
-				if !opened:
-					door_ref = 4 # closed
-					frame_ref = 99
-				else:
-					door_ref = 5 # opened
-					frame_ref = 100
-					tilemap_ref = 0 # swap tilemap layer
-			"steel":
-				if !opened:
-					door_ref = 10 # closed
-					frame_ref = 105
-				else:
-					door_ref = 11 # opened
-					frame_ref = 106
-					tilemap_ref = 0 # swap tilemap layer
+		door_update() # run the door_update function
 		# update the tilemap based on the door_type
 		current_tilemap.set_cell(door_position,tilemap_ref,Vector2i(door_ref,5))
 
@@ -106,13 +69,69 @@ func door_control():
 			if !interaction_ui:
 				var i_ui = INTERACT_UI.instantiate()
 				i_ui.parent = self # set the parent
+				i_ui.description_frame = door_frame # set the image
 				i_ui.description_text = door_desc # set the description
 				i_ui.choices = door_choices # set the choices
 				get_tree().root.add_child(i_ui)
 				interaction_ui = i_ui # set a reference for this object
 
 func door_update():
-	pass
+	# check against the set door_type then assign the texture accordingly
+	# set the door_ref and tilemap_ref to fix door sprite and field of view
+	match door_type:
+		"wood_a":
+			if !broken:
+				if !opened:		
+					door_ref = 0 # closed
+					frame_ref = 95
+					door_frame = 0 # HUD frame closed
+					if !discovered: 
+						door_desc = closed_desc # update HUD description
+						door_choices = ["Open", "Return"] # update choices
+					else: 
+						if locked: 
+							door_desc = closed_locked_desc # update HUD description
+							door_choices = ["Pick Lock", "Bash", "Return"] # update choices
+						else: 
+							door_desc = closed_desc # update HUD description
+							door_choices = ["Open", "Return"] # update choices
+				else:
+					door_ref = 1 # opened
+					frame_ref = 96
+					tilemap_ref = 0 # swap tilemap layer
+					door_frame = 1 # HUD frame closed
+					door_choices = ["Close", "Return"] # update choices
+					door_desc = open_desc # update HUD description
+			else:
+				# show as open if broken
+				door_ref = 1 # opened
+				frame_ref = 96
+				tilemap_ref = 0 # swap tilemap layer
+				door_frame = 1 # open UI door
+		"wood_b":
+			if !opened:
+				door_ref = 2 # closed
+				frame_ref = 97
+			else:
+				door_ref = 3 # opened
+				frame_ref = 98
+				tilemap_ref = 0 # swap tilemap layer
+		"portcullis":
+			if !opened:
+				door_ref = 4 # closed
+				frame_ref = 99
+			else:
+				door_ref = 5 # opened
+				frame_ref = 100
+				tilemap_ref = 0 # swap tilemap layer
+		"steel":
+			if !opened:
+				door_ref = 10 # closed
+				frame_ref = 105
+			else:
+				door_ref = 11 # opened
+				frame_ref = 106
+				tilemap_ref = 0 # swap tilemap layer
 
 func interaction(choice : String):
 	if choice == "Open":
@@ -120,7 +139,8 @@ func interaction(choice : String):
 		# the player will have no idea if it's locked or not
 		if !locked:
 			# open the door and change the sprite
-			pass
+			opened = true
+			door_update()
 		else:
 			# inform the player that the door is locked and update the description
 			# and choices to now reflect that the door is locked

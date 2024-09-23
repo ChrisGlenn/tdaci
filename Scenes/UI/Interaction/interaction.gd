@@ -2,10 +2,12 @@ extends CanvasLayer
 # INTERACTION SCRIPT
 # This HUD element is instanced whenever the player talks or interacts with an NPC or object.
 # Dialogue/interaction choices will be listed along with an image of what the player is interacting with.
+@onready var DESC_IMAGE = $Object_Sprite
 @onready var DESC_TEXT = $Object_Desc
 @onready var INSTRUCT = $Interact_Instruction
 @onready var SEL_NODES = $Selector_Nodes
 @onready var CHOICES = $Choices
+var description_frame : int = 0 # holds the frame for the description/object image
 var description_text : String = "" # holds the descriptions (Strings) 
 var choices : Array = [] # holds the choices (Strings)
 var description_pos : int = 0 # the current description_text array position
@@ -23,6 +25,7 @@ func _ready() -> void:
     # get the list of choices and iterate through each choices child filling in the
     # text and then making the extra choices invisible...
     Globals.can_move = false # stop player movement
+    DESC_IMAGE.frame = description_frame # set the image frame
     DESC_TEXT.text = description_text # set the text
     if choices.size() > 0:
         for n in choices.size():

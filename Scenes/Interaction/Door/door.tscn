@@ -8,6 +8,10 @@ radius = 14.4222
 [node name="Door" type="Area2D"]
 script = ExtResource("1_fjfis")
 door_id = "0000000"
+closed_desc = "A closed door stands before you..."
+closed_locked_desc = "A closed door stands before you. It is locked..."
+open_desc = "An open door stands before you..."
+broken_desc = "You stand near an archway where the remains of a wooden door sit."
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
