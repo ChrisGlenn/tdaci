@@ -13,12 +13,14 @@ extends Area2D
 @export var switch_controlled : bool = false # if this door requires a switch to open it (also other unlock methods outside of the door)
 @export var hit_points : int = 5 # defaults to 5 IF breakable
 var broken : bool = false # if the door has been broken
+var discovered : int = false # if true then the door's locked status is known
 var door_reference_exists : bool = false # if the door is in the level_doors Global
 var door_ref : int = 0 # based on the x coord for the tiles
 var tilemap_ref : int = 1 # defaults to 1 (solid/can't see thru)
 var frame_ref : int = 474 # the reference UI frame (defaults to black)
 var is_active : bool = false # true if the player is colliding
 var door_desc : String = "A closed door stands before you..."
+var door_frame : int = 0 # the frame for the door (is set when matching door_type in ready)
 var door_choices : Array = ["Open", "Return"]
 var interaction_ui # holds the interaction UI
 
@@ -53,17 +55,19 @@ func _ready():
 					if !opened:		
 						door_ref = 0 # closed
 						frame_ref = 95
-
+						door_frame = 0 # HUD frame closed
 					else:
 						door_ref = 1 # opened
 						frame_ref = 96
 						tilemap_ref = 0 # swap tilemap layer
+						door_frame = 0 # HUD frame closed
 						# open data here
 				else:
 					# show as open if broken
 					door_ref = 1 # opened
 					frame_ref = 96
 					tilemap_ref = 0 # swap tilemap layer
+					door_frame = 1 # open UI door
 			"wood_b":
 				if !opened:
 					door_ref = 2 # closed
@@ -111,10 +115,22 @@ func door_update():
 	pass
 
 func interaction(choice : String):
-	if choice == "Return":
+	if choice == "Open":
+		# check if the door is locked or not and then respond
+		# the player will have no idea if it's locked or not
+		if !locked:
+			# open the door and change the sprite
+			pass
+		else:
+			# inform the player that the door is locked and update the description
+			# and choices to now reflect that the door is locked
+			discovered = true # set this door to discovered
+	elif choice == "Return":
 		interaction_ui.queue_free() # delete the UI
 		interaction_ui = null # set the interaction_ui to null
-		print(interaction_ui)
+		Globals.can_move = true # return control to the player
+	else:
+		print("ERROR: Unrecognized choice: ", self) # ERROR
 
 
 func _on_body_entered(body:Node2D) -> void:
