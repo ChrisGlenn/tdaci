@@ -86,7 +86,11 @@ func door_update():
 					else: 
 						if locked: 
 							door_desc = closed_locked_desc # update HUD description
-							door_choices = ["Pick Lock", "Bash", "Return"] # update choices
+							if Globals.player_class == "Fighter" or Globals.player_class == "Ranger":
+								door_choices = ["Pick Lock", "Bash", "Return"] # update choices
+							else:
+								# check if the player has spells that can effect otherwise just show return
+								door_choices = ["Return"]
 						else: 
 							door_desc = closed_desc # update HUD description
 							door_choices = ["Open", "Return"] # update choices
@@ -136,8 +140,6 @@ func door_update():
 		interaction_ui.description_text = door_desc # set the description
 		interaction_ui.choices = door_choices # set the choices
 		interaction_ui.int_update() # run the int_update function for the HUD
-		# update the field of view
-		
 
 func interaction(choice : String):
 	if choice == "Open":
@@ -167,6 +169,8 @@ func interaction(choice : String):
 	elif choice == "Pick Lock":
 		# pick the lock
 		pass
+	elif choice == "Bash":
+		pass
 	elif choice == "Return":
 		interaction_ui.queue_free() # delete the UI
 		interaction_ui = null # set the interaction_ui to null
@@ -179,8 +183,10 @@ func _on_body_entered(body:Node2D) -> void:
 	if body.is_in_group("PLAYER"):
 		# update the HUD to let the player know they can interact with the door
 		is_active = true # set to true
+		Globals.hud_interaction_frame = frame_ref # update HUD interaction frame to door frame
 
 func _on_body_exited(body:Node2D) -> void:
 	if body.is_in_group("PLAYER"):
 		# update the HUD the player is now out of range of the door
 		is_active = false # set to false
+		Globals.hud_interaction_frame = Globals.interaction_frame_default # update HUD interaction frame to default

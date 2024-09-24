@@ -16,13 +16,18 @@ extends CanvasLayer
 @onready var HEALTH_BAR = $HUD/Fighter/Health_Bar
 @onready var F_GOLD_LABEL = $HUD/Fighter/Gold_Label
 # hud
+@onready var INT_ICON = $HUD/Interaction_Icon
+@onready var INT_LABEL = $HUD/Interaction_Label
+@onready var INV_LABEL = $HUD/Inventory_Label
 # variables
 
 
 func _ready():
 	self.visible = true # DEBUGGING show the HUD
 	# set the HUD
-	HEART_LABEL.text = str(Globals.player_hp, "/", Globals.player_max_hp) # set the player's HP label
+	INT_ICON.frame = Globals.hud_interaction_frame # set the interaction icon
+	INT_LABEL.text = str("(", Globals.a_button, ")")
+	INV_LABEL.text = str("(", Globals.x_button, ")")
 	# set FIGHTER HUD
 	if Globals.player_class == "Fighter":
 		HEALTH_LABEL.text = str(Globals.player_hp, "/", Globals.player_max_hp)
@@ -50,6 +55,7 @@ func _process(_delta):
 
 func icon_update():
 	# keeps the HUD status bars and labels updated
+	INT_ICON.frame = Globals.hud_interaction_frame # update the interaction frame
 	# set FIGHTER HUD
 	if Globals.player_class == "Fighter":
 		HEALTH_LABEL.text = str(Globals.player_hp, "/", Globals.player_max_hp)

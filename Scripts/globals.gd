@@ -27,15 +27,23 @@ var bow_attack : Array = [6,10] # the attack power of the player's bow (can get 
 var staff_attack : Array = [6,10] # the attack power of the player's staff (can get upgraded at temple)
 var player_attack : bool = false # this will be true when the player is attacking (used for enemy blocking/dodging)
 var player_is_dead : bool = false # if the player is dead then this is true
+var player_inventory : Array = [] # holds the player inventory
+var player_spells : Array = [] # holds the available player spells
 
 # npc variables
 
 # HUD variables
 var HUD_STATE : String = "HUD"
-var hud_interaction_frame : int = 474 # default is black (the final tile frame)
+var hud_interaction_frame : int = 399 # default is question mark which will do a search
+var interaction_frame_default : int = 399 # what to reset to
 var interaction_data : Dictionary = {} # holds the interaction 'dialogue' data
 var search_data : Dictionary = {} # holds the search 'dialogue' data
 var dialogue_data : Dictionary = {} # holds the dialogue data
+# input display settings
+# checks if controller is plugged in or not and then sets accordingly
+var a_button : String = "SPACE" # 'accept' or interact
+var b_button : String = "CTRL" # 'cancel' or 'block'
+var x_button : String = "I" # inventory
 
 # game/system variables
 var stage : int = 0 # game stage
@@ -60,6 +68,14 @@ var battler_id : int = 0 # used to reference which enemy to load (0 is null)
 # battler strength and others go here 
 
 # global process
+func _ready() -> void:
+    # check for gamepad and if detected change the UI button text
+    var joypad = Input.get_connected_joypads()
+    if joypad.size() > 0:
+        a_button = "A"
+        b_button = "B"
+        x_button = "X"
+
 func _process(delta):
     # global frames
     # this counts down the timer and then swaps the frame back and fourth

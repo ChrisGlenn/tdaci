@@ -3,6 +3,7 @@ TO-DO LIST(ALPHA):
 -- them will be reset based on what works and what doesn't --
 
 -- CURRENTLY WORKING ON --
+- Enviornment Description Search
 - Doors
 - Door KOMBAT
 - Interactions
@@ -78,6 +79,7 @@ THEN
     [] Switch
         [] Door Unlocking
     [] Fireplace
+    [] Basic Empty Search (Describes Enviornment)
 [] NPC Template
 [] UI
     [] Fade Out
@@ -107,6 +109,7 @@ THEN
     [] Cleared Floors
 [] System
     [] Custom Bitmap Font/Small Pixel Font FROM Oryx pack
+    [] Set Dynamic UI Button Display Based on Controller/Keyboard
     [x] Visiblity FOV!!!
     [] Return from Battle
     [x] Remove Enemy from Map until Return to Level
