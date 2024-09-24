@@ -193,7 +193,7 @@ texture = ExtResource("5_kp07b")
 centered = false
 hframes = 19
 vframes = 25
-frame = 399
+frame = 474
 
 [node name="Interaction_Label" type="Label" parent="HUD"]
 texture_filter = 1

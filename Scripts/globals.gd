@@ -34,8 +34,8 @@ var player_spells : Array = [] # holds the available player spells
 
 # HUD variables
 var HUD_STATE : String = "HUD"
-var hud_interaction_frame : int = 399 # default is question mark which will do a search
-var interaction_frame_default : int = 399 # what to reset to
+var hud_interaction_frame : int = 474 # default is question mark which will do a search (399 question mark if needed)
+var interaction_frame_default : int = 474 # what to reset to
 var interaction_data : Dictionary = {} # holds the interaction 'dialogue' data
 var search_data : Dictionary = {} # holds the search 'dialogue' data
 var dialogue_data : Dictionary = {} # holds the dialogue data

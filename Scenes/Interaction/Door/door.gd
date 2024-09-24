@@ -152,12 +152,14 @@ func interaction(choice : String):
 			# close the interaction UI
 			interaction_ui.queue_free() # delete the UI
 			interaction_ui = null # set the interaction_ui to null
+			Globals.hud_interaction_frame = frame_ref # update HUD interaction frame to door frame
 			Globals.can_move = true # return control to the player
 		else:
 			# inform the player that the door is locked and update the description
 			# and choices to now reflect that the door is locked
 			discovered = true # set this door to discovered
 			door_update()
+			Globals.hud_interaction_frame = frame_ref # update HUD interaction frame to door frame
 	elif choice == "Close":
 		# close the door
 		opened = false
@@ -165,6 +167,7 @@ func interaction(choice : String):
 		# close the interaction UI
 		interaction_ui.queue_free() # delete the UI
 		interaction_ui = null # set the interaction_ui to null
+		Globals.hud_interaction_frame = frame_ref # update HUD interaction frame to door frame
 		Globals.can_move = true # return control to the player
 	elif choice == "Pick Lock":
 		# pick the lock

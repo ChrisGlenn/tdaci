@@ -4,9 +4,9 @@ extends CanvasLayer
 # Dialogue/interaction choices will be listed along with an image of what the player is interacting with.
 @onready var DESC_IMAGE = $Object_Sprite
 @onready var DESC_TEXT = $Object_Desc
-@onready var INSTRUCT = $Interact_Instruction
-@onready var SEL_NODES = $Selector_Nodes
-@onready var CHOICES = $Choices
+@onready var CHOICE_MENU = $Choice_Bkgrnd
+@onready var SEL_NODES = $Choice_Bkgrnd/Selector_Nodes
+@onready var CHOICES = $Choice_Bkgrnd/Choices
 var description_frame : int = 0 # holds the frame for the description/object image
 var description_text : String = "" # holds the descriptions (Strings) 
 var choices : Array = [] # holds the choices (Strings)
