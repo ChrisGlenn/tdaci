@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://dbr6nnqcwwvl8"]
-
-[ext_resource type="Script" path="res://Scenes/Enviornment/Area_Search/area_search.gd" id="1_v624q"]
-
-[node name="Area_Search" type="Area2D"]
-script = ExtResource("1_v624q")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://d3sftodihtbdx"]
+[gd_scene load_steps=13 format=3 uid="uid://d3sftodihtbdx"]
 
 [ext_resource type="Texture2D" uid="uid://c4r1bbuhmqdd4" path="res://Sprites/Enemies.png" id="1_06hh1"]
 [ext_resource type="Script" path="res://Scenes/Enemies/Rat/rat.gd" id="1_ojjw5"]
@@ -37,6 +37,18 @@ size = Vector2(16, 24)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_85dxt"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xfgnx"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0hpj7"]
+bg_color = Color(0.423529, 0.160784, 0.25098, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rrvvq"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sfrg7"]
+bg_color = Color(0.74902, 0.792157, 0.529412, 1)
+
 [node name="Rat" type="Area2D"]
 z_index = 4
 script = ExtResource("1_ojjw5")
@@ -60,6 +72,27 @@ shape = SubResource("CircleShape2D_85dxt")
 [node name="RayCast2D" type="RayCast2D" parent="."]
 position = Vector2(8, 12)
 target_position = Vector2(0, 116)
+
+[node name="Combat_Stats" type="Node2D" parent="."]
+visible = false
+
+[node name="Health" type="ProgressBar" parent="Combat_Stats"]
+offset_top = -8.0
+offset_right = 16.0
+offset_bottom = -6.0
+theme_override_styles/background = SubResource("StyleBoxFlat_xfgnx")
+theme_override_styles/fill = SubResource("StyleBoxFlat_0hpj7")
+value = 100.0
+show_percentage = false
+
+[node name="ProgressBar" type="ProgressBar" parent="Combat_Stats"]
+offset_top = -4.0
+offset_right = 16.0
+offset_bottom = -2.0
+theme_override_styles/background = SubResource("StyleBoxFlat_rrvvq")
+theme_override_styles/fill = SubResource("StyleBoxFlat_sfrg7")
+value = 100.0
+show_percentage = false
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_entered" from="Visibility" to="." method="_on_visibility_body_entered"]

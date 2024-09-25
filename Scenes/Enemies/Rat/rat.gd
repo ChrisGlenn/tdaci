@@ -15,6 +15,8 @@ extends Area2D
 @export var movement_inc : float = 50.0 # increment time between space movement
 @export var enemy_level_range : int = 2 # around the level the player should be when facing this enemy
 @export var flee_to : Vector2 # the position the enemy will flee too if the player is too strong
+# combat stats
+@export var hit_points : int = 10 # the rat's hit pints
 var STATE = "IDLE" # IDLE ALERTED ENGAGED PANICKED FOILED and DEAD!
 # pathfinding
 var astar_grid : AStarGrid2D
@@ -26,6 +28,8 @@ var run_level : int = 99 # the level at which the enemy will run from the player
 var player_out_of_range : bool = false # if the player has fled the enemy
 var current_chase_steps : int = 0 # counts the current steps
 var movement_rec # records the movement_inc timer
+var current_atb : int = 100 # the current atb 
+var enemy_atb : int = 100 # max ATB
 
 
 func _ready() -> void:
@@ -224,13 +228,4 @@ func _on_visibility_body_exited(body:Node2D) -> void:
 func _on_body_entered(body:Node2D) -> void:
 	if body.is_in_group("PLAYER"):
 		# check if the player is too powerful and just die or start the battle!
-		if Globals.player_level < run_level:
-			Globals.can_move = false # stop player movement
-			STATE = "IDLE" # return the enemy to an IDLE state
-			# set the enemy globals so the battleground knows what to laod
-			Globals.battler_id = enemy_id
-			# start a scene transition and move to the battle screen
-			var scene_transition = TRANSITION.instantiate()
-			get_tree().root.add_child(scene_transition)
-		else:
-			STATE = "DEAD" # the rat just dies when touched
+		pass
