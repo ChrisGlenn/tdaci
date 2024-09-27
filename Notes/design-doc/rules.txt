@@ -1,0 +1,135 @@
+﻿********************************
+TAELUS RPG RULES 1st EDITION
+********************************
+
+===================================
+Character Creation:
+There are five races that the player can select from. Humans, Fae from the East and West, Half-Fae, and Ilyan. Each race has various statistical advantages and disadvantages listed below.
+
+Humans:
+The majority of the world is made up of the Human race. The original race that existed at the dawn of time, Humans are well versitale in every single class and trade. 
+---No stat changes---
+
+Eastern Fae(Isabella):
+Fae that hails from the Island of Isabella. Along with the 'Western' Fae, they were put in place by The Builders in order to secure some semblance of order in the early world. Seeing they would then be erased, Paleus then interviened and saved them, appointing them as an extention of himself. One side of the world, 'muscle' and the other side the 'brains' that would keep peace. 
+Strength = +1
+Endurance = 0
+Agility = +1
+Intelligence = -1
+Charisma = -1
+
+Western Fae(Skodia):
+Fae that hails from the jungle island of Skodia. See Eastern Fae for more information.
+Strength = -1
+Endurance = -1
+Agility = 0
+Intelligence = +1
+Charisma = +1
+
+Half-Fae:
+When a Fae man breeds with a human woman, the child comes out with unique traits to any other race. This only works with a male Fae though. If a human man breeds with a Fae woman, then a Human is born.
+Strength = +1
+Endurance = 0
+Agility = 0
+Intelligence = 0
+Charisma = +1
+
+Ilyan:
+The Ilyan people are a mystery to many. Believed to be some kind of genetic mutation, no one knows the true origin of the Ilyan people, leading to some to believe that they are the builders. Even the oldest Fae religious texts don't hold any mentions of the Ilyan peoples. They are short in stature but are among some of the most powerful magic users.
+Strength = -1
+Endurance = 0
+Agility = 0
+Intelligence = +1
+Charisma = 0
+
+===================================
+ATTRIBUTES
+
+Strength:
+Strength governs certain things that have to do with weapons and damage. The strong the player the more weapons they can effeciently wield. Strength is also the governing attribute for breaking down doors and other strength based activites.
+
+Endurance:
+Endurance governs your health. A player with high endurance will have a higher HP.
+
+Agility:
+Agility governs the player's ability to dodge and do other physical activities well.
+
+Intelligence:
+Intelligence is required to cast spells. The higher the intelligence the more damage a spell can do and the higher the chance the player has to cast certain spells.
+
+Charisma:
+Charisma governs how well others like you. A player with high charisma can often talk others into doing things for them or giving them information.
+
+===================================
+COMBAT ARMOR AND WEAPONS:
+
+Armor Class:
+While there are various types of armor throughout Taelus, they are all based on these base types:
+
+Light Armor Types:
+Unarmored 2 + END(MOD)
+Robes 12 + INT(MOD)
+Padded 10 + END(MOD)
+Leather 11 + END(MOD)
+Studded Leather 12 + END(MOD)
+
+Medium Armor Types:
+Fur 11 + END(MOD)
+Scale mail 12 + END(MOD)
+Breastplate 13 + END(MOD)
+Halfplate 14 + END(MOD)
+
+Heavy Armor Types:
+Ring mail 12 + END(MOD)
+Chain mail 13 + END(MOD)
+Splint mail 14 + END(MOD)
+Plate mail 15 + END(MOD)
+
+Shield + 1 (2 or 3 depending on the shield)
+Helmet + 1 (2 or 3 depending on the helmet)
+
+The Endurance MOD is set the same as all the other stat modifiers.
+
+6-: -1
+7: 0
+8: 1
+9: 2
+10: 3
+11: 4
+12: 5
+30+: 6
+
+SO if the player has an 11 END then their modifier is 4. If they are wearing Scale Mail then it's 12 + 4 which is 16. With a 24 roll they have to get ABOVE 16 to score a hit. The max AC you can have is 21 with some possible elemental protection.
+
+A hit roll is 2x 12D (24) + AGI(MOD) then if HIT the damage is calculated.
+
+Weapons:
+
+The 
+
+Melee:
+Longsword 8 + 0 to STR(MOD) - AGI PENALTY /2 (AGI REQ: 10) (One Handed)
+Bastard Sword 10 + 0 to STR(MOD) - AGI PENALTY /2 (AGI REQ: 11) (Two Handed)
+Shortsword 6 + 0 to STR(MOD) - AGI PENALTY /2 (AGI REQ: 9) (One Handed)
+Mace 10 + 0 to STR(MOD) - AGI PENALTY /2 (AGI REQ: 11) (One Handed)
+Hammer 11 + 0 to STR(MOD) - END PENALTY /2 (END REQ: 12) (Two Handed)
+Spear 8 + 0 to STR(MOD) - AGI PENALTY /2 (AGI REQ: 9) (One Handed)
+Dagger 5 + 0 to STR(MOD) + Class Mod /2 (One Handed)
+Club 6 + 0 to STR(MOD) - AGI PENALTY /2 (AGI REQ: 8) (One Handed)
+Giant Club 11 + 0 to STR(MOD) - END PENALTY /2 (END REQ: 12) (Two Handed)
+
+Ranged:
+Longbow 10 + 0 to AGI(MOD) - END PENALTY /2 (END REQ: 10)
+Shortbow 8 + 0 to AGI(MOD) - END PENALTY /2 (END REQ: 8)
+Dart 5 + 0 to AGI(MOD) /2
+Throwing Knife 6 + 0 to AGI(MOD) /2
+
+
+
+var fighter_desc = "Fighter:\nFighters are tough and profecient in one handed weapons and shields and all armor types.\n(Class stats: Strength & Agility)"
+var barbarian_desc = "Barbarian:\nBarbarians are very strong and hardy warriors well versed in two-handed weapons. Uses light Armor.\n(Class stats: Strength & Endurance)"
+var battlemage_desc = "Battlemage:\nCombining a profeciency in weapons and magice, Battlemages are feard throughout the realms. Uses one handed weapons.\n(Class stats: Strength & Intelligence)"
+var thief_desc = "Thief:\nQuick moving and smooth talking, theifs are great at sneaking and gaining confidence. Uses short weapons, light armor.\n(Class stats: Agility & Charisma)"
+var cleric_desc = "Cleric:\nClerics are usually charity minded people who have devoted themselves to healing. Uses staffs and light armor.\n(Class stats: Endurance & Intelligence)"
+var wizard_desc = "Wizard:\nWizards are feared and misunderstood in Gradia, having devoted their life to the arcane arts. Uses staffs no armor.\n(Class stats: Intelligence & Charisma)"
+var hunter_desc = "Hunter:\nMaking a living stalking prey, hunters are masters of ranged weapons. Uses ranged weapons, light armor.\n(Class stats: Agility & Endurance)"

@@ -65,6 +65,7 @@ func _process(delta: float) -> void:
 	# Enemy AI 2.0
 	enemy_ai(delta)
 
+
 func enemy_ai(clock: float) -> void:
 	# check the states
 	if STATE == "IDLE":
@@ -98,6 +99,7 @@ func enemy_ai(clock: float) -> void:
 			).slice(1) # remove the enemies current position
 			current_path = id_path # set the current_path and start moving
 			paths[0] = 1 # the path has been set
+			current_path.pop_back() # remove the last entry from the path (player's position)
 		else:
 			# update the current_path if the player has moved
 			if Globals.player_moved:
@@ -111,13 +113,15 @@ func enemy_ai(clock: float) -> void:
 				if movement_inc > 0:
 					movement_inc -= Globals.timer_ctrl * clock # decrement timer
 				else:
-					var target_position = tilemap.map_to_local(current_path.front()) # get the target position
-					if target_position.x > global_position.x: ANIM.flip_h = true # flip if moving right
-					elif target_position.x < global_position.x: ANIM.flip_h = false # unflip if moving left
-					self.global_position = Vector2(target_position.x - 8, target_position.y - 12) # move the enemy to the position
-					current_path.pop_front() # remove the current target position
-					current_chase_steps += 1 # increment current chase steps
-					movement_inc = movement_rec # reset the timer
+					# check if the path still has any values left and then move if so
+					if current_path.size() > 0:
+						var target_position = tilemap.map_to_local(current_path.front()) # get the target position
+						if target_position.x > global_position.x: ANIM.flip_h = true # flip if moving right
+						elif target_position.x < global_position.x: ANIM.flip_h = false # unflip if moving left
+						self.global_position = Vector2(target_position.x - 8, target_position.y - 12) # move the enemy to the position
+						current_path.pop_front() # remove the current target position
+						current_chase_steps += 1 # increment current chase steps
+						movement_inc = movement_rec # reset the timer
 			# count the enemy steps and if they are maxed check if the player is still inside of the
 			# engagement area and if so then reset and continue, otherwise move on
 			if current_chase_steps >= chase_steps:
@@ -149,13 +153,15 @@ func enemy_ai(clock: float) -> void:
 				if movement_inc > 0:
 					movement_inc -= Globals.timer_ctrl * clock # decrement timer
 				else:
-					var target_position = tilemap.map_to_local(current_path.front()) # get the target position
-					if target_position.x > global_position.x: ANIM.flip_h = true # flip if moving right
-					elif target_position.x < global_position.x: ANIM.flip_h = false # unflip if moving left
-					self.global_position = Vector2(target_position.x - 8, target_position.y - 12) # move the enemy to the position
-					current_path.pop_front() # remove the current target position
-					current_chase_steps += 1 # increment current chase steps
-					movement_inc = movement_rec # reset the timer
+					# check if the path still has any values left and then move if so
+					if current_path.size() > 0:
+						var target_position = tilemap.map_to_local(current_path.front()) # get the target position
+						if target_position.x > global_position.x: ANIM.flip_h = true # flip if moving right
+						elif target_position.x < global_position.x: ANIM.flip_h = false # unflip if moving left
+						self.global_position = Vector2(target_position.x - 8, target_position.y - 12) # move the enemy to the position
+						current_path.pop_front() # remove the current target position
+						current_chase_steps += 1 # increment current chase steps
+						movement_inc = movement_rec # reset the timer
 		# if the player is out of range then return to the start point
 		if current_chase_steps == chase_steps:
 			if player_out_of_range:
@@ -195,12 +201,14 @@ func enemy_ai(clock: float) -> void:
 			if movement_inc > 0:
 				movement_inc -= Globals.timer_ctrl * clock # decrement timer
 			else:
-				var target_position = tilemap.map_to_local(current_path.front()) # get the target position
-				self.global_position = Vector2(target_position.x - 8, target_position.y - 12) # move the enemy to the position
-				if target_position.x > global_position.x: ANIM.flip_h = true # flip if moving right
-				elif target_position.x < global_position.x: ANIM.flip_h = false # unflip if moving left
-				current_path.pop_front() # remove the current target position
-				movement_inc = movement_rec # reset the timer
+				# check if the path still has any values left and then move if so
+				if current_path.size() > 0:
+					var target_position = tilemap.map_to_local(current_path.front()) # get the target position
+					self.global_position = Vector2(target_position.x - 8, target_position.y - 12) # move the enemy to the position
+					if target_position.x > global_position.x: ANIM.flip_h = true # flip if moving right
+					elif target_position.x < global_position.x: ANIM.flip_h = false # unflip if moving left
+					current_path.pop_front() # remove the current target position
+					movement_inc = movement_rec # reset the timer
 		if global_position == starting_pos:
 			STATE = "IDLE" # return to idle state
 	elif STATE == "DEAD":
@@ -228,4 +236,4 @@ func _on_visibility_body_exited(body:Node2D) -> void:
 func _on_body_entered(body:Node2D) -> void:
 	if body.is_in_group("PLAYER"):
 		# check if the player is too powerful and just die or start the battle!
-		pass
+		queue_free() # delete self for now

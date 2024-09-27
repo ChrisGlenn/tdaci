@@ -23,11 +23,10 @@ THEN
     [] Tools (see items.txt)
     [] Player Starting Position
 [] Combat (GEN ONE)
+    [] Combat System
     [] FIGHTER
-        [x] Player Idle
-        [x] Player Dodge
         [] Player (Fighter) Block
-        [x] Player (Fighter) Attack
+        [] Player (Fighter) Attack
         [] Player Fatigued
         [] Player Hit
         [] Player Death
