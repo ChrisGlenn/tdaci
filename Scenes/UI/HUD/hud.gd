@@ -30,18 +30,11 @@ func _ready():
 	INV_LABEL.text = str("(", Globals.x_button, ")")
 	# set FIGHTER HUD
 	if Globals.player_class == "Fighter":
-		HEALTH_LABEL.text = str(Globals.player_hp, "/", Globals.player_max_hp)
-		HEALTH_BAR.max_value = Globals.player_max_hp
-		HEALTH_BAR.value = Globals.player_hp
-		SHIELD_LABEL.text = str(Globals.shield_hp, "/", Globals.shield_max_hp) # set the shield HP label
-		SHIELD_BAR.max_value = Globals.shield_max_hp
-		SHIELD_BAR.value = Globals.shield_hp
-		SWORD_LABEL.text = str(Globals.sword_hp, "/", Globals.sword_max_hp)
-		SWORD_BAR.max_value = Globals.sword_max_hp
-		SWORD_BAR.value = Globals.sword_hp
-		STAMINA_BAR.max_value = Globals.stamina_max_points
-		STAMINA_BAR.value = Globals.stamina_points
-		F_GOLD_LABEL.text = str(Globals.player_gold)
+		# HEALTH_LABEL.text = str(Globals.player_hp, "/", Globals.player_max_hp)
+		# HEALTH_BAR.max_value = Globals.player_max_hp
+		# HEALTH_BAR.value = Globals.player_hp
+		# F_GOLD_LABEL.text = str(Globals.player_gold)
+		pass
 	else:
 		print("ERROR: INCORRECT PLAYER CLASS SET!!!")
 		get_tree().quit() # exit the game after the error
@@ -58,14 +51,10 @@ func icon_update():
 	INT_ICON.frame = Globals.hud_interaction_frame # update the interaction frame
 	# set FIGHTER HUD
 	if Globals.player_class == "Fighter":
-		HEALTH_LABEL.text = str(Globals.player_hp, "/", Globals.player_max_hp)
-		HEALTH_BAR.value = Globals.player_hp
-		SHIELD_LABEL.text = str(Globals.shield_hp, "/", Globals.shield_max_hp) # set the shield HP label
-		SHIELD_BAR.value = Globals.shield_hp
-		SWORD_LABEL.text = str(Globals.sword_hp, "/", Globals.sword_max_hp)
-		SWORD_BAR.value = Globals.sword_hp
-		STAMINA_BAR.value = Globals.stamina_points
-		F_GOLD_LABEL.text = str(Globals.player_gold)
+		# HEALTH_LABEL.text = str(Globals.player_hp, "/", Globals.player_max_hp)
+		# HEALTH_BAR.value = Globals.player_hp
+		# F_GOLD_LABEL.text = str(Globals.player_gold)
+		pass
 	else:
 		print("ERROR: INCORRECT PLAYER CLASS SET!!!")
 		get_tree().quit() # exit the game after the error

@@ -8,7 +8,8 @@ extends Area2D
 @onready var TRANSITION = preload("res://Scenes/UI/Scene_Transition/scene_transition.tscn")
 @onready var ANIM = $AnimatedSprite2D
 @onready var RAY = $RayCast2D
-@export_group("RAT-tributes")
+@onready var ATB_BAR = $Combat_Stats/ProgressBar
+@export_category("General")
 @export var enemy_name : String = "ENEMY REF" # used to check against the unspawn checklist
 @export var enemy_id : int = 0 # gets passed to the battleground to spawn the battler
 @export var chase_steps : int = 10 # how many steps before checking if the player is still in field of view
@@ -16,9 +17,13 @@ extends Area2D
 @export var enemy_level_range : int = 2 # around the level the player should be when facing this enemy
 @export var flee_to : Vector2 # the position the enemy will flee too if the player is too strong
 # combat stats
-@export var hit_points : int = 10 # the rat's hit pints
-var STATE = "IDLE" # IDLE ALERTED ENGAGED PANICKED FOILED and DEAD!
+@export_category("Combat")
+@export var hit_points : int = 12 # the rat's hit pints
+@export var enemy_str : int = 10 # the rat's strength stat
+@export var enemy_agi : int = 7 # the rat's agility stat
+@export var agility_mod : int = 0 # the rat's agility mod
 # pathfinding
+var STATE = "IDLE" # IDLE ALERTED ENGAGED PANICKED FOILED COMBAT and DEAD!
 var astar_grid : AStarGrid2D
 var current_path : Array = [] # the current path to the player
 var paths : Array = [0,0,0] # check if a path has been generated [ENGAGED, PANICKED, FOILED]
@@ -28,8 +33,10 @@ var run_level : int = 99 # the level at which the enemy will run from the player
 var player_out_of_range : bool = false # if the player has fled the enemy
 var current_chase_steps : int = 0 # counts the current steps
 var movement_rec # records the movement_inc timer
-var current_atb : int = 100 # the current atb 
-var enemy_atb : int = 100 # max ATB
+var combat_timer : int = 30 # how long a combat round takes
+var combat_timer_rec # records the combat timer
+var current_atb : float = 100.0 # the current atb 
+var enemy_atb : float = 100.0 # max ATB
 
 
 func _ready() -> void:
@@ -37,6 +44,7 @@ func _ready() -> void:
 	if Globals.cleared_levels[Globals.current_level] == 1:
 		queue_free() # the current level is clear so move out!
 	# start enemy ready
+	combat_timer_rec = combat_timer # record the combat timer
 	starting_pos = Vector2(global_position.x, global_position.y) # in case the enemy needs to return
 	movement_rec = movement_inc # record the movement_inc timer
 	movement_inc = 0 # set the movement increment to 0 to remove pause before chasing player
@@ -67,6 +75,14 @@ func _process(delta: float) -> void:
 
 
 func enemy_ai(clock: float) -> void:
+	# updates
+	ATB_BAR.value = current_atb # set the atb bar
+	# slowly bring the ATB back up
+	if current_atb < enemy_atb:
+		ANIM.play("default")
+		current_atb += 30 * clock
+	else:
+		current_atb = enemy_atb # stop it from going over
 	# check the states
 	if STATE == "IDLE":
 		paths = [0,0,0] # reset the paths
@@ -99,7 +115,6 @@ func enemy_ai(clock: float) -> void:
 			).slice(1) # remove the enemies current position
 			current_path = id_path # set the current_path and start moving
 			paths[0] = 1 # the path has been set
-			current_path.pop_back() # remove the last entry from the path (player's position)
 		else:
 			# update the current_path if the player has moved
 			if Globals.player_moved:
@@ -211,11 +226,20 @@ func enemy_ai(clock: float) -> void:
 					movement_inc = movement_rec # reset the timer
 		if global_position == starting_pos:
 			STATE = "IDLE" # return to idle state
+	elif STATE == "COMBAT":
+		# begin attacking the player when the ATB is full
+		if current_chase_steps > 0: current_chase_steps = 0 # reset the chase steps
+		if current_atb == enemy_atb:
+			# attack the player
+			# this enemy is a simple melee fighter so it will just attack
+			ANIM.play("attack")
+			print("HIT")
+			current_atb = 0
 	elif STATE == "DEAD":
 		ANIM.frame = 2 # show the dead rat
 		# PLAY THE SFX
 		# add the enemy to the despawn list
-		Globals.level_one_despawn.append(enemy_name)
+		queue_free() # just delete for now DEBUG
 	# CHECK IF THE ENEMY IS IN A SHADED/BLACKED OUT TILE AND THEN HIDE
 	var current_tile = visibility_map.local_to_map(global_position)
 	if visibility_map.get_cell_source_id(current_tile) == 1:
@@ -236,4 +260,9 @@ func _on_visibility_body_exited(body:Node2D) -> void:
 func _on_body_entered(body:Node2D) -> void:
 	if body.is_in_group("PLAYER"):
 		# check if the player is too powerful and just die or start the battle!
-		queue_free() # delete self for now
+		STATE = "COMBAT" # start combat\
+
+func _on_body_exited(body:Node2D) -> void:
+	if body.is_in_group("PLAYER"):
+		# check if the player is too powerful and just die or start the battle!
+		STATE = "ENGAGED" # start chase after the player

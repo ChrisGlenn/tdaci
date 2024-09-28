@@ -11,11 +11,12 @@ func _ready() -> void:
 # FUNCTIONS
 # combat function
 # hit function for melee attacks
-func melee_hit(skill : int, attack : Array):
+func melee_hit():
     # calculate and return the damage that has been caused by a melee attack
-    var attack_value = RNG.randi_range(attack[0], attack[1]) # get the attack value
-    var damage = (skill + attack_value) / 2 # return an integer
-    return damage
+    pass
+
+func melee_dmg():
+    pass
 
 
 # interaction functions

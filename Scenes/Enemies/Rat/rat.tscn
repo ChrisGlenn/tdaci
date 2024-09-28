@@ -1,7 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://d3sftodihtbdx"]
+[gd_scene load_steps=12 format=3 uid="uid://d3sftodihtbdx"]
 
 [ext_resource type="Texture2D" uid="uid://c4r1bbuhmqdd4" path="res://Sprites/Enemies.png" id="1_06hh1"]
 [ext_resource type="Script" path="res://Scenes/Enemies/Rat/rat.gd" id="1_ojjw5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g50qn"]
+atlas = ExtResource("1_06hh1")
+region = Rect2(48, 0, 16, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_32vvn"]
 atlas = ExtResource("1_06hh1")
@@ -19,6 +23,17 @@ region = Rect2(32, 0, 16, 24)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_g50qn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g50qn")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_32vvn")
 }, {
 "duration": 1.0,
@@ -32,8 +47,7 @@ animations = [{
 "speed": 0.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7ds5f"]
-size = Vector2(16, 24)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ao7e2"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_85dxt"]
 
@@ -54,7 +68,7 @@ centered = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(8, 12)
-shape = SubResource("RectangleShape2D_7ds5f")
+shape = SubResource("CapsuleShape2D_ao7e2")
 
 [node name="Visibility" type="Area2D" parent="."]
 
@@ -79,5 +93,6 @@ value = 100.0
 show_percentage = false
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
 [connection signal="body_entered" from="Visibility" to="." method="_on_visibility_body_entered"]
 [connection signal="body_exited" from="Visibility" to="." method="_on_visibility_body_exited"]

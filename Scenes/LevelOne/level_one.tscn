@@ -26,7 +26,7 @@ tile_map_data = PackedByteArray("AAD1/+b/AQASABgAAAD1/+f/AQASABgAAAD1/+j/AQASABg
 visible = false
 
 [node name="Player" parent="." instance=ExtResource("2_kmm3q")]
-position = Vector2(0, 24)
+position = Vector2(64, -168)
 
 [node name="Stairs" type="Node2D" parent="."]
 

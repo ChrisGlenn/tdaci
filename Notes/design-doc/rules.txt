@@ -112,11 +112,11 @@ Longsword 8 + 0 to STR(MOD) - AGI PENALTY /2 (AGI REQ: 10) (One Handed)
 Bastard Sword 10 + 0 to STR(MOD) - AGI PENALTY /2 (AGI REQ: 11) (Two Handed)
 Shortsword 6 + 0 to STR(MOD) - AGI PENALTY /2 (AGI REQ: 9) (One Handed)
 Mace 10 + 0 to STR(MOD) - AGI PENALTY /2 (AGI REQ: 11) (One Handed)
-Hammer 11 + 0 to STR(MOD) - END PENALTY /2 (END REQ: 12) (Two Handed)
+Hammer 12 + 0 to STR(MOD) - END PENALTY /2 (END REQ: 12) (Two Handed)
 Spear 8 + 0 to STR(MOD) - AGI PENALTY /2 (AGI REQ: 9) (One Handed)
 Dagger 5 + 0 to STR(MOD) + Class Mod /2 (One Handed)
 Club 6 + 0 to STR(MOD) - AGI PENALTY /2 (AGI REQ: 8) (One Handed)
-Giant Club 11 + 0 to STR(MOD) - END PENALTY /2 (END REQ: 12) (Two Handed)
+Giant Club 12 + 0 to STR(MOD) - END PENALTY /2 (END REQ: 12) (Two Handed)
 
 Ranged:
 Longbow 10 + 0 to AGI(MOD) - END PENALTY /2 (END REQ: 10)

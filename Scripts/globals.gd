@@ -2,33 +2,36 @@ extends Node
 # GLOBAL VARIABLES (SINGLETONS)
 # player variables
 var player_position : Vector2
-var player_name : String = "Adan" # player's name
-var player_level : int = 1 # the level of the player
-var player_class : String = "Fighter" # Fighter, Mage, Ranger (defaults to fighter)
-var player_hp : int = 39 # player's current hit points
-var player_max_hp : int = 39 # player's hit points
-var player_mp : int = 10 # player's current mana points
-var player_max_mp : int = 10 # player's mana points
-var player_gold : int = 20 # player's gold
-var player_xp : int = 0 # player's current xp
-var player_strength : int = 8 # player strength (fighter, ranger)
-var player_wisdom : int = 5 # player wisdom (mage only)
-var player_health : int = 9 # player's health (all classes)
-var player_stamina : int = 7 # player's stamina (fighter, ranger)
-var player_mana : int = 5 # player's mana (mage only)
-var shield_hp : int = 10 # fighter's current shield hit points
-var shield_max_hp : int = 10 # fighter's shield hit points
-var sword_hp : int = 10 # fighter's current sword hit points
-var sword_max_hp : int = 10 # fighter's sword hit points
-var stamina_max_points : int = 100 # how many max points the player's stamina is
-var stamina_points : int = 100 # the current stamina points for the player
-var sword_attack : Array = [6,10] # the attack power of the player's sword (can get upgraded by blacksmith) [lowerst, highest]
-var bow_attack : Array = [6,10] # the attack power of the player's bow (can get upgraded by blacksmith)
-var staff_attack : Array = [6,10] # the attack power of the player's staff (can get upgraded at temple)
-var player_attack : bool = false # this will be true when the player is attacking (used for enemy blocking/dodging)
-var player_is_dead : bool = false # if the player is dead then this is true
-var player_inventory : Array = [] # holds the player inventory
-var player_spells : Array = [] # holds the available player spells
+
+var player : Dictionary = {
+    "name": "Adan",
+    "gender": "Male",
+    "race": "Human",
+    "class": "Fighter",
+    "level": 1,
+    "max_hp": 8,
+    "hp": 8,
+    "xp": 0,
+    "xp_to": 100,
+    "STR": 11,
+    "STR_MOD": 4,
+    "END": 9,
+    "END_MOD": 2,
+    "AGI": 10,
+    "AGI_MOD": 3,
+    "INT": 7,
+    "INT_MOD": 0,
+    "CHR": 9,
+    "CHR_MOD": 2,
+    "bonus": 1,
+    "AC": 0,
+    "AC_MOD": 0,
+    "WPN_DMG": 0,
+    "WPN_PEN": 0,
+    "INV": [],
+    "Spells": [],
+    "Dead": false
+}
 
 # npc variables
 
