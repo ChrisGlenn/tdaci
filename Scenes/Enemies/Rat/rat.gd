@@ -20,7 +20,9 @@ extends Area2D
 @export_category("Combat")
 @export var hit_points : int = 12 # the rat's hit pints
 @export var enemy_str : int = 10 # the rat's strength stat
+@export var enemy_str_mod : int = 3 # 10 = 3
 @export var enemy_agi : int = 7 # the rat's agility stat
+@export var enemy_agi_mod : int = 0 # 7 = 0
 @export var agility_mod : int = 0 # the rat's agility mod
 # pathfinding
 var STATE = "IDLE" # IDLE ALERTED ENGAGED PANICKED FOILED COMBAT and DEAD!
@@ -97,7 +99,7 @@ func enemy_ai(clock: float) -> void:
 			# or panic and run away
 			var collider = RAY.get_collider()
 			if collider.is_in_group("PLAYER"):
-				if Globals.player_level >= run_level:
+				if Globals.player["level"] >= run_level:
 					current_path.clear() # remove current path
 					STATE = "PANICKED" # change the state to panicked
 				else:
@@ -206,7 +208,7 @@ func enemy_ai(clock: float) -> void:
 					# or panic and run away
 					var collider = RAY.get_collider()
 					if collider.is_in_group("PLAYER"):
-						if Globals.player_level >= run_level:
+						if Globals.player["level"] >= run_level:
 							current_path.clear() # remove current path
 							STATE = "PANICKED" # change the state to panicked
 						else:

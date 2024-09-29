@@ -29,7 +29,7 @@ func _ready():
 	INT_LABEL.text = str("(", Globals.a_button, ")")
 	INV_LABEL.text = str("(", Globals.x_button, ")")
 	# set FIGHTER HUD
-	if Globals.player_class == "Fighter":
+	if Globals.player["class"] == "Fighter":
 		# HEALTH_LABEL.text = str(Globals.player_hp, "/", Globals.player_max_hp)
 		# HEALTH_BAR.max_value = Globals.player_max_hp
 		# HEALTH_BAR.value = Globals.player_hp
@@ -50,7 +50,7 @@ func icon_update():
 	# keeps the HUD status bars and labels updated
 	INT_ICON.frame = Globals.hud_interaction_frame # update the interaction frame
 	# set FIGHTER HUD
-	if Globals.player_class == "Fighter":
+	if Globals.player["class"] == "Fighter":
 		# HEALTH_LABEL.text = str(Globals.player_hp, "/", Globals.player_max_hp)
 		# HEALTH_BAR.value = Globals.player_hp
 		# F_GOLD_LABEL.text = str(Globals.player_gold)

@@ -49,7 +49,7 @@ Strength:
 Strength governs certain things that have to do with weapons and damage. The strong the player the more weapons they can effeciently wield. Strength is also the governing attribute for breaking down doors and other strength based activites.
 
 Endurance:
-Endurance governs your health. A player with high endurance will have a higher HP.
+Endurance governs your health and stamina. A player with high endurance will have a higher HP and higher stamina.
 
 Agility:
 Agility governs the player's ability to dodge and do other physical activities well.
@@ -108,6 +108,7 @@ Weapons:
 The 
 
 Melee:
+Unarmed 2 + 0 to STR(MOD) /2
 Longsword 8 + 0 to STR(MOD) - AGI PENALTY /2 (AGI REQ: 10) (One Handed)
 Bastard Sword 10 + 0 to STR(MOD) - AGI PENALTY /2 (AGI REQ: 11) (Two Handed)
 Shortsword 6 + 0 to STR(MOD) - AGI PENALTY /2 (AGI REQ: 9) (One Handed)

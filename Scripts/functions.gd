@@ -12,10 +12,26 @@ func _ready() -> void:
 # combat function
 # hit function for melee attacks
 func melee_hit():
-    # calculate and return the damage that has been caused by a melee attack
-    pass
+    # calculate and return if an attacker has hit
+    # do this by 'rolling' a 4 d6 and add the attackers agility modifier then compare it 
+    # against the defenders armor class + shields/helmets + endurance modifier
+    # if the roll is above the defenders defensive state then return true
+    # if 1 then the attacker misses but IF 24 then a score with a full mod hit
+    var roll = RNG.randi_range(1,24)
+    if roll == 1:
+        return "MISS" # the attacker has missed
+    elif roll == 24:
+        return "CRIT" # the attacker has hit
+    else:
+        # check against the defenders stats to see if there is a hit
+        return "HIT"
 
 func melee_dmg():
+    # calculate the damage done this is done with the following formula:
+    # weapon stat + 0 to STR(MOD) - ANY PENALTY /2
+    pass
+
+func spell_dmg():
     pass
 
 
