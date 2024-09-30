@@ -11,8 +11,6 @@ TO-DO LIST(ALPHA):
 - Door KOMBAT
 - Interactions
 - Inventory System
-THEN
-- Rat Battler (pos 320,94)
 
 
 [] Player
@@ -23,6 +21,7 @@ THEN
     [] Scrolls (see spells.txt)
     [] Tools (see items.txt)
     [] Player Starting Position
+    [] Death
 [] Combat (GEN ONE)
     [] Combat System
     [] FIGHTER
@@ -84,15 +83,19 @@ THEN
 [] UI
     [] Fade Out
     [] Fade In
-    [x] Scene Transition (Fight)
     [] Dialogue/Text
     [] Stats
     [] Inventory
     [] Save/Load Menu
     [] CRT Shader(?)
+    [] 'Terminal'
+    [] Controls
     [] Main Menu
         [] Background Image
         [] Main Menu HUD
+    [] Options Menu
+        [] Resolution
+        [] Fullscreen
 [] Courtyard
     [] Courtyard Exterior
     [] Tavern Interior
@@ -111,7 +114,7 @@ THEN
     [] Custom Bitmap Font/Small Pixel Font FROM Oryx pack
     [] Set Dynamic UI Button Display Based on Controller/Keyboard
     [x] Visiblity FOV!!!
-    [] Return from Battle
+    [] Battle End
     [x] Remove Enemy from Map until Return to Level
     [] Reset Variables On Main Menu
 

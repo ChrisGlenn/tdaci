@@ -98,6 +98,7 @@ func player_input(clock):
 	if Input.is_action_just_pressed("ci_END"):
 		get_tree().quit() # exit the game
 
-func hit(_dmg : int):
+func hit(dmg : int):
 	# the player has been hit
-	pass
+	Globals.player["hp"] -= dmg
+	print("Player HP: ", Globals.player["hp"])

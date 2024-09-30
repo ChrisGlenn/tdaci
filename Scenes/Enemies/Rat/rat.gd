@@ -243,17 +243,17 @@ func enemy_ai(clock: float) -> void:
 			if did_hit == "HIT":
 				var attack_dmg = Functions.attack_dmg(false, enemy_weapon, enemy_str_mod, enemy_weapon_penalty, Globals.player["AC"]) 
 				print("HIT: ", did_hit, " for ", attack_dmg)
+				combat_target.hit(attack_dmg)
 			elif did_hit == "CRIT":
 				var attack_dmg = Functions.attack_dmg(true, enemy_weapon, enemy_str_mod, 0, Globals.player["AC"]) 
 				print("CRIT: ", did_hit, " for ", attack_dmg)
+				combat_target.hit(attack_dmg)
 			else:
 				print("MISS!")
 			current_atb = 0
 	elif STATE == "DEAD":
-		ANIM.frame = 2 # show the dead rat
 		# PLAY THE SFX
-		# add the enemy to the despawn list
-		queue_free() # just delete for now DEBUG
+		ANIM.frame = 2 # show the dead rat
 	# CHECK IF THE ENEMY IS IN A SHADED/BLACKED OUT TILE AND THEN HIDE
 	var current_tile = visibility_map.local_to_map(global_position)
 	if visibility_map.get_cell_source_id(current_tile) == 1:
@@ -261,9 +261,12 @@ func enemy_ai(clock: float) -> void:
 	else:
 		visible = true # show the enemy
 
-func hit(_dmg : int):
+func hit(dmg : int):
 	# the enemy has been hit
-	pass
+	hit_points -= dmg
+	if hit_points >= 0: 
+		# reward the player and then die
+		STATE = "DEAD" # the rat is dead
 
 
 func _on_visibility_body_entered(body:Node2D) -> void:
@@ -276,15 +279,13 @@ func _on_visibility_body_exited(body:Node2D) -> void:
 		player_out_of_range = true # the player has fled
 
 func _on_body_entered(body:Node2D) -> void:
+	combat_target = body # set the combat_target
 	if body.is_in_group("PLAYER"):
 		# check if the player is too powerful and just die or start the battle!
 		STATE = "COMBAT" # start combat
-	else:
-		combat_target = body # set the combat target
 
 func _on_body_exited(body:Node2D) -> void:
+	combat_target = null # reset the combat_target to null
 	if body.is_in_group("PLAYER"):
 		# check if the player is too powerful and just die or start the battle!
 		STATE = "ENGAGED" # start chase after the player
-	else:
-		combat_target = null # reset the combat target back to null

@@ -2,6 +2,10 @@
 A list of the audio needed for the game.
 
 OST:
+[] A time for rest (sleep theme)
+[] Ivalyn (in the town)
+[] Song of Prayer (in the church)
+[] Darkness Abounds (inside the castle)
 
 SFX:
 [] Player Steps

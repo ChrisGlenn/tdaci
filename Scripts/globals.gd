@@ -13,6 +13,8 @@ var player : Dictionary = {
     "hp": 8,
     "xp": 0,
     "xp_to": 100,
+    "current_weight": 0,
+    "carry_capacity": 40,
     "STR": 11,
     "STR_MOD": 4,
     "END": 9,
@@ -63,20 +65,13 @@ var level_one_discovered_tiles : Dictionary = {} # stores the discovered tiles
 var level_doors : Array = [] # stores the door status for each door on each level
 var fov_update : bool = false # if true then the game will update the field of view
 
-# battleground variables
-var battle_background_dynamic : bool = true # if the background for the battleground is random or not
-var battle_static_background : int = 0 # what static background to load
-var battler_id : int = 0 # used to reference which enemy to load (0 is null)
-# battler strength and others go here 
 
 # global process
 func _ready() -> void:
     # check for gamepad and if detected change the UI button text
     var joypad = Input.get_connected_joypads()
     if joypad.size() > 0:
-        a_button = "A"
-        b_button = "B"
-        x_button = "X"
+        pass
 
 func _process(delta):
     # global frames

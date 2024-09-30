@@ -134,3 +134,25 @@ var thief_desc = "Thief:\nQuick moving and smooth talking, theifs are great at s
 var cleric_desc = "Cleric:\nClerics are usually charity minded people who have devoted themselves to healing. Uses staffs and light armor.\n(Class stats: Endurance & Intelligence)"
 var wizard_desc = "Wizard:\nWizards are feared and misunderstood in Gradia, having devoted their life to the arcane arts. Uses staffs no armor.\n(Class stats: Intelligence & Charisma)"
 var hunter_desc = "Hunter:\nMaking a living stalking prey, hunters are masters of ranged weapons. Uses ranged weapons, light armor.\n(Class stats: Agility & Endurance)"
+
+# take in the player's endurance stat and calculate their HP
+if end < 7:
+    Globals.player.hp_max = 5
+    Globals.player.hp = Globals.player.hp_max
+elif end > 6 and end < 10:
+    Globals.player.hp_max = 6
+    Globals.player.hp = Globals.player.hp_max
+elif end == 10:
+    Globals.player.hp_max = 7
+    Globals.player.hp = Globals.player.hp_max
+elif end == 11:
+    Globals.player.hp_max = 8
+    Globals.player.hp = Globals.player.hp_max
+elif end == 12:
+    Globals.player.hp_max = 9
+    Globals.player.hp = Globals.player.hp_max
+elif end > 12:
+    Globals.player.hp_max = 10
+    Globals.player.hp = Globals.player.hp_max
+
+Carrying capacity is str mod * 10
