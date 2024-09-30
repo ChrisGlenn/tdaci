@@ -97,3 +97,7 @@ func player_input(clock):
 		print(global_position) # get current player position
 	if Input.is_action_just_pressed("ci_END"):
 		get_tree().quit() # exit the game
+
+func hit(_dmg : int):
+	# the player has been hit
+	pass

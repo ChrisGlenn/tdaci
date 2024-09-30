@@ -24,6 +24,8 @@ extends Area2D
 @export var enemy_agi : int = 7 # the rat's agility stat
 @export var enemy_agi_mod : int = 0 # 7 = 0
 @export var agility_mod : int = 0 # the rat's agility mod
+@export var enemy_weapon : int = 2 # unarmed rat
+@export var enemy_weapon_penalty : int = 0 # no penalty
 # pathfinding
 var STATE = "IDLE" # IDLE ALERTED ENGAGED PANICKED FOILED COMBAT and DEAD!
 var astar_grid : AStarGrid2D
@@ -35,6 +37,8 @@ var run_level : int = 99 # the level at which the enemy will run from the player
 var player_out_of_range : bool = false # if the player has fled the enemy
 var current_chase_steps : int = 0 # counts the current steps
 var movement_rec # records the movement_inc timer
+var combat_target # holds the player
+var combat_target_ac # holds the target's armor class
 var combat_timer : int = 30 # how long a combat round takes
 var combat_timer_rec # records the combat timer
 var current_atb : float = 100.0 # the current atb 
@@ -235,7 +239,15 @@ func enemy_ai(clock: float) -> void:
 			# attack the player
 			# this enemy is a simple melee fighter so it will just attack
 			ANIM.play("attack")
-			print("HIT")
+			var did_hit = Functions.melee_hit(enemy_agi_mod, (Globals.player["AC"] + Globals.player["END_MOD"]))
+			if did_hit == "HIT":
+				var attack_dmg = Functions.attack_dmg(false, enemy_weapon, enemy_str_mod, enemy_weapon_penalty, Globals.player["AC"]) 
+				print("HIT: ", did_hit, " for ", attack_dmg)
+			elif did_hit == "CRIT":
+				var attack_dmg = Functions.attack_dmg(true, enemy_weapon, enemy_str_mod, 0, Globals.player["AC"]) 
+				print("CRIT: ", did_hit, " for ", attack_dmg)
+			else:
+				print("MISS!")
 			current_atb = 0
 	elif STATE == "DEAD":
 		ANIM.frame = 2 # show the dead rat
@@ -248,6 +260,10 @@ func enemy_ai(clock: float) -> void:
 		visible = false # hide enemy
 	else:
 		visible = true # show the enemy
+
+func hit(_dmg : int):
+	# the enemy has been hit
+	pass
 
 
 func _on_visibility_body_entered(body:Node2D) -> void:
@@ -262,9 +278,13 @@ func _on_visibility_body_exited(body:Node2D) -> void:
 func _on_body_entered(body:Node2D) -> void:
 	if body.is_in_group("PLAYER"):
 		# check if the player is too powerful and just die or start the battle!
-		STATE = "COMBAT" # start combat\
+		STATE = "COMBAT" # start combat
+	else:
+		combat_target = body # set the combat target
 
 func _on_body_exited(body:Node2D) -> void:
 	if body.is_in_group("PLAYER"):
 		# check if the player is too powerful and just die or start the battle!
 		STATE = "ENGAGED" # start chase after the player
+	else:
+		combat_target = null # reset the combat target back to null
