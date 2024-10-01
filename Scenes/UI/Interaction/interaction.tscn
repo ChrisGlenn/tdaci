@@ -61,7 +61,6 @@ offset_bottom = 216.0
 
 [node name="Object_Sprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(80, 37)
-scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_3mhqi")
 centered = false
 
@@ -72,7 +71,7 @@ offset_right = 448.0
 offset_bottom = 182.0
 theme_override_colors/font_color = Color(0.74902, 0.792157, 0.529412, 1)
 theme_override_fonts/font = ExtResource("3_khlba")
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 12
 text = "You see an object description in front of you...what do you do, funboy?"
 autowrap_mode = 3
 
@@ -86,7 +85,6 @@ offset_bottom = 216.0
 position = Vector2(-464, -24)
 
 [node name="Object_Selector_One" type="AnimatedSprite2D" parent="Choice_Bkgrnd/Selector_Nodes"]
-visible = false
 position = Vector2(478, 45)
 sprite_frames = SubResource("SpriteFrames_i8qn2")
 

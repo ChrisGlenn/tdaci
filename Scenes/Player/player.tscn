@@ -50,22 +50,18 @@ shape = SubResource("RectangleShape2D_ng0s2")
 [node name="Ray_UP" type="RayCast2D" parent="."]
 position = Vector2(8, 12)
 target_position = Vector2(0, -24)
-collide_with_areas = true
 
 [node name="Ray_RIGHT" type="RayCast2D" parent="."]
 position = Vector2(8, 12)
 target_position = Vector2(16, 0)
-collide_with_areas = true
 
 [node name="Ray_DOWN" type="RayCast2D" parent="."]
 position = Vector2(8, 12)
 target_position = Vector2(0, 24)
-collide_with_areas = true
 
-[node name="Ray_LEFT" type="RayCast2D" parent="."]
+[node name="Ray_LEFT" type="RayCast2D" parent="." groups=["PLAYER"]]
 position = Vector2(8, 12)
 target_position = Vector2(-16, 0)
-collide_with_areas = true
 
 [node name="AudioListener2D" type="AudioListener2D" parent="."]
 current = true
@@ -76,6 +72,6 @@ volume_db = -14.0
 bus = &"SFX"
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(8, 48)
+position = Vector2(0, 24)
 position_smoothing_enabled = true
 position_smoothing_speed = 3.0

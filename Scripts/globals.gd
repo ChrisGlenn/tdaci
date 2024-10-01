@@ -57,6 +57,8 @@ var timer_ctrl : float = 100.0 # timer control
 var frame : int = 0 # switches between 0 and 1 global frame set
 var frame_timer : int = 42 # time between frame switch
 var inside_interior : bool = false # tracks if player is inside an interior setting (used for sfx effects)
+# timers here are for free use so I don't have to make a ton of timer recorders for each instance
+var timer_thirty : int = 30
 
 # level variables
 var current_level : int = 0 # 0 = 1 used for iterating thru array

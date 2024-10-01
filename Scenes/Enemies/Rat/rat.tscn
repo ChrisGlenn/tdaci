@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://d3sftodihtbdx"]
+[gd_scene load_steps=11 format=3 uid="uid://d3sftodihtbdx"]
 
 [ext_resource type="Texture2D" uid="uid://c4r1bbuhmqdd4" path="res://Sprites/Enemies.png" id="1_06hh1"]
 [ext_resource type="Script" path="res://Scenes/Enemies/Rat/rat.gd" id="1_ojjw5"]
@@ -15,16 +15,9 @@ region = Rect2(0, 0, 16, 24)
 atlas = ExtResource("1_06hh1")
 region = Rect2(16, 0, 16, 24)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_spsx6"]
-atlas = ExtResource("1_06hh1")
-region = Rect2(32, 0, 16, 24)
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_7iqyj"]
 animations = [{
 "frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_g50qn")
-}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_g50qn")
 }],
@@ -38,9 +31,6 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_2apsb")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_spsx6")
 }],
 "loop": true,
 "name": &"default",
@@ -60,20 +50,6 @@ bg_color = Color(0.74902, 0.792157, 0.529412, 1)
 [node name="Rat" type="Area2D"]
 z_index = 4
 script = ExtResource("1_ojjw5")
-enemy_name = null
-enemy_id = null
-chase_steps = null
-movement_inc = null
-enemy_level_range = null
-flee_to = null
-hit_points = null
-enemy_str = null
-enemy_str_mod = null
-enemy_agi = null
-enemy_agi_mod = null
-agility_mod = null
-enemy_weapon = null
-enemy_weapon_penalty = null
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
@@ -96,6 +72,7 @@ position = Vector2(8, 12)
 target_position = Vector2(0, 116)
 
 [node name="Combat_Stats" type="Node2D" parent="."]
+z_index = 10
 
 [node name="ProgressBar" type="ProgressBar" parent="Combat_Stats"]
 offset_top = -4.0

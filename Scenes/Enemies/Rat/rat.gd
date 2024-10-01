@@ -39,8 +39,7 @@ var current_chase_steps : int = 0 # counts the current steps
 var movement_rec # records the movement_inc timer
 var combat_target # holds the player
 var combat_target_ac # holds the target's armor class
-var combat_timer : int = 30 # how long a combat round takes
-var combat_timer_rec # records the combat timer
+var combat_timer : int = 0 # how long a combat round takes
 var current_atb : float = 100.0 # the current atb 
 var enemy_atb : float = 100.0 # max ATB
 
@@ -50,7 +49,6 @@ func _ready() -> void:
 	if Globals.cleared_levels[Globals.current_level] == 1:
 		queue_free() # the current level is clear so move out!
 	# start enemy ready
-	combat_timer_rec = combat_timer # record the combat timer
 	starting_pos = Vector2(global_position.x, global_position.y) # in case the enemy needs to return
 	movement_rec = movement_inc # record the movement_inc timer
 	movement_inc = 0 # set the movement increment to 0 to remove pause before chasing player
@@ -75,18 +73,18 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	# animation
-	if STATE != "DEAD": ANIM.frame = Globals.frame # set the animation frame
+	if ANIM.animation == "default":	
+		ANIM.frame = Globals.frame # set the animation frame
 	# Enemy AI 2.0
 	enemy_ai(delta)
 
 
-func enemy_ai(clock: float) -> void:
+func enemy_ai(clock) -> void:
 	# updates
 	ATB_BAR.value = current_atb # set the atb bar
 	# slowly bring the ATB back up
 	if current_atb < enemy_atb:
-		ANIM.play("default")
-		current_atb += 30 * clock
+		current_atb += Globals.timer_thirty * clock
 	else:
 		current_atb = enemy_atb # stop it from going over
 	# check the states
@@ -236,30 +234,39 @@ func enemy_ai(clock: float) -> void:
 		# begin attacking the player when the ATB is full
 		if current_chase_steps > 0: current_chase_steps = 0 # reset the chase steps
 		if current_atb == enemy_atb:
-			# attack the player
-			# this enemy is a simple melee fighter so it will just attack
-			ANIM.play("attack")
-			var did_hit = Functions.melee_hit(enemy_agi_mod, (Globals.player["AC"] + Globals.player["END_MOD"]))
-			if did_hit == "HIT":
-				var attack_dmg = Functions.attack_dmg(false, enemy_weapon, enemy_str_mod, enemy_weapon_penalty, Globals.player["AC"]) 
-				print("HIT: ", did_hit, " for ", attack_dmg)
-				combat_target.hit(attack_dmg)
-			elif did_hit == "CRIT":
-				var attack_dmg = Functions.attack_dmg(true, enemy_weapon, enemy_str_mod, 0, Globals.player["AC"]) 
-				print("CRIT: ", did_hit, " for ", attack_dmg)
-				combat_target.hit(attack_dmg)
-			else:
-				print("MISS!")
-			current_atb = 0
+			attack() # attack the player
+		if combat_timer > 0:
+			ANIM.play("attack") # play the attack animation
+			combat_timer -= Globals.timer_ctrl * clock
+		else:
+			combat_timer = 0 # set at 0
+			ANIM.play("default") # return to default animation
 	elif STATE == "DEAD":
 		# PLAY THE SFX
-		ANIM.frame = 2 # show the dead rat
+		queue_free() # just delete self for now DEBUG
 	# CHECK IF THE ENEMY IS IN A SHADED/BLACKED OUT TILE AND THEN HIDE
 	var current_tile = visibility_map.local_to_map(global_position)
 	if visibility_map.get_cell_source_id(current_tile) == 1:
 		visible = false # hide enemy
 	else:
 		visible = true # show the enemy
+
+func attack():
+	# attack the player
+	# this enemy is a simple melee fighter so it will just attack
+	var did_hit = Functions.melee_hit(enemy_agi_mod, (Globals.player["AC"] + Globals.player["END_MOD"]))
+	if did_hit == "HIT":
+		var attack_dmg = Functions.attack_dmg(false, enemy_weapon, enemy_str_mod, enemy_weapon_penalty, Globals.player["AC"]) 
+		print("HIT: ", did_hit, " for ", attack_dmg)
+		combat_target.hit(attack_dmg)
+	elif did_hit == "CRIT":
+		var attack_dmg = Functions.attack_dmg(true, enemy_weapon, enemy_str_mod, 0, Globals.player["AC"]) 
+		print("CRIT: ", did_hit, " for ", attack_dmg)
+		combat_target.hit(attack_dmg)
+	else:
+		print("MISS!")
+	current_atb = 0
+	combat_timer = Globals.timer_thirty
 
 func hit(dmg : int):
 	# the enemy has been hit

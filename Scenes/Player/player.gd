@@ -12,6 +12,9 @@ signal player_moved # custom player script signal
 @export var move_timer_set : int = 20 # pause length between movement
 @export var field_of_view : int = 30 # how many tiles the player can see ahead
 var move_timer : int = 0 # paused time before player moves again
+var hit_timer : int = 0 # used when hit
+var is_hit : bool = false # if the player is hit
+var is_stunned : bool = false # if true the player cannot move
 var map_position # holds the current player position on the map
 var interactable # holds the interactable object once it comes into the area
 
@@ -36,7 +39,7 @@ func player_input(clock):
 	# check for player input and update the game accordingly
 	# PLAYER MOVEMENT
 	# controls the player movement
-	if Globals.can_move:
+	if Globals.can_move and !is_stunned and !is_hit:
 		if Input.is_action_pressed("ci_UP"):
 			# move up
 			if !RAY_UP.is_colliding():
@@ -92,6 +95,15 @@ func player_input(clock):
 		# movement timer
 		if move_timer > 0:
 			move_timer -= clock * Globals.timer_ctrl # decrement the timer
+	# HIT EFFECT
+	if hit_timer > 0:
+		hit_timer -= Globals.timer_ctrl * clock
+		PLAYER_SPRITE.modulate = Color(0.424,0.161,0.251) # change the color
+	else:
+		PLAYER_SPRITE.modulate = Color(1, 1, 1, 1) # return color to normal
+		is_hit = false # return control to player
+		hit_timer = 0 # reset this to zero
+
 	# DEBUG
 	if Input.is_action_just_pressed("ci_DEBUG"):
 		print(global_position) # get current player position
@@ -100,5 +112,11 @@ func player_input(clock):
 
 func hit(dmg : int):
 	# the player has been hit
-	Globals.player["hp"] -= dmg
-	print("Player HP: ", Globals.player["hp"])
+	is_hit = true # the player is hit
+	Globals.player["hp"] -= dmg # take the damage 
+	hit_timer = Globals.timer_thirty # set the hit timer
+	print("Player HP: ", Globals.player["hp"]) # DEBUG
+
+func death():
+	# the player has died
+	pass
