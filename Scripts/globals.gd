@@ -48,6 +48,8 @@ var dialogue_data : Dictionary = {} # holds the dialogue data
 var a_button : String = "SPACE" # 'accept' or interact
 var b_button : String = "CTRL" # 'cancel' or 'block'
 var x_button : String = "I" # inventory
+# terminal
+var terminal : Array = [] # the HUD 'terminal' that updates the player on the goings ons
 
 # game/system variables
 var stage : int = 0 # game stage

@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://cqi17gr4yv8bh" path="res://Scenes/Interaction/Door/door.tscn" id="9_1e71d"]
 
 [node name="LevelOne" type="Node2D"]
+position = Vector2(0, 1)
 script = ExtResource("1_cewib")
 
 [node name="Enviornment_Tiles" parent="." instance=ExtResource("1_i7mo0")]

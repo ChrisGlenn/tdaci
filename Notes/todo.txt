@@ -63,6 +63,7 @@ TO-DO LIST(ALPHA):
         [] Item Descriptions
         [] Inventory Add/Delete
         [] Player Interactions
+    [] Equipment System
 [] Enemies
     [] Enemy Spawner
     [x] Set Paths
