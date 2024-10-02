@@ -18,11 +18,11 @@ extends Area2D
 @export var flee_to : Vector2 # the position the enemy will flee too if the player is too strong
 # combat stats
 @export_category("Combat")
-@export var hit_points : int = 12 # the rat's hit pints
-@export var enemy_str : int = 10 # the rat's strength stat
-@export var enemy_str_mod : int = 3 # 10 = 3
-@export var enemy_agi : int = 7 # the rat's agility stat
-@export var enemy_agi_mod : int = 0 # 7 = 0
+@export var hit_points : int = 6 # the rat's hit pints
+@export var enemy_str : int = 8 # the rat's strength stat
+@export var enemy_str_mod : int = 1 # 8 = 3
+@export var enemy_agi : int = 8 # the rat's agility stat
+@export var enemy_agi_mod : int = 1 # 8 = 1
 @export var agility_mod : int = 0 # the rat's agility mod
 @export var enemy_weapon : int = 2 # unarmed rat
 @export var enemy_weapon_penalty : int = 0 # no penalty
@@ -286,13 +286,13 @@ func _on_visibility_body_exited(body:Node2D) -> void:
 		player_out_of_range = true # the player has fled
 
 func _on_body_entered(body:Node2D) -> void:
-	combat_target = body # set the combat_target
 	if body.is_in_group("PLAYER"):
 		# check if the player is too powerful and just die or start the battle!
+		combat_target = body # set the combat_target
 		STATE = "COMBAT" # start combat
 
 func _on_body_exited(body:Node2D) -> void:
-	combat_target = null # reset the combat_target to null
 	if body.is_in_group("PLAYER"):
 		# check if the player is too powerful and just die or start the battle!
+		combat_target = null # reset the combat_target to null
 		STATE = "ENGAGED" # start chase after the player
