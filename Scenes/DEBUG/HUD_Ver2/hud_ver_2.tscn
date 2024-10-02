@@ -19,6 +19,17 @@ offset_top = 240.0
 offset_right = 512.0
 offset_bottom = 288.0
 
+[node name="Player_Name_Label2" type="Label" parent="Keyboard"]
+offset_left = 392.0
+offset_top = 276.0
+offset_right = 422.0
+offset_bottom = 282.0
+theme_override_colors/font_color = Color(0.74902, 0.792157, 0.529412, 1)
+theme_override_fonts/font = ExtResource("3_vqywf")
+theme_override_font_sizes/font_size = 6
+text = "<SPACE>"
+horizontal_alignment = 1
+
 [node name="Controller" type="Node2D" parent="."]
 
 [node name="Controller_Bkgrnd" parent="Controller" instance=ExtResource("1_ri5d2")]
