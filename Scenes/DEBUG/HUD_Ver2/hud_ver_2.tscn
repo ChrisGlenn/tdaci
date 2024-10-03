@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://dvyovtdcbbe27"]
+[gd_scene load_steps=5 format=3 uid="uid://dvyovtdcbbe27"]
 
 [ext_resource type="PackedScene" uid="uid://cax0kv3jxjlwc" path="res://Scenes/UI/UI_NinePatch/ui_nine_patch.tscn" id="1_ri5d2"]
 [ext_resource type="Texture2D" uid="uid://dnfui6i23nh1v" path="res://Sprites/UI/HUD_Icons_Clear.png" id="2_vytql"]
+[ext_resource type="Texture2D" uid="uid://cpmtm4hyhw1yh" path="res://Sprites/Enviornment_Props.png" id="3_ngbdb"]
 [ext_resource type="FontFile" uid="uid://dcbyalkyecj3i" path="res://Fonts/pixelmix.ttf" id="3_vqywf"]
 
 [node name="HUD_ver2" type="CanvasLayer"]
@@ -19,10 +20,10 @@ offset_top = 240.0
 offset_right = 512.0
 offset_bottom = 288.0
 
-[node name="Player_Name_Label2" type="Label" parent="Keyboard"]
-offset_left = 392.0
+[node name="A_Label" type="Label" parent="Keyboard"]
+offset_left = 390.0
 offset_top = 276.0
-offset_right = 422.0
+offset_right = 424.0
 offset_bottom = 282.0
 theme_override_colors/font_color = Color(0.74902, 0.792157, 0.529412, 1)
 theme_override_fonts/font = ExtResource("3_vqywf")
@@ -30,7 +31,49 @@ theme_override_font_sizes/font_size = 6
 text = "<SPACE>"
 horizontal_alignment = 1
 
+[node name="A_Icon" type="Sprite2D" parent="Keyboard"]
+position = Vector2(396, 248)
+texture = ExtResource("3_ngbdb")
+centered = false
+hframes = 19
+vframes = 25
+frame = 474
+
+[node name="X_Label" type="Label" parent="Keyboard"]
+offset_left = 432.0
+offset_top = 276.0
+offset_right = 448.0
+offset_bottom = 282.0
+theme_override_colors/font_color = Color(0.74902, 0.792157, 0.529412, 1)
+theme_override_fonts/font = ExtResource("3_vqywf")
+theme_override_font_sizes/font_size = 6
+text = "<I>"
+horizontal_alignment = 1
+
+[node name="Y_Label" type="Label" parent="Keyboard"]
+offset_left = 456.0
+offset_top = 276.0
+offset_right = 472.0
+offset_bottom = 282.0
+theme_override_colors/font_color = Color(0.74902, 0.792157, 0.529412, 1)
+theme_override_fonts/font = ExtResource("3_vqywf")
+theme_override_font_sizes/font_size = 6
+text = "<S>"
+horizontal_alignment = 1
+
+[node name="ESC_Label" type="Label" parent="Keyboard"]
+offset_left = 480.0
+offset_top = 276.0
+offset_right = 504.0
+offset_bottom = 282.0
+theme_override_colors/font_color = Color(0.74902, 0.792157, 0.529412, 1)
+theme_override_fonts/font = ExtResource("3_vqywf")
+theme_override_font_sizes/font_size = 6
+text = "<ESC>"
+horizontal_alignment = 1
+
 [node name="Controller" type="Node2D" parent="."]
+visible = false
 
 [node name="Controller_Bkgrnd" parent="Controller" instance=ExtResource("1_ri5d2")]
 offset_left = 272.0
@@ -53,10 +96,10 @@ frame = 6
 
 [node name="Gold_Label" type="Label" parent="Player_Info"]
 layout_mode = 0
-offset_left = 81.0
-offset_top = 25.0
-offset_right = 112.0
-offset_bottom = 33.0
+offset_left = 88.0
+offset_top = 30.0
+offset_right = 105.0
+offset_bottom = 38.0
 theme_override_colors/font_color = Color(0.74902, 0.792157, 0.529412, 1)
 theme_override_fonts/font = ExtResource("3_vqywf")
 theme_override_font_sizes/font_size = 6
@@ -87,9 +130,9 @@ text = "HP:"
 
 [node name="HP_Current" type="Label" parent="Player_Info"]
 layout_mode = 0
-offset_left = 25.0
+offset_left = 20.0
 offset_top = 12.0
-offset_right = 65.0
+offset_right = 56.0
 offset_bottom = 20.0
 theme_override_colors/font_color = Color(0.74902, 0.792157, 0.529412, 1)
 theme_override_fonts/font = ExtResource("3_vqywf")
@@ -109,12 +152,24 @@ text = "Level:"
 
 [node name="Current_Level" type="Label" parent="Player_Info"]
 layout_mode = 0
-offset_left = 42.0
+offset_left = 29.0
 offset_top = 20.0
-offset_right = 53.0
+offset_right = 40.0
 offset_bottom = 28.0
 theme_override_colors/font_color = Color(0.74902, 0.792157, 0.529412, 1)
 theme_override_fonts/font = ExtResource("3_vqywf")
 theme_override_font_sizes/font_size = 6
 text = "1"
 horizontal_alignment = 2
+
+[node name="Stat_Label" type="Label" parent="Player_Info"]
+layout_mode = 0
+offset_left = 57.0
+offset_top = 30.0
+offset_right = 84.0
+offset_bottom = 38.0
+theme_override_colors/font_color = Color(0.25098, 0.207843, 0.470588, 1)
+theme_override_fonts/font = ExtResource("3_vqywf")
+theme_override_font_sizes/font_size = 6
+text = "Status"
+horizontal_alignment = 1

@@ -47,7 +47,7 @@ bg_color = Color(0, 0, 0, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sfrg7"]
 bg_color = Color(0.74902, 0.792157, 0.529412, 1)
 
-[node name="Rat" type="Area2D"]
+[node name="Rat" type="Area2D" groups=["ENEMY"]]
 z_index = 4
 script = ExtResource("1_ojjw5")
 
