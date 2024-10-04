@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://yxhmu5sbgox3"]
+
+[ext_resource type="PackedScene" uid="uid://cax0kv3jxjlwc" path="res://Scenes/UI/UI_NinePatch/ui_nine_patch.tscn" id="1_1w3ep"]
+
+[node name="Game_Menu" type="CanvasLayer"]
+process_mode = 3
+
+[node name="UI_NinePatch" parent="." instance=ExtResource("1_1w3ep")]
+offset_top = 64.0
+offset_right = 88.0
+offset_bottom = 200.0

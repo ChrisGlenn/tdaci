@@ -54,7 +54,6 @@ TO-DO LIST(ALPHA):
     [x] Health 'Bar'
     [x] Equipment 'Bar'
     [x] Stamina Bar
-    [] Mana 'Bar'
     [x] Gold
     [] Item Slot
     [] Arrow Slot
@@ -64,6 +63,12 @@ TO-DO LIST(ALPHA):
         [] Inventory Add/Delete
         [] Player Interactions
     [] Equipment System
+    [] Menu
+        [] Actual Menu/Pause
+        [] Load Game
+        [] Options
+        [] Resume
+        [] Quit
 [] Enemies
     [] Enemy Spawner
     [x] Set Paths

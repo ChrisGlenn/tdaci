@@ -1,11 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dx13wwuc4fjvp"]
+[gd_scene load_steps=2 format=3 uid="uid://dx13wwuc4fjvp"]
 
-[ext_resource type="PackedScene" uid="uid://mya5ck4t3umk" path="res://Scenes/UI/HUD/hud.tscn" id="1_pc68o"]
 [ext_resource type="Texture2D" uid="uid://d0qfnr10dkox3" path="res://Sprites/Main_Menu/main_menu.png" id="2_rqs2o"]
 
 [node name="Main_Menu" type="Node2D"]
-
-[node name="HUD" parent="." instance=ExtResource("1_pc68o")]
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_right = 640.0

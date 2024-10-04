@@ -15,6 +15,8 @@ var player : Dictionary = {
     "xp_to": 100,
     "current_weight": 0,
     "carry_capacity": 40,
+    "ATB": 100,
+    "ATB_MAX": 100,
     "STR": 11,
     "STR_MOD": 4,
     "END": 9,
@@ -93,6 +95,9 @@ func _process(delta):
     # player movement check
     if player_moved: player_moved = false # reset
     # DEBUG
+    if Input.is_action_just_pressed("ci_DEBUG"):
+        terminal.append("> HELLO\n")
+        print(terminal)
     if Input.is_action_just_pressed("ci_F1"):
         # used for testing but a good template for player options settings
         DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)

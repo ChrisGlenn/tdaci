@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://dvyovtdcbbe27"]
+[gd_scene load_steps=6 format=3 uid="uid://dvyovtdcbbe27"]
 
 [ext_resource type="PackedScene" uid="uid://cax0kv3jxjlwc" path="res://Scenes/UI/UI_NinePatch/ui_nine_patch.tscn" id="1_ri5d2"]
+[ext_resource type="FontFile" uid="uid://chqv700uts1qw" path="res://Fonts/BodgeR.ttf" id="2_o26i0"]
 [ext_resource type="Texture2D" uid="uid://dnfui6i23nh1v" path="res://Sprites/UI/HUD_Icons_Clear.png" id="2_vytql"]
 [ext_resource type="Texture2D" uid="uid://cpmtm4hyhw1yh" path="res://Sprites/Enviornment_Props.png" id="3_ngbdb"]
 [ext_resource type="FontFile" uid="uid://dcbyalkyecj3i" path="res://Fonts/pixelmix.ttf" id="3_vqywf"]
@@ -8,9 +9,22 @@
 [node name="HUD_ver2" type="CanvasLayer"]
 
 [node name="Terminal" parent="." instance=ExtResource("1_ri5d2")]
-offset_top = 200.0
+offset_top = 224.0
 offset_right = 112.0
-offset_bottom = 248.0
+offset_bottom = 288.0
+
+[node name="Term_Text" type="RichTextLabel" parent="Terminal"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 4.0
+offset_right = 107.0
+offset_bottom = 58.0
+theme_override_colors/default_color = Color(0.74902, 0.792157, 0.529412, 1)
+theme_override_fonts/normal_font = ExtResource("2_o26i0")
+theme_override_font_sizes/normal_font_size = 6
+text = "> The Dragon at Castle Ivalyn!"
+fit_content = true
+scroll_following = true
 
 [node name="Keyboard" type="Node2D" parent="."]
 
@@ -32,17 +46,36 @@ text = "<SPACE>"
 horizontal_alignment = 1
 
 [node name="A_Icon" type="Sprite2D" parent="Keyboard"]
-position = Vector2(396, 248)
+position = Vector2(399, 248)
 texture = ExtResource("3_ngbdb")
 centered = false
 hframes = 19
 vframes = 25
-frame = 474
+frame = 381
+
+[node name="B_Label" type="Label" parent="Keyboard"]
+offset_left = 426.0
+offset_top = 276.0
+offset_right = 455.0
+offset_bottom = 282.0
+theme_override_colors/font_color = Color(0.74902, 0.792157, 0.529412, 1)
+theme_override_fonts/font = ExtResource("3_vqywf")
+theme_override_font_sizes/font_size = 6
+text = "<SHIFT>"
+horizontal_alignment = 1
+
+[node name="B_Icon" type="Sprite2D" parent="Keyboard"]
+position = Vector2(431, 248)
+texture = ExtResource("3_ngbdb")
+centered = false
+hframes = 19
+vframes = 25
+frame = 362
 
 [node name="X_Label" type="Label" parent="Keyboard"]
-offset_left = 432.0
+offset_left = 460.0
 offset_top = 276.0
-offset_right = 448.0
+offset_right = 476.0
 offset_bottom = 282.0
 theme_override_colors/font_color = Color(0.74902, 0.792157, 0.529412, 1)
 theme_override_fonts/font = ExtResource("3_vqywf")
@@ -50,16 +83,13 @@ theme_override_font_sizes/font_size = 6
 text = "<I>"
 horizontal_alignment = 1
 
-[node name="Y_Label" type="Label" parent="Keyboard"]
-offset_left = 456.0
-offset_top = 276.0
-offset_right = 472.0
-offset_bottom = 282.0
-theme_override_colors/font_color = Color(0.74902, 0.792157, 0.529412, 1)
-theme_override_fonts/font = ExtResource("3_vqywf")
-theme_override_font_sizes/font_size = 6
-text = "<S>"
-horizontal_alignment = 1
+[node name="X_Icon" type="Sprite2D" parent="Keyboard"]
+position = Vector2(459, 248)
+texture = ExtResource("3_ngbdb")
+centered = false
+hframes = 19
+vframes = 25
+frame = 383
 
 [node name="ESC_Label" type="Label" parent="Keyboard"]
 offset_left = 480.0
@@ -72,6 +102,14 @@ theme_override_font_sizes/font_size = 6
 text = "<ESC>"
 horizontal_alignment = 1
 
+[node name="ESC_Icon" type="Sprite2D" parent="Keyboard"]
+position = Vector2(483, 248)
+texture = ExtResource("3_ngbdb")
+centered = false
+hframes = 19
+vframes = 25
+frame = 361
+
 [node name="Controller" type="Node2D" parent="."]
 visible = false
 
@@ -82,12 +120,11 @@ offset_right = 400.0
 offset_bottom = 456.0
 
 [node name="Player_Info" parent="." instance=ExtResource("1_ri5d2")]
-offset_top = 248.0
 offset_right = 112.0
-offset_bottom = 288.0
+offset_bottom = 40.0
 
 [node name="Gold_Icon" type="Sprite2D" parent="Player_Info"]
-position = Vector2(88, 4)
+position = Vector2(91, 4)
 texture = ExtResource("2_vytql")
 centered = false
 hframes = 4
@@ -96,9 +133,9 @@ frame = 6
 
 [node name="Gold_Label" type="Label" parent="Player_Info"]
 layout_mode = 0
-offset_left = 88.0
+offset_left = 91.0
 offset_top = 30.0
-offset_right = 105.0
+offset_right = 108.0
 offset_bottom = 38.0
 theme_override_colors/font_color = Color(0.74902, 0.792157, 0.529412, 1)
 theme_override_fonts/font = ExtResource("3_vqywf")
@@ -143,7 +180,7 @@ text = "100/100"
 layout_mode = 0
 offset_left = 5.0
 offset_top = 20.0
-offset_right = 37.0
+offset_right = 28.0
 offset_bottom = 28.0
 theme_override_colors/font_color = Color(0.74902, 0.792157, 0.529412, 1)
 theme_override_fonts/font = ExtResource("3_vqywf")
@@ -162,14 +199,24 @@ theme_override_font_sizes/font_size = 6
 text = "1"
 horizontal_alignment = 2
 
-[node name="Stat_Label" type="Label" parent="Player_Info"]
+[node name="Class_Label" type="Label" parent="Player_Info"]
 layout_mode = 0
-offset_left = 57.0
-offset_top = 30.0
-offset_right = 84.0
-offset_bottom = 38.0
-theme_override_colors/font_color = Color(0.25098, 0.207843, 0.470588, 1)
+offset_left = 5.0
+offset_top = 28.0
+offset_right = 28.0
+offset_bottom = 36.0
+theme_override_colors/font_color = Color(0.74902, 0.792157, 0.529412, 1)
 theme_override_fonts/font = ExtResource("3_vqywf")
 theme_override_font_sizes/font_size = 6
-text = "Status"
-horizontal_alignment = 1
+text = "Class:"
+
+[node name="Class_Stat" type="Label" parent="Player_Info"]
+layout_mode = 0
+offset_left = 29.0
+offset_top = 28.0
+offset_right = 64.0
+offset_bottom = 36.0
+theme_override_colors/font_color = Color(0.74902, 0.792157, 0.529412, 1)
+theme_override_fonts/font = ExtResource("3_vqywf")
+theme_override_font_sizes/font_size = 6
+text = "Fighter"

@@ -103,6 +103,8 @@ SO if the player has an 11 END then their modifier is 4. If they are wearing Sca
 
 A hit roll is 2x 12D (24) + AGI(MOD) then if HIT the damage is calculated.
 
+BLOCKING - If the player hits 'B' they will block BUT their shield will take 3x damage and they 'lose' their turn.
+
 Weapons:
 
 The 
