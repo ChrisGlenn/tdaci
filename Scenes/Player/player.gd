@@ -105,8 +105,6 @@ func player_input(clock):
 		hit_timer = 0 # reset this to zero
 
 	# DEBUG
-	if Input.is_action_just_pressed("ci_DEBUG"):
-		print(global_position) # get current player position
 	if Input.is_action_just_pressed("ci_END"):
 		get_tree().quit() # exit the game
 

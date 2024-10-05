@@ -15,6 +15,7 @@ var player : Dictionary = {
     "xp_to": 100,
     "current_weight": 0,
     "carry_capacity": 40,
+    "gold": 10,
     "ATB": 100,
     "ATB_MAX": 100,
     "STR": 11,
@@ -51,7 +52,7 @@ var a_button : String = "SPACE" # 'accept' or interact
 var b_button : String = "CTRL" # 'cancel' or 'block'
 var x_button : String = "I" # inventory
 # terminal
-var terminal : Array = [] # the HUD 'terminal' that updates the player on the goings ons
+var terminal : String = "> Hail! Welcome to The Dragon at Castle Ivalyn.\n" # starting message for the terminal on the HUD
 
 # game/system variables
 var stage : int = 0 # game stage
@@ -74,6 +75,8 @@ var fov_update : bool = false # if true then the game will update the field of v
 
 # global process
 func _ready() -> void:
+    # hide the mouse
+    Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
     # check for gamepad and if detected change the UI button text
     var joypad = Input.get_connected_joypads()
     if joypad.size() > 0:
@@ -96,8 +99,7 @@ func _process(delta):
     if player_moved: player_moved = false # reset
     # DEBUG
     if Input.is_action_just_pressed("ci_DEBUG"):
-        terminal.append("> HELLO\n")
-        print(terminal)
+        terminal += str("> TEST\n")
     if Input.is_action_just_pressed("ci_F1"):
         # used for testing but a good template for player options settings
         DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)

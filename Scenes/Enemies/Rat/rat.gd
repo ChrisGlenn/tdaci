@@ -257,14 +257,14 @@ func attack():
 	var did_hit = Functions.melee_hit(enemy_agi_mod, (Globals.player["AC"] + Globals.player["END_MOD"]))
 	if did_hit == "HIT":
 		var attack_dmg = Functions.attack_dmg(false, enemy_weapon, enemy_str_mod, enemy_weapon_penalty, Globals.player["AC"]) 
-		print("HIT: ", did_hit, " for ", attack_dmg)
+		Globals.terminal += str("You've taken: ", attack_dmg, " damage!\n")
 		combat_target.hit(attack_dmg)
 	elif did_hit == "CRIT":
 		var attack_dmg = Functions.attack_dmg(true, enemy_weapon, enemy_str_mod, 0, Globals.player["AC"]) 
-		print("CRIT: ", did_hit, " for ", attack_dmg)
+		Globals.terminal += str("CRITICAL! You've taken: ", attack_dmg, " damage!\n")
 		combat_target.hit(attack_dmg)
 	else:
-		print("MISS!")
+		Globals.terminal += str("Rat MISSED!\n")
 	current_atb = 0
 	combat_timer = Globals.timer_thirty
 
