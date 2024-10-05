@@ -37,10 +37,10 @@ func update_hud():
 	# update HUD colors/sprites
 	# player health turns red at certain percentage
 	var danger_percentage : float = .25
-	if Globals.player["hp"] == (danger_percentage * Globals.player["max_hp"]):
-		PLAYER_HP.modulate = Color() # change the color to red
+	if Globals.player["hp"] <= (danger_percentage * Globals.player["max_hp"]):
+		PLAYER_HP.modulate = Color(0.424, 0.161, 0.251, 1) # change the color to red
 	else:
-		PLAYER_HP.modulate = Color() # otherwise keep it yellow
+		PLAYER_HP.modulate = Color(1, 1, 1, 1) # otherwise keep it yellow
 	# update the terminal
 	if TERMINAL.text != Globals.terminal:
 		TERMINAL.text = Globals.terminal # update the terminal

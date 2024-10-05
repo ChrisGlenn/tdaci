@@ -40,7 +40,7 @@ var player : Dictionary = {
 # npc variables
 
 # HUD variables
-var HUD_STATE : String = "HUD"
+var HUD_STATE : String = "KEYBOARD"
 var hud_interaction_frame : int = 474 # default is question mark which will do a search (399 question mark if needed)
 var interaction_frame_default : int = 474 # what to reset to
 var interaction_data : Dictionary = {} # holds the interaction 'dialogue' data
@@ -73,14 +73,26 @@ var level_doors : Array = [] # stores the door status for each door on each leve
 var fov_update : bool = false # if true then the game will update the field of view
 
 
+# --------------------------
+# GLOBAL VARIABLES AND PROCESSES/FUNCTIONS
+# --------------------------
+var last_message : String = ""
+var current_minute # holds the current minute
+var terminal_reset : int = 5 # when it gets to 0 reset to the last_message
+
 # global process
 func _ready() -> void:
+    # record variables
+    last_message = terminal # record the terminal message
     # hide the mouse
     Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
     # check for gamepad and if detected change the UI button text
     var joypad = Input.get_connected_joypads()
     if joypad.size() > 0:
-        pass
+        HUD_STATE = "JOYPAD" # the player has a joypad plugged in
+    # set the current_current minute
+    var current_time = Time.get_time_dict_from_system()
+    current_minute = current_time["minute"]
 
 func _process(delta):
     # global frames
@@ -95,11 +107,26 @@ func _process(delta):
         else:
             frame = 0 # change the frame
             frame_timer = 42 # reset the frame timer
+    # terminal reset
+    # every 10 minutes the terminal will clear out except for the last message
+    var current_time = Time.get_time_dict_from_system()
+    if current_minute != current_time["minute"]:
+        current_minute = current_time["minute"]
+        # check if the terminal_reset is 0 and if so then reset the terminal
+        if terminal_reset > 0:
+            terminal_reset -= 1 # decrement the reset
+        else:
+            terminal = last_message # clear out the terminal except for last message
+            terminal_reset = 5 # reset
     # player movement check
     if player_moved: player_moved = false # reset
     # DEBUG
-    if Input.is_action_just_pressed("ci_DEBUG"):
-        terminal += str("> TEST\n")
     if Input.is_action_just_pressed("ci_F1"):
         # used for testing but a good template for player options settings
         DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+
+
+func update_terminal(message : String):
+    terminal_reset = 5 # add more time to the terminal reset
+    last_message = message # set the last message
+    terminal += str(message) # update with the message

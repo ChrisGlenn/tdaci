@@ -117,4 +117,4 @@ func hit(dmg : int):
 
 func death():
 	# the player has died
-	pass
+	Globals.terminal += str("> YOU HAVE DIED!!!\n") # update the terminal

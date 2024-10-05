@@ -94,7 +94,7 @@ TO-DO LIST(ALPHA):
     [] Inventory
     [] Save/Load Menu
     [] CRT Shader(?)
-    [] 'Terminal'
+    [x] 'Terminal'
     [] Controls
     [] Main Menu
         [] Background Image

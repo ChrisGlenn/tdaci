@@ -50,6 +50,20 @@ bg_color = Color(0.74902, 0.792157, 0.529412, 1)
 [node name="Rat" type="Area2D" groups=["ENEMY"]]
 z_index = 4
 script = ExtResource("1_ojjw5")
+enemy_name = null
+enemy_id = null
+chase_steps = null
+movement_inc = null
+enemy_level_range = null
+flee_to = null
+hit_points = null
+enemy_str = null
+enemy_str_mod = null
+enemy_agi = null
+enemy_agi_mod = null
+agility_mod = null
+enemy_weapon = null
+enemy_weapon_penalty = null
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1

@@ -5,7 +5,6 @@ extends Area2D
 # and initialize combat BUT if the player is too strong the enemy just dies and yields very low XP and no gold
 @onready var tilemap : TileMapLayer = get_parent().get_parent().get_node("Enviornment_Tiles")
 @onready var visibility_map : TileMapLayer = get_parent().get_parent().get_node("Visibility")
-@onready var TRANSITION = preload("res://Scenes/UI/Scene_Transition/scene_transition.tscn")
 @onready var ANIM = $AnimatedSprite2D
 @onready var RAY = $RayCast2D
 @onready var ATB_BAR = $Combat_Stats/ProgressBar
@@ -257,14 +256,14 @@ func attack():
 	var did_hit = Functions.melee_hit(enemy_agi_mod, (Globals.player["AC"] + Globals.player["END_MOD"]))
 	if did_hit == "HIT":
 		var attack_dmg = Functions.attack_dmg(false, enemy_weapon, enemy_str_mod, enemy_weapon_penalty, Globals.player["AC"]) 
-		Globals.terminal += str("You've taken: ", attack_dmg, " damage!\n")
+		Globals.update_terminal(str("> You've taken: ", attack_dmg, " damage!\n"))
 		combat_target.hit(attack_dmg)
 	elif did_hit == "CRIT":
 		var attack_dmg = Functions.attack_dmg(true, enemy_weapon, enemy_str_mod, 0, Globals.player["AC"]) 
-		Globals.terminal += str("CRITICAL! You've taken: ", attack_dmg, " damage!\n")
+		Globals.update_terminal(str("> CRITICAL! You've taken: ", attack_dmg, " damage!\n"))
 		combat_target.hit(attack_dmg)
 	else:
-		Globals.terminal += str("Rat MISSED!\n")
+		Globals.update_terminal("> Rat MISSED!\n")
 	current_atb = 0
 	combat_timer = Globals.timer_thirty
 
