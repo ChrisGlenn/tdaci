@@ -1,11 +1,101 @@
-[gd_scene load_steps=2 format=3 uid="uid://yxhmu5sbgox3"]
+[gd_scene load_steps=5 format=3 uid="uid://yxhmu5sbgox3"]
 
 [ext_resource type="PackedScene" uid="uid://cax0kv3jxjlwc" path="res://Scenes/UI/UI_NinePatch/ui_nine_patch.tscn" id="1_1w3ep"]
+[ext_resource type="Script" path="res://Scenes/UI/Game_Menu/game_menu.gd" id="1_nlfjq"]
+[ext_resource type="FontFile" uid="uid://dcbyalkyecj3i" path="res://Fonts/pixelmix.ttf" id="2_echw5"]
+[ext_resource type="Texture2D" uid="uid://bm5wcn8t8p4kr" path="res://Sprites/UI/Selectors.png" id="3_j3018"]
 
 [node name="Game_Menu" type="CanvasLayer"]
 process_mode = 3
+script = ExtResource("1_nlfjq")
 
 [node name="UI_NinePatch" parent="." instance=ExtResource("1_1w3ep")]
-offset_top = 64.0
-offset_right = 88.0
-offset_bottom = 200.0
+offset_left = 424.0
+offset_right = 512.0
+offset_bottom = 66.0
+
+[node name="Return" type="Label" parent="."]
+offset_left = 452.0
+offset_top = 8.0
+offset_right = 504.0
+offset_bottom = 16.0
+theme_override_colors/font_color = Color(0.74902, 0.792157, 0.529412, 1)
+theme_override_fonts/font = ExtResource("2_echw5")
+theme_override_font_sizes/font_size = 6
+text = "Return
+"
+
+[node name="Inventory" type="Label" parent="."]
+offset_left = 452.0
+offset_top = 19.0
+offset_right = 504.0
+offset_bottom = 27.0
+theme_override_colors/font_color = Color(0.74902, 0.792157, 0.529412, 1)
+theme_override_fonts/font = ExtResource("2_echw5")
+theme_override_font_sizes/font_size = 6
+text = "Inventory"
+
+[node name="Status" type="Label" parent="."]
+offset_left = 452.0
+offset_top = 30.0
+offset_right = 504.0
+offset_bottom = 38.0
+theme_override_colors/font_color = Color(0.74902, 0.792157, 0.529412, 1)
+theme_override_fonts/font = ExtResource("2_echw5")
+theme_override_font_sizes/font_size = 6
+text = "Status"
+
+[node name="Load" type="Label" parent="."]
+offset_left = 452.0
+offset_top = 41.0
+offset_right = 504.0
+offset_bottom = 49.0
+theme_override_colors/font_color = Color(0.74902, 0.792157, 0.529412, 1)
+theme_override_fonts/font = ExtResource("2_echw5")
+theme_override_font_sizes/font_size = 6
+text = "Load
+"
+
+[node name="Quit" type="Label" parent="."]
+offset_left = 452.0
+offset_top = 52.0
+offset_right = 504.0
+offset_bottom = 60.0
+theme_override_colors/font_color = Color(0.74902, 0.792157, 0.529412, 1)
+theme_override_fonts/font = ExtResource("2_echw5")
+theme_override_font_sizes/font_size = 6
+text = "Quit
+"
+
+[node name="Select_Nodes" type="Node2D" parent="."]
+
+[node name="Sel_One" type="Sprite2D" parent="Select_Nodes"]
+position = Vector2(436, 7)
+texture = ExtResource("3_j3018")
+centered = false
+hframes = 2
+frame = 1
+
+[node name="Sel_Two" type="Sprite2D" parent="Select_Nodes"]
+position = Vector2(436, 18)
+texture = ExtResource("3_j3018")
+centered = false
+hframes = 2
+
+[node name="Sel_Three" type="Sprite2D" parent="Select_Nodes"]
+position = Vector2(436, 29)
+texture = ExtResource("3_j3018")
+centered = false
+hframes = 2
+
+[node name="Sel_Four" type="Sprite2D" parent="Select_Nodes"]
+position = Vector2(436, 40)
+texture = ExtResource("3_j3018")
+centered = false
+hframes = 2
+
+[node name="Sel_Five" type="Sprite2D" parent="Select_Nodes"]
+position = Vector2(436, 51)
+texture = ExtResource("3_j3018")
+centered = false
+hframes = 2

@@ -1,6 +1,7 @@
 extends CanvasLayer
 # HEADS UP DISPLAY
 # the HUD for the game
+@onready var GAME_MENU = preload("res://Scenes/UI/Game_Menu/game_menu.tscn")
 # PLAYER INFO
 @onready var PLAYER_NAME = $Player_Info/Player_Name_Label
 @onready var PLAYER_HP = $Player_Info/HP_Current
@@ -25,7 +26,15 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	update_hud() # the HUD updater that keeps all info current
+	hud_controls() # HUD controls
 
+
+func hud_controls():
+	# check for player input that pertains to the HUD
+	# GAME MENU
+	if Input.is_action_just_pressed("ci_START"):
+		var menu = GAME_MENU.instantiate()
+		add_child(menu)
 
 func update_hud():
 	# update player section of HUD

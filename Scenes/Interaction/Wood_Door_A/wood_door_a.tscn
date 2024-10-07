@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://why2lrd3qcmn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_03012"]
+size = Vector2(16, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_15qmv"]
+size = Vector2(16, 24)
+
+[node name="WoodDoor_A" type="Area2D"]
+collision_layer = 2
+collision_mask = 2
+metadata/_edit_group_ = true
+
+[node name="Right" type="CollisionShape2D" parent="."]
+position = Vector2(24, 12)
+shape = SubResource("RectangleShape2D_03012")
+
+[node name="Left" type="CollisionShape2D" parent="."]
+position = Vector2(-8, 12)
+shape = SubResource("RectangleShape2D_15qmv")
+
+[node name="Up" type="CollisionShape2D" parent="."]
+position = Vector2(8, -12)
+shape = SubResource("RectangleShape2D_15qmv")
+
+[node name="Down" type="CollisionShape2D" parent="."]
+position = Vector2(8, 36)
+shape = SubResource("RectangleShape2D_15qmv")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

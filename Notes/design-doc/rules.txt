@@ -158,3 +158,12 @@ elif end > 12:
     Globals.player.hp = Globals.player.hp_max
 
 Carrying capacity is str mod * 10
+
+
+MAGIC:
+My idea for magic in this game is to have a 'rune' system where the player has to piece together spells from 3 to 5 runes then have an object that they can draw magic from. The object will slowly run out of power and will need time to recharge (can recharge faster if in the sun). The player's INT will be used to determine spell cost.
+
+For TDACI the spells will already be set with the store but the player will have an 'icon' that will need to charge.
+
+Magic Cost Formula
+Take the player's INT skill

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://eofvmt0fh4en"]
+[gd_scene load_steps=9 format=4 uid="uid://eofvmt0fh4en"]
 
 [ext_resource type="Script" path="res://Scenes/LevelOne/level_one.gd" id="1_cewib"]
 [ext_resource type="PackedScene" uid="uid://bfvuhs3v0x7bk" path="res://Scenes/Enviornment_Tiles/enviornment_tiles.tscn" id="1_i7mo0"]
@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://du1ay8tlwq57n" path="res://Scenes/System/Border/border.tscn" id="3_t2y8b"]
 [ext_resource type="PackedScene" uid="uid://djs0vx32sdov5" path="res://Scenes/Interaction/Stairs/stairs.tscn" id="6_uvg8x"]
 [ext_resource type="PackedScene" uid="uid://d3sftodihtbdx" path="res://Scenes/Enemies/Rat/rat.tscn" id="7_gjxnv"]
-[ext_resource type="PackedScene" uid="uid://cqi17gr4yv8bh" path="res://Scenes/Interaction/Door/door.tscn" id="9_1e71d"]
 [ext_resource type="PackedScene" uid="uid://dunotvebfnhil" path="res://Scenes/UI/HUD/hud.tscn" id="9_bsa1n"]
 
 [node name="LevelOne" type="Node2D"]
@@ -39,53 +38,9 @@ position = Vector2(128, 528)
 [node name="Rat" parent="Enemies" instance=ExtResource("7_gjxnv")]
 position = Vector2(48, -360)
 enemy_name = "RAT_A"
-enemy_id = null
-chase_steps = null
-movement_inc = null
-enemy_level_range = null
 flee_to = Vector2(608, 552)
-hit_points = null
-enemy_str = null
-enemy_str_mod = null
-enemy_agi = null
-enemy_agi_mod = null
-agility_mod = null
-enemy_weapon = null
-enemy_weapon_penalty = null
 
 [node name="Doors" type="Node2D" parent="."]
-
-[node name="Door" parent="Doors" node_paths=PackedStringArray("current_tilemap") instance=ExtResource("9_1e71d")]
-position = Vector2(-16, -72)
-door_id = "l1_d001 "
-current_tilemap = NodePath("../../Enviornment_Tiles")
-
-[node name="Door2" parent="Doors" node_paths=PackedStringArray("current_tilemap") instance=ExtResource("9_1e71d")]
-position = Vector2(-96, -48)
-door_id = "l1_d002"
-current_tilemap = NodePath("../../Enviornment_Tiles")
-door_type = "steel"
-locked = true
-breakable = false
-switch_controlled = true
-
-[node name="Door3" parent="Doors" node_paths=PackedStringArray("current_tilemap") instance=ExtResource("9_1e71d")]
-position = Vector2(576, -336)
-door_id = "l1_d003"
-current_tilemap = NodePath("../../Enviornment_Tiles")
-door_type = "steel"
-locked = true
-breakable = false
-switch_controlled = true
-
-[node name="Door4" parent="Doors" node_paths=PackedStringArray("current_tilemap") instance=ExtResource("9_1e71d")]
-position = Vector2(0, 432)
-door_id = "l1_d004"
-current_tilemap = NodePath("../../Enviornment_Tiles")
-door_type = "steel"
-locked = true
-breakable = false
-switch_controlled = true
 
 [node name="HUD" parent="." instance=ExtResource("9_bsa1n")]
 

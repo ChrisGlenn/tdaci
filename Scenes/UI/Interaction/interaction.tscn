@@ -88,36 +88,6 @@ position = Vector2(-464, -24)
 position = Vector2(478, 45)
 sprite_frames = SubResource("SpriteFrames_i8qn2")
 
-[node name="Object_Selector_Two" type="AnimatedSprite2D" parent="Choice_Bkgrnd/Selector_Nodes"]
-visible = false
-position = Vector2(478, 69)
-sprite_frames = SubResource("SpriteFrames_i8qn2")
-
-[node name="Object_Selector_Three" type="AnimatedSprite2D" parent="Choice_Bkgrnd/Selector_Nodes"]
-visible = false
-position = Vector2(478, 93)
-sprite_frames = SubResource("SpriteFrames_i8qn2")
-
-[node name="Object_Selector_Four" type="AnimatedSprite2D" parent="Choice_Bkgrnd/Selector_Nodes"]
-visible = false
-position = Vector2(478, 117)
-sprite_frames = SubResource("SpriteFrames_i8qn2")
-
-[node name="Object_Selector_Five" type="AnimatedSprite2D" parent="Choice_Bkgrnd/Selector_Nodes"]
-visible = false
-position = Vector2(478, 141)
-sprite_frames = SubResource("SpriteFrames_i8qn2")
-
-[node name="Object_Selector_Six" type="AnimatedSprite2D" parent="Choice_Bkgrnd/Selector_Nodes"]
-visible = false
-position = Vector2(478, 165)
-sprite_frames = SubResource("SpriteFrames_i8qn2")
-
-[node name="Object_Selector_Seven" type="AnimatedSprite2D" parent="Choice_Bkgrnd/Selector_Nodes"]
-visible = false
-position = Vector2(478, 189)
-sprite_frames = SubResource("SpriteFrames_i8qn2")
-
 [node name="Choices" type="Node2D" parent="Choice_Bkgrnd"]
 position = Vector2(-464, -24)
 
