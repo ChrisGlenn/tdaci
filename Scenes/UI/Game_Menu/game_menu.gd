@@ -2,6 +2,7 @@ extends CanvasLayer
 # GAME MENU SCRIPT
 # if the player hits ESC or START then this menu pops up giving them a list of options
 # they can choose from such as see the inventory or character status, ect.
+@onready var STAT_MENU = preload("res://Scenes/UI/Status_Menu/status_menu.tscn")
 @onready var SELECTORS = $Select_Nodes
 var sel_pos : int = 0 # this shows the current selector
 
@@ -26,6 +27,11 @@ func game_menu():
         if sel_pos == 0:
             # return to game
             get_tree().paused = false # unpause before returning
+            queue_free() # delete self
+        elif sel_pos == 2:
+            # player status
+            var stat_menu = STAT_MENU.instantiate()
+            get_parent().add_child(stat_menu) # add the menu as a child to the HUD
             queue_free() # delete self
         elif sel_pos == 4:
             # quit the game

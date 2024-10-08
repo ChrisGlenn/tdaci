@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bwk5efqfyok0" path="res://Sprites/Player.png" id="4_astmq"]
 
 [node name="Status_Menu" type="CanvasLayer"]
+process_mode = 3
 script = ExtResource("1_eme6u")
 
 [node name="Status_Background" parent="." instance=ExtResource("1_hjc2h")]
@@ -14,23 +15,408 @@ offset_top = 56.0
 offset_right = 352.0
 offset_bottom = 192.0
 
+[node name="Player_Sprite" type="Sprite2D" parent="."]
+position = Vector2(184, 64)
+scale = Vector2(3, 3)
+texture = ExtResource("4_astmq")
+centered = false
+hframes = 9
+
 [node name="Player_Name_Label" type="Label" parent="."]
 offset_left = 224.0
-offset_top = 63.0
+offset_top = 62.0
 offset_right = 287.0
-offset_bottom = 71.0
+offset_bottom = 70.0
 theme_override_colors/font_color = Color(0.74902, 0.792157, 0.529412, 1)
 theme_override_fonts/font = ExtResource("3_b3mlo")
 theme_override_font_sizes/font_size = 8
 text = "Player Name"
 horizontal_alignment = 1
 
-[node name="Player_Sprite" type="Sprite2D" parent="."]
-position = Vector2(184, 88)
-scale = Vector2(3, 3)
-texture = ExtResource("4_astmq")
-centered = false
-hframes = 9
+[node name="Class_Label" type="Label" parent="."]
+offset_left = 176.0
+offset_top = 128.0
+offset_right = 200.0
+offset_bottom = 136.0
+theme_override_colors/font_color = Color(0.74902, 0.792157, 0.529412, 1)
+theme_override_fonts/font = ExtResource("3_b3mlo")
+theme_override_font_sizes/font_size = 6
+text = "Class:"
+
+[node name="Class_Text" type="Label" parent="."]
+offset_left = 204.0
+offset_top = 128.0
+offset_right = 248.0
+offset_bottom = 136.0
+theme_override_colors/font_color = Color(0.74902, 0.792157, 0.529412, 1)
+theme_override_fonts/font = ExtResource("3_b3mlo")
+theme_override_font_sizes/font_size = 6
+text = "Plr Class"
+
+[node name="HP_Label" type="Label" parent="."]
+offset_left = 176.0
+offset_top = 137.0
+offset_right = 200.0
+offset_bottom = 145.0
+theme_override_colors/font_color = Color(0.74902, 0.792157, 0.529412, 1)
+theme_override_fonts/font = ExtResource("3_b3mlo")
+theme_override_font_sizes/font_size = 6
+text = "HP:"
+
+[node name="HP_Text" type="Label" parent="."]
+offset_left = 204.0
+offset_top = 137.0
+offset_right = 248.0
+offset_bottom = 145.0
+theme_override_colors/font_color = Color(0.74902, 0.792157, 0.529412, 1)
+theme_override_fonts/font = ExtResource("3_b3mlo")
+theme_override_font_sizes/font_size = 6
+text = "100x100"
+
+[node name="MP_Label" type="Label" parent="."]
+offset_left = 176.0
+offset_top = 146.0
+offset_right = 200.0
+offset_bottom = 154.0
+theme_override_colors/font_color = Color(0.74902, 0.792157, 0.529412, 1)
+theme_override_fonts/font = ExtResource("3_b3mlo")
+theme_override_font_sizes/font_size = 6
+text = "MP:"
+
+[node name="MP_Text" type="Label" parent="."]
+offset_left = 204.0
+offset_top = 146.0
+offset_right = 248.0
+offset_bottom = 154.0
+theme_override_colors/font_color = Color(0.74902, 0.792157, 0.529412, 1)
+theme_override_fonts/font = ExtResource("3_b3mlo")
+theme_override_font_sizes/font_size = 6
+text = "100x100"
+
+[node name="Stat_Label" type="Label" parent="."]
+offset_left = 176.0
+offset_top = 155.0
+offset_right = 205.0
+offset_bottom = 163.0
+theme_override_colors/font_color = Color(0.74902, 0.792157, 0.529412, 1)
+theme_override_fonts/font = ExtResource("3_b3mlo")
+theme_override_font_sizes/font_size = 6
+text = "Status:"
+
+[node name="Stat_Text" type="Label" parent="."]
+offset_left = 208.0
+offset_top = 155.0
+offset_right = 256.0
+offset_bottom = 163.0
+theme_override_colors/font_color = Color(0.74902, 0.792157, 0.529412, 1)
+theme_override_fonts/font = ExtResource("3_b3mlo")
+theme_override_font_sizes/font_size = 6
+text = "Healthy"
+
+[node name="Weight_Label" type="Label" parent="."]
+offset_left = 176.0
+offset_top = 164.0
+offset_right = 216.0
+offset_bottom = 172.0
+theme_override_colors/font_color = Color(0.74902, 0.792157, 0.529412, 1)
+theme_override_fonts/font = ExtResource("3_b3mlo")
+theme_override_font_sizes/font_size = 6
+text = "Weight:"
+
+[node name="Weight_Text" type="Label" parent="."]
+offset_left = 208.0
+offset_top = 164.0
+offset_right = 240.0
+offset_bottom = 172.0
+theme_override_colors/font_color = Color(0.74902, 0.792157, 0.529412, 1)
+theme_override_fonts/font = ExtResource("3_b3mlo")
+theme_override_font_sizes/font_size = 6
+text = "100/100"
+horizontal_alignment = 2
+
+[node name="CurrentXP_Label" type="Label" parent="."]
+offset_left = 256.0
+offset_top = 80.0
+offset_right = 304.0
+offset_bottom = 88.0
+theme_override_colors/font_color = Color(0.74902, 0.792157, 0.529412, 1)
+theme_override_fonts/font = ExtResource("3_b3mlo")
+theme_override_font_sizes/font_size = 6
+text = "Current XP:"
+
+[node name="CurrentXP_Text" type="Label" parent="."]
+offset_left = 304.0
+offset_top = 80.0
+offset_right = 336.0
+offset_bottom = 88.0
+theme_override_colors/font_color = Color(0.74902, 0.792157, 0.529412, 1)
+theme_override_fonts/font = ExtResource("3_b3mlo")
+theme_override_font_sizes/font_size = 6
+text = "10000"
+horizontal_alignment = 2
+
+[node name="NextXP_Label" type="Label" parent="."]
+offset_left = 256.0
+offset_top = 89.0
+offset_right = 304.0
+offset_bottom = 97.0
+theme_override_colors/font_color = Color(0.74902, 0.792157, 0.529412, 1)
+theme_override_fonts/font = ExtResource("3_b3mlo")
+theme_override_font_sizes/font_size = 6
+text = "Next Level:"
+
+[node name="NextXP_Text" type="Label" parent="."]
+offset_left = 304.0
+offset_top = 89.0
+offset_right = 336.0
+offset_bottom = 97.0
+theme_override_colors/font_color = Color(0.74902, 0.792157, 0.529412, 1)
+theme_override_fonts/font = ExtResource("3_b3mlo")
+theme_override_font_sizes/font_size = 6
+text = "10000"
+horizontal_alignment = 2
+
+[node name="Player_Attributes" type="Label" parent="."]
+offset_left = 256.0
+offset_top = 101.0
+offset_right = 336.0
+offset_bottom = 109.0
+theme_override_colors/font_color = Color(0.74902, 0.792157, 0.529412, 1)
+theme_override_fonts/font = ExtResource("3_b3mlo")
+theme_override_font_sizes/font_size = 6
+text = "Attributes"
+horizontal_alignment = 1
+
+[node name="STR_Label" type="Label" parent="."]
+offset_left = 256.0
+offset_top = 114.0
+offset_right = 272.0
+offset_bottom = 122.0
+theme_override_colors/font_color = Color(0.74902, 0.792157, 0.529412, 1)
+theme_override_fonts/font = ExtResource("3_b3mlo")
+theme_override_font_sizes/font_size = 6
+text = "STR:"
+
+[node name="STR_Text" type="Label" parent="."]
+offset_left = 273.0
+offset_top = 114.0
+offset_right = 289.0
+offset_bottom = 122.0
+theme_override_colors/font_color = Color(0.74902, 0.792157, 0.529412, 1)
+theme_override_fonts/font = ExtResource("3_b3mlo")
+theme_override_font_sizes/font_size = 6
+text = "0"
+horizontal_alignment = 2
+
+[node name="END_Label" type="Label" parent="."]
+offset_left = 256.0
+offset_top = 123.0
+offset_right = 272.0
+offset_bottom = 131.0
+theme_override_colors/font_color = Color(0.74902, 0.792157, 0.529412, 1)
+theme_override_fonts/font = ExtResource("3_b3mlo")
+theme_override_font_sizes/font_size = 6
+text = "END:"
+
+[node name="END_Text" type="Label" parent="."]
+offset_left = 273.0
+offset_top = 123.0
+offset_right = 289.0
+offset_bottom = 131.0
+theme_override_colors/font_color = Color(0.74902, 0.792157, 0.529412, 1)
+theme_override_fonts/font = ExtResource("3_b3mlo")
+theme_override_font_sizes/font_size = 6
+text = "0"
+horizontal_alignment = 2
+
+[node name="AGI_Label" type="Label" parent="."]
+offset_left = 256.0
+offset_top = 132.0
+offset_right = 272.0
+offset_bottom = 140.0
+theme_override_colors/font_color = Color(0.74902, 0.792157, 0.529412, 1)
+theme_override_fonts/font = ExtResource("3_b3mlo")
+theme_override_font_sizes/font_size = 6
+text = "AGI:"
+
+[node name="AGI_Text" type="Label" parent="."]
+offset_left = 273.0
+offset_top = 132.0
+offset_right = 289.0
+offset_bottom = 140.0
+theme_override_colors/font_color = Color(0.74902, 0.792157, 0.529412, 1)
+theme_override_fonts/font = ExtResource("3_b3mlo")
+theme_override_font_sizes/font_size = 6
+text = "0"
+horizontal_alignment = 2
+
+[node name="INT_Label" type="Label" parent="."]
+offset_left = 256.0
+offset_top = 141.0
+offset_right = 272.0
+offset_bottom = 149.0
+theme_override_colors/font_color = Color(0.74902, 0.792157, 0.529412, 1)
+theme_override_fonts/font = ExtResource("3_b3mlo")
+theme_override_font_sizes/font_size = 6
+text = "INT:"
+
+[node name="INT_Text" type="Label" parent="."]
+offset_left = 273.0
+offset_top = 141.0
+offset_right = 289.0
+offset_bottom = 149.0
+theme_override_colors/font_color = Color(0.74902, 0.792157, 0.529412, 1)
+theme_override_fonts/font = ExtResource("3_b3mlo")
+theme_override_font_sizes/font_size = 6
+text = "0"
+horizontal_alignment = 2
+
+[node name="CHR_Label" type="Label" parent="."]
+offset_left = 256.0
+offset_top = 150.0
+offset_right = 272.0
+offset_bottom = 158.0
+theme_override_colors/font_color = Color(0.74902, 0.792157, 0.529412, 1)
+theme_override_fonts/font = ExtResource("3_b3mlo")
+theme_override_font_sizes/font_size = 6
+text = "CHR:"
+
+[node name="CHR_Text" type="Label" parent="."]
+offset_left = 273.0
+offset_top = 150.0
+offset_right = 289.0
+offset_bottom = 158.0
+theme_override_colors/font_color = Color(0.74902, 0.792157, 0.529412, 1)
+theme_override_fonts/font = ExtResource("3_b3mlo")
+theme_override_font_sizes/font_size = 6
+text = "0"
+horizontal_alignment = 2
+
+[node name="STR_MOD" type="Label" parent="."]
+offset_left = 304.0
+offset_top = 114.0
+offset_right = 320.0
+offset_bottom = 122.0
+theme_override_colors/font_color = Color(0.74902, 0.792157, 0.529412, 1)
+theme_override_fonts/font = ExtResource("3_b3mlo")
+theme_override_font_sizes/font_size = 6
+text = "MOD:"
+
+[node name="STR_MOD_Text" type="Label" parent="."]
+offset_left = 321.0
+offset_top = 114.0
+offset_right = 337.0
+offset_bottom = 122.0
+theme_override_colors/font_color = Color(0.74902, 0.792157, 0.529412, 1)
+theme_override_fonts/font = ExtResource("3_b3mlo")
+theme_override_font_sizes/font_size = 6
+text = "0"
+horizontal_alignment = 2
+
+[node name="END_MOD" type="Label" parent="."]
+offset_left = 304.0
+offset_top = 123.0
+offset_right = 320.0
+offset_bottom = 131.0
+theme_override_colors/font_color = Color(0.74902, 0.792157, 0.529412, 1)
+theme_override_fonts/font = ExtResource("3_b3mlo")
+theme_override_font_sizes/font_size = 6
+text = "MOD:"
+
+[node name="END_MOD_Text" type="Label" parent="."]
+offset_left = 321.0
+offset_top = 123.0
+offset_right = 337.0
+offset_bottom = 131.0
+theme_override_colors/font_color = Color(0.74902, 0.792157, 0.529412, 1)
+theme_override_fonts/font = ExtResource("3_b3mlo")
+theme_override_font_sizes/font_size = 6
+text = "0"
+horizontal_alignment = 2
+
+[node name="AGI_MOD" type="Label" parent="."]
+offset_left = 304.0
+offset_top = 132.0
+offset_right = 320.0
+offset_bottom = 140.0
+theme_override_colors/font_color = Color(0.74902, 0.792157, 0.529412, 1)
+theme_override_fonts/font = ExtResource("3_b3mlo")
+theme_override_font_sizes/font_size = 6
+text = "MOD:"
+
+[node name="AGI_MOD_Text" type="Label" parent="."]
+offset_left = 321.0
+offset_top = 132.0
+offset_right = 337.0
+offset_bottom = 140.0
+theme_override_colors/font_color = Color(0.74902, 0.792157, 0.529412, 1)
+theme_override_fonts/font = ExtResource("3_b3mlo")
+theme_override_font_sizes/font_size = 6
+text = "0"
+horizontal_alignment = 2
+
+[node name="INT_MOD" type="Label" parent="."]
+offset_left = 304.0
+offset_top = 141.0
+offset_right = 320.0
+offset_bottom = 149.0
+theme_override_colors/font_color = Color(0.74902, 0.792157, 0.529412, 1)
+theme_override_fonts/font = ExtResource("3_b3mlo")
+theme_override_font_sizes/font_size = 6
+text = "MOD:"
+
+[node name="INT_MOD_Text" type="Label" parent="."]
+offset_left = 321.0
+offset_top = 141.0
+offset_right = 337.0
+offset_bottom = 149.0
+theme_override_colors/font_color = Color(0.74902, 0.792157, 0.529412, 1)
+theme_override_fonts/font = ExtResource("3_b3mlo")
+theme_override_font_sizes/font_size = 6
+text = "0"
+horizontal_alignment = 2
+
+[node name="CHR_MOD" type="Label" parent="."]
+offset_left = 304.0
+offset_top = 150.0
+offset_right = 320.0
+offset_bottom = 158.0
+theme_override_colors/font_color = Color(0.74902, 0.792157, 0.529412, 1)
+theme_override_fonts/font = ExtResource("3_b3mlo")
+theme_override_font_sizes/font_size = 6
+text = "MOD:"
+
+[node name="CHR_MOD_Text" type="Label" parent="."]
+offset_left = 321.0
+offset_top = 150.0
+offset_right = 337.0
+offset_bottom = 158.0
+theme_override_colors/font_color = Color(0.74902, 0.792157, 0.529412, 1)
+theme_override_fonts/font = ExtResource("3_b3mlo")
+theme_override_font_sizes/font_size = 6
+text = "0"
+horizontal_alignment = 2
+
+[node name="BONUS_Label" type="Label" parent="."]
+offset_left = 256.0
+offset_top = 160.0
+offset_right = 280.0
+offset_bottom = 168.0
+theme_override_colors/font_color = Color(0.74902, 0.792157, 0.529412, 1)
+theme_override_fonts/font = ExtResource("3_b3mlo")
+theme_override_font_sizes/font_size = 6
+text = "BONUS:"
+
+[node name="BONUS_Text" type="Label" parent="."]
+offset_left = 281.0
+offset_top = 160.0
+offset_right = 297.0
+offset_bottom = 168.0
+theme_override_colors/font_color = Color(0.74902, 0.792157, 0.529412, 1)
+theme_override_fonts/font = ExtResource("3_b3mlo")
+theme_override_font_sizes/font_size = 6
+text = "0"
+horizontal_alignment = 2
 
 [node name="Press_Return" type="Label" parent="."]
 offset_left = 168.0
@@ -39,6 +425,6 @@ offset_right = 344.0
 offset_bottom = 186.0
 theme_override_colors/font_color = Color(0.74902, 0.792157, 0.529412, 1)
 theme_override_fonts/font = ExtResource("3_b3mlo")
-theme_override_font_sizes/font_size = 6
-text = "Press ESC to Close"
+theme_override_font_sizes/font_size = 8
+text = "Press CTRL to Close"
 horizontal_alignment = 1
