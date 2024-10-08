@@ -7,7 +7,7 @@ var sel_pos : int = 0 # this shows the current selector
 
 
 func _ready() -> void:
-    Globals.can_move = false # stop player movement
+    get_tree().paused = true # pause the game
 
 func _process(_delta: float) -> void:
     game_menu() # the game menu function
@@ -25,7 +25,7 @@ func game_menu():
         # the player has made a selection check the current position and then react
         if sel_pos == 0:
             # return to game
-            Globals.can_move = true # return control to player
+            get_tree().paused = false # unpause before returning
             queue_free() # delete self
         elif sel_pos == 4:
             # quit the game

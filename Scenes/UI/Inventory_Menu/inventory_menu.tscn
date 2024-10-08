@@ -1,3 +1,17 @@
-[gd_scene format=3 uid="uid://mwk84o4qjxq3"]
+[gd_scene load_steps=2 format=3 uid="uid://mwk84o4qjxq3"]
+
+[ext_resource type="PackedScene" uid="uid://cax0kv3jxjlwc" path="res://Scenes/UI/UI_NinePatch/ui_nine_patch.tscn" id="1_1ggch"]
 
 [node name="Inventory_Menu" type="CanvasLayer"]
+
+[node name="Inventory_Background" parent="." instance=ExtResource("1_1ggch")]
+offset_left = 112.0
+offset_top = 56.0
+offset_right = 280.0
+offset_bottom = 192.0
+
+[node name="Inventory_Background2" parent="." instance=ExtResource("1_1ggch")]
+offset_left = 280.0
+offset_top = 56.0
+offset_right = 400.0
+offset_bottom = 192.0

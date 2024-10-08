@@ -32,7 +32,7 @@ var player : Dictionary = {
     "AC": 2,
     "WPN_DMG": 0,
     "WPN_PEN": 0,
-    "INV": [],
+    "INV": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
     "Spells": [],
     "Dead": false
 }
