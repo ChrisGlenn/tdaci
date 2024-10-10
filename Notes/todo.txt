@@ -67,7 +67,7 @@ TO-DO LIST(ALPHA):
         [] Actual Menu/Pause
         [] Load Game
         [] Options
-        [] Resume
+        [x] Resume
         [] Quit
 [] Enemies
     [] Enemy Spawner

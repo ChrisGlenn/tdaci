@@ -12,7 +12,7 @@ script = ExtResource("1_nlfjq")
 [node name="UI_NinePatch" parent="." instance=ExtResource("1_1w3ep")]
 offset_left = 424.0
 offset_right = 512.0
-offset_bottom = 66.0
+offset_bottom = 75.0
 
 [node name="Return" type="Label" parent="."]
 offset_left = 452.0
@@ -45,11 +45,21 @@ theme_override_fonts/font = ExtResource("2_echw5")
 theme_override_font_sizes/font_size = 6
 text = "Status"
 
+[node name="Journal" type="Label" parent="."]
+offset_left = 452.0
+offset_top = 40.0
+offset_right = 504.0
+offset_bottom = 48.0
+theme_override_colors/font_color = Color(0.74902, 0.792157, 0.529412, 1)
+theme_override_fonts/font = ExtResource("2_echw5")
+theme_override_font_sizes/font_size = 6
+text = "Journal"
+
 [node name="Load" type="Label" parent="."]
 offset_left = 452.0
-offset_top = 41.0
+offset_top = 50.0
 offset_right = 504.0
-offset_bottom = 49.0
+offset_bottom = 58.0
 theme_override_colors/font_color = Color(0.74902, 0.792157, 0.529412, 1)
 theme_override_fonts/font = ExtResource("2_echw5")
 theme_override_font_sizes/font_size = 6
@@ -58,9 +68,9 @@ text = "Load
 
 [node name="Quit" type="Label" parent="."]
 offset_left = 452.0
-offset_top = 52.0
+offset_top = 61.0
 offset_right = 504.0
-offset_bottom = 60.0
+offset_bottom = 69.0
 theme_override_colors/font_color = Color(0.74902, 0.792157, 0.529412, 1)
 theme_override_fonts/font = ExtResource("2_echw5")
 theme_override_font_sizes/font_size = 6
@@ -89,13 +99,19 @@ centered = false
 hframes = 2
 
 [node name="Sel_Four" type="Sprite2D" parent="Select_Nodes"]
-position = Vector2(436, 40)
+position = Vector2(436, 39)
 texture = ExtResource("3_j3018")
 centered = false
 hframes = 2
 
 [node name="Sel_Five" type="Sprite2D" parent="Select_Nodes"]
-position = Vector2(436, 51)
+position = Vector2(436, 49)
+texture = ExtResource("3_j3018")
+centered = false
+hframes = 2
+
+[node name="Sel_Six" type="Sprite2D" parent="Select_Nodes"]
+position = Vector2(436, 60)
 texture = ExtResource("3_j3018")
 centered = false
 hframes = 2

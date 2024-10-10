@@ -1,0 +1,239 @@
+[gd_scene load_steps=5 format=3 uid="uid://cikfxgquhi0w1"]
+
+[ext_resource type="Script" path="res://Scenes/UI/Quest_Menu/quest_menu.gd" id="1_oh6q4"]
+[ext_resource type="PackedScene" uid="uid://cax0kv3jxjlwc" path="res://Scenes/UI/UI_NinePatch/ui_nine_patch.tscn" id="1_tt1i1"]
+[ext_resource type="FontFile" uid="uid://dcbyalkyecj3i" path="res://Fonts/pixelmix.ttf" id="2_lwj0l"]
+[ext_resource type="Texture2D" uid="uid://bm5wcn8t8p4kr" path="res://Sprites/UI/Selectors.png" id="4_ix4qt"]
+
+[node name="Quest_Menu" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_oh6q4")
+
+[node name="Quest_Background" parent="." instance=ExtResource("1_tt1i1")]
+offset_left = 176.0
+offset_right = 384.0
+offset_bottom = 136.0
+
+[node name="Quest_Title" type="Label" parent="Quest_Background"]
+visible = false
+offset_left = 16.0
+offset_top = 8.0
+offset_right = 192.0
+offset_bottom = 16.0
+theme_override_colors/font_color = Color(0.74902, 0.792157, 0.529412, 1)
+theme_override_fonts/font = ExtResource("2_lwj0l")
+theme_override_font_sizes/font_size = 8
+text = "Quest Title"
+horizontal_alignment = 1
+
+[node name="Quest_Text" type="Label" parent="Quest_Background"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 24.0
+offset_right = 192.0
+offset_bottom = 113.0
+theme_override_colors/font_color = Color(0.74902, 0.792157, 0.529412, 1)
+theme_override_fonts/font = ExtResource("2_lwj0l")
+theme_override_font_sizes/font_size = 8
+text = "There are no quests to display..."
+autowrap_mode = 3
+
+[node name="Press_Return" type="Label" parent="Quest_Background"]
+offset_left = 16.0
+offset_top = 120.0
+offset_right = 192.0
+offset_bottom = 128.0
+theme_override_colors/font_color = Color(0.74902, 0.792157, 0.529412, 1)
+theme_override_fonts/font = ExtResource("2_lwj0l")
+theme_override_font_sizes/font_size = 8
+text = "Press CTRL to Close"
+horizontal_alignment = 1
+
+[node name="List_Background" parent="." instance=ExtResource("1_tt1i1")]
+offset_left = 384.0
+offset_right = 512.0
+offset_bottom = 136.0
+
+[node name="Quests" type="Node2D" parent="List_Background"]
+
+[node name="Quest_One" type="Label" parent="List_Background/Quests"]
+visible = false
+offset_left = 19.0
+offset_top = 9.0
+offset_right = 120.0
+offset_bottom = 17.0
+theme_override_colors/font_color = Color(0.74902, 0.792157, 0.529412, 1)
+theme_override_fonts/font = ExtResource("2_lwj0l")
+theme_override_font_sizes/font_size = 6
+text = "Quest"
+
+[node name="Quest_Two" type="Label" parent="List_Background/Quests"]
+visible = false
+offset_left = 19.0
+offset_top = 21.0
+offset_right = 120.0
+offset_bottom = 29.0
+theme_override_colors/font_color = Color(0.74902, 0.792157, 0.529412, 1)
+theme_override_fonts/font = ExtResource("2_lwj0l")
+theme_override_font_sizes/font_size = 6
+text = "Quest"
+
+[node name="Quest_Three" type="Label" parent="List_Background/Quests"]
+visible = false
+offset_left = 19.0
+offset_top = 33.0
+offset_right = 120.0
+offset_bottom = 41.0
+theme_override_colors/font_color = Color(0.74902, 0.792157, 0.529412, 1)
+theme_override_fonts/font = ExtResource("2_lwj0l")
+theme_override_font_sizes/font_size = 6
+text = "Quest"
+
+[node name="Quest_Four" type="Label" parent="List_Background/Quests"]
+visible = false
+offset_left = 19.0
+offset_top = 45.0
+offset_right = 120.0
+offset_bottom = 53.0
+theme_override_colors/font_color = Color(0.74902, 0.792157, 0.529412, 1)
+theme_override_fonts/font = ExtResource("2_lwj0l")
+theme_override_font_sizes/font_size = 6
+text = "Quest"
+
+[node name="Quest_Five" type="Label" parent="List_Background/Quests"]
+visible = false
+offset_left = 19.0
+offset_top = 57.0
+offset_right = 120.0
+offset_bottom = 65.0
+theme_override_colors/font_color = Color(0.74902, 0.792157, 0.529412, 1)
+theme_override_fonts/font = ExtResource("2_lwj0l")
+theme_override_font_sizes/font_size = 6
+text = "Quest"
+
+[node name="Quest_Six" type="Label" parent="List_Background/Quests"]
+visible = false
+offset_left = 19.0
+offset_top = 69.0
+offset_right = 120.0
+offset_bottom = 77.0
+theme_override_colors/font_color = Color(0.74902, 0.792157, 0.529412, 1)
+theme_override_fonts/font = ExtResource("2_lwj0l")
+theme_override_font_sizes/font_size = 6
+text = "Quest"
+
+[node name="Quest_Seven" type="Label" parent="List_Background/Quests"]
+visible = false
+offset_left = 19.0
+offset_top = 81.0
+offset_right = 120.0
+offset_bottom = 89.0
+theme_override_colors/font_color = Color(0.74902, 0.792157, 0.529412, 1)
+theme_override_fonts/font = ExtResource("2_lwj0l")
+theme_override_font_sizes/font_size = 6
+text = "Quest"
+
+[node name="Quest_Eight" type="Label" parent="List_Background/Quests"]
+visible = false
+offset_left = 19.0
+offset_top = 93.0
+offset_right = 120.0
+offset_bottom = 101.0
+theme_override_colors/font_color = Color(0.74902, 0.792157, 0.529412, 1)
+theme_override_fonts/font = ExtResource("2_lwj0l")
+theme_override_font_sizes/font_size = 6
+text = "Quest"
+
+[node name="Quest_Nine" type="Label" parent="List_Background/Quests"]
+visible = false
+offset_left = 19.0
+offset_top = 105.0
+offset_right = 120.0
+offset_bottom = 113.0
+theme_override_colors/font_color = Color(0.74902, 0.792157, 0.529412, 1)
+theme_override_fonts/font = ExtResource("2_lwj0l")
+theme_override_font_sizes/font_size = 6
+text = "Quest"
+
+[node name="Quest_Ten" type="Label" parent="List_Background/Quests"]
+visible = false
+offset_left = 19.0
+offset_top = 117.0
+offset_right = 120.0
+offset_bottom = 125.0
+theme_override_colors/font_color = Color(0.74902, 0.792157, 0.529412, 1)
+theme_override_fonts/font = ExtResource("2_lwj0l")
+theme_override_font_sizes/font_size = 6
+text = "Quest"
+
+[node name="Selectors" type="Node2D" parent="List_Background"]
+
+[node name="Sel_One" type="Sprite2D" parent="List_Background/Selectors"]
+visible = false
+position = Vector2(7, 8)
+texture = ExtResource("4_ix4qt")
+centered = false
+hframes = 4
+
+[node name="Sel_Two" type="Sprite2D" parent="List_Background/Selectors"]
+visible = false
+position = Vector2(7, 20)
+texture = ExtResource("4_ix4qt")
+centered = false
+hframes = 4
+
+[node name="Sel_Three" type="Sprite2D" parent="List_Background/Selectors"]
+visible = false
+position = Vector2(7, 32)
+texture = ExtResource("4_ix4qt")
+centered = false
+hframes = 4
+
+[node name="Sel_Four" type="Sprite2D" parent="List_Background/Selectors"]
+visible = false
+position = Vector2(7, 44)
+texture = ExtResource("4_ix4qt")
+centered = false
+hframes = 4
+
+[node name="Sel_Five" type="Sprite2D" parent="List_Background/Selectors"]
+visible = false
+position = Vector2(7, 56)
+texture = ExtResource("4_ix4qt")
+centered = false
+hframes = 4
+
+[node name="Sel_Six" type="Sprite2D" parent="List_Background/Selectors"]
+visible = false
+position = Vector2(7, 68)
+texture = ExtResource("4_ix4qt")
+centered = false
+hframes = 4
+
+[node name="Sel_Seven" type="Sprite2D" parent="List_Background/Selectors"]
+visible = false
+position = Vector2(7, 80)
+texture = ExtResource("4_ix4qt")
+centered = false
+hframes = 4
+
+[node name="Sel_Eight" type="Sprite2D" parent="List_Background/Selectors"]
+visible = false
+position = Vector2(7, 92)
+texture = ExtResource("4_ix4qt")
+centered = false
+hframes = 4
+
+[node name="Sel_Nine" type="Sprite2D" parent="List_Background/Selectors"]
+visible = false
+position = Vector2(7, 104)
+texture = ExtResource("4_ix4qt")
+centered = false
+hframes = 4
+
+[node name="Sel_Ten" type="Sprite2D" parent="List_Background/Selectors"]
+visible = false
+position = Vector2(7, 116)
+texture = ExtResource("4_ix4qt")
+centered = false
+hframes = 4

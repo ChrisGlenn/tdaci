@@ -3,6 +3,7 @@ extends CanvasLayer
 # if the player hits ESC or START then this menu pops up giving them a list of options
 # they can choose from such as see the inventory or character status, ect.
 @onready var STAT_MENU = preload("res://Scenes/UI/Status_Menu/status_menu.tscn")
+@onready var JOURNAL_MENU = preload("res://Scenes/UI/Quest_Menu/quest_menu.tscn")
 @onready var SELECTORS = $Select_Nodes
 var sel_pos : int = 0 # this shows the current selector
 
@@ -17,7 +18,7 @@ func _process(_delta: float) -> void:
 func game_menu():
     # check for player input and then respond accordingly depending on the current sel_pos
     if Input.is_action_just_pressed("ci_DOWN"):
-        if sel_pos != 4:
+        if sel_pos != 5:
             sel_pos += 1 # increment selection position
     if Input.is_action_just_pressed("ci_UP"):
         if sel_pos != 0:
@@ -32,6 +33,11 @@ func game_menu():
             # player status
             var stat_menu = STAT_MENU.instantiate()
             get_parent().add_child(stat_menu) # add the menu as a child to the HUD
+            queue_free() # delete self
+        elif sel_pos == 3:
+            # quest journal
+            var journal = JOURNAL_MENU.instantiate()
+            get_parent().add_child(journal) # add as a child to the HUD
             queue_free() # delete self
         elif sel_pos == 4:
             # quit the game

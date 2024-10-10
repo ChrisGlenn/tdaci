@@ -59,6 +59,9 @@ var terminal : String = "> Hail! Welcome to The Dragon at Castle Ivalyn.\n" # st
 
 # game/system variables
 var stage : int = 0 # game stage
+var quests : Array = [
+    {"title": "Quest A","description": "This is a simple test QUEST placeholder","status": "complete"}
+] # holds the current quests for the game
 var can_move : bool = true # if the player can move the character
 var player_moved : bool = false # true if the player has moved
 var timer_ctrl : float = 100.0 # timer control
