@@ -1,23 +1,24 @@
-[gd_scene load_steps=5 format=3 uid="uid://mwk84o4qjxq3"]
+[gd_scene load_steps=6 format=3 uid="uid://mwk84o4qjxq3"]
 
 [ext_resource type="PackedScene" uid="uid://cax0kv3jxjlwc" path="res://Scenes/UI/UI_NinePatch/ui_nine_patch.tscn" id="1_1ggch"]
 [ext_resource type="Script" path="res://Scenes/UI/Inventory_Menu/inventory_menu.gd" id="1_xig8d"]
 [ext_resource type="FontFile" uid="uid://dcbyalkyecj3i" path="res://Fonts/pixelmix.ttf" id="2_umbqu"]
 [ext_resource type="Texture2D" uid="uid://dk4epvxrkmvcs" path="res://Sprites/UI/Items.png" id="3_4xayl"]
+[ext_resource type="Texture2D" uid="uid://brkqbowc8vx1w" path="res://Sprites/UI/Equip_Avatar.png" id="5_dkith"]
 
 [node name="Inventory_Menu" type="CanvasLayer"]
 process_mode = 3
 script = ExtResource("1_xig8d")
 
 [node name="Inventory_Background" parent="." instance=ExtResource("1_1ggch")]
-offset_left = 192.0
+offset_left = 184.0
 offset_right = 392.0
 offset_bottom = 136.0
 
 [node name="INV_Title" type="Label" parent="Inventory_Background"]
 offset_left = 8.0
 offset_top = 5.0
-offset_right = 192.0
+offset_right = 200.0
 offset_bottom = 13.0
 theme_override_colors/font_color = Color(0.74902, 0.792157, 0.529412, 1)
 theme_override_fonts/font = ExtResource("2_umbqu")
@@ -26,7 +27,7 @@ text = "Inventory"
 horizontal_alignment = 1
 
 [node name="Inspector_Sprite" type="Sprite2D" parent="Inventory_Background"]
-position = Vector2(144, 16)
+position = Vector2(152, 16)
 scale = Vector2(2, 2)
 texture = ExtResource("3_4xayl")
 centered = false
@@ -35,9 +36,9 @@ vframes = 13
 frame = 256
 
 [node name="Inspector_Title" type="Label" parent="Inventory_Background"]
-offset_left = 132.0
+offset_left = 136.0
 offset_top = 54.0
-offset_right = 188.0
+offset_right = 200.0
 offset_bottom = 62.0
 theme_override_colors/font_color = Color(0.74902, 0.792157, 0.529412, 1)
 theme_override_fonts/font = ExtResource("2_umbqu")
@@ -46,9 +47,9 @@ text = "Item Name"
 horizontal_alignment = 1
 
 [node name="Inspector_Desc" type="Label" parent="Inventory_Background"]
-offset_left = 128.0
+offset_left = 136.0
 offset_top = 64.0
-offset_right = 192.0
+offset_right = 200.0
 offset_bottom = 120.0
 theme_override_colors/font_color = Color(0.74902, 0.792157, 0.529412, 1)
 theme_override_fonts/font = ExtResource("2_umbqu")
@@ -59,7 +60,7 @@ autowrap_mode = 3
 [node name="Press_Return" type="Label" parent="Inventory_Background"]
 offset_left = 8.0
 offset_top = 122.0
-offset_right = 192.0
+offset_right = 200.0
 offset_bottom = 130.0
 theme_override_colors/font_color = Color(0.74902, 0.792157, 0.529412, 1)
 theme_override_fonts/font = ExtResource("2_umbqu")
@@ -70,28 +71,164 @@ horizontal_alignment = 1
 [node name="Inventory_Slots" type="Node2D" parent="Inventory_Background"]
 
 [node name="Slot1" type="Sprite2D" parent="Inventory_Background/Inventory_Slots"]
-position = Vector2(8, 20)
+position = Vector2(12, 20)
 texture = ExtResource("3_4xayl")
 centered = false
 hframes = 20
 vframes = 13
-frame = 257
+frame = 259
 
 [node name="Slot2" type="Sprite2D" parent="Inventory_Background/Inventory_Slots"]
-position = Vector2(32, 20)
+position = Vector2(36, 20)
 texture = ExtResource("3_4xayl")
 centered = false
 hframes = 20
 vframes = 13
-frame = 257
+frame = 259
 
 [node name="Slot3" type="Sprite2D" parent="Inventory_Background/Inventory_Slots"]
-position = Vector2(56, 20)
+position = Vector2(60, 20)
 texture = ExtResource("3_4xayl")
 centered = false
 hframes = 20
 vframes = 13
-frame = 257
+frame = 259
+
+[node name="Slot4" type="Sprite2D" parent="Inventory_Background/Inventory_Slots"]
+position = Vector2(84, 20)
+texture = ExtResource("3_4xayl")
+centered = false
+hframes = 20
+vframes = 13
+frame = 259
+
+[node name="Slot5" type="Sprite2D" parent="Inventory_Background/Inventory_Slots"]
+position = Vector2(108, 20)
+texture = ExtResource("3_4xayl")
+centered = false
+hframes = 20
+vframes = 13
+frame = 259
+
+[node name="Slot6" type="Sprite2D" parent="Inventory_Background/Inventory_Slots"]
+position = Vector2(12, 44)
+texture = ExtResource("3_4xayl")
+centered = false
+hframes = 20
+vframes = 13
+frame = 259
+
+[node name="Slot7" type="Sprite2D" parent="Inventory_Background/Inventory_Slots"]
+position = Vector2(36, 44)
+texture = ExtResource("3_4xayl")
+centered = false
+hframes = 20
+vframes = 13
+frame = 259
+
+[node name="Slot8" type="Sprite2D" parent="Inventory_Background/Inventory_Slots"]
+position = Vector2(60, 44)
+texture = ExtResource("3_4xayl")
+centered = false
+hframes = 20
+vframes = 13
+frame = 259
+
+[node name="Slot9" type="Sprite2D" parent="Inventory_Background/Inventory_Slots"]
+position = Vector2(84, 44)
+texture = ExtResource("3_4xayl")
+centered = false
+hframes = 20
+vframes = 13
+frame = 259
+
+[node name="Slot10" type="Sprite2D" parent="Inventory_Background/Inventory_Slots"]
+position = Vector2(108, 44)
+texture = ExtResource("3_4xayl")
+centered = false
+hframes = 20
+vframes = 13
+frame = 259
+
+[node name="Slot11" type="Sprite2D" parent="Inventory_Background/Inventory_Slots"]
+position = Vector2(12, 68)
+texture = ExtResource("3_4xayl")
+centered = false
+hframes = 20
+vframes = 13
+frame = 259
+
+[node name="Slot12" type="Sprite2D" parent="Inventory_Background/Inventory_Slots"]
+position = Vector2(36, 68)
+texture = ExtResource("3_4xayl")
+centered = false
+hframes = 20
+vframes = 13
+frame = 259
+
+[node name="Slot13" type="Sprite2D" parent="Inventory_Background/Inventory_Slots"]
+position = Vector2(60, 68)
+texture = ExtResource("3_4xayl")
+centered = false
+hframes = 20
+vframes = 13
+frame = 259
+
+[node name="Slot14" type="Sprite2D" parent="Inventory_Background/Inventory_Slots"]
+position = Vector2(84, 68)
+texture = ExtResource("3_4xayl")
+centered = false
+hframes = 20
+vframes = 13
+frame = 259
+
+[node name="Slot15" type="Sprite2D" parent="Inventory_Background/Inventory_Slots"]
+position = Vector2(108, 68)
+texture = ExtResource("3_4xayl")
+centered = false
+hframes = 20
+vframes = 13
+frame = 259
+
+[node name="Slot16" type="Sprite2D" parent="Inventory_Background/Inventory_Slots"]
+position = Vector2(12, 92)
+texture = ExtResource("3_4xayl")
+centered = false
+hframes = 20
+vframes = 13
+frame = 259
+
+[node name="Slot17" type="Sprite2D" parent="Inventory_Background/Inventory_Slots"]
+position = Vector2(36, 92)
+texture = ExtResource("3_4xayl")
+centered = false
+hframes = 20
+vframes = 13
+frame = 259
+
+[node name="Slot18" type="Sprite2D" parent="Inventory_Background/Inventory_Slots"]
+position = Vector2(60, 92)
+texture = ExtResource("3_4xayl")
+centered = false
+hframes = 20
+vframes = 13
+frame = 259
+
+[node name="Slot19" type="Sprite2D" parent="Inventory_Background/Inventory_Slots"]
+position = Vector2(84, 92)
+texture = ExtResource("3_4xayl")
+centered = false
+hframes = 20
+vframes = 13
+frame = 259
+
+[node name="Slot20" type="Sprite2D" parent="Inventory_Background/Inventory_Slots"]
+position = Vector2(108, 92)
+texture = ExtResource("3_4xayl")
+centered = false
+hframes = 20
+vframes = 13
+frame = 259
 
 [node name="Inventory_Background2" parent="." instance=ExtResource("1_1ggch")]
 offset_left = 392.0
@@ -108,3 +245,20 @@ theme_override_fonts/font = ExtResource("2_umbqu")
 theme_override_font_sizes/font_size = 8
 text = "Equipment"
 horizontal_alignment = 1
+
+[node name="Equip_Avatar" type="Sprite2D" parent="Inventory_Background2"]
+position = Vector2(44, 40)
+scale = Vector2(2, 2)
+texture = ExtResource("5_dkith")
+centered = false
+hframes = 3
+
+[node name="Equip_Slots" type="Node2D" parent="Inventory_Background2"]
+
+[node name="helmet_slot" type="Sprite2D" parent="Inventory_Background2/Equip_Slots"]
+position = Vector2(52, 20)
+texture = ExtResource("3_4xayl")
+centered = false
+hframes = 20
+vframes = 13
+frame = 41
