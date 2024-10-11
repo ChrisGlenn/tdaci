@@ -36,7 +36,7 @@ position = Vector2(128, 528)
 [node name="Enemies" type="Node2D" parent="."]
 
 [node name="Rat" parent="Enemies" instance=ExtResource("7_gjxnv")]
-position = Vector2(48, -360)
+position = Vector2(48, -361)
 enemy_name = "RAT_A"
 flee_to = Vector2(608, 552)
 

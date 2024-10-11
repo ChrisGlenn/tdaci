@@ -31,11 +31,24 @@ layout_mode = 0
 offset_left = 16.0
 offset_top = 24.0
 offset_right = 192.0
-offset_bottom = 113.0
+offset_bottom = 96.0
 theme_override_colors/font_color = Color(0.74902, 0.792157, 0.529412, 1)
 theme_override_fonts/font = ExtResource("2_lwj0l")
 theme_override_font_sizes/font_size = 8
 text = "There are no quests to display..."
+autowrap_mode = 3
+
+[node name="Quest_Status" type="Label" parent="Quest_Background"]
+visible = false
+layout_mode = 0
+offset_left = 16.0
+offset_top = 101.0
+offset_right = 192.0
+offset_bottom = 112.0
+theme_override_colors/font_color = Color(0.74902, 0.792157, 0.529412, 1)
+theme_override_fonts/font = ExtResource("2_lwj0l")
+theme_override_font_sizes/font_size = 8
+text = "Status:"
 autowrap_mode = 3
 
 [node name="Press_Return" type="Label" parent="Quest_Background"]
@@ -173,67 +186,67 @@ visible = false
 position = Vector2(7, 8)
 texture = ExtResource("4_ix4qt")
 centered = false
-hframes = 4
+hframes = 2
 
 [node name="Sel_Two" type="Sprite2D" parent="List_Background/Selectors"]
 visible = false
 position = Vector2(7, 20)
 texture = ExtResource("4_ix4qt")
 centered = false
-hframes = 4
+hframes = 2
 
 [node name="Sel_Three" type="Sprite2D" parent="List_Background/Selectors"]
 visible = false
 position = Vector2(7, 32)
 texture = ExtResource("4_ix4qt")
 centered = false
-hframes = 4
+hframes = 2
 
 [node name="Sel_Four" type="Sprite2D" parent="List_Background/Selectors"]
 visible = false
 position = Vector2(7, 44)
 texture = ExtResource("4_ix4qt")
 centered = false
-hframes = 4
+hframes = 2
 
 [node name="Sel_Five" type="Sprite2D" parent="List_Background/Selectors"]
 visible = false
 position = Vector2(7, 56)
 texture = ExtResource("4_ix4qt")
 centered = false
-hframes = 4
+hframes = 2
 
 [node name="Sel_Six" type="Sprite2D" parent="List_Background/Selectors"]
 visible = false
 position = Vector2(7, 68)
 texture = ExtResource("4_ix4qt")
 centered = false
-hframes = 4
+hframes = 2
 
 [node name="Sel_Seven" type="Sprite2D" parent="List_Background/Selectors"]
 visible = false
 position = Vector2(7, 80)
 texture = ExtResource("4_ix4qt")
 centered = false
-hframes = 4
+hframes = 2
 
 [node name="Sel_Eight" type="Sprite2D" parent="List_Background/Selectors"]
 visible = false
 position = Vector2(7, 92)
 texture = ExtResource("4_ix4qt")
 centered = false
-hframes = 4
+hframes = 2
 
 [node name="Sel_Nine" type="Sprite2D" parent="List_Background/Selectors"]
 visible = false
 position = Vector2(7, 104)
 texture = ExtResource("4_ix4qt")
 centered = false
-hframes = 4
+hframes = 2
 
 [node name="Sel_Ten" type="Sprite2D" parent="List_Background/Selectors"]
 visible = false
 position = Vector2(7, 116)
 texture = ExtResource("4_ix4qt")
 centered = false
-hframes = 4
+hframes = 2

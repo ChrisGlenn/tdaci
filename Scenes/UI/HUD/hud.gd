@@ -3,6 +3,7 @@ extends CanvasLayer
 # the HUD for the game
 @onready var GAME_MENU = preload("res://Scenes/UI/Game_Menu/game_menu.tscn")
 @onready var STAT_MENU = preload("res://Scenes/UI/Status_Menu/status_menu.tscn")
+@onready var INV_MENU = preload("res://Scenes/UI/Inventory_Menu/inventory_menu.tscn")
 # PLAYER INFO
 @onready var PLAYER_NAME = $Player_Info/Player_Name_Label
 @onready var PLAYER_HP = $Player_Info/HP_Current
@@ -36,9 +37,14 @@ func hud_controls():
 	if Input.is_action_just_pressed("ci_START"):
 		var menu = GAME_MENU.instantiate()
 		add_child(menu)
+	# STAT MENU
 	if Input.is_action_just_pressed("ci_X"):
 		var stats = STAT_MENU.instantiate()
 		add_child(stats)
+	# INVENTORY MENU
+	if Input.is_action_just_pressed("ci_Y"):
+		var inventory = INV_MENU.instantiate()
+		add_child(inventory)
 
 func update_hud():
 	# update player section of HUD

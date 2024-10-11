@@ -1,8 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://mwk84o4qjxq3"]
+[gd_scene load_steps=5 format=3 uid="uid://mwk84o4qjxq3"]
 
 [ext_resource type="PackedScene" uid="uid://cax0kv3jxjlwc" path="res://Scenes/UI/UI_NinePatch/ui_nine_patch.tscn" id="1_1ggch"]
+[ext_resource type="Script" path="res://Scenes/UI/Inventory_Menu/inventory_menu.gd" id="1_xig8d"]
+[ext_resource type="FontFile" uid="uid://dcbyalkyecj3i" path="res://Fonts/pixelmix.ttf" id="2_umbqu"]
+[ext_resource type="Texture2D" uid="uid://dk4epvxrkmvcs" path="res://Sprites/UI/Items.png" id="3_4xayl"]
 
 [node name="Inventory_Menu" type="CanvasLayer"]
+script = ExtResource("1_xig8d")
 
 [node name="Inventory_Background" parent="." instance=ExtResource("1_1ggch")]
 offset_left = 112.0
@@ -10,8 +14,50 @@ offset_top = 56.0
 offset_right = 280.0
 offset_bottom = 192.0
 
+[node name="INV_Title" type="Label" parent="Inventory_Background"]
+offset_left = 8.0
+offset_top = 5.0
+offset_right = 160.0
+offset_bottom = 13.0
+theme_override_colors/font_color = Color(0.74902, 0.792157, 0.529412, 1)
+theme_override_fonts/font = ExtResource("2_umbqu")
+theme_override_font_sizes/font_size = 8
+text = "Inventory"
+horizontal_alignment = 1
+
+[node name="Inspector_Sprite" type="Sprite2D" parent="Inventory_Background"]
+position = Vector2(112, 16)
+scale = Vector2(2, 2)
+texture = ExtResource("3_4xayl")
+centered = false
+hframes = 20
+vframes = 13
+frame = 256
+
+[node name="Inspector_Title" type="Label" parent="Inventory_Background"]
+offset_left = 100.0
+offset_top = 54.0
+offset_right = 156.0
+offset_bottom = 62.0
+theme_override_colors/font_color = Color(0.74902, 0.792157, 0.529412, 1)
+theme_override_fonts/font = ExtResource("2_umbqu")
+theme_override_font_sizes/font_size = 6
+text = "Item Name"
+horizontal_alignment = 1
+
 [node name="Inventory_Background2" parent="." instance=ExtResource("1_1ggch")]
 offset_left = 280.0
 offset_top = 56.0
 offset_right = 400.0
 offset_bottom = 192.0
+
+[node name="EQP_Title" type="Label" parent="Inventory_Background2"]
+offset_left = 8.0
+offset_top = 5.0
+offset_right = 112.0
+offset_bottom = 13.0
+theme_override_colors/font_color = Color(0.74902, 0.792157, 0.529412, 1)
+theme_override_fonts/font = ExtResource("2_umbqu")
+theme_override_font_sizes/font_size = 8
+text = "Equipment"
+horizontal_alignment = 1

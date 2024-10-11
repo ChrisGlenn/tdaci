@@ -3,10 +3,8 @@ TO-DO LIST(ALPHA):
 -- them will be reset based on what works and what doesn't --
 
 -- CURRENTLY WORKING ON --
-- RAT w/ new combat system
-- THEN cleaning up the enemy script and using a database to store variables
-- THEN seeing if it's viable to have a base enemy/boss template
-- WHILE redoing the UI
+- UI!!!
+- THEN Rat/Player combat
 - Doors
 - Door KOMBAT
 - Interactions
@@ -63,6 +61,7 @@ TO-DO LIST(ALPHA):
         [] Inventory Add/Delete
         [] Player Interactions
     [] Equipment System
+    [x] Journal
     [] Menu
         [] Actual Menu/Pause
         [] Load Game
