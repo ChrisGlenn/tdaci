@@ -11,7 +11,7 @@ const Items_DB : Dictionary = {
     },
     "health potion" : {
         "title" : "Health Potion",
-        "desc" : "",
+        "desc" : "A potion that restores health.",
         "type" : "CONSUMABLE",
         "weight" : 0.5,
         "value" : 20,

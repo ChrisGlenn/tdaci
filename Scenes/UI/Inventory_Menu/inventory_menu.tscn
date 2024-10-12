@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://mwk84o4qjxq3"]
+[gd_scene load_steps=7 format=3 uid="uid://mwk84o4qjxq3"]
 
 [ext_resource type="PackedScene" uid="uid://cax0kv3jxjlwc" path="res://Scenes/UI/UI_NinePatch/ui_nine_patch.tscn" id="1_1ggch"]
 [ext_resource type="Script" path="res://Scenes/UI/Inventory_Menu/inventory_menu.gd" id="1_xig8d"]
 [ext_resource type="FontFile" uid="uid://dcbyalkyecj3i" path="res://Fonts/pixelmix.ttf" id="2_umbqu"]
 [ext_resource type="Texture2D" uid="uid://dk4epvxrkmvcs" path="res://Sprites/UI/Items.png" id="3_4xayl"]
 [ext_resource type="Texture2D" uid="uid://brkqbowc8vx1w" path="res://Sprites/UI/Equip_Avatar.png" id="5_dkith"]
+[ext_resource type="Texture2D" uid="uid://dnfui6i23nh1v" path="res://Sprites/UI/HUD_Icons_Clear.png" id="5_sxuw0"]
 
 [node name="Inventory_Menu" type="CanvasLayer"]
 process_mode = 3
@@ -27,13 +28,13 @@ text = "Inventory"
 horizontal_alignment = 1
 
 [node name="Inspector_Sprite" type="Sprite2D" parent="Inventory_Background"]
-position = Vector2(152, 16)
+position = Vector2(152, 8)
 scale = Vector2(2, 2)
 texture = ExtResource("3_4xayl")
 centered = false
 hframes = 20
 vframes = 13
-frame = 256
+frame = 259
 
 [node name="Inspector_Title" type="Label" parent="Inventory_Background"]
 offset_left = 136.0
@@ -229,6 +230,14 @@ centered = false
 hframes = 20
 vframes = 13
 frame = 259
+
+[node name="Inventory_Selector" type="Sprite2D" parent="Inventory_Background"]
+position = Vector2(12, 20)
+texture = ExtResource("5_sxuw0")
+centered = false
+hframes = 4
+vframes = 2
+frame = 1
 
 [node name="Inventory_Background2" parent="." instance=ExtResource("1_1ggch")]
 offset_left = 392.0

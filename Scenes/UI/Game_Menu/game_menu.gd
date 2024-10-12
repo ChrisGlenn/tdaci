@@ -45,7 +45,7 @@ func game_menu():
             var journal = JOURNAL_MENU.instantiate()
             get_parent().add_child(journal) # add as a child to the HUD
             queue_free() # delete self
-        elif sel_pos == 4:
+        elif sel_pos == 5:
             # quit the game
             # DEBUG IN THE FUTURE THIS WILL ASK IF THEY ARE SURE
             get_tree().quit() 
