@@ -47,7 +47,7 @@ func journal_selection():
 				update_journal()
 				SELECTORS.get_child(sel_pos + 1).frame = 0 # reset previous frame
 	# close the journal
-	if Input.is_action_just_pressed("ci_B"):
+	if Input.is_action_just_pressed("ci_B") or Input.is_action_just_pressed("ci_START"):
 		get_tree().paused = false # unpase the game
 		queue_free() # delete self
 

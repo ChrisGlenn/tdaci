@@ -24,7 +24,7 @@ func game_menu():
     if Input.is_action_just_pressed("ci_UP"):
         if sel_pos != 0:
             sel_pos -= 1 # decrement selection position
-    if Input.is_action_just_pressed("ci_A"):
+    if Input.is_action_just_pressed("ci_A") or Input.is_action_just_pressed("ci_START"):
         # the player has made a selection check the current position and then react
         if sel_pos == 0:
             # return to game

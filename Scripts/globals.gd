@@ -36,7 +36,7 @@ var player : Dictionary = {
     "AC": 2,
     "WPN_DMG": 0,
     "WPN_PEN": 0,
-    "INV": ["meat", "meat"],
+    "INV": ["meat", "health potion", "meat", "health potion", "meat", "meat", "health potion", "meat", "health potion", "health potion"],
     "Spells": [],
     "Dead": false
 }
@@ -92,7 +92,7 @@ func _ready() -> void:
     # record variables
     last_message = terminal # record the terminal message
     # hide the mouse
-    Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+    # Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
     # check for gamepad and if detected change the UI button text
     var joypad = Input.get_connected_joypads()
     if joypad.size() > 0:

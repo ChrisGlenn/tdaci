@@ -59,3 +59,8 @@ func spell_dmg():
 func pick_lock():
     # calculate and return if the lock was picked or not
     pass
+
+# inventory functions
+# consumables
+# equipable
+# ect

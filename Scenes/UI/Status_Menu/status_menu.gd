@@ -49,6 +49,6 @@ func _ready() -> void:
     visible = true # show after setting all the player stats
 
 func _process(_delta: float) -> void:
-    if Input.is_action_just_pressed("ci_B"):
+    if Input.is_action_just_pressed("ci_B") or Input.is_action_just_pressed("ci_START"):
         get_tree().paused = false # unpause the rest of the game
         queue_free() # delete self
