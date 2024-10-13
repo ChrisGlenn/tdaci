@@ -1,0 +1,6 @@
+*** ITEMS ***
+A list of the items the player can get in TDACI.
+
+* food/potions *
+Meat
+

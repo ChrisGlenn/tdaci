@@ -35,6 +35,8 @@ func _process(_delta: float) -> void:
 
 
 func inventory_control():
+	# CYCLE THROUGH THE INVENTORY
+	# CLOSE THE INVENTORY MENU
 	if Input.is_action_just_pressed("ci_B"):
 		get_tree().paused = false # unpause the game
 		queue_free() # delete the inventory instance
