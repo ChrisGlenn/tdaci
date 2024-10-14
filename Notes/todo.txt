@@ -137,6 +137,7 @@ TO-DO LIST(RELEASE):
 
 FINAL EXPORT:
 [ ]  Remove Debug/Shortcut Keys
+[ ]  Hide the mouse
 [ ]  Hide System Icons (NPC Spawner, Ect)
 [ ]  Remove Debug PRINT messages (ie. 'quitting')
 [ ]  Test Across Platforms (Controllers Also)

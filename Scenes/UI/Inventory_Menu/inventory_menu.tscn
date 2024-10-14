@@ -69,8 +69,8 @@ offset_right = 200.0
 offset_bottom = 130.0
 theme_override_colors/font_color = Color(0.74902, 0.792157, 0.529412, 1)
 theme_override_fonts/font = ExtResource("2_umbqu")
-theme_override_font_sizes/font_size = 8
-text = "Press CTRL to Close"
+theme_override_font_sizes/font_size = 6
+text = "Press CTRL to Close Inventory"
 horizontal_alignment = 1
 
 [node name="Inventory_Slots" type="Node2D" parent="Inventory_Background"]
@@ -260,6 +260,18 @@ theme_override_font_sizes/font_size = 8
 text = "Equipment"
 horizontal_alignment = 1
 
+[node name="Equip_Status_Label" type="Label" parent="Inventory_Background2"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 88.0
+offset_right = 112.0
+offset_bottom = 96.0
+theme_override_colors/font_color = Color(0.74902, 0.792157, 0.529412, 1)
+theme_override_fonts/font = ExtResource("2_umbqu")
+theme_override_font_sizes/font_size = 6
+text = "Equipment"
+horizontal_alignment = 1
+
 [node name="Equip_Avatar" type="Sprite2D" parent="Inventory_Background2"]
 position = Vector2(44, 40)
 scale = Vector2(2, 2)
@@ -270,9 +282,65 @@ hframes = 3
 [node name="Equip_Slots" type="Node2D" parent="Inventory_Background2"]
 
 [node name="helmet_slot" type="Sprite2D" parent="Inventory_Background2/Equip_Slots"]
-position = Vector2(52, 20)
+position = Vector2(44, 20)
 texture = ExtResource("3_4xayl")
 centered = false
 hframes = 20
 vframes = 13
 frame = 41
+
+[node name="amulet_slot" type="Sprite2D" parent="Inventory_Background2/Equip_Slots"]
+position = Vector2(60, 20)
+texture = ExtResource("3_4xayl")
+centered = false
+hframes = 20
+vframes = 13
+frame = 44
+
+[node name="shield_slot" type="Sprite2D" parent="Inventory_Background2/Equip_Slots"]
+position = Vector2(8, 52)
+texture = ExtResource("3_4xayl")
+centered = false
+hframes = 20
+vframes = 13
+frame = 45
+
+[node name="arrow_slot" type="Sprite2D" parent="Inventory_Background2/Equip_Slots"]
+position = Vector2(24, 52)
+texture = ExtResource("3_4xayl")
+centered = false
+hframes = 20
+vframes = 13
+frame = 46
+
+[node name="ring_slot_1" type="Sprite2D" parent="Inventory_Background2/Equip_Slots"]
+position = Vector2(24, 28)
+texture = ExtResource("3_4xayl")
+centered = false
+hframes = 20
+vframes = 13
+frame = 47
+
+[node name="ring_slot_2" type="Sprite2D" parent="Inventory_Background2/Equip_Slots"]
+position = Vector2(80, 28)
+texture = ExtResource("3_4xayl")
+centered = false
+hframes = 20
+vframes = 13
+frame = 47
+
+[node name="weapon_slot" type="Sprite2D" parent="Inventory_Background2/Equip_Slots"]
+position = Vector2(96, 52)
+texture = ExtResource("3_4xayl")
+centered = false
+hframes = 20
+vframes = 13
+frame = 42
+
+[node name="armor_slot" type="Sprite2D" parent="Inventory_Background2/Equip_Slots"]
+position = Vector2(80, 52)
+texture = ExtResource("3_4xayl")
+centered = false
+hframes = 20
+vframes = 13
+frame = 40

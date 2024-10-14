@@ -23,7 +23,7 @@ const Items_DB : Dictionary = {
         "type" : "EQUIP",
         "weight" : 1,
         "value" : 8,
-        "frame" : 1,
+        "frame" : 120,
         "AC" : 1
     }
 }

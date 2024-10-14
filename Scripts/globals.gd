@@ -52,10 +52,10 @@ var search_data : Dictionary = {} # holds the search 'dialogue' data
 var dialogue_data : Dictionary = {} # holds the dialogue data
 # input display settings
 # checks if controller is plugged in or not and then sets accordingly
-var a_button : String = "SPACE" # 'accept' or interact
-var b_button : String = "CTRL" # 'cancel' or 'block'
-var x_button : String = "I" # inventory
-var y_button : String = "S" # status
+var interact_button : String = "SPACE" # accept or interact
+var cancel_button : String = "CTRL" # cancel or block
+var inventory_button : String = "I" # opens inventory
+var status_button : String = "S" # opens status
 # terminal
 var terminal : String = "> Hail! Welcome to The Dragon at Castle Ivalyn.\n" # starting message for the terminal on the HUD
 
