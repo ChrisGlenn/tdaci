@@ -16,5 +16,14 @@ const Items_DB : Dictionary = {
         "weight" : 0.5,
         "value" : 20,
         "frame" : 61
+    },
+    "leather helmet" : {
+        "title" : "Leather Helmet",
+        "desc" : "A helmet made of leather.",
+        "type" : "EQUIP",
+        "weight" : 1,
+        "value" : 8,
+        "frame" : 1,
+        "AC" : 1
     }
 }

@@ -26,7 +26,6 @@ func _ready() -> void:
 		INV_SELECTOR.visible = false # hide the inventory selector
 		INSPECT_TITLE.text = "" # blank
 		INSPECT_DESC.text = "Your inventory is empty..."
-	print(Globals.player["current_weight"])
 	visible = true # show the inventory screen AFTER updating
 
 func _process(_delta: float) -> void:
@@ -91,3 +90,5 @@ func update_inventory():
 		INSPECT_SPRITE.frame = 259 # blank
 		INSPECT_TITLE.text = "" # blank
 		INSPECT_DESC.text = "Your inventory is empty..."
+	else:
+		update_inspector() # update the inspector

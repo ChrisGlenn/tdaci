@@ -36,7 +36,7 @@ var player : Dictionary = {
     "AC": 2,
     "WPN_DMG": 0,
     "WPN_PEN": 0,
-    "INV": ["meat", "health potion", "meat", "health potion", "meat", "meat", "health potion", "meat", "health potion", "health potion"],
+    "INV": ["meat", "health potion"],
     "Spells": [],
     "Dead": false
 }
@@ -55,6 +55,7 @@ var dialogue_data : Dictionary = {} # holds the dialogue data
 var a_button : String = "SPACE" # 'accept' or interact
 var b_button : String = "CTRL" # 'cancel' or 'block'
 var x_button : String = "I" # inventory
+var y_button : String = "S" # status
 # terminal
 var terminal : String = "> Hail! Welcome to The Dragon at Castle Ivalyn.\n" # starting message for the terminal on the HUD
 
