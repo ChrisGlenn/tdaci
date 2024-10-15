@@ -263,14 +263,58 @@ horizontal_alignment = 1
 [node name="Equip_Status_Label" type="Label" parent="Inventory_Background2"]
 layout_mode = 0
 offset_left = 8.0
-offset_top = 88.0
+offset_top = 86.0
 offset_right = 112.0
-offset_bottom = 96.0
+offset_bottom = 94.0
 theme_override_colors/font_color = Color(0.74902, 0.792157, 0.529412, 1)
 theme_override_fonts/font = ExtResource("2_umbqu")
 theme_override_font_sizes/font_size = 6
 text = "Equipment"
 horizontal_alignment = 1
+
+[node name="Armor_Type_Label" type="Label" parent="Inventory_Background2"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 96.0
+offset_right = 58.0
+offset_bottom = 104.0
+theme_override_colors/font_color = Color(0.74902, 0.792157, 0.529412, 1)
+theme_override_fonts/font = ExtResource("2_umbqu")
+theme_override_font_sizes/font_size = 6
+text = "Armor Type: "
+
+[node name="Armor_Type_Text" type="Label" parent="Inventory_Background2"]
+layout_mode = 0
+offset_left = 60.0
+offset_top = 96.0
+offset_right = 110.0
+offset_bottom = 104.0
+theme_override_colors/font_color = Color(0.74902, 0.792157, 0.529412, 1)
+theme_override_fonts/font = ExtResource("2_umbqu")
+theme_override_font_sizes/font_size = 6
+text = "TYPE"
+
+[node name="Armor_Class_Label" type="Label" parent="Inventory_Background2"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 105.0
+offset_right = 58.0
+offset_bottom = 113.0
+theme_override_colors/font_color = Color(0.74902, 0.792157, 0.529412, 1)
+theme_override_fonts/font = ExtResource("2_umbqu")
+theme_override_font_sizes/font_size = 6
+text = "Armor Class: "
+
+[node name="Armor_Class_Type" type="Label" parent="Inventory_Background2"]
+layout_mode = 0
+offset_left = 62.0
+offset_top = 105.0
+offset_right = 88.0
+offset_bottom = 113.0
+theme_override_colors/font_color = Color(0.74902, 0.792157, 0.529412, 1)
+theme_override_fonts/font = ExtResource("2_umbqu")
+theme_override_font_sizes/font_size = 6
+text = "0"
 
 [node name="Equip_Avatar" type="Sprite2D" parent="Inventory_Background2"]
 position = Vector2(44, 40)

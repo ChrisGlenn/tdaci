@@ -34,8 +34,11 @@ var player : Dictionary = {
     "CHR_MOD": 2,
     "bonus": 1,
     "AC": 2,
+    "armor_type" : "Unarmored",
+    "armor_restrictions" : [],
     "WPN_DMG": 0,
     "WPN_PEN": 0,
+    "weapon_restrictions" : [],
     "INV": ["meat", "health potion"],
     "Spells": [],
     "Dead": false

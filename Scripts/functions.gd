@@ -62,5 +62,7 @@ func pick_lock():
 
 # inventory functions
 # consumables
+func use_item(_name : String):
+    pass
 # equipable
 # ect

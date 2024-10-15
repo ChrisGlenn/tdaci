@@ -70,15 +70,17 @@ func inventory_control():
 				INV_SELECTOR.position = INV_SLOTS.get_child(cur_pos).position
 				update_inspector()
 				update_controls(Items.Items_DB[Globals.player["INV"][cur_pos]]["type"])
-	# USE/EQUIP/ECT THE OBJECT
-	if Input.is_action_just_pressed("ci_A"):
-		# Globals.player["INV"].remove_at(cur_pos)
-		# if cur_pos > 0: 
-		# 	cur_pos -= 1
-		# 	INV_SELECTOR.position = INV_SLOTS.get_child(cur_pos).position
-		# Globals.player["current_weight"] = 0.0
-		# update_inventory()
-		pass
+		# USE/EQUIP/ECT THE OBJECT
+		if Input.is_action_just_pressed("ci_A"):
+			# Globals.player["INV"].remove_at(cur_pos)
+			# if cur_pos > 0: 
+			# 	cur_pos -= 1
+			# 	INV_SELECTOR.position = INV_SLOTS.get_child(cur_pos).position
+			# Globals.player["current_weight"] = 0.0
+			# update_inventory()
+			# USE ITEM
+			# get the type and run the function w/ the type and name
+			pass
 	# CLOSE THE INVENTORY MENU
 	if Input.is_action_just_pressed("ci_B") or Input.is_action_just_pressed("ci_START"):
 		get_tree().paused = false # unpause the game
