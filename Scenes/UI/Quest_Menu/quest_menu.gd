@@ -25,6 +25,7 @@ func _ready() -> void:
 			QUESTS.get_child(n).text = Globals.quests[n]["title"]
 		SELECTORS.get_child(sel_pos).frame = 1 # show the selected selector
 	update_journal() # run the journal ui
+	RETURN.text = str("Press ", Globals.cancel_button, " to close.")
 	visible = true # show the journal
 
 func _process(_delta: float) -> void:

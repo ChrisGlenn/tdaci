@@ -22,6 +22,7 @@ extends CanvasLayer
 @onready var PLAYER_CHR = $CHR_Text
 @onready var PLAYER_CHR_MOD = $CHR_MOD_Text
 @onready var PLAYER_BONUS = $BONUS_Text
+@onready var RETURN = $Press_Return
 
 
 func _ready() -> void:
@@ -46,6 +47,7 @@ func _ready() -> void:
     PLAYER_CHR.text = str(Globals.player["CHR"]) # set player CHR
     PLAYER_CHR_MOD.text = str(Globals.player["CHR_MOD"]) # set player CHR_MOD
     PLAYER_BONUS.text = str(Globals.player["bonus"]) # set player bonus mod
+    RETURN.text = str("Press ", Globals.cancel_button, " to close.")
     visible = true # show after setting all the player stats
 
 func _process(_delta: float) -> void:
