@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dnfui6i23nh1v" path="res://Sprites/UI/HUD_Icons_Clear.png" id="5_o1sr7"]
 
 [node name="HUD" type="CanvasLayer"]
+process_mode = 3
 script = ExtResource("1_ci2m8")
 
 [node name="Terminal" parent="." instance=ExtResource("1_5kxo1")]

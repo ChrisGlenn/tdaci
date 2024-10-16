@@ -9,7 +9,7 @@ const Items_DB : Dictionary = {
         "weight" : 0.2,
         "value" : 2,
         "frame" : 53,
-        "heal" : 10
+        "modifier" : 10
     },
     "health potion" : {
         "title" : "Health Potion",
@@ -18,7 +18,8 @@ const Items_DB : Dictionary = {
         "sub_type" : "Heal",
         "weight" : 0.5,
         "value" : 20,
-        "frame" : 61
+        "frame" : 61,
+        "modifier" : 25
     },
     "leather helmet" : {
         "title" : "Leather Helmet",
@@ -28,6 +29,6 @@ const Items_DB : Dictionary = {
         "weight" : 1,
         "value" : 8,
         "frame" : 120,
-        "AC" : 1
+        "modifier" : 1
     }
 }

@@ -305,7 +305,7 @@ theme_override_fonts/font = ExtResource("2_umbqu")
 theme_override_font_sizes/font_size = 6
 text = "Armor Class: "
 
-[node name="Armor_Class_Type" type="Label" parent="Inventory_Background2"]
+[node name="Armor_Class_Text" type="Label" parent="Inventory_Background2"]
 layout_mode = 0
 offset_left = 62.0
 offset_top = 105.0
@@ -315,6 +315,50 @@ theme_override_colors/font_color = Color(0.74902, 0.792157, 0.529412, 1)
 theme_override_fonts/font = ExtResource("2_umbqu")
 theme_override_font_sizes/font_size = 6
 text = "0"
+
+[node name="Weapon_DMG_Label" type="Label" parent="Inventory_Background2"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 114.0
+offset_right = 56.0
+offset_bottom = 122.0
+theme_override_colors/font_color = Color(0.74902, 0.792157, 0.529412, 1)
+theme_override_fonts/font = ExtResource("2_umbqu")
+theme_override_font_sizes/font_size = 6
+text = "Weapon DMG:"
+
+[node name="Weapon_DMG_Text" type="Label" parent="Inventory_Background2"]
+layout_mode = 0
+offset_left = 56.0
+offset_top = 114.0
+offset_right = 112.0
+offset_bottom = 122.0
+theme_override_colors/font_color = Color(0.74902, 0.792157, 0.529412, 1)
+theme_override_fonts/font = ExtResource("2_umbqu")
+theme_override_font_sizes/font_size = 6
+text = "0"
+
+[node name="Weapon_Type_Label" type="Label" parent="Inventory_Background2"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 123.0
+offset_right = 64.0
+offset_bottom = 131.0
+theme_override_colors/font_color = Color(0.74902, 0.792157, 0.529412, 1)
+theme_override_fonts/font = ExtResource("2_umbqu")
+theme_override_font_sizes/font_size = 6
+text = "Weapon Type:"
+
+[node name="Weapon_Type_Text" type="Label" parent="Inventory_Background2"]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 123.0
+offset_right = 112.0
+offset_bottom = 131.0
+theme_override_colors/font_color = Color(0.74902, 0.792157, 0.529412, 1)
+theme_override_fonts/font = ExtResource("2_umbqu")
+theme_override_font_sizes/font_size = 6
+text = "Fists"
 
 [node name="Equip_Avatar" type="Sprite2D" parent="Inventory_Background2"]
 position = Vector2(44, 40)

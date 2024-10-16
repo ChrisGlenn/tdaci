@@ -17,6 +17,10 @@ extends CanvasLayer
 @onready var RING_SLOT_TWO = $Inventory_Background2/Equip_Slots/ring_slot_2
 @onready var WEAPON_SLOT = $Inventory_Background2/Equip_Slots/weapon_slot
 @onready var ARMOR_SLOT = $Inventory_Background2/Equip_Slots/armor_slot
+@onready var ARMOR_TYPE = $Inventory_Background2/Armor_Type_Text
+@onready var ARMOR_CLASS = $Inventory_Background2/Armor_Class_Text
+@onready var WPN_DMG = $Inventory_Background2/Weapon_DMG_Text
+@onready var WPN_TYPE = $Inventory_Background2/Weapon_Type_Text
 var cur_pos : int = 0 # inventory select cursor position
 
 
@@ -72,15 +76,10 @@ func inventory_control():
 				update_controls(Items.Items_DB[Globals.player["INV"][cur_pos]]["type"])
 		# USE/EQUIP/ECT THE OBJECT
 		if Input.is_action_just_pressed("ci_A"):
-			# Globals.player["INV"].remove_at(cur_pos)
-			# if cur_pos > 0: 
-			# 	cur_pos -= 1
-			# 	INV_SELECTOR.position = INV_SLOTS.get_child(cur_pos).position
-			# Globals.player["current_weight"] = 0.0
-			# update_inventory()
 			# USE ITEM
 			# get the type and run the function w/ the type and name
-			pass
+			Functions.use_item(Globals.player["INV"][cur_pos], Items.Items_DB[Globals.player["INV"][cur_pos]]["sub_type"], Items.Items_DB[Globals.player["INV"][cur_pos]]["modifier"])
+			remove_inv_item() # remove the item
 	# CLOSE THE INVENTORY MENU
 	if Input.is_action_just_pressed("ci_B") or Input.is_action_just_pressed("ci_START"):
 		get_tree().paused = false # unpause the game
@@ -90,6 +89,12 @@ func update_inspector():
 	INSPECT_TITLE.text = Items.Items_DB[Globals.player["INV"][cur_pos]]["title"]
 	INSPECT_SPRITE.frame = Items.Items_DB[Globals.player["INV"][cur_pos]]["frame"]
 	INSPECT_DESC.text = Items.Items_DB[Globals.player["INV"][cur_pos]]["desc"]
+	# update the equipment
+	var weapon_damage = Globals.player["WPN_DMG"] + (Globals.player["STR_MOD"] / 2)
+	ARMOR_TYPE.text = Globals.player["armor_type"]
+	ARMOR_CLASS.text = str(Globals.player["AC"])
+	WPN_DMG.text = str(weapon_damage)
+	WPN_TYPE.text = Globals.player["WPN_TYPE"]
 
 func update_inventory():
 	# iterate through and set the frame for each slot based on the reference
@@ -118,3 +123,13 @@ func update_controls(control_type : String):
 			CONTROLS.text = str("Press ", Globals.cancel_button, " to close inventory.")
 		"CONSUMABLE":
 			CONTROLS.text = str(Globals.interact_button, ": Use  ", Globals.status_button, ": Discard  ", Globals.cancel_button, ": Close")
+
+func remove_inv_item():
+	# remove an item from the inventory at a given slot
+	Globals.player["INV"].remove_at(cur_pos)
+	if cur_pos > 0: 
+		if Globals.player["INV"].size() < cur_pos + 1:
+			cur_pos -= 1
+			INV_SELECTOR.position = INV_SLOTS.get_child(cur_pos).position
+	Globals.player["current_weight"] = 0.0
+	update_inventory()

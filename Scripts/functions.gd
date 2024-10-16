@@ -62,7 +62,12 @@ func pick_lock():
 
 # inventory functions
 # consumables
-func use_item(_name : String):
-    pass
+func use_item(item_name : String, sub_type : String, modifier : int):
+    if sub_type == "Heal":
+        Globals.player["hp"] += modifier
+        if Globals.player["hp"] > Globals.player["max_hp"]:
+            Globals.player["hp"] = Globals.player["max_hp"] # stop HP from going over max
+            Globals.update_terminal(str("> You've used ", item_name, "\n"))
+
 # equipable
 # ect

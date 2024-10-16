@@ -34,17 +34,18 @@ func _process(_delta: float) -> void:
 func hud_controls():
 	# check for player input that pertains to the HUD
 	# GAME MENU
-	if Input.is_action_just_pressed("ci_START"):
-		var menu = GAME_MENU.instantiate()
-		add_child(menu)
-	# STAT MENU
-	if Input.is_action_just_pressed("ci_X"):
-		var stats = STAT_MENU.instantiate()
-		add_child(stats)
-	# INVENTORY MENU
-	if Input.is_action_just_pressed("ci_Y"):
-		var inventory = INV_MENU.instantiate()
-		add_child(inventory)
+	if get_tree().paused == false:
+		if Input.is_action_just_pressed("ci_START"):
+			var menu = GAME_MENU.instantiate()
+			add_child(menu)
+		# STAT MENU
+		if Input.is_action_just_pressed("ci_X"):
+			var stats = STAT_MENU.instantiate()
+			add_child(stats)
+		# INVENTORY MENU
+		if Input.is_action_just_pressed("ci_Y"):
+			var inventory = INV_MENU.instantiate()
+			add_child(inventory)
 
 func update_hud():
 	# update player section of HUD
