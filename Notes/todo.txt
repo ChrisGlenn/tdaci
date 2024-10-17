@@ -21,7 +21,7 @@ TO-DO LIST(ALPHA):
     [] Player Starting Position
     [] Death
 [] Combat (GEN ONE)
-    [] Combat System
+    [x] Combat System
     [] FIGHTER
         [] Player (Fighter) Block
         [] Player (Fighter) Attack
@@ -44,7 +44,6 @@ TO-DO LIST(ALPHA):
     [x] Battlefield Tilelayer
         [x] Random Battlefields
         [x] Static Battlefield
-    [] 'Fade' In Transition
     [] Battle End
 [] HUD
     [x] HUD Resolution Independence
@@ -90,8 +89,8 @@ TO-DO LIST(ALPHA):
     [] Dialogue/Text
     [x] Stats
     [x] Journal
-    [] Inventory
-    [] Spellbook
+    [.] Inventory
+    [.] Spellbook
     [] Save/Load Menu
     [] CRT Shader(?)
     [x] 'Terminal'
@@ -127,6 +126,7 @@ TO-DO LIST(ALPHA):
 
 
 ALPHA BUG-FIX/FEATURE ADD LIST:
+    [] Make the terminal larger?
     [x] Make enemies invisible when under a shade tile (check if visibility tile exists then visible = false)
     [x] Fix FOV to include doors/objects (have to use/change tiles)
     [x] Hold down directional movement

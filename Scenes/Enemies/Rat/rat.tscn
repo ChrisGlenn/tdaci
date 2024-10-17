@@ -3,9 +3,9 @@
 [ext_resource type="Texture2D" uid="uid://c4r1bbuhmqdd4" path="res://Sprites/Enemies.png" id="1_06hh1"]
 [ext_resource type="Script" path="res://Scenes/Enemies/Rat/rat.gd" id="1_ojjw5"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_g50qn"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_2u7h2"]
 atlas = ExtResource("1_06hh1")
-region = Rect2(48, 0, 16, 24)
+region = Rect2(32, 0, 16, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_32vvn"]
 atlas = ExtResource("1_06hh1")
@@ -19,7 +19,7 @@ region = Rect2(16, 0, 16, 24)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_g50qn")
+"texture": SubResource("AtlasTexture_2u7h2")
 }],
 "loop": true,
 "name": &"attack",

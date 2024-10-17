@@ -9,7 +9,7 @@ var player : Dictionary = {
     "race": "Human",
     "class": "Fighter",
     "level": 1,
-    "hp": 6,
+    "hp": 1,
     "max_hp": 8,
     "mp": 0,
     "max_mp": 0,
@@ -40,7 +40,7 @@ var player : Dictionary = {
     "WPN_DMG": 2,
     "WPN_PEN": 0,
     "weapon_restrictions" : [],
-    "INV": ["meat", "health potion"],
+    "INV": ["meat", "health potion","leather helmet"],
     "Spells": [],
     "Dead": false
 }

@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://drwe3baken7v5"]
+
+[ext_resource type="Texture2D" uid="uid://c4r1bbuhmqdd4" path="res://Sprites/Enemies.png" id="1_bg1wg"]
+
+[node name="Corpse" type="Sprite2D"]
+texture = ExtResource("1_bg1wg")
+centered = false
+hframes = 16
+vframes = 12
+frame = 8

@@ -2,6 +2,7 @@ extends CharacterBody2D
 # PLAYER SCRIPT
 # handles player input, movement, interaction, ect.
 signal player_moved # custom player script signal
+@onready var CORPSE = preload("res://Scenes/Enviornment/Corpse/corpse.tscn")
 @onready var PLAYER_SPRITE = $AnimatedSprite2D
 @onready var STEP_AUDIO = $Steps
 @onready var RAY_UP = $Ray_UP
@@ -103,7 +104,10 @@ func player_input(clock):
 		PLAYER_SPRITE.modulate = Color(1, 1, 1, 1) # return color to normal
 		is_hit = false # return control to player
 		hit_timer = 0 # reset this to zero
-
+	# DEATH
+	if Globals.player["hp"] <= 0:
+		Globals.can_move = false # stop player movement
+		# death() # call death function
 	# DEBUG
 	if Input.is_action_just_pressed("ci_END"):
 		get_tree().quit() # exit the game
@@ -117,4 +121,6 @@ func hit(dmg : int):
 
 func death():
 	# the player has died
+	var corpse = CORPSE.instantiate()
+	corpse.global_position = global_position
 	Globals.terminal += str("> YOU HAVE DIED!!!\n") # update the terminal

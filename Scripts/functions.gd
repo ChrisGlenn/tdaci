@@ -70,4 +70,7 @@ func use_item(item_name : String, sub_type : String, modifier : int):
             Globals.update_terminal(str("> You've used ", item_name, "\n"))
 
 # equipable
+func equip_item():
+    pass
+
 # ect

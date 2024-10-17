@@ -23,7 +23,7 @@ const Items_DB : Dictionary = {
     },
     "leather helmet" : {
         "title" : "Leather Helmet",
-        "desc" : "A helmet made of leather.",
+        "desc" : "A helmet made of leather.\n\nArmor Class: 1",
         "type" : "EQUIP",
         "sub_type" : "Light",
         "weight" : 1,
