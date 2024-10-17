@@ -1,0 +1,33 @@
+[gd_scene load_steps=3 format=3 uid="uid://vf3myj2ik8ul"]
+
+[ext_resource type="PackedScene" uid="uid://cax0kv3jxjlwc" path="res://Scenes/UI/UI_NinePatch/ui_nine_patch.tscn" id="1_r7ga7"]
+[ext_resource type="FontFile" uid="uid://dcbyalkyecj3i" path="res://Fonts/pixelmix.ttf" id="2_wx1nx"]
+
+[node name="spell_menu" type="CanvasLayer"]
+
+[node name="Spell_Background" parent="." instance=ExtResource("1_r7ga7")]
+offset_left = 256.0
+offset_right = 512.0
+offset_bottom = 208.0
+
+[node name="Spells_Label" type="Label" parent="."]
+offset_left = 264.0
+offset_top = 6.0
+offset_right = 504.0
+offset_bottom = 14.0
+theme_override_colors/font_color = Color(0.74902, 0.792157, 0.529412, 1)
+theme_override_fonts/font = ExtResource("2_wx1nx")
+theme_override_font_sizes/font_size = 8
+text = "Spells"
+horizontal_alignment = 1
+
+[node name="Press_Return" type="Label" parent="."]
+offset_left = 264.0
+offset_top = 193.0
+offset_right = 504.0
+offset_bottom = 201.0
+theme_override_colors/font_color = Color(0.74902, 0.792157, 0.529412, 1)
+theme_override_fonts/font = ExtResource("2_wx1nx")
+theme_override_font_sizes/font_size = 8
+text = "Press XXX to Close"
+horizontal_alignment = 1

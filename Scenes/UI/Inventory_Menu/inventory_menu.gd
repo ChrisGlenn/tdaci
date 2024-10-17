@@ -78,7 +78,7 @@ func inventory_control():
 		if Input.is_action_just_pressed("ci_A"):
 			# USE ITEM
 			# get the type and run the function w/ the type and name
-			Functions.use_item(Globals.player["INV"][cur_pos], Items.Items_DB[Globals.player["INV"][cur_pos]]["sub_type"], Items.Items_DB[Globals.player["INV"][cur_pos]]["modifier"])
+			Functions.use_item(Items.Items_DB[Globals.player["INV"][cur_pos]]["title"], Items.Items_DB[Globals.player["INV"][cur_pos]]["sub_type"], Items.Items_DB[Globals.player["INV"][cur_pos]]["modifier"])
 			remove_inv_item() # remove the item
 	# CLOSE THE INVENTORY MENU
 	if Input.is_action_just_pressed("ci_B") or Input.is_action_just_pressed("ci_START"):
@@ -90,11 +90,11 @@ func update_inspector():
 	INSPECT_SPRITE.frame = Items.Items_DB[Globals.player["INV"][cur_pos]]["frame"]
 	INSPECT_DESC.text = Items.Items_DB[Globals.player["INV"][cur_pos]]["desc"]
 	# update the equipment
-	var weapon_damage = Globals.player["WPN_DMG"] + (Globals.player["STR_MOD"] / 2)
-	ARMOR_TYPE.text = Globals.player["armor_type"]
-	ARMOR_CLASS.text = str(Globals.player["AC"])
-	WPN_DMG.text = str(weapon_damage)
-	WPN_TYPE.text = Globals.player["WPN_TYPE"]
+	# var weapon_damage = Globals.player["WPN_DMG"] + (Globals.player["STR_MOD"] / 2)
+	# ARMOR_TYPE.text = Globals.player["armor_type"]
+	# ARMOR_CLASS.text = str(Globals.player["AC"])
+	# WPN_DMG.text = str(weapon_damage)
+	# WPN_TYPE.text = Globals.player["WPN_TYPE"]
 
 func update_inventory():
 	# iterate through and set the frame for each slot based on the reference
@@ -123,6 +123,10 @@ func update_controls(control_type : String):
 			CONTROLS.text = str("Press ", Globals.cancel_button, " to close inventory.")
 		"CONSUMABLE":
 			CONTROLS.text = str(Globals.interact_button, ": Use  ", Globals.status_button, ": Discard  ", Globals.cancel_button, ": Close")
+
+func update_equipment():
+	# update the player's equipment
+	pass
 
 func remove_inv_item():
 	# remove an item from the inventory at a given slot
