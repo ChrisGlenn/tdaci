@@ -42,7 +42,26 @@ var player : Dictionary = {
     "weapon_restrictions" : [],
     "INV": ["meat", "health potion","leather helmet"],
     "Spells": [],
-    "Dead": false
+    "Dead": false,
+    "helmet" : {
+        "name" : "unarmored",
+        "type" : "Unarmored",
+        "ac" : 0
+    },
+    "armor" : {
+        "name" : "unarmored",
+        "type" : "Unarmored",
+        "ac" : 2
+    },
+    "shield" : {
+        "name" : "unarmored",
+        "type" : "Unarmored",
+        "ac" : 0
+    },
+    "weapon" : {},
+    "ring_left" : {},
+    "right_right" : {},
+    "amulet" : {}
 }
 
 # npc variables
