@@ -25,24 +25,16 @@ const Items_DB : Dictionary = {
         "title" : "Leather Helmet",
         "desc" : "A helmet made of leather.\n\nArmor Class: 1",
         "type" : "EQUIP",
-        "sub_type" : "Light",
-        "piece" : "helmet",
         "weight" : 1,
         "value" : 8,
-        "frame" : 120,
-        "modifier" : 1,
-        "penalty" : 0
+        "frame" : 120
     },
     "leather armor" : {
         "title" : "Leather Armor",
         "desc" : "Armor made of leather.\n\nArmor Class: 1",
         "type" : "EQUIP",
-        "sub_type" : "Light",
-        "piece" : "helmet",
         "weight" : 1,
         "value" : 25,
-        "frame" : 140,
-        "modifier" : 11,
-        "penalty" : 0
+        "frame" : 140
     }
 }

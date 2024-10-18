@@ -18,7 +18,7 @@ var player : Dictionary = {
     "current_status": "Healthy",
     "current_weight": 0.0,
     "carry_capacity": 40.0,
-    "encumbered": false,
+    "encumbered": true,
     "gold": 10,
     "ATB": 100,
     "ATB_MAX": 100,
@@ -45,18 +45,22 @@ var player : Dictionary = {
     "Dead": false,
     "helmet" : {
         "name" : "unarmored",
+        "frame" : 41,
         "type" : "Unarmored",
-        "ac" : 0
+        "ac" : 0,
+        "penalty" : 0
     },
     "armor" : {
         "name" : "unarmored",
         "type" : "Unarmored",
-        "ac" : 2
+        "ac" : 2,
+        "penalty" : 0
     },
     "shield" : {
         "name" : "unarmored",
         "type" : "Unarmored",
-        "ac" : 0
+        "ac" : 0,
+        "penalty" : 0
     },
     "weapon" : {},
     "ring_left" : {},

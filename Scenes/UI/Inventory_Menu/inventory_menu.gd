@@ -123,6 +123,10 @@ func update_controls(control_type : String):
 			CONTROLS.text = str("Press ", Globals.cancel_button, " to close inventory.")
 		"CONSUMABLE":
 			CONTROLS.text = str(Globals.interact_button, ": Use  ", Globals.status_button, ": Discard  ", Globals.cancel_button, ": Close")
+		"EQUIP":
+			pass
+		"UNEQUIP":
+			pass
 
 func update_equipment():
 	# update the player's equipment

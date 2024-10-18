@@ -55,6 +55,13 @@ hframes = 19
 vframes = 25
 frame = 381
 
+[node name="ATB_Bar" type="ProgressBar" parent="Keyboard"]
+offset_left = 353.0
+offset_top = 246.0
+offset_right = 357.0
+offset_bottom = 273.0
+show_percentage = false
+
 [node name="B_Label" type="Label" parent="Keyboard"]
 offset_left = 386.0
 offset_top = 276.0

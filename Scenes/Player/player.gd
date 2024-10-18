@@ -44,12 +44,15 @@ func player_input(clock):
 		if Input.is_action_pressed("ci_UP"):
 			# move up
 			if !RAY_UP.is_colliding():
-				if move_timer < 1:
-					STEP_AUDIO.play() # play the step sfx
-					global_position.y -= 24 # move the player
-					move_timer = move_timer_set # set the timer
-					emit_signal("player_moved") # emit the signal that the player has moved
-					Globals.player_moved = true # player has moved
+				if !Globals.player["encumbered"]:
+					if move_timer < 1:
+						STEP_AUDIO.play() # play the step sfx
+						global_position.y -= 24 # move the player
+						move_timer = move_timer_set # set the timer
+						emit_signal("player_moved") # emit the signal that the player has moved
+						Globals.player_moved = true # player has moved
+				else:
+					Globals.update_terminal("You are encumbered.") # player can't move
 			else:
 				# PLAY BLOCK AUDIO
 				pass
