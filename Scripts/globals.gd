@@ -9,7 +9,7 @@ var player : Dictionary = {
     "race": "Human",
     "class": "Fighter",
     "level": 1,
-    "hp": 1,
+    "hp": 8,
     "max_hp": 8,
     "mp": 0,
     "max_mp": 0,
@@ -18,7 +18,7 @@ var player : Dictionary = {
     "current_status": "Healthy",
     "current_weight": 0.0,
     "carry_capacity": 40.0,
-    "encumbered": true,
+    "encumbered": false,
     "gold": 10,
     "ATB": 100,
     "ATB_MAX": 100,
@@ -42,30 +42,7 @@ var player : Dictionary = {
     "weapon_restrictions" : [],
     "INV": ["meat", "health potion","leather helmet"],
     "Spells": [],
-    "Dead": false,
-    "helmet" : {
-        "name" : "unarmored",
-        "frame" : 41,
-        "type" : "Unarmored",
-        "ac" : 0,
-        "penalty" : 0
-    },
-    "armor" : {
-        "name" : "unarmored",
-        "type" : "Unarmored",
-        "ac" : 2,
-        "penalty" : 0
-    },
-    "shield" : {
-        "name" : "unarmored",
-        "type" : "Unarmored",
-        "ac" : 0,
-        "penalty" : 0
-    },
-    "weapon" : {},
-    "ring_left" : {},
-    "right_right" : {},
-    "amulet" : {}
+    "Dead": false
 }
 
 # npc variables
@@ -165,3 +142,7 @@ func update_terminal(message : String):
     terminal_reset = 5 # add more time to the terminal reset
     last_message = message # set the last message
     terminal += str(message) # update with the message
+
+func check_encumberence():
+    if player["current_weight"] >= player["current_capacity"]:
+        player["encumbered"] = true # the player is encumbered

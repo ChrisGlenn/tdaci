@@ -17,6 +17,7 @@ extends CanvasLayer
 @onready var RING_SLOT_TWO = $Inventory_Background2/Equip_Slots/ring_slot_2
 @onready var WEAPON_SLOT = $Inventory_Background2/Equip_Slots/weapon_slot
 @onready var ARMOR_SLOT = $Inventory_Background2/Equip_Slots/armor_slot
+@onready var CURRENT_WEIGHT = $Inventory_Background2/Weight_Text
 @onready var ARMOR_TYPE = $Inventory_Background2/Armor_Type_Text
 @onready var ARMOR_CLASS = $Inventory_Background2/Armor_Class_Text
 @onready var WPN_DMG = $Inventory_Background2/Weapon_DMG_Text
@@ -40,7 +41,7 @@ func _ready() -> void:
 		INV_SELECTOR.visible = false # hide the inventory selector
 		INSPECT_TITLE.text = "" # blank
 		INSPECT_DESC.text = "Your inventory is empty..."
-		update_controls("NULL") # run control update w/ Null
+		update_controls("NULL") # run control update w/ is_null
 	visible = true # show the inventory screen AFTER updating
 
 func _process(_delta: float) -> void:
@@ -91,10 +92,12 @@ func update_inspector():
 	INSPECT_DESC.text = Items.Items_DB[Globals.player["INV"][cur_pos]]["desc"]
 	# update the equipment
 	# var weapon_damage = Globals.player["WPN_DMG"] + (Globals.player["STR_MOD"] / 2)
+	CURRENT_WEIGHT.text = str(Globals.player["current_weight"], "/", Globals.player["carry_capacity"])
 	# ARMOR_TYPE.text = Globals.player["armor_type"]
 	# ARMOR_CLASS.text = str(Globals.player["AC"])
 	# WPN_DMG.text = str(weapon_damage)
 	# WPN_TYPE.text = Globals.player["WPN_TYPE"]
+	# check carry weight encumbered
 
 func update_inventory():
 	# iterate through and set the frame for each slot based on the reference
