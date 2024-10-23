@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://78jj3cn4sjxu"]
+[gd_scene load_steps=10 format=3 uid="uid://78jj3cn4sjxu"]
 
 [ext_resource type="Texture2D" uid="uid://bwk5efqfyok0" path="res://Sprites/Player.png" id="1_0ynfs"]
 [ext_resource type="Script" path="res://Scenes/Player/player.gd" id="1_uef0d"]
@@ -15,6 +15,10 @@ region = Rect2(16, 0, 16, 24)
 [sub_resource type="AtlasTexture" id="AtlasTexture_ollth"]
 atlas = ExtResource("1_0ynfs")
 region = Rect2(32, 0, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qsxxo"]
+atlas = ExtResource("1_0ynfs")
+region = Rect2(48, 0, 16, 24)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_wusta"]
 animations = [{
@@ -35,6 +39,14 @@ animations = [{
 }],
 "loop": true,
 "name": &"fighter_attack",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qsxxo")
+}],
+"loop": true,
+"name": &"fighter_block",
 "speed": 0.0
 }]
 

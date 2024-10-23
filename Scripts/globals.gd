@@ -40,7 +40,7 @@ var player : Dictionary = {
     "WPN_DMG": 2,
     "WPN_PEN": 0,
     "weapon_restrictions" : [],
-    "INV": ["meat", "health potion","leather helmet"],
+    "INV": ["meat"],
     "Spells": [],
     "Dead": false
 }

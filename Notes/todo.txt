@@ -127,7 +127,8 @@ TO-DO LIST(ALPHA):
 
 
 ALPHA BUG-FIX/FEATURE ADD LIST:
-    [] Make the terminal larger?
+    [] Make button names make more sense
+    [x] Make the terminal larger?
     [x] Make enemies invisible when under a shade tile (check if visibility tile exists then visible = false)
     [x] Fix FOV to include doors/objects (have to use/change tiles)
     [x] Hold down directional movement
