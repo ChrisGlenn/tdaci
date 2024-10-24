@@ -16,6 +16,7 @@ var move_timer : int = 0 # paused time before player moves again
 var hit_timer : int = 0 # used when hit
 var is_hit : bool = false # if the player is hit
 var is_stunned : bool = false # if true the player cannot move
+var enemies : Array = [] # holds the current enemies
 var map_position # holds the current player position on the map
 var interactable # holds the interactable object once it comes into the area
 
@@ -41,61 +42,76 @@ func player_input(clock):
 	# PLAYER MOVEMENT
 	# controls the player movement
 	if Globals.can_move and !is_stunned and !is_hit:
-		if Input.is_action_pressed("ci_UP"):
-			# move up
-			if !RAY_UP.is_colliding():
-				if move_timer < 1:
-					STEP_AUDIO.play() # play the step sfx
-					global_position.y -= 24 # move the player
-					move_timer = move_timer_set # set the timer
-					emit_signal("player_moved") # emit the signal that the player has moved
-					Globals.player_moved = true # player has moved
-			else:
-				# PLAY BLOCK AUDIO
-				pass
-		if Input.is_action_pressed("ci_RIGHT"):
-			# move right
-			if !RAY_RIGHT.is_colliding():
-				if move_timer < 1:
-					STEP_AUDIO.play() # play the step sfx
+		if Globals.player["encumbered"] == false:
+			if Input.is_action_pressed("ci_UP"):
+				# move up
+				if !RAY_UP.is_colliding():
+					if move_timer < 1:
+						STEP_AUDIO.play() # play the step sfx
+						global_position.y -= 24 # move the player
+						move_timer = move_timer_set # set the timer
+						emit_signal("player_moved") # emit the signal that the player has moved
+						Globals.player_moved = true # player has moved
+				else:
+					# PLAY BLOCK AUDIO
+					pass
+			if Input.is_action_pressed("ci_RIGHT"):
+				# move right
+				if !RAY_RIGHT.is_colliding():
+					if move_timer < 1:
+						STEP_AUDIO.play() # play the step sfx
+						PLAYER_SPRITE.flip_h = true # flip the player sprite
+						global_position.x += 16 # move the player
+						move_timer = move_timer_set # set the timer
+						emit_signal("player_moved") # emit the signal that the player has moved
+						Globals.player_moved = true # player has moved
+				else:
+					# PLAY BLOCK AUDIO
 					PLAYER_SPRITE.flip_h = true # flip the player sprite
-					global_position.x += 16 # move the player
-					move_timer = move_timer_set # set the timer
-					emit_signal("player_moved") # emit the signal that the player has moved
-					Globals.player_moved = true # player has moved
-			else:
-				# PLAY BLOCK AUDIO
-				PLAYER_SPRITE.flip_h = true # flip the player sprite
-		if Input.is_action_pressed("ci_DOWN"):
-			# move down
-			if !RAY_DOWN.is_colliding():
-				if move_timer < 1:
-					STEP_AUDIO.play() # play the step sfx
-					global_position.y += 24 # move the player
-					move_timer = move_timer_set # set the timer
-					emit_signal("player_moved") # emit the signal that the player has moved
-					Globals.player_moved = true # player has moved
-			else:
-				# PLAY BLOCK AUDIO
-				pass
-		if Input.is_action_pressed("ci_LEFT"):
-			# move left
-			if !RAY_LEFT.is_colliding():
-				if move_timer < 1:
-					STEP_AUDIO.play() # play the step sfx
+			if Input.is_action_pressed("ci_DOWN"):
+				# move down
+				if !RAY_DOWN.is_colliding():
+					if move_timer < 1:
+						STEP_AUDIO.play() # play the step sfx
+						global_position.y += 24 # move the player
+						move_timer = move_timer_set # set the timer
+						emit_signal("player_moved") # emit the signal that the player has moved
+						Globals.player_moved = true # player has moved
+				else:
+					# PLAY BLOCK AUDIO
+					pass
+			if Input.is_action_pressed("ci_LEFT"):
+				# move left
+				if !RAY_LEFT.is_colliding():
+					if move_timer < 1:
+						STEP_AUDIO.play() # play the step sfx
+						PLAYER_SPRITE.flip_h = false # return sprite H to default
+						global_position.x -= 16 # move the player
+						move_timer = move_timer_set # set the timer
+						emit_signal("player_moved") # emit the signal that the player has moved
+						Globals.player_moved = true # player has moved
+				else:
+					# PLAY BLOCK AUDIO
 					PLAYER_SPRITE.flip_h = false # return sprite H to default
-					global_position.x -= 16 # move the player
-					move_timer = move_timer_set # set the timer
-					emit_signal("player_moved") # emit the signal that the player has moved
-					Globals.player_moved = true # player has moved
+			if !Input.is_action_pressed("ci_RIGHT") and !Input.is_action_pressed("ci_LEFT") and !Input.is_action_pressed("ci_UP") and !Input.is_action_pressed("ci_DOWN"):
+				if move_timer != 0: move_timer = 0 # reset the move timer if no direction input is pressed
+			# movement timer
+			if move_timer > 0:
+				move_timer -= clock * Globals.timer_ctrl # decrement the timer
+		else:
+			# encumbered movement
+			# let the player know they can't move via the terminal
+			if Input.is_action_just_pressed("ci_UP") or Input.is_action_just_pressed("ci_DOWN") or Input.is_action_just_pressed("ci_LEFT") or Input.is_action_just_pressed("ci_RIGHT"):
+				Globals.update_terminal("> You are encumbered\n")
+		# ATTACKING
+		# if the player presses the attack button then attack!
+		if Input.is_action_just_pressed("ci_A"):
+			# check if there are any enemies currently engaged with the player and if not then inform the player that
+			# they are attacking nothing in the terminal
+			if enemies.size() > 0:
+				pass
 			else:
-				# PLAY BLOCK AUDIO
-				PLAYER_SPRITE.flip_h = false # return sprite H to default
-		if !Input.is_action_pressed("ci_RIGHT") and !Input.is_action_pressed("ci_LEFT") and !Input.is_action_pressed("ci_UP") and !Input.is_action_pressed("ci_DOWN"):
-			if move_timer != 0: move_timer = 0 # reset the move timer if no direction input is pressed
-		# movement timer
-		if move_timer > 0:
-			move_timer -= clock * Globals.timer_ctrl # decrement the timer
+				Globals.update_terminal("> There are no enemies near to attack\n")
 	# HIT EFFECT
 	if hit_timer > 0:
 		hit_timer -= Globals.timer_ctrl * clock
@@ -124,3 +140,11 @@ func death():
 	var corpse = CORPSE.instantiate()
 	corpse.global_position = global_position
 	Globals.terminal += str("> YOU HAVE DIED!!!\n") # update the terminal
+
+func _on_enemy_collider_area_entered(area:Area2D) -> void:
+	if area.is_in_group("ENEMY"):
+		pass
+
+func _on_enemy_collider_area_exited(area:Area2D) -> void:
+	if area.is_in_group("ENEMY"):
+		pass

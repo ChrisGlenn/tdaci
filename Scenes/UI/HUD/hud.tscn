@@ -25,7 +25,7 @@ offset_bottom = 288.0
 [node name="Term_Text" type="RichTextLabel" parent="Terminal"]
 layout_mode = 0
 offset_left = 6.0
-offset_top = 8.0
+offset_top = 7.0
 offset_right = 144.0
 offset_bottom = 88.0
 theme_override_colors/default_color = Color(0.74902, 0.792157, 0.529412, 1)
